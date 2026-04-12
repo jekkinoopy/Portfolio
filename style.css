@@ -1,0 +1,38 @@
+
+:root {
+            --primary-yellow: #FFF9C4;
+            --dark-gray: #777777;
+            --black: #333333;
+            --bg-light: #fafafa;
+            --white: #ffffff;
+        }
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    margin: 5% auto;
+    background-color: var(--white);
+    color: var(--black);
+    max-width: 1000px;
+    
+}
+
+nav ul{
+    display: flex;
+    justify-content: end;
+    list-style: none;
+    gap: 20px;
+}
+nav ul li a{
+    text-decoration: none;
+    color: var(--dark-gray);
+}
+nav ul li a:hover{
+    color: var(--block);
+}
+.container{
+    width: 80%;
+    margin: 10% auto;
+    /* background-color: #ddd; */
+}
