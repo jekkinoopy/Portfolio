@@ -179,5 +179,20 @@ footer {
 }
 
 @media (max-width: 768px) {
+    .hero-section {
+        flex-direction: column-reverse; /* 關鍵：從橫向並排改為上下垂直排列 */
+        width: 100%;           /* 寬度撐滿，避免在小螢幕縮得太小 */
+        margin: 10% 0;         /* 調整上下間距 */
+        text-align: center;    /* 讓內容在手機上居中看 */
+    }
+    .hero-text {
+        width: 90%;            /* 從 50% 改為 90%，給兩邊留點呼吸空間 */
+        text-align: center;    /* 讓文字在手機上居中，重心才不會偏左 */
+    }
+
+    .hero-text h1 {
+        text-align: center;    /* 強制標題也居中 */
+        margin-bottom: 20px;
+    }
     .hero-content h1 { font-size: 3rem; }
 }
