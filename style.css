@@ -1,38 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200..900&display=swap');
+
 
 :root {
-            --primary-yellow: #FFF9C4;
-            --dark-gray: #777777;
-            --black: #333333;
-            --bg-light: #fafafa;
-            --white: #ffffff;
-        }
+    --primary-yellow: #F3C14C;
+    --primary-brown: #806526;
+    --primary-dark-brown: #3a2c10;
+    --dark-gray: #777777;
+    --black: #333333;
+    --bg-light: #fafafa;
+    --white: #f1f1f1;
+}
 *{
     margin: 0;
     padding: 0;
+    font-family: "Noto Serif TC", serif;
 }
 body{
-    margin: 5% auto;
     background-color: var(--white);
-    color: var(--black);
-    max-width: 1000px;
-    
+    color: var(--black);    
 }
 
-nav ul{
+header { 
+    background: var(--primary-yellow); 
+}
+.navbar{
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
+    padding: 20px 50px;
+}
+.nav-links{
+    display: flex;
     list-style: none;
-    gap: 20px;
+    gap: 30px;
 }
-nav ul li a{
+
+.nav-links a{
     text-decoration: none;
-    color: var(--dark-gray);
+    color: var(--primary-brown);
+    font-size: 1.2em;
+
 }
-nav ul li a:hover{
-    color: var(--block);
+.nav-links a:hover{
+    color: var(--primary-dark-brown);
 }
-.container{
+.hero-section{
+    display: flex;
     width: 80%;
     margin: 10% auto;
     /* background-color: #ddd; */
+}
+.hero-text{
+    margin: auto;
+    width: 50%;
+    text-align: center;
+}
+.hero-text h1{
+    font-size: 4rem;
+    text-align: left;
+    margin-bottom: 20%;
+}
+.hero-text h1 br{
+    margin-left: 5px;
+}
+
+.hero-text h1 span{
+    color: var(--primary-yellow);
+}
+.hero-describe{
+    margin-right: 20%;
+    text-align: right;
+}
+.hero-describe h2{
+    font-size: 2rem;
+    margin-bottom: 3%;
+}
+/* .hero-img{
+    width: 50%
+} */
+
+/* 右側不規則圖形容器 */
+.hero-image-container {
+    position: relative;
+}
+
+.blob-shape {
+    width: 350px;
+    height: 300px;
+    background-color: #f1b840;
+    /* 創造不規則形狀的關鍵 */
+    /* border-radius: 60% 40% 60% 40% / 50% 60% 40% 50%; */
+    border-radius: 67% 33% 67% 33% / 45% 60% 40% 55% ;
+    border: 2px dashed #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* 狗狗圖片縮放與位置調整 */
+.avatar {
+    width: 80%;
+    height: auto;
+    /* 視圖片情況可能需要調整 margin-top 或 position */
+}
+
+
+/* 作品集區域 */
+.section-title {
+    text-align: center;
+    padding: 100px 0 50px;
+    font-size: 2rem;
+    color: var(--black);
+    letter-spacing: 4px;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    padding: 0 10% 100px;
+}
+
+.work-item {
+    position: relative;
+    background: #f9f9f9;
+    height: 400px;
+    overflow: hidden;
+    border: 1px solid #eee;
+    transition: transform 0.4s ease;
+}
+
+.work-item:hover {
+    transform: translateY(-10px);
+}
+
+.work-image {
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-yellow); /* 預設圖片占位色 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: italic;
+}
+
+.work-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: var(--white);
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.work-item:hover .work-info {
+    transform: translateY(0);
+}
+
+/* 聯絡資訊 */
+footer {
+    background-color: var(--black);
+    color: var(--primary-yellow);
+    padding: 80px 10%;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.contact-email {
+    margin: 20px 0;
+    font-size: 1rem;
+    display: block;
+    color: var(--white);
+    text-decoration: none;
+    
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 { font-size: 3rem; }
 }

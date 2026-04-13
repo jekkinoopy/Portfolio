@@ -8,30 +8,73 @@
 </head>
 <body>
 	<header>
-		<nav>
-			<ul>
-				<li><a href="#">About</a></li>
-				<li><a href="#">Graphic</a></li>
-				<li><a href="#">Illustration</a></li>
-
-			</ul>
+		<nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="#" class="active">About</a></li>
+                <li><a href="#">Photo</a></li>
+                <li><a href="#">平面</a></li>
+                <li><a href="#">UI/UX</a></li>
+                <li><a href="#">Web Design</a></li>
+            </ul>
 		</nav>
 	</header>
-	<div class="container">
-		<main>
-			<h1>Hello,<br>
-				I’m Noopy!
-			</h1>
-			<p><img src="images/me.png" alt=""></p>
-		</main>
-			<h2>
-				Welcome to my portfolio.
-			</h2>
-			<p>
-				平面設計 / 插畫 / 影音 /
-				UI介面 / 網站前端
-			</p>
-	</div>
-		<footer></footer>
+    <main class="hero-section">
+        <div class="hero-text">
+			<h1>Hello,<br>I’m <span>Noopy!</span></h1>
+            <div class="hero-describe">
+                <h2>
+                    Welcome to my portfolio.
+                </h2>
+                <p>
+                    平面設計 / 插畫 / 影音 /
+                    UI介面 / 網站前端
+                </p>
+            </div>
+        </div>
+        <div class="hero-img">
+            <img src="images/me.png" alt="Noopy">
+        </div>
+        <!-- <div class="hero-img2">
+            <div class="blob-shape">
+                <img src="images/noopyhead.png" alt="Noopy" class="avatar">
+            </div>
+        </div> -->
+    </main>
+    <section id="work">
+        <h2 class="section-title">SELECTED WORKS</h2>
+        <div class="portfolio-grid">
+            <!-- 作品項目 1 -->
+            <div class="work-item">
+                <div class="work-image">Project One</div>
+                <div class="work-info">
+                    <h3>品牌視覺設計</h3>
+                    <p>#Graphic Design #2024</p>
+                </div>
+            </div>
+            <!-- 作品項目 2 -->
+            <div class="work-item">
+                <div class="work-image" style="background-color: #777; color: white;">Project Two</div>
+                <div class="work-info">
+                    <h3>網頁 UI 介面</h3>
+                    <p>#UIUX #Interaction</p>
+                </div>
+            </div>
+            <!-- 作品項目 3 -->
+            <div class="work-item">
+                <div class="work-image">Project Three</div>
+                <div class="work-info">
+                    <h3>包裝設計系列</h3>
+                    <p>#Packaging #Identity</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <p>如有合作意願，歡迎隨時聯繫</p>
+        <a href="mailto:jekkinoopy@gmail.com" class="contact-email">jekkinoopy@gmail.com</a>
+        <p>&copy; 2026 JEKKINOOPY. All rights reserved.</p>
+    </footer>
+
 </body>
 </html>
