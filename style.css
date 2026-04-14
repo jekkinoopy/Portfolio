@@ -7,13 +7,14 @@
     --primary-dark-brown: #3a2c10;
     --dark-gray: #777777;
     --black: #333333;
-    --bg-light: #fafafa;
+    --bg-light: #f9f9f9;
     --white: #f1f1f1;
 }
 *{
     margin: 0;
     padding: 0;
     font-family: "Noto Serif TC", serif;
+    box-sizing: border-box;
 }
 body{
     background-color: var(--white);
@@ -87,7 +88,7 @@ header {
 .blob-shape {
     width: 350px;
     height: 300px;
-    background-color: #f1b840;
+    background-color: var(--primary-yellow);
     /* 創造不規則形狀的關鍵 */
     /* border-radius: 60% 40% 60% 40% / 50% 60% 40% 50%; */
     border-radius: 67% 33% 67% 33% / 45% 60% 40% 55% ;
@@ -124,10 +125,10 @@ header {
 
 .work-item {
     position: relative;
-    background: #f9f9f9;
+    background: var(--bg-light);
     height: 400px;
     overflow: hidden;
-    border: 1px solid #eee;
+    /* border: 1px solid #eee; */
     transition: transform 0.4s ease;
 }
 
@@ -189,7 +190,10 @@ footer {
         width: 90%;            /* 從 50% 改為 90%，給兩邊留點呼吸空間 */
         text-align: center;    /* 讓文字在手機上居中，重心才不會偏左 */
     }
-
+    .hero-describe h2{
+ 
+        margin-right: 0 !important; /* 強制歸零，消除右側推力 */
+}
     .hero-text h1 {
         text-align: center;    /* 強制標題也居中 */
         margin-bottom: 20px;
