@@ -3,8 +3,9 @@
 
 :root {
     --primary-yellow: #F3C14C;
-    --primary-brown: #806526;
-    --primary-dark-brown: #3a2c10;
+    --light-yellow: #ffdc88;
+    --primary-brown: #A65D33;
+    --primary-dark-brown: #593825;
     --dark-gray: #777777;
     --black: #333333;
     --bg-light: #f9f9f9;
@@ -22,7 +23,8 @@ body{
 }
 
 header { 
-    background: var(--primary-yellow); 
+    background: var(--light-yellow); 
+    padding: 0 10% 5%;
 }
 .navbar{
     display: flex;
@@ -40,16 +42,15 @@ header {
     color: var(--primary-brown);
     font-size: 1.2em;
     font-weight: 800;
-
+    
 }
 .nav-links a:hover{
     color: var(--primary-dark-brown);
 }
 .hero-section{
     display: flex;
-    width: 80%;
-    margin: 10% auto;
-    /* background-color: #ddd; */
+    padding-top: 5%;
+    background: var(--light-yellow); 
 }
 .hero-text{
     margin: auto;
@@ -66,7 +67,7 @@ header {
 }
 
 .hero-text h1 span{
-    color: var(--primary-yellow);
+    color: var(--primary-brown);
 }
 .hero-describe{
     margin-right: 20%;
