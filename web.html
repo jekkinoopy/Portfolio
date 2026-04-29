@@ -4,11 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jekkinoopy's portfolio</title>
+    <title>Web Development | Jekkinoopy's portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         header {
             padding: 0;
+        }
+
+        .web-portfolio-table {
+            /* height: 100%; */
+            margin: 10% auto;
+        }
+
+        .container h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-top: 40px;
         }
 
         table {
@@ -17,13 +29,42 @@
         }
 
         td {
-            background-color: #777;
+            /* background-color: #777; */
+            /* justify-content: center; */
+        }
+
+        .card-meta {
+            /* display: flex; */
+            margin-top: 15px;
+            width: 90%;
+            /* background: #000; */
+        }
+
+        .date {
+            font-size: 0.8rem;
+            color: var(--dark-gray);
+            margin-left: 10px;
+        }
+
+        .date i {
+            margin-right: 5px;
+            /* 圖示與文字的距離 */
+            color: #bbb;
+        }
+
+        .tag {
+            background: var(--primary-yellow);
+            color: #fff;
+            font-size: 1rem;
+            padding: 5px 10px;
+            border-radius: 50px;
+
         }
     </style>
 </head>
 
 <body>
-    <header>
+    <header class="container">
         <nav class="navbar">
             <ul class="nav-links">
                 <li><a href="/index.html">About</a></li>
@@ -36,73 +77,47 @@
         </nav>
 
     </header>
-    <main>
-
+    <main class="container">
+        <h2>
+            Web Dev
+        </h2>
+        <!-- 
 
         https://jekkinoopy.github.io/WebDev-Notes/
         https://jekkinoopy.github.io/ZHENCHENGVISION/
-        https://jekkinoopy.github.io/sechskies/
-        <table>
+        https://jekkinoopy.github.io/sechskies/ -->
+        <table class="web-portfolio-table">
             <tr>
-                <td width="50%"><a href="https://jekkinoopy.github.io/Portfolio/"><img src="images/web/Portfolio.png"
-                            width="100%" alt=""></a>
+                <td class="portfolio-item" width="50%">
+                    <a href="https://jekkinoopy.github.io/Portfolio/" class="card-link">
+                        <img src="images/web/Portfolio.png" width="100%" alt="努比設計作品集">
+                        <div class="card-item" valign="top">
+                            <div class="card-meta">
+                                <span class="tag">形象官網</span>
+                                <span class="source">個人專案</span>
+                                <!-- <span class="tag">個人作品</span> -->
+                                <span class="date" style="color: #888; margin-left: 10px;"><i
+                                        class="fa-regular fa-calendar-days"></i>2026 /
+                                    4</span>
+                            </div>
+                            <h3 style="margin: 5px 0;">努比設計作品集
+                                <p style="font-size: 14px; line-height: 1.4;">
+                                    使用 CSS Grid 與 Flexbox 打造的響應式作品集，解決跨裝置跑版與背景斷層問題。
+                                </p>
+                        </div>
+                    </a>
                 </td>
-                <td width="50%"><a href="https://jekkinoopy.github.io/SiongHing/"><img src="images/web/SiongHing.png"
-                            width="100%" alt=""></a>
+                <td class="portfolio-item" width="50%">
+                    <a href="https://jekkinoopy.github.io/SiongHing/" class="card-link">
+                        <img src="images/web/SiongHing.png" width="100%" alt="努比設計作品集"></a>
                 </td>
+            </tr>
+            <tr>
+                <td>上興棉被行</td>
             </tr>
         </table>
     </main>
-    <section id="work">
-        <h2 class="section-title">SELECTED WORKS</h2>
-        <div class="portfolio-grid">
-            <!-- 作品項目 1 -->
-            <div class="work-item">
-                <div class="work-image">Project One</div>
-                <table class="work-info">
-                    <tr>
-                        <td>
-                            <h3>品牌視覺設計</h3>
-                        </td>
-                        <td>
-                            <p>#Graphic Design</p>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <!-- 作品項目 2 -->
-        <div class="work-item">
-            <div class="work-image" style="background-color: var(--dark-gray); color: var(--white);">Project Two
-                <table class="work-info">
-                    <tr>
-                        <td>
-                            <h3>網頁 UI 介面</h3>
-                        </td>
-                        <td>
-                            <p>#UIUX #Interaction</p>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
 
-        <!-- 作品項目 3 -->
-        <div class="work-item">
-            <div class="work-image">Project Three</div>
-            <table class="work-info">
-                <tr>
-                    <td>
-                        <h3>包裝設計系列</h3>
-                    </td>
-                    <td>
-                        <p>#Packaging #Identity</p>
-                    </td>
-
-                </tr>
-            </table>
-        </div>
-    </section>
 
     <footer id="contact">
         <p>如有合作意願，歡迎隨時聯繫</p>

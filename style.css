@@ -24,6 +24,14 @@ body {
     color: var(--black);
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    /* 移除手機版點擊時的灰色遮罩 */
+}
+
 header {
     background: var(--light-yellow);
     padding: 0 10%;
