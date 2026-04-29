@@ -29,6 +29,43 @@
             margin-top: 40px;
         }
 
+        /* Web 頁面大標題設計 */
+        .web-page-title {
+            text-align: center;
+            margin: 80px auto 20px auto;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .web-page-title h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            /* 大寫更有力道 */
+            margin-bottom: 5px;
+        }
+
+        /* 標題下方的裝飾線 */
+        .web-page-title::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 6px;
+            background: var(--primary-yellow);
+            margin: 10px auto 0;
+            border-radius: 10px;
+        }
+
+        /* 增加一個副標題小字 */
+        .web-page-title p {
+            font-size: 1rem;
+            color: var(--text-gray);
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+
         table {
             margin: 0 auto;
             width: 80%;
@@ -159,10 +196,9 @@
         </nav>
 
     </header>
-    <main class="main-container">
-        <h2>
-            Web Dev
-        </h2>
+    <main class="main-container web-page-title">
+        <h2>Web Dev</h2>
+        <p>PORTFOLIO / 2026</p>
         <table class="web-portfolio-table">
             <tr>
                 <td class="portfolio-item" width="50%">
