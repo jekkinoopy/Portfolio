@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development | Jekkinoopy's portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        header {
+            padding: 0;
+        }
+
+        .web-portfolio-table {
+            /* height: 100%; */
+            margin: 10% auto;
+        }
+
+        .main-container {
+            width: 80%;
+            margin: 10% auto;
+
+        }
+
+        .main-container h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-top: 40px;
+        }
+
+        /* Web 頁面大標題設計 */
+        .web-page-title {
+            text-align: center;
+            margin: 80px auto 20px auto;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .web-page-title h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            /* 大寫更有力道 */
+            margin-bottom: 5px;
+        }
+
+        /* 標題下方的裝飾線 */
+        .web-page-title::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 6px;
+            background: var(--primary-yellow);
+            margin: 10px auto 0;
+            border-radius: 10px;
+        }
+
+        /* 增加一個副標題小字 */
+        .web-page-title p {
+            font-size: 1rem;
+            color: var(--text-gray);
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+
+        table {
+            margin: 0 auto;
+            width: 80%;
+        }
+
+        td {
+            /* background-color: #777; */
+            /* justify-content: center; */
+        }
+
+        .card-meta {
+            /* display: flex; */
+            margin-top: 15px;
+            width: 90%;
+            /* background: #000; */
+        }
+
+        .date {
+            font-size: 0.8rem;
+            color: var(--dark-gray);
+            margin-left: 10px;
+        }
+
+        .date i {
+            margin-right: 5px;
+            /* 圖示與文字的距離 */
+            color: #bbb;
+        }
+
+        .tag {
+            background: var(--primary-yellow);
+            color: #fff;
+            font-size: 1rem;
+            padding: 5px 10px;
+            border-radius: 50px;
+
+        }
+
+        /* --- TABLE 核心美化 --- */
+        .web-portfolio-table {
+            width: 100%;
+            border-collapse: separate;
+            /* 關鍵：讓 border-spacing 生效 */
+            border-spacing: 25px;
+            /* 設定作品之間的間距 */
+            margin: 40px auto;
+        }
+
+        /* 讓 td 變成卡片 */
+        .portfolio-item {
+            background: var(--card-bg);
+            border-radius: 20px;
+            /* 大圓角 */
+            padding: 0;
+            overflow: hidden;
+            vertical-align: top;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+        }
+
+        /* 內容區塊 */
+        .card-content {
+            padding: 24px;
+        }
+
+        .img-box img {
+            width: 100%;
+            display: block;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+        }
+
+        /* 標籤與時間列 */
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            background: var(--primary-yellow);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .date {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .date i {
+            margin-right: 5px;
+        }
+
+        /* 連結圖示 */
+        .link-icon {
+            color: #ccc;
+            font-size: 0.8rem;
+            margin-left: 5px;
+            transition: 0.3s;
+        }
+
+        .link-icon:hover {
+            color: var(--primary-yellow);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="container">
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="index.html">About</a></li>
+                <li><a href="#graphic">Graphic</a></li>
+                <li><a href="#illustration">Illustration</a></li>
+                <li><a href="#video">Video</a></li>
+                <li><a href="#uiux">UI/UX</a></li>
+                <li><a href="#">Web</a></li>
+            </ul>
+        </nav>
+
+    </header>
+    <main class="main-container web-page-title">
+        <h2>Web Dev</h2>
+        <p>PORTFOLIO / 2026</p>
+        <table class="web-portfolio-table">
+            <tr>
+                <td class="portfolio-item" width="50%">
+                    <a href="https://jekkinoopy.github.io/Portfolio/" class="card-link">
+                        <img src="images/web/Portfolio.png" width="100%" alt="努比設計作品集">
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span class="tag">個人作品</span>
+                                <span class="date"><i class="fa-regular fa-calendar"></i> 2026/04</span>
+                            </div>
+                            <h3>努比設計作品集<i class="fa-solid fa-link"></i>
+                            </h3>
+                            <p style="color: #666; font-size: 0.9rem; margin-top: 8px;">Lorem ipsum dolor sit amet,
+                                consectetur adipisicing elit. Odit et mollitia saepe tempora aspernatur nesciunt nobis
+                                delectus cum quis exercitationem voluptatem incidunt id minus consequatur vel
+                                repellendus, ducimus, optio molestiae!</p>
+                        </div>
+                    </a>
+                </td>
+                <td class="portfolio-item" width="50%">
+                    <a href="https://jekkinoopy.github.io/SiongHing/" class="card-link">
+                        <img src="images/web/SiongHing.png" width="100%" alt="努比設計作品集">
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span class="tag">形象官網</span>
+                                <span class="date"><i class="fa-regular fa-calendar"></i> 2026/04</span>
+                            </div>
+                            <h3>上興棉被行<i class="fa-solid fa-link"></i>
+                            </h3>
+                            <p style="color: #666; font-size: 0.9rem; margin-top: 8px;">Lorem ipsum dolor sit amet,
+                                consectetur adipisicing elit. Odit et mollitia saepe tempora aspernatur nesciunt nobis
+                                delectus cum quis exercitationem voluptatem incidunt id minus consequatur vel
+                                repellendus, ducimus, optio molestiae!</p>
+                        </div>
+                    </a>
+                </td>
+
+            </tr>
+
+        </table>
+
+
+        <table class="web-portfolio-table">
+            <tr>
+                <td class="portfolio-item" width="50%">
+                    <a href="https://jekkinoopy.github.io/WebDev-Notes" class="card-link">
+                        <img src="images/web/下載.png" width="100%" alt="努比設計作品集">
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span class="tag">學習紀錄</span>
+                                <span class="date"><i class="fa-regular fa-calendar"></i> 2026/04</span>
+                            </div>
+                            <h3>努比的全端網頁筆記<i class="fa-solid fa-link"></i>
+                            </h3>
+                            <p style="color: #666; font-size: 0.9rem; margin-top: 8px;">Lorem ipsum dolor sit amet,
+                                consectetur adipisicing elit. Odit et mollitia saepe tempora aspernatur nesciunt nobis
+                                delectus cum quis exercitationem voluptatem incidunt id minus consequatur vel
+                                repellendus, ducimus, optio molestiae!</p>
+                        </div>
+                    </a>
+                </td>
+                <td class="portfolio-item" width="50%">
+                    <a href="https://jekkinoopy.github.io/sechskies/" class="card-link">
+                        <img src="images/web/下載 (1).png" width=" 100%" alt="努比設計作品集">
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span class="tag">形象官網</span>
+                                <span class="date"><i class="fa-regular fa-calendar"></i> 2026/04</span>
+                            </div>
+                            <h3>水晶男孩推廣部<i class="fa-solid fa-link"></i>
+                            </h3>
+                            <p style="color: #666; font-size: 0.9rem; margin-top: 8px;">Lorem ipsum dolor sit amet,
+                                consectetur adipisicing elit. Odit et mollitia saepe tempora aspernatur nesciunt nobis
+                                delectus cum quis exercitationem voluptatem incidunt id minus consequatur vel
+                                repellendus, ducimus, optio molestiae!</p>
+                        </div>
+                    </a>
+                </td>
+
+            </tr>
+
+        </table>
+        <table class="web-portfolio-table">
+            <tr>
+                <td class="portfolio-item" width="50%">
+                    <a href="https://jekkinoopy.github.io/ZHENCHENGVISION/" class="card-link">
+                        <img src="images/web/下載 (2).png" width=" 100%" alt="努比設計作品集">
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span class="tag">攝影作品</span>
+                                <span class="date"><i class="fa-regular fa-calendar"></i> 2026/04</span>
+                            </div>
+                            <h3>珍成視界<i class="fa-solid fa-link"></i>
+                            </h3>
+                            <p style="color: #666; font-size: 0.9rem; margin-top: 8px;">
+                                收錄兩位獲獎攝影師橫跨數十年的珍貴影像，從自然風光到人文紀實，提供高品質、具生命力的視覺素材。</p>
+                        </div>
+                    </a>
+                </td>
+                <td>
+                </td>
+            </tr>
+
+        </table>
+    </main>
+
+
+    <footer id="contact">
+        <p>如有合作意願，歡迎隨時聯繫</p>
+        <a href="mailto:jekkinoopy@gmail.com" class="contact-email">jekkinoopy@gmail.com</a>
+        <p>&copy; 2026 JEKKINOOPY. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

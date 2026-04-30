@@ -11,74 +11,93 @@
     --bg-light: #f9f9f9;
     --white: #f1f1f1;
 }
-*{
+
+* {
     margin: 0;
     padding: 0;
     font-family: "Noto Serif TC", serif;
     box-sizing: border-box;
 }
-body{
+
+body {
     background-color: var(--white);
-    color: var(--black);    
+    color: var(--black);
 }
 
-header { 
-    background: var(--light-yellow); 
-    padding: 0 10% 5%;
+a {
+    text-decoration: none;
+    color: inherit;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    /* 移除手機版點擊時的灰色遮罩 */
 }
-.navbar{
+
+header {
+    background: var(--light-yellow);
+    padding: 0 10%;
+}
+
+.navbar {
     display: flex;
     justify-content: center;
     padding: 20px 50px;
     border-bottom: #333333 1px solid;
 }
-.nav-links{
+
+.nav-links {
     display: flex;
     list-style: none;
     gap: 30px;
 }
 
-.nav-links a{
+.nav-links a {
     text-decoration: none;
     color: var(--primary-brown);
     font-size: 1.2em;
     font-weight: 800;
-    
+
 }
-.nav-links a:hover{
+
+.nav-links a:hover {
     color: var(--primary-dark-brown);
 }
-.hero-section{
+
+.hero-section {
     display: flex;
     padding-top: 5%;
-    background: var(--light-yellow); 
-    height: 100vh;
+    background: var(--light-yellow);
 }
-.hero-text{
+
+.hero-text {
     margin: auto;
     width: 50%;
     text-align: center;
 }
-.hero-text h1{
+
+.hero-text h1 {
     font-size: 4rem;
     text-align: left;
     margin-bottom: 20%;
 }
-.hero-text h1 br{
+
+.hero-text h1 br {
     margin-left: 5px;
 }
 
-.hero-text h1 span{
+.hero-text h1 span {
     color: var(--primary-brown);
 }
-.hero-describe{
+
+.hero-describe {
     margin-right: 20%;
     text-align: right;
 }
-.hero-describe h2{
+
+.hero-describe h2 {
     font-size: 2rem;
     margin-bottom: 3%;
 }
+
 /* .hero-img{
     width: 50%
 } */
@@ -94,7 +113,7 @@ header {
     background-color: var(--primary-yellow);
     /* 創造不規則形狀的關鍵 */
     /* border-radius: 60% 40% 60% 40% / 50% 60% 40% 50%; */
-    border-radius: 67% 33% 67% 33% / 45% 60% 40% 55% ;
+    border-radius: 67% 33% 67% 33% / 45% 60% 40% 55%;
     border: 2px dashed #555;
     display: flex;
     align-items: center;
@@ -142,7 +161,8 @@ header {
 .work-image {
     width: 100%;
     height: 100%;
-    background-color: var(--primary-yellow); /* 預設圖片占位色 */
+    background-color: var(--primary-yellow);
+    /* 預設圖片占位色 */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -179,20 +199,24 @@ footer {
     display: block;
     color: var(--white);
     text-decoration: none;
-    
+
 }
+
 /* 外層容器：確保背景滿版且不斷層 */
 .section-wrapper {
     width: 100%;
-    padding: 100px 0; /* 用 padding 撐開間距 */
+    padding: 100px 0;
+    /* 用 padding 撐開間距 */
     box-sizing: border-box;
 }
 
 /* 內層容器：確保內容絕對置中不偏左 */
 .container {
     width: 100%;
-    max-width: 1200px; /* 這裡限制你的美感邊界 */
-    margin: 0 auto;    /* 核心：自動平分左右 */
+    max-width: 1200px;
+    /* 這裡限制你的美感邊界 */
+    margin: 0 auto;
+    /* 核心：自動平分左右 */
     padding: 0 40px;
 }
 
@@ -205,22 +229,36 @@ footer {
 
 @media (max-width: 768px) {
     .hero-section {
-        flex-direction: column-reverse; /* 關鍵：從橫向並排改為上下垂直排列 */
-        width: 100%;           /* 寬度撐滿，避免在小螢幕縮得太小 */
-        margin: 10% 0;         /* 調整上下間距 */
-        text-align: center;    /* 讓內容在手機上居中看 */
+        flex-direction: column-reverse;
+        /* 關鍵：從橫向並排改為上下垂直排列 */
+        width: 100%;
+        /* 寬度撐滿，避免在小螢幕縮得太小 */
+        margin: 10% 0;
+        /* 調整上下間距 */
+        text-align: center;
+        /* 讓內容在手機上居中看 */
     }
+
     .hero-text {
-        width: 90%;            /* 從 50% 改為 90%，給兩邊留點呼吸空間 */
-        text-align: center;    /* 讓文字在手機上居中，重心才不會偏左 */
+        width: 90%;
+        /* 從 50% 改為 90%，給兩邊留點呼吸空間 */
+        text-align: center;
+        /* 讓文字在手機上居中，重心才不會偏左 */
     }
-    .hero-describe h2{
- 
-        margin-right: 0 !important; /* 強制歸零，消除右側推力 */
-}
+
+    .hero-describe h2 {
+
+        margin-right: 0 !important;
+        /* 強制歸零，消除右側推力 */
+    }
+
     .hero-text h1 {
-        text-align: center;    /* 強制標題也居中 */
+        text-align: center;
+        /* 強制標題也居中 */
         margin-bottom: 20px;
     }
-    .hero-content h1 { font-size: 3rem; }
+
+    .hero-content h1 {
+        font-size: 3rem;
+    }
 }

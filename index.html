@@ -6,6 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jekkinoopy's portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        header {
+            background: var(--light-yellow);
+            padding: 0 10%;
+            /* 移除底部的 5% padding，避免重心偏移 */
+            height: 100vh;
+            display: flex;
+            /* 1. 讓 header 變 Flex 容器 */
+            flex-direction: column;
+            /* 2. 讓 navbar 和 hero 垂直排列 */
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            padding: 20px 50px;
+            flex-shrink: 0;
+            /* 3. 防止導覽列被壓縮 */
+        }
+
+        .hero-section {
+            display: flex;
+            flex: 1;
+            /* 4. 關鍵：讓 hero 自動佔滿剩餘的所有高度 */
+            justify-content: center;
+            /* 水平置中內容 */
+            align-items: center;
+            /* 垂直置中內容 */
+            background: var(--light-yellow);
+            padding-top: 0;
+            /* 移除原本的 padding-top 避免干擾置中 */
+        }
+    </style>
 </head>
 
 <body>
@@ -13,11 +46,11 @@
         <nav class="navbar">
             <div class="container">
                 <ul class="nav-links">
-                    <li><a href="index.html">About</a></li>
-                    <li><a href="graphic.html">Graphic</a></li>
-                    <li><a href="illustration.html">Illustration</a></li>
-                    <!-- <li><a href="video.html">Video (影音)</a></li> -->
-                    <li><a href="uiux.html">UI/UX</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#graphic">Graphic</a></li>
+                    <li><a href="#illustration">Illustration</a></li>
+                    <!-- <li><a href="#video">Video</a></li> -->
+                    <li><a href="#uiux">UI/UX</a></li>
                     <li><a href="web.html">Web</a></li>
                 </ul>
             </div>
