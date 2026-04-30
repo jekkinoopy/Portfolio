@@ -10,6 +10,7 @@
     --black: #333333;
     --bg-light: #f9f9f9;
     --white: #f1f1f1;
+    font-size: 16px;
 }
 
 * {
@@ -38,14 +39,12 @@ header {
 }
 
 .navbar {
-    display: flex;
-    justify-content: center;
     padding: 20px 50px;
-    border-bottom: #333333 1px solid;
 }
 
 .nav-links {
     display: flex;
+    justify-content: center;
     list-style: none;
     gap: 30px;
 }
@@ -53,7 +52,7 @@ header {
 .nav-links a {
     text-decoration: none;
     color: var(--primary-brown);
-    font-size: 1.2em;
+    font-size: 1.2rem;
     font-weight: 800;
 
 }
@@ -75,7 +74,7 @@ header {
 }
 
 .hero-text h1 {
-    font-size: 4rem;
+    font-size: 3rem;
     text-align: left;
     margin-bottom: 20%;
 }
@@ -94,7 +93,7 @@ header {
 }
 
 .hero-describe h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin-bottom: 3%;
 }
 
@@ -213,7 +212,7 @@ footer {
 /* 內層容器：確保內容絕對置中不偏左 */
 .container {
     width: 100%;
-    max-width: 1200px;
+    /* max-width: 1200px; */
     /* 這裡限制你的美感邊界 */
     margin: 0 auto;
     /* 核心：自動平分左右 */
