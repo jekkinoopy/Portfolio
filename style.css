@@ -28,8 +28,9 @@ header {
 }
 .navbar{
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     padding: 20px 50px;
+    border-bottom: #333333 1px solid;
 }
 .nav-links{
     display: flex;
@@ -51,6 +52,7 @@ header {
     display: flex;
     padding-top: 5%;
     background: var(--light-yellow); 
+    height: 100vh;
 }
 .hero-text{
     margin: auto;
@@ -178,6 +180,27 @@ footer {
     color: var(--white);
     text-decoration: none;
     
+}
+/* 外層容器：確保背景滿版且不斷層 */
+.section-wrapper {
+    width: 100%;
+    padding: 100px 0; /* 用 padding 撐開間距 */
+    box-sizing: border-box;
+}
+
+/* 內層容器：確保內容絕對置中不偏左 */
+.container {
+    width: 100%;
+    max-width: 1200px; /* 這裡限制你的美感邊界 */
+    margin: 0 auto;    /* 核心：自動平分左右 */
+    padding: 0 40px;
+}
+
+/* 針對 web.html 的三列架構 */
+.portfolio-grid-web {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
 }
 
 @media (max-width: 768px) {
