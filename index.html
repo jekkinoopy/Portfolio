@@ -7,15 +7,32 @@
     <title>Jekkinoopy's portfolio</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        /* 1. 確保 html 與 body 撐滿全高，並移除預設邊距 */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            /* 讓內容垂直排列 */
+            min-height: 100vh;
+            /* 確保 body 至少跟視窗一樣高 */
+        }
+
         header {
+            /* height: 80vh; */
             background: var(--light-yellow);
             padding: 0 10%;
             /* 移除底部的 5% padding，避免重心偏移 */
-            height: 100vh;
             display: flex;
             /* 1. 讓 header 變 Flex 容器 */
             flex-direction: column;
             /* 2. 讓 navbar 和 hero 垂直排列 */
+            flex: 1;
+            /* 關鍵：讓 Header 佔據除了 Footer 以外的所有剩餘空間 */
         }
 
         .navbar {
@@ -35,8 +52,7 @@
             align-items: center;
             /* 垂直置中內容 */
             background: var(--light-yellow);
-            padding-top: 0;
-            /* 移除原本的 padding-top 避免干擾置中 */
+
         }
     </style>
 </head>
@@ -47,10 +63,10 @@
             <div class="container">
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
-                    <li><a href="#graphic">Graphic</a></li>
-                    <li><a href="#illustration">Illustration</a></li>
-                    <!-- <li><a href="#video">Video</a></li> -->
-                    <li><a href="#uiux">UI/UX</a></li>
+                    <li class="disabled" data-tooltip="作品建置中..."><a href="#">Graphic</a></li>
+                    <li class="disabled" data-tooltip="繪製中，敬請期待"><a href="#">Illustration</a></li>
+                    <li class="disabled" data-tooltip="影片剪輯中"><a href="#">Video</a></li>
+                    <li class="disabled" data-tooltip="介面規劃中"><a href="#">UI/UX</a></li>
                     <li><a href="web.html">Web</a></li>
                 </ul>
             </div>
@@ -78,43 +94,45 @@
             </div> -->
         </div>
     </header>
-    <main>
-    </main>
-    <section id="work">
+
+    <!-- <section id="work">
         <h2 class="section-title">SELECTED WORKS</h2>
         <div class="portfolio-grid">
-            <!-- 作品項目 1 -->
-            <div class="work-item">
-                <div class="work-image">Project One</div>
-                <div class="work-info">
-                    <h3>品牌視覺設計</h3>
-                    <p>#Graphic Design</p>
-                </div>
-            </div>
-            <!-- 作品項目 2 -->
-            <div class="work-item">
-                <div class="work-image" style="background-color: var(--dark-gray); color: var(--white);">Project Two
-                </div>
-                <div class="work-info">
-                    <h3>網頁 UI 介面</h3>
-                    <p>#UIUX #Interaction</p>
-                </div>
-            </div>
-            <!-- 作品項目 3 -->
-            <div class="work-item">
-                <div class="work-image">Project Three</div>
-                <div class="work-info">
-                    <h3>包裝設計系列</h3>
-                    <p>#Packaging #Identity</p>
-                </div>
-            </div>
+            
+    <div class="work-item">
+        <div class="work-image">Project One</div>
+        <div class="work-info">
+            <h3>品牌視覺設計</h3>
+            <p>#Graphic Design</p>
         </div>
-    </section>
+    </div>
+    <div class="work-item">
+        <div class="work-image" style="background-color: var(--dark-gray); color: var(--white);">Project Two
+        </div>
+        <div class="work-info">
+            <h3>網頁 UI 介面</h3>
+            <p>#UIUX #Interaction</p>
+        </div>
+    </div>
+
+    <div class="work-item">
+        <div class="work-image">Project Three</div>
+        <div class="work-info">
+            <h3>包裝設計系列</h3>
+            <p>#Packaging #Identity</p>
+        </div>
+    </div>
+    </div>
+    </section> -->
 
     <footer id="contact">
-        <p>如有合作意願，歡迎隨時聯繫</p>
-        <a href="mailto:jekkinoopy@gmail.com" class="contact-email">jekkinoopy@gmail.com</a>
-        <p>&copy; 2026 JEKKINOOPY. All rights reserved.</p>
+        <a href="mailto:jekkinoopy@gmail.com" class="contact-email">
+            <p>如有合作意願，歡迎隨時聯繫
+
+            </p>
+            jekkinoopy@gmail.com
+        </a>
+        <small>&copy; 2026 JEKKINOOPY. All rights reserved.</small>
     </footer>
 
 </body>

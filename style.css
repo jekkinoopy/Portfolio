@@ -61,6 +61,53 @@ header {
     color: var(--primary-dark-brown);
 }
 
+/* 1. 禁用狀態樣式 */
+.nav-links li.disabled {
+    position: relative;
+    /* 為了讓提示文字對齊 */
+}
+
+.nav-links li.disabled a {
+    color: var(--text-muted) !important;
+    /* 使用之前規範中的灰色 #8c8c8c */
+    opacity: 0.6;
+    pointer-events: none;
+    /* 徹底禁止點擊事件 */
+}
+
+/* 2. 滑鼠滑過去的提示文字 (Tooltip) */
+.nav-links li.disabled::after {
+    content: attr(data-tooltip);
+    /* 抓取 HTML 裡的文字 */
+    position: absolute;
+    bottom: -30px;
+    /* 顯示在選項下方 */
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gray-900);
+    /* 深色背景 #333333 */
+    color: var(--primary);
+    /* 使用你的主色黃 #FFDD00 讓文字明顯 */
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    z-index: 100;
+
+    /* 預設隱藏 */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+/* 3. Hover 時秀出提示 */
+.nav-links li.disabled:hover::after {
+    opacity: 1;
+    visibility: visible;
+    bottom: -35px;
+    /* 稍微往下飄移的動態感 */
+}
+
 .hero-section {
     display: flex;
     padding-top: 5%;
@@ -187,13 +234,15 @@ header {
 footer {
     background-color: var(--black);
     color: var(--primary-yellow);
-    padding: 80px 10%;
+    flex-shrink: 0;
+    /* 防止 Footer 被壓縮 */
+    padding: 25px 5%;
     text-align: center;
     font-size: 0.8rem;
 }
 
 .contact-email {
-    margin: 20px 0;
+    margin: 10px 0;
     font-size: 1rem;
     display: block;
     color: var(--white);
