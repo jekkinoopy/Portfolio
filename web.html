@@ -17,55 +17,6 @@
             margin: 10% auto;
         }
 
-        .main-container {
-            width: 80%;
-            margin: 10% auto;
-
-        }
-
-        .main-container h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-top: 40px;
-        }
-
-        /* Web 頁面大標題設計 */
-        .web-page-title {
-            text-align: center;
-            margin: 80px auto 20px auto;
-            position: relative;
-            padding-bottom: 20px;
-        }
-
-        .web-page-title h2 {
-            font-size: 3rem;
-            font-weight: 900;
-            letter-spacing: -1px;
-            color: var(--text-dark);
-            text-transform: uppercase;
-            /* 大寫更有力道 */
-            margin-bottom: 5px;
-        }
-
-        /* 標題下方的裝飾線 */
-        .web-page-title::after {
-            content: "";
-            display: block;
-            width: 60px;
-            height: 6px;
-            background: var(--primary-yellow);
-            margin: 10px auto 0;
-            border-radius: 10px;
-        }
-
-        /* 增加一個副標題小字 */
-        .web-page-title p {
-            font-size: 1rem;
-            color: var(--text-gray);
-            letter-spacing: 2px;
-            font-weight: 500;
-        }
-
         table {
             margin: 0 auto;
             width: 80%;
@@ -185,21 +136,23 @@
 <body>
     <header class="container">
         <nav class="navbar">
-            <ul class="nav-links">
-                <li><a href="index.html">About</a></li>
-                <li><a href="#graphic">Graphic</a></li>
-                <li><a href="#illustration">Illustration</a></li>
-                <li><a href="#video">Video</a></li>
-                <li><a href="#uiux">UI/UX</a></li>
-                <li><a href="#">Web</a></li>
-            </ul>
+            <div class="container">
+                <ul class="nav-links">
+                    <li><a href="index.html">About</a></li>
+                    <li class="disabled" data-tooltip="作品建置中"><a href="#">Graphic</a></li>
+                    <li><a href="illustration.html">Illustration</a></li>
+                    <!-- <li class="disabled" data-tooltip="作品建置中"><a href="#">Video</a></li> -->
+                    <li class="disabled" data-tooltip="作品建置中"><a href="#">UI/UX</a></li>
+                    <li><a href="#">Web</a></li>
+                </ul>
+            </div>
         </nav>
 
     </header>
     <main class="main-container">
-        <div class=" web-page-title">
+        <div class="page-title">
             <h2>Web Dev</h2>
-            <p>PORTFOLIO / 2026</p>
+            <p>PORTFOLIO / 2026-</p>
         </div>
         <table class="web-portfolio-table">
             <tr>
@@ -296,9 +249,11 @@
 
 
     <footer id="contact">
-        <p>如有合作意願，歡迎隨時聯繫</p>
-        <a href="mailto:jekkinoopy@gmail.com" class="contact-email">jekkinoopy@gmail.com</a>
-        <p>&copy; 2026 JEKKINOOPY. All rights reserved.</p>
+        <a href="mailto:jekkinoopy@gmail.com" class="contact-email">
+            <small>如有合作意願，歡迎隨時聯繫 </span>
+                jekkinoopy@gmail.com
+        </a>
+        <small>&copy; 2026 JEKKINOOPY. All rights reserved.</small>
     </footer>
 
 </body>

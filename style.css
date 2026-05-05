@@ -68,7 +68,7 @@ header {
 }
 
 .nav-links li.disabled a {
-    color: var(--text-muted) !important;
+    color: var(--primary-brown) !important;
     /* 使用之前規範中的灰色 #8c8c8c */
     opacity: 0.6;
     pointer-events: none;
@@ -80,25 +80,35 @@ header {
     content: attr(data-tooltip);
     /* 抓取 HTML 裡的文字 */
     position: absolute;
-    bottom: -30px;
+    bottom: -45px;
     /* 顯示在選項下方 */
     left: 50%;
-    transform: translateX(-50%);
-    background: var(--gray-900);
-    /* 深色背景 #333333 */
-    color: var(--primary);
+    transform: translateX(-50%) scale(0.9);
+    /* 初始縮小，增加彈出感 */
+    background: var(--primary-brown);
+    /* 使用你規範中的 core-900 黑色 */
+    color: var(--white);
     /* 使用你的主色黃 #FFDD00 讓文字明顯 */
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 0.75rem;
+    margin-top: 10px;
+    padding: 6px 12px;
+    border-radius: 30px;
+    font-size: 1rem;
     white-space: nowrap;
     z-index: 100;
-
+    /* 玻璃擬態效果與陰影 */
+    backdrop-filter: blur(4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 221, 0, 0.3);
+    /* 帶點主色邊框 */
     /* 預設隱藏 */
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* 貝茲曲線彈跳動畫 */
 }
+
+
+
 
 /* 3. Hover 時秀出提示 */
 .nav-links li.disabled:hover::after {
@@ -230,6 +240,104 @@ header {
     transform: translateY(0);
 }
 
+.main-container {
+    width: 80%;
+    margin: 10% auto;
+}
+
+.main-container h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 40px;
+}
+
+/* 頁面大標題設計 (通用) */
+.page-title {
+    text-align: center;
+    margin: 80px auto 20px auto;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.page-title h2 {
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.page-title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 6px;
+    background: var(--primary-yellow);
+    margin: 10px auto 0;
+    border-radius: 10px;
+}
+
+.page-title p {
+    font-size: 1rem;
+    color: var(--dark-gray);
+    letter-spacing: 2px;
+    font-weight: 500;
+}
+
+/* --- 作品集卡片系統 --- */
+.portfolio-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 25px;
+    margin: 40px auto;
+}
+
+.portfolio-item {
+    background: #fff;
+    /* 或 var(--card-bg) */
+    border-radius: 20px;
+    overflow: hidden;
+    vertical-align: top;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    border: 1px solid #eee;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-8px);
+}
+
+.card-content {
+    padding: 24px;
+}
+
+.card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* 標籤與時間樣式 */
+.tag {
+    background: var(--primary-yellow);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.date {
+    font-size: 0.75rem;
+    color: var(--dark-gray);
+}
+
+.date i {
+    margin-right: 5px;
+}
+
+
 /* 聯絡資訊 */
 footer {
     background-color: var(--black);
@@ -242,7 +350,7 @@ footer {
 }
 
 .contact-email {
-    margin: 10px 0;
+    margin: 0px auto;
     font-size: 1rem;
     display: block;
     color: var(--white);

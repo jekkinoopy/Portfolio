@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development | Jekkinoopy's portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* 插畫專屬交錯佈局 */
+        .illustration-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 60px 40px;
+            /* 上下間距大一點，預留給位移空間 */
+            padding: 40px 0;
+        }
+
+        /* 作品卡片 */
+        .illus-item {
+            width: 100%;
+            /* 強制卡片撐滿網格欄位 */
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 強制 IG 方形比例 */
+        .illus-img-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            border-radius: 15px;
+            /* 延續你 Web 頁面的圓角感 */
+            background: #eee;
+            transition: 0.3s;
+        }
+
+        /* 圖片本人：解決你放不進去的問題 */
+        .illus-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* 確保圖片填滿方形且不變形 */
+            display: block;
+        }
+
+        /* 創造「不統一」的關鍵：讓偶數項或特定項變大或偏移 */
+        @media (min-width: 992px) {
+            .illus-item:nth-child(3n+1) {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            /* 讓部分卡片往下偏移，產生交錯律動 */
+            .illus-item:nth-child(even) {
+                margin-top: 50px;
+            }
+        }
+
+        .illus-item:hover .illus-img-wrapper {
+            transform: rotate(0.5deg) scale(1.02);
+            /* 增加一點手繪的隨性晃動感 */
+            /* box-shadow: 0 15px 30px rgba(166, 93, 51, 0.15); */
+        }
+
+        .illus-info {
+            padding: 15px 5px;
+        }
+
+        .illus-info h3 {
+            font-size: 1.1rem;
+            color: var(--primary-dark-brown);
+        }
+
+        .illus-overlay {
+            position: absolute;
+            inset: 0;
+            background: var(--primary-dark-brown);
+            /* 你的主色黃 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: 0.3s;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .illus-item:hover .illus-overlay {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="container">
+        <nav class="navbar">
+            <div class="container">
+                <ul class="nav-links">
+                    <li><a href="index.html">About</a></li>
+                    <li class="disabled" data-tooltip="作品建置中"><a href="#">Graphic</a></li>
+                    <li><a href="#">Illustration</a></li>
+                    <!-- <li class="disabled" data-tooltip="作品建置中"><a href="#">Video</a></li> -->
+                    <li class="disabled" data-tooltip="作品建置中"><a href="#">UI/UX</a></li>
+                    <li><a href="web.html">Web</a></li>
+                </ul>
+            </div>
+        </nav>
+
+    </header>
+    <main class="main-container">
+        <div class="page-title">
+            <h2>Illustration</h2>
+            <p>CREATIVE LAB / 2023-</p>
+        </div>
+
+        <!-- 這裡使用 div 而非 table，方便未來後端 PHP 迴圈抓取資料 -->
+        <div class="illustration-grid">
+            <!-- 每一張作品 -->
+            <article class="illus-item">
+                <div class="illus-img-wrapper">
+                    <img src="images/illust/2023_電繪_0920馬卡龍 2.jpg" alt="作品名稱">
+                    <div class="illus-overlay">
+                        <span>#Procreate</span>
+                    </div>
+                </div>
+            </article>
+            <article class="illus-item">
+                <div class="illus-img-wrapper">
+                    <img src="images/illust/中秋快樂 2.jpg" alt="作品名稱">
+                    <div class="illus-overlay">
+                        <span>#Procreate</span>
+                    </div>
+                </div>
+            </article>
+            <article class="illus-item">
+                <div class="illus-img-wrapper">
+                    <img src="images/illust/像狗的狐狸.jpg" alt=" 作品名稱">
+                    <div class="illus-overlay">
+                        <span>#Procreate</span>
+                    </div>
+                </div>
+            </article>
+            <article class="illus-item">
+                <div class="illus-img-wrapper">
+                    <img src="images/illust/咬咬起司.jpg" alt=" 作品名稱">
+                    <div class="illus-overlay">
+                        <span>#Procreate</span>
+                    </div>
+                </div>
+            </article>
+            <article class="illus-item">
+                <div class="illus-img-wrapper">
+                    <img src="images/illust/在德鴨鴨 2.jpg" alt=" 作品名稱">
+                    <div class="illus-overlay">
+                        <span>#Procreate</span>
+                    </div>
+                </div>
+            </article>
+            <article class="illus-item">
+                <div class="illus-img-wrapper">
+                    <img src="images/illust/夢境.jpg" alt=" 作品名稱">
+                    <div class="illus-overlay">
+                        <span>#Procreate</span>
+                    </div>
+                </div>
+            </article>
+            <article class="illus-item">
+                <div class="illus-img-wrapper">
+                    <img src="images/illust/嫩枝.jpg" alt=" 作品名稱">
+                    <div class="illus-overlay">
+                        <span>#Procreate</span>
+                    </div>
+                </div>
+            </article>
+            <article class="illus-item">
+                <div class="illus-img-wrapper">
+                    <img src="images/illust/宇宙.jpg" alt=" 作品名稱">
+                    <div class="illus-overlay">
+                        <span>#Procreate</span>
+                    </div>
+                </div>
+            </article>
+            <article class="illus-item">
+                <div class="illus-img-wrapper">
+                    <img src="images/illust/巢穴.jpg" alt=" 作品名稱">
+                    <div class="illus-overlay">
+                        <span>#Procreate</span>
+                    </div>
+                </div>
+            </article>
+            <article class="illus-item">
+                <div class="illus-img-wrapper">
+                    <img src="images/illust/帥哥.jpg" alt=" 作品名稱">
+                    <div class="illus-overlay">
+                        <span>#Procreate</span>
+                    </div>
+                </div>
+            </article>
+            <article class="illus-item">
+                <div class="illus-img-wrapper">
+                    <img src="images/illust/志溶九份.jpg" alt=" 作品名稱">
+                    <div class="illus-overlay">
+                        <span>#Procreate</span>
+                    </div>
+                </div>
+            </article>
+            <article class="illus-item">
+                <div class="illus-img-wrapper">
+                    <img src="images/illust/梅花鹿.jpg" alt=" 作品名稱">
+                    <div class="illus-overlay">
+                        <span>#Procreate</span>
+                    </div>
+                </div>
+            </article>
+            <article class="illus-item">
+                <div class="illus-img-wrapper">
+                    <img src="images/illust/橘子.jpg" alt=" 作品名稱">
+                    <div class="illus-overlay">
+                        <span>#Procreate</span>
+                    </div>
+                </div>
+            </article>
+            <article class="illus-item">
+                <div class="illus-img-wrapper">
+                    <img src="images/illust/毛毛蟲.jpg" alt=" 作品名稱">
+                    <div class="illus-overlay">
+                        <span>#Procreate</span>
+                    </div>
+                </div>
+            </article>
+            <article class="illus-item">
+                <div class="illus-img-wrapper">
+                    <img src="images/illust/水手服.jpg" alt=" 作品名稱">
+                    <div class="illus-overlay">
+                        <span>#Procreate</span>
+                    </div>
+                </div>
+            </article>
+            <article class="illus-item">
+                <div class="illus-img-wrapper">
+                    <img src="images/illust/水滴.jpg" alt=" 作品名稱">
+                    <div class="illus-overlay">
+                        <span>#Procreate</span>
+                    </div>
+                </div>
+            </article>
+            <article class="illus-item">
+                <div class="illus-img-wrapper">
+                    <img src="images/illust/海龜.jpg" alt=" 作品名稱">
+                    <div class="illus-overlay">
+                        <span>#Procreate</span>
+                    </div>
+                </div>
+            </article>
+            <article class="illus-item">
+                <div class="illus-img-wrapper">
+                    <img src="images/illust/潛水.jpg" alt=" 作品名稱">
+                    <div class="illus-overlay">
+                        <span>#Procreate</span>
+                    </div>
+                </div>
+            </article>
+            <article class="illus-item">
+                <div class="illus-img-wrapper">
+                    <img src="images/illust/火山.jpg" alt=" 作品名稱">
+                    <div class="illus-overlay">
+                        <span>#Procreate</span>
+                    </div>
+                </div>
+            </article>
+            <article class="illus-item">
+                <div class="illus-img-wrapper">
+                    <img src="images/illust/燈泡.jpg" alt=" 作品名稱">
+                    <div class="illus-overlay">
+                        <span>#Procreate</span>
+                    </div>
+                </div>
+            </article>
+            <article class="illus-item">
+                <div class="illus-img-wrapper">
+                    <img src="images/illust/狸貓 2.jpg" alt=" 作品名稱">
+                    <div class="illus-overlay">
+                        <span>#Procreate</span>
+                    </div>
+                </div>
+            </article>
+            <article class="illus-item">
+                <div class="illus-img-wrapper">
+                    <img src="images/illust/琥珀色寶石.jpg" alt=" 作品名稱">
+                    <div class="illus-overlay">
+                        <span>#Procreate</span>
+                    </div>
+                </div>
+            </article>
+            <article class="illus-item">
+                <div class="illus-img-wrapper">
+                    <img src="images/illust/睡著的小鳥.jpg" alt=" 作品名稱">
+                    <div class="illus-overlay">
+                        <span>#Procreate</span>
+                    </div>
+                </div>
+            </article>
+            <article class="illus-item">
+                <div class="illus-img-wrapper">
+                    <img src="images/illust/科基.jpg" alt=" 作品名稱">
+                    <div class="illus-overlay">
+                        <span>#Procreate</span>
+                    </div>
+                </div>
+            </article>
+            <article class="illus-item">
+                <div class="illus-img-wrapper">
+                    <img src="images/illust/羊駝戴圍巾.jpg" alt=" 作品名稱">
+                    <div class="illus-overlay">
+                        <span>#Procreate</span>
+                    </div>
+                </div>
+            </article>
+            <article class="illus-item">
+                <div class="illus-img-wrapper">
+                    <img src="images/illust/老鼠.jpg" alt=" 作品名稱">
+                    <div class="illus-overlay">
+                        <span>#Procreate</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer id="contact">
+        <a href="mailto:jekkinoopy@gmail.com" class="contact-email">
+            <small>如有合作意願，歡迎隨時聯繫 </span>
+                jekkinoopy@gmail.com
+        </a>
+        <small>&copy; 2026 JEKKINOOPY. All rights reserved.</small>
+    </footer>
+
+</body>
+
+</html>

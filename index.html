@@ -19,7 +19,9 @@
             flex-direction: column;
             /* 讓內容垂直排列 */
             min-height: 100vh;
+            min-height: 100dvh;
             /* 確保 body 至少跟視窗一樣高 */
+            overflow-x: hidden;
         }
 
         header {
@@ -52,6 +54,7 @@
             align-items: center;
             /* 垂直置中內容 */
             background: var(--light-yellow);
+            padding-top: 0;
 
         }
     </style>
@@ -63,10 +66,10 @@
             <div class="container">
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
-                    <li class="disabled" data-tooltip="作品建置中..."><a href="#">Graphic</a></li>
-                    <li class="disabled" data-tooltip="繪製中，敬請期待"><a href="#">Illustration</a></li>
-                    <li class="disabled" data-tooltip="影片剪輯中"><a href="#">Video</a></li>
-                    <li class="disabled" data-tooltip="介面規劃中"><a href="#">UI/UX</a></li>
+                    <li class="disabled" data-tooltip="作品建置中"><a href="#">Graphic</a></li>
+                    <li><a href="illustration.html">Illustration</a></li>
+                    <!-- <li class="disabled" data-tooltip="作品建置中"><a href="#">Video</a></li> -->
+                    <li class="disabled" data-tooltip="作品建置中"><a href="#">UI/UX</a></li>
                     <li><a href="web.html">Web</a></li>
                 </ul>
             </div>
@@ -127,10 +130,8 @@
 
     <footer id="contact">
         <a href="mailto:jekkinoopy@gmail.com" class="contact-email">
-            <p>如有合作意願，歡迎隨時聯繫
-
-            </p>
-            jekkinoopy@gmail.com
+            <small>如有合作意願，歡迎隨時聯繫 </span>
+                jekkinoopy@gmail.com
         </a>
         <small>&copy; 2026 JEKKINOOPY. All rights reserved.</small>
     </footer>
