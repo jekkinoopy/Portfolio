@@ -67,6 +67,18 @@ header {
     /* 為了讓提示文字對齊 */
 }
 
+/* downDisabled 也需要定位基準，否則 ::after 會以整頁為參考 */
+.nav-links li.downDisabled {
+    position: relative;
+}
+
+.nav-links li.downDisabled a {
+    color: var(--primary-brown) !important;
+    opacity: 0.6;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
 .nav-links li.disabled a {
     color: var(--primary-brown) !important;
     /* 使用之前規範中的灰色 #8c8c8c */
@@ -117,6 +129,127 @@ header {
     bottom: -35px;
     /* 稍微往下飄移的動態感 */
 }
+
+/* --- 下拉選單基礎設定 --- */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background-color: var(--white);
+    /* 使用背景白 */
+    list-style: none;
+    min-width: 180px;
+    padding: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--light-yellow);
+
+    /* 預設隱藏動畫 */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+/* 讓下拉選單與選單項之間沒有間隙，避免滑鼠移出時選單消失 */
+.dropdown::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 15px;
+}
+
+/* --- 顯示狀態 --- */
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* --- 下拉項目樣式 --- */
+.dropdown-menu li {
+    width: 100%;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 20px;
+    color: var(--primary-brown) !important;
+    /* 強制使用你的深棕色 */
+    font-size: 0.95rem !important;
+    font-weight: 500 !important;
+    white-space: nowrap;
+    transition: background 0.2s ease;
+    text-align: center;
+}
+
+.dropdown-menu a:hover {
+    background-color: var(--light-yellow);
+    color: var(--primary-dark-brown) !important;
+}
+
+
+/* 2. 滑鼠滑過去的提示文字 (Tooltip) */
+.nav-links li.downDisabled::after {
+    content: attr(data-tooltip);
+    /* 抓取 HTML 裡的文字 */
+    position: absolute;
+    top: 50%;
+    /* 顯示在選項右邊 */
+    left: 100%;
+    margin-left: 10px;
+    transform: translateY(-50%) translateX(-5px) scale(0.9);
+    /* 初始縮小，增加彈出感 */
+    background: var(--primary-brown);
+    /* 使用你規範中的 core-900 黑色 */
+    color: var(--white);
+    /* 使用你的主色黃 #FFDD00 讓文字明顯 */
+    margin-top: 10px;
+    padding: 6px 12px;
+    border-radius: 30px;
+    font-size: 1rem;
+    white-space: nowrap;
+    z-index: 100;
+    pointer-events: none;
+    /* 玻璃擬態效果與陰影 */
+    backdrop-filter: blur(4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 221, 0, 0.3);
+    /* 帶點主色邊框 */
+    /* 預設隱藏 */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* 貝茲曲線彈跳動畫 */
+}
+
+
+
+
+/* 3. Hover 時秀出提示 */
+.nav-links li.downDisabled:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateX(0) scale(1);
+    /* 稍微往右飄移的動態感 */
+}
+
+
+
+
+/* 針對原本 disabled 提示的微調 (避免擋到下拉選單) */
+.nav-links li:not(.downDisabled) {
+    cursor: pointer;
+}
+
+
 
 .hero-section {
     display: flex;

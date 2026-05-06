@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development | Jekkinoopy's portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        table {
+            width: 100%;
+            /* height: 300px; */
+            border-collapse: collapse;
+            /* 或至少把 border-spacing 歸零 */
+            table-layout: fixed;
+            /* 每欄平均分配 */
+        }
+
+        td {
+            padding: 20px;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .box {
+            width: 100%;
+            height: 100%;
+        }
+
+        td img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .box1 {
+            height: fit-content;
+            border-left: 10px solid var(--primary-dark-brown);
+        }
+
+        .box1 h3 {
+            font-size: 2.5rem;
+            padding-left: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="container">
+        <nav class="navbar">
+            <div class="container">
+                <ul class="nav-links">
+                    <li><a href="index.html">About</a></li>
+                    <!-- Graphic 下拉選單 -->
+                    <li class="dropdown">
+                        <a href="graphic.html">Graphic</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="./graphic/logoPkg.html">Logo & 包裝設計</a></li>
+                            <li class="downDisabled" data-tooltip="作品建置中"><a href="calendarBag.html">桌曆 & 購物袋</a></li>
+                            <li class="downDisabled" data-tooltip="作品建置中"><a href="stationery.html">名片/卡片/票券/DM</a></li>
+                            <li class="downDisabled" data-tooltip="作品建置中"><a href="webBanner.html">網站視覺 Banner</a></li>
+                            <li class="downDisabled" data-tooltip="作品建置中"><a href="socialMedia.html">社群推播圖</a></li>
+                            <li class="downDisabled" data-tooltip="作品建置中"><a href="largeFormat.html">大圖輸出</a></li>
+                            <li class="downDisabled" data-tooltip="作品建置中"><a href="editorial.html">書刊</a></li>
+                            <li class="downDisabled" data-tooltip="作品建置中"><a href="productDetail.html">商品長條圖文</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Illustration</a></li>
+                    <!-- <li class="disabled" data-tooltip="作品建置中"><a href="#">Video</a></li> -->
+                    <li class="disabled" data-tooltip="作品建置中"><a href="#">UI/UX</a></li>
+                    <li><a href="web.html">Web</a></li>
+                </ul>
+            </div>
+        </nav>
+
+    </header>
+    <main class="main-container">
+        <div class="page-title">
+            <h2>Graphic</h2>
+            <p>2018-</p>
+        </div>
+        <table>
+
+            <tr>
+                <td>
+                    <div class="box box1">
+                        <h3>Logo & 包裝設計</h3>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td>
+                    <div class="box box2"><img src="images/graphic/logoPkg/001.jpg"></div>
+                </td>
+                <td>
+                    <div class="box box3"><img src="images/graphic/logoPkg/002.jpg"></div>
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td>
+                    <div class="box box4"><img src="images/graphic/logoPkg/008.jpg"></div>
+                </td>
+                <td>
+                    <div class="box box5"><img src="images/graphic/logoPkg/003.jpg"></div>
+                </td>
+                <td>
+                    <div class="box box6"><img src="images/graphic/logoPkg/005.jpg"></div>
+                </td>
+            </tr>
+        </table>
+        <table>
+
+            <tr>
+                <td>
+                    <div class="box box1">
+                        <h3>桌曆 & 購物袋設計</h3>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <table>
+            <tr>
+                <td>
+                    <div class="box box9"><img src="images/graphic/calendarBag/2020桌曆.jpg"></div>
+                </td>
+                <td>
+                    <div class="box box10"><img src="images/graphic/calendarBag/2021桌曆.jpg"></div>
+                </td>
+                <td>
+                    <div class="box box7"><img src="images/graphic/calendarBag/2020b.png"></div>
+                </td>
+                <td>
+                    <div class="box box8"><img src="images/graphic/calendarBag/2021b.png"></div>
+                </td>
+            </tr>
+        </table>
+
+
+    </main>
+
+    <footer id="contact">
+        <a href="mailto:jekkinoopy@gmail.com" class="contact-email">
+            <small>如有合作意願，歡迎隨時聯繫 </span>
+                jekkinoopy@gmail.com
+        </a>
+        <small>&copy; 2026 JEKKINOOPY. All rights reserved.</small>
+    </footer>
+
+</body>
+
+</html>
