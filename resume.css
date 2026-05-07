@@ -86,7 +86,7 @@ h1.ln {
 .resume-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    gap: 34px;
     padding: 20px 34px 46px;
 }
 
@@ -135,8 +135,8 @@ p {
 
 
 .exp-item {
-    margin-bottom: 16px;
-    padding-left: 20px;
+    margin-bottom: 22px;
+    padding: 8px 0 8px 18px;
     position: relative;
     border-left: 6px solid var(--primary-color);
     border-radius: 10px;
@@ -148,26 +148,37 @@ p {
     margin-left: 8px;
 }
 
+.exp-item p {
+    margin: 4px 0;
+}
+
 /* --- 語言圓環 --- */
 .language-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 18px;
     margin-left: 20px;
     padding-left: 10px;
-    /* Languages 內容縮排，和 Education/Skills 一致 */
+    width: calc(100% - 30px);
+    max-width: none;
+    align-items: stretch;
+    /* 與其他內容同版心，左右邊界一致 */
 }
 
 .lang-item {
-    display: grid;
-    grid-template-columns: 30px 1fr auto;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 12px;
+    justify-content: center;
+    gap: 8px;
+    text-align: center;
+    min-height: 112px;
+    width: 100%;
 }
 
 .ring {
-    width: 28px;
-    height: 28px;
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
     background: conic-gradient(var(--primary-color) calc(var(--level) * 1%), #eee 0);
     position: relative;
@@ -176,18 +187,62 @@ p {
 .ring::after {
     content: "";
     position: absolute;
-    inset: 5px;
+    inset: 7px;
     background: var(--bg-card);
     border-radius: 50%;
 }
 
+.lang-item p {
+    margin: 0;
+    font-size: 0.82rem;
+    line-height: 1.5;
+}
+
+.lang-item small {
+    display: none;
+    /* 依需求隱藏百分比，只保留語言名稱 */
+}
+
+/* 作品集 QR 區塊：放在整份內容最底部、跨左右欄 */
+.portfolio-qr-section {
+    margin: 0 34px 28px;
+    padding: 14px 20px;
+    border-top: 1px solid #ece4c0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.portfolio-qr-title {
+    margin: 0 0 4px;
+    font-size: 1rem;
+    color: var(--text-main);
+}
+
+.portfolio-qr-desc {
+    margin: 0 0 8px;
+    font-size: 0.78rem;
+    color: var(--text-light);
+    line-height: 1.4;
+}
+
+.portfolio-qr-img {
+    width: 104px;
+    height: 104px;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    display: block;
+    background: #fff;
+}
+
 /* --- 技能條 --- */
 .skill-group {
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 }
 
 .skill-title {
-    margin: 12px 0 4px;
+    margin: 12px 0 6px;
     font-size: 1rem;
     color: var(--text-main);
 }
@@ -195,7 +250,10 @@ p {
 /* 技能內容統一縮排：所有 skill-item 放在同一層 skill-list */
 .skill-list {
     margin-left: 20px;
-    padding-left: 10px;
+    padding: 6px 0 2px 12px;
+    border-left: 3px solid rgba(236, 197, 97, 0.55);
+    border-radius: 6px;
+    /* 比 exp-item 更細的左邊框，保留層級差異 */
 }
 
 .skill-item {
@@ -203,7 +261,7 @@ p {
     align-items: center;
     justify-content: space-between;
     gap: 15px;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
 }
 
 .skill-item p {
@@ -258,5 +316,16 @@ p {
 
     h1.ln {
         left: 45%;
+    }
+
+    .language-grid {
+        max-width: none;
+    }
+
+    .portfolio-qr-section {
+        margin: 0 20px 22px;
+        padding: 12px 0 0;
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
