@@ -1,197 +1,196 @@
 @import url("https://fonts.googleapis.com/css2?family=Potta+One&display=swap");
 
-/* 基礎設定 */
 * {
-    /* vertical-align: ce; */
     box-sizing: border-box;
 }
 
 html,
 body {
+    margin: 0;
+    padding: 40px 0;
+    min-height: 100vh;
     background-color: #ecc561;
     font-family: "Ubuntu", sans-serif;
-    color: #777;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height: 100vh;
-    /* 確保背景至少跟螢幕一樣高 */
-
-    display: flex;
-    justify-content: center;
-    /* 水平置中 */
-    padding-top: 50px;
-    /* 頂部留點空間，比較美觀 */
-    padding-bottom: 50px;
-    /* 底部留點空間 */
+    color: #666;
 }
 
-svg.lan2 circle {
-    transform: rotate(-90deg);
-}
-
+/* 履歷主卡片：固定視覺寬度 + 可在小螢幕縮放 */
 .resume {
-    background-color: #ffe;
     position: relative;
-    width: 800px;
-    /* 寬度固定，維持履歷比例 */
-    min-height: 1000px;
-    /* 設定一個最小高度，但不要限制最大高度 */
-    height: auto;
-    /* 關鍵：讓高度根據內容自動撐開 */
+    width: min(800px, 94vw);
     margin: 0 auto;
-    box-shadow: 5px 5px 12px 12px #000000;
+    background-color: #fffef4;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
     overflow: hidden;
-    display: flex;
-    /* 讓內容水平排列 */
-    flex-wrap: wrap;
-    /* 允許換行 */
-    overflow: hidden;
-    /* 改成 visible，內容超過 800px 才能看到 */
-    padding-bottom: 60px;
-    /* 履歷最下方留點白邊 */
 }
 
-/* 左右區塊佈局 */
-.left,
-.right {
-    width: 50%;
-    height: 100%;
-    margin-top: 15%;
+/* 上方區塊獨立，避免跟主內容重疊 */
+.resume-header {
+    position: relative;
+    height: 280px;
+}
+
+.deco1 {
+    position: absolute;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background-color: #ecc561;
+    top: -150px;
+    left: 250px;
+}
+
+.deco2 {
+    position: absolute;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    border: 5px solid #ecc561;
+    top: -190px;
+    left: -120px;
+}
+
+.Me img {
+    position: absolute;
+    top: 34px;
+    right: 38px;
+    width: 180px;
+    transform: rotate(-15deg);
+    z-index: 2;
+}
+
+.resume h1 {
+    margin: 0;
+    color: #5f5f5f;
+    font-size: 3rem;
+    line-height: 1.05;
     position: absolute;
     z-index: 2;
 }
 
-.left {
-    left: 4%;
-}
-
-.right {
-    right: 4%;
-}
-
-
-/* 裝飾與個人資料區 */
-.Me img {
-    width: 45%;
-    position: absolute;
-    top: 8%;
-    right: 10%;
-    transform: rotate(-15deg);
+h1.fn {
+    left: 52%;
+    top: 96px;
+    transform: translateX(-50%);
 }
 
 h1.ln {
-    position: absolute;
-    left: 40%;
-    top: 17%;
+    left: 58%;
+    top: 146px;
+    transform: translateX(-50%);
 }
 
-h1.fn {
+.con {
     position: absolute;
-    left: 35%;
-    top: 10%;
+    left: 52px;
+    top: 205px;
+    z-index: 2;
 }
 
-.deco1 {
-    background-color: #ecc561;
-    width: 400px;
-    height: 400px;
-    border-radius: 100%;
-    position: absolute;
-    top: -7%;
-    left: 28%;
-    z-index: 1;
+.con p {
+    margin: 3px 0;
+    font-size: 0.95rem;
 }
 
-.deco2 {
-    border: 5px solid #ecc561;
-    width: 400px;
-    height: 400px;
-    border-radius: 100%;
-    position: absolute;
-    top: -10%;
-    left: -5%;
-}
-
-
-/* 文字樣式控制 */
-.resume h1 {
-    font-size: 3em;
+/* 主內容用 grid 雙欄，完全脫離 absolute 疊版問題 */
+.resume-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    padding: 10px 34px 46px;
 }
 
 .resume h2 {
-    font-size: 1.4em;
-    margin: 5px 0px;
+    display: inline-block;
+    margin: 0 0 10px;
+    padding-right: 8px;
     border-right: 5px solid #ecc561;
-    padding-right: 5px;
-    display: inline;
+    font-size: 1.4rem;
+    color: #555;
 }
 
 .resume h3 {
-    font-size: 1.2em;
-    margin-left: 5px;
-}
-
-p {
-    font-size: 1em;
-    line-height: 1.4em;
-    margin-left: 8px;
+    margin: 10px 0 4px;
+    font-size: 1.12rem;
+    color: #555;
 }
 
 span {
-    font-size: 0.5em;
-    color: #7a7a7a;
-    display: inline-block;
-    margin: 10px 0 0 0;
+    margin-left: 2px;
+    font-size: 0.7rem;
+    color: #808080;
 }
 
 .left p,
 .right p {
-    font-size: 0.8em;
-    font-weight: normal;
-    margin: 1px;
+    margin: 2px 0;
+    font-size: 0.82rem;
+    line-height: 1.45;
 }
 
-/* 經驗區進度軸 */
 .exp {
     position: relative;
-    z-index: 1;
+    padding-left: 12px;
 }
 
 .expbar {
-    background-color: #ecc561;
-    width: 10px;
-    height: 85%;
+    position: absolute;
+    left: 0;
+    top: 32px;
+    width: 8px;
+    height: calc(100% - 36px);
     border-radius: 10px;
-    position: absolute;
-    z-index: -1;
+    background-color: #ecc561;
+    opacity: 0.8;
 }
 
-/* 語言區 */
 .lan {
-    position: absolute;
+    margin-top: 12px;
+}
+
+/* Languages 區塊：固定節奏，避免圓圈與文字錯位 */
+.language-list {
     display: flex;
-    width: 25%;
+    flex-direction: column;
+    gap: 10px;
 }
 
-#pic3 {
-    stroke: #ecc561;
-    stroke-width: 2px;
+.language-item {
+    --level: 0;
+    display: grid;
+    grid-template-columns: 28px 1fr auto;
+    align-items: center;
+    column-gap: 10px;
+}
+
+/* 圓形進度環：用百分比直覺控制，不需要手算 dashoffset */
+.language-ring {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: conic-gradient(#ecc561 calc(var(--level) * 1%), #ececec 0);
+    position: relative;
+}
+
+/* 做出中空圓環效果 */
+.language-ring::after {
+    content: "";
     position: absolute;
-    z-index: 1;
-    bottom: 0;
+    inset: 5px;
+    border-radius: 50%;
+    background: #fffef4;
 }
 
-#pic3 circle {
-    fill: #ecc561;
+.language-name {
+    margin: 0;
 }
 
-#pic3 polyline {
-    fill: none;
-    display: inline;
+.language-level {
+    margin: 0;
+    font-size: 0.75rem;
+    color: #8a8a8a;
 }
 
-/* 技能條區塊 */
 .skiai,
 .skips,
 .skiid,
@@ -209,15 +208,30 @@ span {
 .skiex,
 .skiwo {
     display: flex;
-    justify-content: space-between;
-    /* 文字在左，進度條在右 */
-    position: relative;
     align-items: center;
-    /* 垂直置中 */
-    margin-bottom: 2px;
-    /* 增加行距 */
-    height: 25px;
-    /* 給予高度避免重疊 */
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 4px;
+}
+
+.skiai p,
+.skips p,
+.skiid p,
+.skipro p,
+.skixd p,
+.skifig p,
+.skivs p,
+.skicode p,
+.skidw p,
+.skipr p,
+.skiae p,
+.skian p,
+.skimac p,
+.skiwins p,
+.skiex p,
+.skiwo p {
+    flex: 1;
+    min-width: 0;
 }
 
 .ai,
@@ -236,21 +250,14 @@ span {
 .win,
 .ex,
 .wo {
-    position: relative;
-    top: 50%;
-    right: 0px;
-    transform: translateY(-50%);
-    border: 1px solid #ecc561;
-    border-radius: 10px;
     width: 120px;
-    height: 12px;
+    height: 10px;
+    border: 1px solid #ecc561;
+    border-radius: 999px;
+    background: #fff;
     overflow: hidden;
-    padding: 1px;
-    background-color: #fff;
-    /* 增加背景色區分 */
 }
 
-/* 內層進度條通用樣式 */
 .ais,
 .pss,
 .ids,
@@ -267,28 +274,19 @@ span {
 .wins,
 .exs,
 .wos {
-    border: none;
-    background-color: #ecc561;
-    border-radius: 10px;
-    margin: 0;
     height: 100%;
-    display: block;
+    background-color: #ecc561;
+    border-radius: 999px;
 }
 
-/* 各別進度寬度 */
-.ais {
-    width: 85%;
-}
-
+.ais,
 .pss {
     width: 85%;
 }
 
-.ids {
-    width: 75%;
-}
-
-.pros {
+.ids,
+.pros,
+.vss {
     width: 75%;
 }
 
@@ -296,39 +294,24 @@ span {
     width: 50%;
 }
 
-.figs {
-    width: 70%;
-}
-
-.vss {
-    width: 75%;
-}
-
+.figs,
 .cods {
     width: 70%;
 }
 
-.dws {
-    width: 60%;
-}
-
-.prs {
-    width: 60%;
-}
-
+.dws,
+.prs,
 .aes {
     width: 60%;
 }
 
-.ans {
-    width: 55%;
-}
-
+.ans,
 .macs {
     width: 55%;
 }
 
-.wins {
+.wins,
+.wos {
     width: 90%;
 }
 
@@ -336,6 +319,62 @@ span {
     width: 80%;
 }
 
-.wos {
-    width: 90%;
+/* 手機：改為單欄，頭像與標題縮小 */
+@media (max-width: 768px) {
+    html,
+    body {
+        padding: 20px 0;
+    }
+
+    .resume-header {
+        height: 230px;
+    }
+
+    .deco1,
+    .deco2 {
+        width: 260px;
+        height: 260px;
+    }
+
+    .deco1 {
+        top: -110px;
+        left: 46%;
+        transform: translateX(-50%);
+    }
+
+    .deco2 {
+        top: -140px;
+        left: -100px;
+    }
+
+    .Me img {
+        width: 130px;
+        right: 16px;
+        top: 34px;
+    }
+
+    .resume h1 {
+        font-size: 2.2rem;
+    }
+
+    h1.fn {
+        left: 46%;
+        top: 72px;
+    }
+
+    h1.ln {
+        left: 48%;
+        top: 112px;
+    }
+
+    .con {
+        left: 20px;
+        top: 172px;
+    }
+
+    .resume-content {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 8px 20px 34px;
+    }
 }

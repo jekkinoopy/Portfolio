@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price List | Jekkinoopy Design Studio</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --warm-yellow: #fff9e6;
+            --soft-yellow: #ffecb3;
+            --text-gray: #555;
+            --accent-gray: #4a4a4a;
+        }
+
+        body {
+            background-color: #fdfcf8;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .canvas {
+            width: 800px;
+            background: #fff;
+            position: relative;
+            padding: 60px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            /* 背景裝飾色塊 */
+            background:
+                linear-gradient(135deg, var(--warm-yellow) 10%, transparent 10%) 0 0,
+                linear-gradient(225deg, var(--warm-yellow) 10%, transparent 10%) 100% 0;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+
+        /* 右上角資訊區 */
+        .top-right-box {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            text-align: left;
+            font-size: 0.8rem;
+        }
+
+        .studio-name {
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .info-card {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            background: rgba(255, 236, 179, 0.3);
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        .services-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border-left: 1px solid var(--text-gray);
+            padding-left: 10px;
+            line-height: 1.8;
+        }
+
+        .qr-placeholder {
+            width: 60px;
+            height: 60px;
+            background: #fff;
+            border: 1px solid #ddd;
+        }
+
+        /* 標題區 */
+        .header-section {
+            margin-top: 20px;
+            margin-bottom: 80px;
+        }
+
+        .main-title {
+            font-size: 5rem;
+            color: var(--accent-gray);
+            margin: 0;
+            line-height: 0.8;
+        }
+
+        .sub-title-cn {
+            font-size: 3rem;
+            color: rgba(0, 0, 0, 0.05);
+            font-weight: bold;
+            position: absolute;
+            top: 110px;
+            left: 80px;
+        }
+
+        .slogan {
+            font-size: 1.5rem;
+            color: var(--text-gray);
+            text-align: center;
+            margin: 40px 0;
+            letter-spacing: 2px;
+        }
+
+        /* 表格區 */
+        .price-list {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .price-list tr:nth-child(odd) {
+            background-color: rgba(255, 249, 230, 0.5);
+        }
+
+        .price-list td {
+            padding: 20px;
+            color: var(--text-gray);
+        }
+
+        .item-name {
+            font-size: 1.4rem;
+            width: 40%;
+        }
+
+        .item-price {
+            font-size: 1.4rem;
+            text-align: right;
+            font-weight: bold;
+        }
+
+        /* 備註區 */
+        .notes {
+            margin-top: 60px;
+            font-size: 0.85rem;
+            color: #888;
+            line-height: 1.8;
+        }
+
+        .notes ul {
+            list-style: none;
+            padding-left: 15px;
+        }
+
+        .notes li::before {
+            content: "•";
+            margin-right: 8px;
+        }
+
+        .version {
+            text-align: right;
+            font-size: 0.7rem;
+            color: #ccc;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="canvas">
+        <div class="top-right-box">
+            <div class="studio-name">JEKKINOOPY DESIGN STUDIO</div>
+            <div class="info-card">
+                <ul class="services-list">
+                    <li>平面設計</li>
+                    <li>包裝設計</li>
+                    <li>UIUX設計</li>
+                    <li>插畫設計</li>
+                </ul>
+                <div class="qr-placeholder">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=jekkinoopy" alt="qr">
+                </div>
+            </div>
+            <p style="margin-top:10px;"><i class="fa-regular fa-envelope"></i> jekkinoopy@gmail.com</p>
+        </div>
+
+        <div class="header-section">
+            <h1 class="main-title">PRICE LIST</h1>
+            <div class="sub-title-cn">設計價目表</div>
+            <div style="width:120px; height:15px; background:#4a4a4a; margin-top:30px;"></div>
+        </div>
+
+        <div class="slogan">Design that feels gentle and real.</div>
+
+        <table class="price-list">
+            <tr>
+                <td class="item-name">商品白底圖</td>
+                <td class="item-price">$600 / 張</td>
+            </tr>
+            <tr>
+                <td class="item-name">商品情境圖</td>
+                <td class="item-price">$800 / 張</td>
+            </tr>
+            <tr>
+                <td class="item-name">DM 海報</td>
+                <td class="item-price">$1,500 起 / 依尺寸</td>
+            </tr>
+            <tr>
+                <td class="item-name">名片</td>
+                <td class="item-price">$2,000 ~ 5,000 / 雙面</td>
+            </tr>
+            <tr>
+                <td class="item-name">banner</td>
+                <td class="item-price">$800 ~ 1,500 / 張</td>
+            </tr>
+            <tr>
+                <td class="item-name">產品包裝</td>
+                <td class="item-price">$5,000 ~ 30,000 / 依類型</td>
+            </tr>
+            <tr>
+                <td class="item-name">UI / UX</td>
+                <td class="item-price">
+                    單頁 $2,000 ~ 8,500<br>
+                    整案 $20,000 起
+                </td>
+            </tr>
+        </table>
+
+        <div class="notes">
+            備註：
+            <ul>
+                <li>本報價僅含設計費，不含印刷、拍攝、素材授權費用</li>
+                <li>報價含 2 次修改，超出部分另計</li>
+                <li>非印刷品原始檔 (AI / PSD / FIG 等) 交付需另議</li>
+                <li>請款方式：月底提供勞務報酬單及匯款資訊，無發票</li>
+            </ul>
+        </div>
+
+        <div class="version">Version : Oct 6, 2025</div>
+    </div>
+
+</body>
+
+</html>
