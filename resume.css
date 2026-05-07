@@ -1,30 +1,33 @@
-@import url("https://fonts.googleapis.com/css2?family=Potta+One&display=swap");
+/* --- 基礎設定 --- */
+:root {
+    --primary-color: #ecc561;
+    --text-main: #555;
+    --text-light: #808080;
+    --bg-card: #fffef4;
+}
 
 * {
     box-sizing: border-box;
 }
 
-html,
 body {
     margin: 0;
     padding: 40px 0;
-    min-height: 100vh;
-    background-color: #ecc561;
-    font-family: "Ubuntu", sans-serif;
+    background-color: var(--primary-color);
+    font-family: "Ubuntu", "Noto Sans TC", sans-serif;
     color: #666;
 }
 
-/* 履歷主卡片：固定視覺寬度 + 可在小螢幕縮放 */
 .resume {
     position: relative;
     width: min(800px, 94vw);
     margin: 0 auto;
-    background-color: #fffef4;
+    background-color: var(--bg-card);
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
     overflow: hidden;
 }
 
-/* 上方區塊獨立，避免跟主內容重疊 */
+/* --- Header 裝飾邏輯 --- */
 .resume-header {
     position: relative;
     height: 280px;
@@ -35,7 +38,7 @@ body {
     width: 360px;
     height: 360px;
     border-radius: 50%;
-    background-color: #ecc561;
+    background-color: var(--primary-color);
     top: -150px;
     left: 250px;
 }
@@ -45,312 +48,204 @@ body {
     width: 360px;
     height: 360px;
     border-radius: 50%;
-    border: 5px solid #ecc561;
-    top: -190px;
-    left: -120px;
+    border: 5px solid var(--primary-color);
+    top: -80px;
+    left: -20px;
 }
 
 .Me img {
     position: absolute;
-    top: 34px;
-    right: 38px;
-    width: 180px;
+    top: -50px;
+    right: -50px;
+    width: 400px;
     transform: rotate(-15deg);
-    z-index: 2;
+    z-index: 0;
 }
 
 .resume h1 {
     margin: 0;
     color: #5f5f5f;
     font-size: 3rem;
-    line-height: 1.05;
     position: absolute;
     z-index: 2;
 }
 
 h1.fn {
-    left: 52%;
-    top: 96px;
+    left: 15%;
+    top: 60px;
     transform: translateX(-50%);
 }
 
 h1.ln {
-    left: 58%;
+    left: 38%;
     top: 146px;
     transform: translateX(-50%);
 }
 
-.con {
-    position: absolute;
-    left: 52px;
-    top: 205px;
-    z-index: 2;
-}
-
-.con p {
-    margin: 3px 0;
-    font-size: 0.95rem;
-}
-
-/* 主內容用 grid 雙欄，完全脫離 absolute 疊版問題 */
+/* --- 內容區塊通用樣式 --- */
 .resume-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 28px;
-    padding: 10px 34px 46px;
+    gap: 30px;
+    padding: 20px 34px 46px;
 }
 
-.resume h2 {
+.cv-section {
+    margin-bottom: 24px;
+}
+
+.section-title {
     display: inline-block;
-    margin: 0 0 10px;
+    margin: 0 0 12px;
     padding-right: 8px;
-    border-right: 5px solid #ecc561;
-    font-size: 1.4rem;
-    color: #555;
+    border-right: 5px solid var(--primary-color);
+    font-size: 1.3rem;
+    color: var(--text-main);
+}
+
+/* Education 內容縮排：標題和內容做出層級 */
+.info-item {
+    margin-left: 20px;
+    padding-left: 10px;
+}
+
+.info-item h3 {
+    margin: 0;
 }
 
 .resume h3 {
-    margin: 10px 0 4px;
-    font-size: 1.12rem;
-    color: #555;
+    margin: 12px 0 4px;
+    font-size: 1rem;
+    color: var(--text-main);
 }
 
-span {
-    margin-left: 2px;
-    font-size: 0.7rem;
-    color: #808080;
+.sub-text {
+    font-size: 0.8rem;
+    color: var(--text-light);
 }
 
-.left p,
-.right p {
+p {
     margin: 2px 0;
     font-size: 0.82rem;
-    line-height: 1.45;
+    line-height: 1.5;
 }
 
-.exp {
+/* --- 經驗時間軸 --- */
+
+
+
+.exp-item {
+    margin-bottom: 16px;
+    padding-left: 20px;
     position: relative;
-    padding-left: 12px;
-}
-
-.expbar {
-    position: absolute;
-    left: 0;
-    top: 32px;
-    width: 8px;
-    height: calc(100% - 36px);
+    border-left: 6px solid var(--primary-color);
     border-radius: 10px;
-    background-color: #ecc561;
-    opacity: 0.8;
 }
 
-.lan {
-    margin-top: 12px;
+.exp-item h3 span {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    margin-left: 8px;
 }
 
-/* Languages 區塊：固定節奏，避免圓圈與文字錯位 */
-.language-list {
+/* --- 語言圓環 --- */
+.language-grid {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
+    margin-left: 20px;
+    padding-left: 10px;
+    /* Languages 內容縮排，和 Education/Skills 一致 */
 }
 
-.language-item {
-    --level: 0;
+.lang-item {
     display: grid;
-    grid-template-columns: 28px 1fr auto;
+    grid-template-columns: 30px 1fr auto;
     align-items: center;
-    column-gap: 10px;
+    gap: 12px;
 }
 
-/* 圓形進度環：用百分比直覺控制，不需要手算 dashoffset */
-.language-ring {
+.ring {
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    background: conic-gradient(#ecc561 calc(var(--level) * 1%), #ececec 0);
+    background: conic-gradient(var(--primary-color) calc(var(--level) * 1%), #eee 0);
     position: relative;
 }
 
-/* 做出中空圓環效果 */
-.language-ring::after {
+.ring::after {
     content: "";
     position: absolute;
     inset: 5px;
+    background: var(--bg-card);
     border-radius: 50%;
-    background: #fffef4;
 }
 
-.language-name {
-    margin: 0;
+/* --- 技能條 --- */
+.skill-group {
+    margin-bottom: 16px;
 }
 
-.language-level {
-    margin: 0;
-    font-size: 0.75rem;
-    color: #8a8a8a;
+.skill-title {
+    margin: 12px 0 4px;
+    font-size: 1rem;
+    color: var(--text-main);
 }
 
-.skiai,
-.skips,
-.skiid,
-.skipro,
-.skixd,
-.skifig,
-.skivs,
-.skicode,
-.skidw,
-.skipr,
-.skiae,
-.skian,
-.skimac,
-.skiwins,
-.skiex,
-.skiwo {
+/* 技能內容統一縮排：所有 skill-item 放在同一層 skill-list */
+.skill-list {
+    margin-left: 20px;
+    padding-left: 10px;
+}
+
+.skill-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
-    margin-bottom: 4px;
+    gap: 15px;
+    margin-bottom: 6px;
 }
 
-.skiai p,
-.skips p,
-.skiid p,
-.skipro p,
-.skixd p,
-.skifig p,
-.skivs p,
-.skicode p,
-.skidw p,
-.skipr p,
-.skiae p,
-.skian p,
-.skimac p,
-.skiwins p,
-.skiex p,
-.skiwo p {
+.skill-item p {
+    flex: 0 0 96px;
+    margin: 0;
+    font-size: 0.82rem;
+    line-height: 1.4;
+}
+
+.bar {
     flex: 1;
-    min-width: 0;
-}
-
-.ai,
-.ps,
-.id,
-.pro,
-.xd,
-.fig,
-.vs,
-.cod,
-.dw,
-.pr,
-.ae,
-.an,
-.mac,
-.win,
-.ex,
-.wo {
-    width: 120px;
     height: 10px;
-    border: 1px solid #ecc561;
-    border-radius: 999px;
-    background: #fff;
+    background: #eee;
+    border-radius: 10px;
+    border: 1px solid var(--primary-color);
     overflow: hidden;
+    position: relative;
 }
 
-.ais,
-.pss,
-.ids,
-.pros,
-.xds,
-.figs,
-.vss,
-.cods,
-.dws,
-.prs,
-.aes,
-.ans,
-.macs,
-.wins,
-.exs,
-.wos {
+.bar::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
     height: 100%;
-    background-color: #ecc561;
-    border-radius: 999px;
+    background: var(--primary-color);
+    width: var(--level);
+    /* 由 HTML 內 style 控制 */
 }
 
-.ais,
-.pss {
-    width: 85%;
-}
-
-.ids,
-.pros,
-.vss {
-    width: 75%;
-}
-
-.xds {
-    width: 50%;
-}
-
-.figs,
-.cods {
-    width: 70%;
-}
-
-.dws,
-.prs,
-.aes {
-    width: 60%;
-}
-
-.ans,
-.macs {
-    width: 55%;
-}
-
-.wins,
-.wos {
-    width: 90%;
-}
-
-.exs {
-    width: 80%;
-}
-
-/* 手機：改為單欄，頭像與標題縮小 */
+/* --- 手機版自適應 --- */
 @media (max-width: 768px) {
-    html,
-    body {
-        padding: 20px 0;
-    }
-
     .resume-header {
-        height: 230px;
+        height: 220px;
     }
 
-    .deco1,
-    .deco2 {
-        width: 260px;
-        height: 260px;
-    }
-
-    .deco1 {
-        top: -110px;
-        left: 46%;
-        transform: translateX(-50%);
-    }
-
-    .deco2 {
-        top: -140px;
-        left: -100px;
+    .resume-content {
+        grid-template-columns: 1fr;
     }
 
     .Me img {
-        width: 130px;
-        right: 16px;
-        top: 34px;
+        width: 120px;
     }
 
     .resume h1 {
@@ -358,23 +253,10 @@ span {
     }
 
     h1.fn {
-        left: 46%;
-        top: 72px;
+        left: 40%;
     }
 
     h1.ln {
-        left: 48%;
-        top: 112px;
-    }
-
-    .con {
-        left: 20px;
-        top: 172px;
-    }
-
-    .resume-content {
-        grid-template-columns: 1fr;
-        gap: 18px;
-        padding: 8px 20px 34px;
+        left: 45%;
     }
 }

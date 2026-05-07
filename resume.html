@@ -4,175 +4,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 注意：這頁使用的是 resume.css（不是 style.css），跑版檢查要看這份樣式 -->
-    <link rel="stylesheet" href="resume.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="r.css">
+    <title>Noopy's Resume</title>
 </head>
 
 <body>
     <div class="resume">
         <div class="resume-header">
-            <div class="deco1"> </div>
-            <div class="deco2"> </div>
+            <div class="deco1"></div>
+            <div class="deco2"></div>
             <div class="Me">
                 <h1 class="fn">Hello,</h1>
-                <h1 class="ln">I'm Noopy </h1>
-                <img src="./images/noopyhead.png">
+                <h1 class="ln">I'm Noopy</h1>
+                <img src="./images/noopyhead.png" alt="Profile">
             </div>
-            <!-- <div class="con">
-                <p>sechskiesxxxxxtw@gmail.com</p>
-                <p>0963-zxx-531</p>
-                <p>新北市xx區</p>
-            </div> -->
         </div>
         <div class="resume-content">
-            <div class="left">
-                <div class="edu">
-                    <h2>Education</h2>
-                    <h3>國立台中教育大學<span>科學教育與應用學系</span></h3>
-                </div>
-                <div class="exp">
-                    <div class="expbar"></div>
-                    <h2>Experience</h2>
-                    <h3>平面設計<span>3年</span></h3>
-                    <p>商品拍攝、去背、修圖、合成</p>
-                    <p>DM、Banner、名片、桌曆、購物袋等</p>
-                    <p>影片剪輯、網頁維護</p>
-                    <h3>UIUX設計<span>１年</span></h3>
-                    <p>掌握顧客喜好並提供建議，滿足顧客需求</p>
-                    <p>POP展示、陳列商品設計佈置</p>
-                    <p>店務、員工管理</p>
-                </div>
-                <div class="lan">
-                    <h2>Languages</h2>
-                    <div class="language-list">
-                        <!-- 直覺調整方式：改 --level 數字即可（0~100） -->
-                        <div class="language-item" style="--level: 85;">
-                            <div class="language-ring" aria-hidden="true"></div>
-                            <p class="language-name">Chinese</p>
-                            <p class="language-level">85%</p>
+            <div class="column-left">
+                <section class="cv-section">
+                    <h2 class="section-title">Education</h2>
+                    <div class="info-item">
+                        <h3>國立台中教育大學</h3>
+                        <span class="sub-text">科學教育與應用學系</span>
+                    </div>
+                </section>
+
+                <section class="cv-section">
+                    <h2 class="section-title">Experience</h2>
+                    <div class="exp-item">
+                        <h3>UI/UX 設計<span>1 年</span></h3>
+                        <p>Web/App 介面設計</p>
+                        <p>制定 Design System 與工程師溝通協作</p>
+                    </div>
+
+                    <div class="exp-item">
+                        <h3>Freelance<span>1 年</span></h3>
+                        <p>承接品牌識別、商業廣告</p>
+                        <p>掌握客戶需求並提供專業設計</p>
+                        <p>由視覺設計轉型介面設計，累積跨領域實務</p>
+                    </div>
+
+                    <div class="exp-item">
+                        <h3>品牌視覺設計<span>3 年</span></h3>
+                        <p>商品拍攝、精緻修圖與合成作業</p>
+                        <p>DM、Banner、各類印刷品與包裝設計</p>
+                        <p>網頁視覺優化、影音剪輯與後製</p>
+                    </div>
+                </section>
+
+                <section class="cv-section">
+                    <h2 class="section-title">Languages</h2>
+                    <div class="language-grid">
+                        <div class="lang-item" style="--level: 90;">
+                            <div class="ring"></div>
+                            <p>Chinese</p>
+                            <small>90%</small>
                         </div>
-                        <div class="language-item" style="--level: 65;">
-                            <div class="language-ring" aria-hidden="true"></div>
-                            <p class="language-name">English</p>
-                            <p class="language-level">65%</p>
+                        <div class="lang-item" style="--level: 65;">
+                            <div class="ring"></div>
+                            <p>English</p>
+                            <small>65%</small>
                         </div>
-                        <div class="language-item" style="--level: 45;">
-                            <div class="language-ring" aria-hidden="true"></div>
-                            <p class="language-name">Korean</p>
-                            <p class="language-level">45%</p>
+                        <div class="lang-item" style="--level: 65;">
+                            <div class="ring"></div>
+                            <p>Korean</p>
+                            <small>45%</small>
+                        </div>
+                        <div class="lang-item" style="--level: 35;">
+                            <div class="ring"></div>
+                            <p>Japanese</p>
+                            <small>35%</small>
                         </div>
                     </div>
-                </div>
+                </section>
             </div>
-            <div class="right">
-                <h2>Skills</h2>
-                <h3>平面設計</h3>
-                <div class="skiai">
-                    <p>Illustrator</p>
-                    <div class="ai">
-                        <div class="ais"></div>
-                    </div>
-                </div>
-                <div class="skips">
-                    <p>Photoshop</p>
-                    <div class="ps">
-                        <div class="pss"></div>
-                    </div>
-                </div>
-                <div class="skiid">
-                    <p>InDesign</p>
-                    <div class="id">
-                        <div class="ids"></div>
-                    </div>
-                </div>
 
-                <h3>插畫</h3>
-                <div class="skipro">
-                    <p>Procreate</p>
-                    <div class="pro">
-                        <div class="pros"></div>
-                    </div>
-                </div>
+            <div class="column-right">
+                <section class="cv-section">
+                    <h2 class="section-title">Skills</h2>
 
-                <h3>UI/UX</h3>
-                <div class="skixd">
-                    <p>Adobe XD</p>
-                    <div class="xd">
-                        <div class="xds"></div>
+                    <div class="skill-group">
+                        <h3>平面設計</h3>
+                        <div class="skill-list">
+                            <div class="skill-item" style="--level: 85%;">
+                                <p>Illustrator</p>
+                                <div class="bar"></div>
+                            </div>
+                            <div class="skill-item" style="--level: 85%;">
+                                <p>Photoshop</p>
+                                <div class="bar"></div>
+                            </div>
+                            <div class="skill-item" style="--level: 75%;">
+                                <p>InDesign</p>
+                                <div class="bar"></div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="skifig">
-                    <p>Figma</p>
-                    <div class="fig">
-                        <div class="figs"></div>
-                    </div>
-                </div>
-                <h3>網頁設計</h3>
-                <div class="skivs">
-                    <p>VScode</p>
-                    <div class="vs">
-                        <div class="vss"></div>
-                    </div>
-                </div>
-                <div class="skicode">
-                    <p>Codepen</p>
-                    <div class="cod">
-                        <div class="cods"></div>
-                    </div>
-                </div>
-                <div class="skidw">
-                    <p>Dreamweaver</p>
-                    <div class="dw">
-                        <div class="dws"></div>
-                    </div>
-                </div>
-                <h3>多媒體設計</h3>
-                <div class="skipr">
-                    <p>Premiere</p>
-                    <div class="pr">
-                        <div class="prs"></div>
-                    </div>
-                </div>
-                <div class="skiae">
-                    <p>After Effects</p>
-                    <div class="ae">
-                        <div class="aes"></div>
-                    </div>
-                </div>
-                <div class="skian">
-                    <p>Animate</p>
-                    <div class="an">
-                        <div class="ans"></div>
-                    </div>
-                </div>
-                <h3>作業系統</h3>
-                <div class="skimac">
-                    <p>Mac OS</p>
-                    <div class="mac">
-                        <div class="macs"></div>
-                    </div>
-                </div>
-                <div class="skiwins">
-                    <p>Windows</p>
-                    <div class="win">
-                        <div class="wins"></div>
-                    </div>
-                </div>
-                <h3>辦公室應用</h3>
-                <div class="skiex">
-                    <p>Excel</p>
-                    <div class="ex">
-                        <div class="exs"></div>
-                    </div>
-                </div>
-                <div class="skiwo">
-                    <p>Word</p>
-                    <div class="wo">
-                        <div class="wos"></div>
-                    </div>
-                </div>
 
+                    <div class="skill-group">
+                        <h3>插畫</h3>
+                        <div class="skill-list">
+                            <div class="skill-item" style="--level: 75%;">
+                                <p>Procreate</p>
+                                <div class="bar"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <h3>UI/UX</h3>
+                        <div class="skill-list">
+                            <div class="skill-item" style="--level: 50%;">
+                                <p>Adobe XD</p>
+                                <div class="bar"></div>
+                            </div>
+                            <div class="skill-item" style="--level: 70%;">
+                                <p>Figma</p>
+                                <div class="bar"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <h3>網頁設計</h3>
+                        <div class="skill-list">
+                            <div class="skill-item" style="--level: 75%;">
+                                <p>VScode</p>
+                                <div class="bar"></div>
+                            </div>
+                            <div class="skill-item" style="--level: 70%;">
+                                <p>Codepen</p>
+                                <div class="bar"></div>
+                            </div>
+                            <div class="skill-item" style="--level: 60%;">
+                                <p>Dreamweaver</p>
+                                <div class="bar"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <h3>多媒體設計</h3>
+                        <div class="skill-list">
+                            <div class="skill-item" style="--level: 60%;">
+                                <p>Premiere</p>
+                                <div class="bar"></div>
+                            </div>
+                            <div class="skill-item" style="--level: 60%;">
+                                <p>After Effects</p>
+                                <div class="bar"></div>
+                            </div>
+                            <div class="skill-item" style="--level: 55%;">
+                                <p>Animate</p>
+                                <div class="bar"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <h3>作業系統</h3>
+                        <div class="skill-list">
+                            <div class="skill-item" style="--level: 55%;">
+                                <p>Mac OS</p>
+                                <div class="bar"></div>
+                            </div>
+                            <div class="skill-item" style="--level: 90%;">
+                                <p>Windows</p>
+                                <div class="bar"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <h3>辦公應用</h3>
+                        <div class="skill-list">
+                            <div class="skill-item" style="--level: 80%;">
+                                <p>Excel</p>
+                                <div class="bar"></div>
+                            </div>
+                            <div class="skill-item" style="--level: 90%;">
+                                <p>Word</p>
+                                <div class="bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
     </div>
