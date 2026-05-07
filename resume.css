@@ -1,0 +1,341 @@
+@import url("https://fonts.googleapis.com/css2?family=Potta+One&display=swap");
+
+/* 基礎設定 */
+* {
+    /* vertical-align: ce; */
+    box-sizing: border-box;
+}
+
+html,
+body {
+    background-color: #ecc561;
+    font-family: "Ubuntu", sans-serif;
+    color: #777;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    /* 確保背景至少跟螢幕一樣高 */
+
+    display: flex;
+    justify-content: center;
+    /* 水平置中 */
+    padding-top: 50px;
+    /* 頂部留點空間，比較美觀 */
+    padding-bottom: 50px;
+    /* 底部留點空間 */
+}
+
+svg.lan2 circle {
+    transform: rotate(-90deg);
+}
+
+.resume {
+    background-color: #ffe;
+    position: relative;
+    width: 800px;
+    /* 寬度固定，維持履歷比例 */
+    min-height: 1000px;
+    /* 設定一個最小高度，但不要限制最大高度 */
+    height: auto;
+    /* 關鍵：讓高度根據內容自動撐開 */
+    margin: 0 auto;
+    box-shadow: 5px 5px 12px 12px #000000;
+    overflow: hidden;
+    display: flex;
+    /* 讓內容水平排列 */
+    flex-wrap: wrap;
+    /* 允許換行 */
+    overflow: hidden;
+    /* 改成 visible，內容超過 800px 才能看到 */
+    padding-bottom: 60px;
+    /* 履歷最下方留點白邊 */
+}
+
+/* 左右區塊佈局 */
+.left,
+.right {
+    width: 50%;
+    height: 100%;
+    margin-top: 15%;
+    position: absolute;
+    z-index: 2;
+}
+
+.left {
+    left: 4%;
+}
+
+.right {
+    right: 4%;
+}
+
+
+/* 裝飾與個人資料區 */
+.Me img {
+    width: 45%;
+    position: absolute;
+    top: 8%;
+    right: 10%;
+    transform: rotate(-15deg);
+}
+
+h1.ln {
+    position: absolute;
+    left: 40%;
+    top: 17%;
+}
+
+h1.fn {
+    position: absolute;
+    left: 35%;
+    top: 10%;
+}
+
+.deco1 {
+    background-color: #ecc561;
+    width: 400px;
+    height: 400px;
+    border-radius: 100%;
+    position: absolute;
+    top: -7%;
+    left: 28%;
+    z-index: 1;
+}
+
+.deco2 {
+    border: 5px solid #ecc561;
+    width: 400px;
+    height: 400px;
+    border-radius: 100%;
+    position: absolute;
+    top: -10%;
+    left: -5%;
+}
+
+
+/* 文字樣式控制 */
+.resume h1 {
+    font-size: 3em;
+}
+
+.resume h2 {
+    font-size: 1.4em;
+    margin: 5px 0px;
+    border-right: 5px solid #ecc561;
+    padding-right: 5px;
+    display: inline;
+}
+
+.resume h3 {
+    font-size: 1.2em;
+    margin-left: 5px;
+}
+
+p {
+    font-size: 1em;
+    line-height: 1.4em;
+    margin-left: 8px;
+}
+
+span {
+    font-size: 0.5em;
+    color: #7a7a7a;
+    display: inline-block;
+    margin: 10px 0 0 0;
+}
+
+.left p,
+.right p {
+    font-size: 0.8em;
+    font-weight: normal;
+    margin: 1px;
+}
+
+/* 經驗區進度軸 */
+.exp {
+    position: relative;
+    z-index: 1;
+}
+
+.expbar {
+    background-color: #ecc561;
+    width: 10px;
+    height: 85%;
+    border-radius: 10px;
+    position: absolute;
+    z-index: -1;
+}
+
+/* 語言區 */
+.lan {
+    position: absolute;
+    display: flex;
+    width: 25%;
+}
+
+#pic3 {
+    stroke: #ecc561;
+    stroke-width: 2px;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+}
+
+#pic3 circle {
+    fill: #ecc561;
+}
+
+#pic3 polyline {
+    fill: none;
+    display: inline;
+}
+
+/* 技能條區塊 */
+.skiai,
+.skips,
+.skiid,
+.skipro,
+.skixd,
+.skifig,
+.skivs,
+.skicode,
+.skidw,
+.skipr,
+.skiae,
+.skian,
+.skimac,
+.skiwins,
+.skiex,
+.skiwo {
+    display: flex;
+    justify-content: space-between;
+    /* 文字在左，進度條在右 */
+    position: relative;
+    align-items: center;
+    /* 垂直置中 */
+    margin-bottom: 2px;
+    /* 增加行距 */
+    height: 25px;
+    /* 給予高度避免重疊 */
+}
+
+.ai,
+.ps,
+.id,
+.pro,
+.xd,
+.fig,
+.vs,
+.cod,
+.dw,
+.pr,
+.ae,
+.an,
+.mac,
+.win,
+.ex,
+.wo {
+    position: relative;
+    top: 50%;
+    right: 0px;
+    transform: translateY(-50%);
+    border: 1px solid #ecc561;
+    border-radius: 10px;
+    width: 120px;
+    height: 12px;
+    overflow: hidden;
+    padding: 1px;
+    background-color: #fff;
+    /* 增加背景色區分 */
+}
+
+/* 內層進度條通用樣式 */
+.ais,
+.pss,
+.ids,
+.pros,
+.xds,
+.figs,
+.vss,
+.cods,
+.dws,
+.prs,
+.aes,
+.ans,
+.macs,
+.wins,
+.exs,
+.wos {
+    border: none;
+    background-color: #ecc561;
+    border-radius: 10px;
+    margin: 0;
+    height: 100%;
+    display: block;
+}
+
+/* 各別進度寬度 */
+.ais {
+    width: 85%;
+}
+
+.pss {
+    width: 85%;
+}
+
+.ids {
+    width: 75%;
+}
+
+.pros {
+    width: 75%;
+}
+
+.xds {
+    width: 50%;
+}
+
+.figs {
+    width: 70%;
+}
+
+.vss {
+    width: 75%;
+}
+
+.cods {
+    width: 70%;
+}
+
+.dws {
+    width: 60%;
+}
+
+.prs {
+    width: 60%;
+}
+
+.aes {
+    width: 60%;
+}
+
+.ans {
+    width: 55%;
+}
+
+.macs {
+    width: 55%;
+}
+
+.wins {
+    width: 90%;
+}
+
+.exs {
+    width: 80%;
+}
+
+.wos {
+    width: 90%;
+}

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Pricing | Jekkinoopy's portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* 報價頁面專屬樣式 */
+        .pricing-section {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(236, 197, 97, 0.1);
+            margin-bottom: 50px;
+        }
+
+        .pricing-table thead {
+            background-color: #ecc561;
+            /* 你的主色黃 */
+            color: #fff;
+        }
+
+        .pricing-table th {
+            padding: 20px;
+            text-align: left;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        .pricing-table td {
+            padding: 18px 20px;
+            border-bottom: 1px solid #f9f2e0;
+            color: #666;
+            vertical-align: middle;
+        }
+
+        .pricing-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* 項目名稱加強 */
+        .service-name {
+            font-weight: bold;
+            color: #a65d33;
+            /* 棕色系文字 */
+            width: 30%;
+        }
+
+        .price-tag {
+            font-family: "Ubuntu", sans-serif;
+            color: #ecc561;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .note-text {
+            font-size: 0.85rem;
+            color: #999;
+            line-height: 1.5;
+        }
+
+        /* 響應式調整 */
+        @media (max-width: 600px) {
+            .pricing-table thead {
+                display: none;
+            }
+
+            .pricing-table td {
+                display: block;
+                width: 100% !important;
+                padding: 10px 20px;
+                border: none;
+            }
+
+            .pricing-table td:first-child {
+                padding-top: 20px;
+                background: #fffdf5;
+            }
+
+            .pricing-table tr {
+                border-bottom: 2px solid #f9f2e0;
+                display: block;
+            }
+        }
+
+        /* 底部提醒區 */
+        .pricing-footer {
+            background: #fffdf5;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #ecc561;
+            margin-top: 30px;
+        }
+
+        .pricing-footer h4 {
+            margin-top: 0;
+            color: #a65d33;
+        }
+
+        .pricing-footer ul {
+            padding-left: 20px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="container">
+        <nav class="navbar">
+            <div class="container">
+                <ul class="nav-links">
+                    <li><a href="index.html">About</a></li>
+                    <li><a href="graphic.html">Graphic</a></li>
+                    <li><a href="illustration.html">Illustration</a></li>
+                    <li><a href="web.html">Web</a></li>
+                    <li><a href="#" class="active">Pricing</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        <div class="page-title">
+            <h2>Design Service & Pricing</h2>
+            <p>設計服務與報價參考 / 2026</p>
+        </div>
+
+        <section class="pricing-section">
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th>服務項目</th>
+                        <th>參考報價 (TWD)</th>
+                        <th>服務內容與備註</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="service-name">Logo 設計</td>
+                        <td class="price-tag">$8,000 - $15,000</td>
+                        <td class="note-text">提案 2-3 款，含標準字、標誌規範、配色建議。</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name">商業包裝設計</td>
+                        <td class="price-tag">$6,000 - $12,000</td>
+                        <td class="note-text">依結構複雜度調整，含刀模圖與模擬示意圖。</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name">商業插畫 (Procreate)</td>
+                        <td class="price-tag">$3,000 - $6,000 / 幅</td>
+                        <td class="note-text">精緻角色或場景繪製，依用途分授權費用。</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name">一頁式網頁開發</td>
+                        <td class="price-tag">$12,000 - $25,000</td>
+                        <td class="note-text">HTML5/CSS3/JS 手寫代碼，含 RWD 響應式佈局。</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name">社群推播圖 (Banner)</td>
+                        <td class="price-tag">$800 - $1,500 / 張</td>
+                        <td class="note-text">固定排版長期配合另有折扣。</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name">企業名片設計</td>
+                        <td class="price-tag">$2,000 - $3,500</td>
+                        <td class="note-text">含單/雙面排版，提供發印建議。</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="pricing-footer">
+                <h4><i class="fa-solid fa-circle-info"></i> 合作須知</h4>
+                <ul>
+                    <li>以上報價僅供參考，實際費用將依據需求複雜度與急件程度另行評估。</li>
+                    <li>確認合作後需先行支付 30% - 50% 訂金始開始排程。</li>
+                    <li>每項設計提供 3 次小範圍免費校正，超過需酌收修改費。</li>
+                    <li>如需購買原始檔 (AI/PSD/Project File)，需另計買斷費用。</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <a href="mailto:jekkinoopy@gmail.com" class="contact-email">
+            <small>如有合作意願，歡迎隨時聯繫</small>
+            jekkinoopy@gmail.com
+        </a>
+        <small>&copy; 2026 JEKKINOOPY. All rights reserved.</small>
+    </footer>
+</body>
+
+</html>
