@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Bag 2020 | Jekkinoopy's portfolio</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .work-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin: 30px 0 20px;
+            border-left: 10px solid var(--primary-dark-brown);
+            padding-left: 20px;
+        }
+
+        .work-header h3 {
+            font-size: 2.2rem;
+        }
+
+        .work-header p {
+            color: var(--dark-gray);
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .work-header p i {
+            color: var(--primary-yellow);
+            text-shadow: 0 0 10px rgba(243, 193, 76, 0.45);
+        }
+
+        .switch-hint {
+            color: var(--dark-gray);
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            line-height: 1;
+        }
+
+        .thumb-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+            margin-bottom: 80px;
+        }
+
+        .thumb-item {
+            background: #fff;
+            border: 1px solid #ececec;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .thumb-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+        }
+
+        .thumb-item button {
+            width: 100%;
+            border: 0;
+            background: #f8f8f8;
+            padding: 0;
+            cursor: pointer;
+            display: block;
+        }
+
+        .thumb-media {
+            padding: 10px;
+        }
+
+        .thumb-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+
+        .lightbox.open {
+            display: flex;
+        }
+
+        .lightbox-content {
+            width: min(1000px, 94vw);
+            max-height: 90vh;
+            position: relative;
+        }
+
+        .lightbox img {
+            width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .lightbox-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 0;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .lightbox-btn:hover {
+            background: rgba(255, 255, 255, 0.35);
+        }
+
+        .lightbox-btn.prev {
+            left: -56px;
+        }
+
+        .lightbox-btn.next {
+            right: -56px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -48px;
+            right: 0;
+            border: 0;
+            background: transparent;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .lightbox-index {
+            margin-top: 12px;
+            text-align: center;
+            color: #fff;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 900px) {
+            .lightbox-btn.prev {
+                left: 8px;
+            }
+
+            .lightbox-btn.next {
+                right: 8px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .work-header {
+                display: block;
+            }
+
+            .work-header h3 {
+                font-size: 1.8rem;
+            }
+
+            .thumb-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="container">
+        <nav class="navbar">
+            <div class="container">
+                <ul class="nav-links">
+                    <li><a href="../index.html">About</a></li>
+                    <li class="dropdown">
+                        <a href="../graphic.html">Graphic</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="./logoPkg.html">Logo & 包裝設計</a></li>
+                            <li><a href="./calendarBag2020c.html">桌曆 & 購物袋</a></li>
+                            <li class="downDisabled" data-tooltip="作品建置中"><a href="../stationery.html">名片/卡片/票券/DM</a></li>
+                            <li class="downDisabled" data-tooltip="作品建置中"><a href="../webBanner.html">網站視覺 Banner</a></li>
+                            <li class="downDisabled" data-tooltip="作品建置中"><a href="../socialMedia.html">社群推播圖</a></li>
+                            <li class="downDisabled" data-tooltip="作品建置中"><a href="../largeFormat.html">大圖輸出</a></li>
+                            <li class="downDisabled" data-tooltip="作品建置中"><a href="../editorial.html">書刊</a></li>
+                            <li class="downDisabled" data-tooltip="作品建置中"><a href="../productDetail.html">商品長條圖文</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../illustration.html">Illustration</a></li>
+                    <li class="disabled" data-tooltip="作品建置中"><a href="#">UI/UX</a></li>
+                    <li><a href="../web.html">Web</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        <div class="page-title">
+            <h2>Graphic</h2>
+            <p>Shopping Bag 2020</p>
+        </div>
+
+        <section>
+            <div class="work-header">
+                <h3>2020 購物袋設計</h3>
+                <p><i class="fa-solid fa-lightbulb"></i>點縮圖可開啟燈箱，支援 <span class="switch-hint"><i class="fa-solid fa-chevron-left"></i>左右<i class="fa-solid fa-chevron-right"></i></span> 切換</p>
+            </div>
+            <div class="thumb-grid" id="thumbGrid"></div>
+        </section>
+    </main>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="closeLightbox" aria-label="Close lightbox">&times;</button>
+            <button class="lightbox-btn prev" id="prevImage" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+            <img id="lightboxImage" src="" alt="Shopping bag image">
+            <button class="lightbox-btn next" id="nextImage" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+            <p class="lightbox-index" id="lightboxIndex"></p>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <a href="mailto:jekkinoopy@gmail.com" class="contact-email">
+            <small>如有合作意願，歡迎隨時聯繫 jekkinoopy@gmail.com</small>
+        </a>
+        <small>&copy; 2026 JEKKINOOPY. All rights reserved.</small>
+    </footer>
+
+    <script>
+        const imageNames = [
+            "2020_購物袋_A_春1.jpeg",
+            "2020_購物袋_B_夏2.jpeg",
+            "2020_購物袋_C_秋1.jpeg",
+            "2020_購物袋_D_冬1.jpeg"
+        ];
+
+        const basePath = "../images/graphic/calendarBag/2020b/";
+        const imagePaths = imageNames.map((name) => `${basePath}${name}`);
+
+        const thumbGrid = document.getElementById("thumbGrid");
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightboxImage");
+        const lightboxIndex = document.getElementById("lightboxIndex");
+        let currentIndex = 0;
+
+        function renderThumbs() {
+            imagePaths.forEach((src, index) => {
+                const card = document.createElement("article");
+                card.className = "thumb-item";
+
+                const button = document.createElement("button");
+                button.type = "button";
+                button.addEventListener("click", () => openLightbox(index));
+
+                const media = document.createElement("div");
+                media.className = "thumb-media";
+
+                const img = document.createElement("img");
+                img.src = src;
+                img.alt = imageNames[index];
+                img.loading = "lazy";
+
+                media.appendChild(img);
+                button.appendChild(media);
+                card.appendChild(button);
+                thumbGrid.appendChild(card);
+            });
+        }
+
+        function updateLightbox() {
+            lightboxImage.src = imagePaths[currentIndex];
+            lightboxImage.alt = imageNames[currentIndex];
+            lightboxIndex.textContent = `${currentIndex + 1} / ${imagePaths.length}`;
+        }
+
+        function openLightbox(index) {
+            currentIndex = index;
+            updateLightbox();
+            lightbox.classList.add("open");
+            lightbox.setAttribute("aria-hidden", "false");
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove("open");
+            lightbox.setAttribute("aria-hidden", "true");
+        }
+
+        function showPrev() {
+            currentIndex = (currentIndex - 1 + imagePaths.length) % imagePaths.length;
+            updateLightbox();
+        }
+
+        function showNext() {
+            currentIndex = (currentIndex + 1) % imagePaths.length;
+            updateLightbox();
+        }
+
+        document.getElementById("prevImage").addEventListener("click", showPrev);
+        document.getElementById("nextImage").addEventListener("click", showNext);
+        document.getElementById("closeLightbox").addEventListener("click", closeLightbox);
+
+        lightbox.addEventListener("click", (event) => {
+            if (event.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (!lightbox.classList.contains("open")) return;
+            if (event.key === "ArrowLeft") showPrev();
+            if (event.key === "ArrowRight") showNext();
+            if (event.key === "Escape") closeLightbox();
+        });
+
+        renderThumbs();
+    </script>
+</body>
+
+</html>
