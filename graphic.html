@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="page-inner">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Development | Jekkinoopy's portfolio</title>
+    <title>Graphic | Jekkinoopy's portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -40,8 +40,13 @@
             border-left: 10px solid var(--primary-dark-brown);
         }
 
+        .box:not(.box1) {
+            border-radius: var(--radius-card);
+            overflow: hidden;
+        }
+
         .box1 h3 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             padding-left: 50px;
         }
     </style>
@@ -163,8 +168,7 @@
 
     <footer id="contact">
         <a href="mailto:jekkinoopy@gmail.com" class="contact-email">
-            <small>如有合作意願，歡迎隨時聯繫 </span>
-                jekkinoopy@gmail.com
+            <small>如有合作意願，歡迎隨時聯繫 jekkinoopy@gmail.com</small>
         </a>
         <small>&copy; 2026 JEKKINOOPY. All rights reserved.</small>
     </footer>

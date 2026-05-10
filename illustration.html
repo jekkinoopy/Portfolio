@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="page-inner">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Development | Jekkinoopy's portfolio</title>
+    <title>Illustration | Jekkinoopy's portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -105,6 +105,11 @@
                 margin-top: 32px;
             }
         }
+
+        .nav-links a.active {
+            border-bottom: 3px solid var(--primary-yellow);
+            padding-bottom: 4px;
+        }
     </style>
 </head>
 
@@ -127,7 +132,7 @@
                             <li class="downDisabled" data-tooltip="作品建置中"><a href="productDetail.html">商品長條圖文</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Illustration</a></li>
+                    <li><a href="illustration.html" class="active">Illustration</a></li>
                     <!-- <li class="disabled" data-tooltip="作品建置中"><a href="#">Video</a></li> -->
                     <li class="disabled" data-tooltip="作品建置中"><a href="#">UI/UX</a></li>
                     <li><a href="web.html">Web</a></li>
@@ -454,8 +459,8 @@
 
     <footer id="contact">
         <a href="mailto:jekkinoopy@gmail.com" class="contact-email">
-            <small>如有合作意願，歡迎隨時聯繫 </span>
-                jekkinoopy@gmail.com
+            <small>如有合作意願，歡迎隨時聯繫</small>
+            jekkinoopy@gmail.com
         </a>
         <small>&copy; 2026 JEKKINOOPY. All rights reserved.</small>
     </footer>
