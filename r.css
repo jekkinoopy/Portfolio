@@ -234,6 +234,39 @@ p {
     /* 由 HTML 內 style 控制 */
 }
 
+/* --- iPad / 平板 --- */
+@media (min-width: 769px) and (max-width: 1024px) {
+    body {
+        padding: 24px 0;
+    }
+
+    .resume-header {
+        height: 250px;
+    }
+
+    .Me img {
+        width: min(300px, 38vw);
+        right: -24px;
+        top: -30px;
+    }
+
+    .deco1 {
+        left: min(200px, 28vw);
+    }
+
+    .resume h1 {
+        font-size: 2.5rem;
+    }
+
+    h1.fn {
+        left: 20%;
+    }
+
+    h1.ln {
+        left: 42%;
+    }
+}
+
 /* --- 手機版自適應 --- */
 @media (max-width: 768px) {
     .resume-header {

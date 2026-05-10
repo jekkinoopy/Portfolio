@@ -157,6 +157,56 @@
             color: #ccc;
             margin-top: 30px;
         }
+
+        @media (max-width: 1024px) {
+            body {
+                padding: 24px 16px;
+            }
+
+            .canvas {
+                width: 100%;
+                max-width: 800px;
+                padding: 36px 24px;
+            }
+
+            .top-right-box {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-bottom: 24px;
+                font-size: 0.75rem;
+            }
+
+            .header-section {
+                margin-bottom: 48px;
+            }
+
+            .main-title {
+                font-size: clamp(2.5rem, 12vw, 5rem);
+            }
+
+            .sub-title-cn {
+                font-size: clamp(1.5rem, 6vw, 3rem);
+                top: auto;
+                left: auto;
+                position: relative;
+                margin-top: 12px;
+            }
+
+            .slogan {
+                font-size: 1.2rem;
+                margin: 28px 0;
+            }
+
+            .price-list td {
+                padding: 16px 14px;
+            }
+
+            .item-name,
+            .item-price {
+                font-size: clamp(1rem, 2.8vw, 1.35rem);
+            }
+        }
     </style>
 </head>
 
