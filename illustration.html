@@ -12,15 +12,16 @@
         .illustration-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            align-items: stretch;
             gap: 60px 40px;
             /* 上下間距大一點，預留給位移空間 */
             padding: 40px 0;
         }
 
-        /* 作品卡片 */
+        /* 作品卡片（同一列欄寬一致 + 正方形圖框 → 視覺列高一致） */
         .illus-item {
             width: 100%;
-            /* 強制卡片撐滿網格欄位 */
+            height: 100%;
             display: flex;
             flex-direction: column;
         }

@@ -8,41 +8,9 @@
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        table {
-            width: 100%;
-            /* height: 300px; */
-            border-collapse: collapse;
-            /* 或至少把 border-spacing 歸零 */
-            table-layout: fixed;
-            /* 每欄平均分配 */
-        }
-
-        td {
-            padding: 20px;
-            height: 220px;
-            overflow: hidden;
-        }
-
-        .box {
-            width: 100%;
-            height: 100%;
-        }
-
-        td img {
-            width: 100%;
-            height: 100%;
-            display: block;
-            object-fit: cover;
-        }
-
         .box1 {
             height: fit-content;
             border-left: 10px solid var(--primary-dark-brown);
-        }
-
-        .box:not(.box1) {
-            border-radius: var(--radius-card);
-            overflow: hidden;
         }
 
         .box1 h3 {
@@ -90,8 +58,7 @@
             <h2>Graphic</h2>
             <p>2018-</p>
         </div>
-        <table>
-
+        <table class="graphic-table graphic-table--strip graphic-table--section-logo">
             <tr>
                 <td>
                     <div class="box box1">
@@ -100,47 +67,46 @@
                 </td>
             </tr>
         </table>
-        <table>
+        <table class="graphic-table graphic-table--mosaic graphic-table--logo-row-3" aria-label="Logo 作品集 第一列">
             <tr>
                 <td>
-                    <div class="box box2"><img src="../images/graphic/logoPkg/001.jpg"></div>
+                    <div class="box box2"><img src="../images/graphic/logoPkg/001.jpg" alt=""></div>
                 </td>
                 <td>
-                    <div class="box box7"><img src="../images/graphic/logoPkg/008.jpg"></div>
+                    <div class="box box7"><img src="../images/graphic/logoPkg/008.jpg" alt=""></div>
                 </td>
                 <td>
-                    <div class="box box3"><img src="../images/graphic/logoPkg/010.jpg"></div>
+                    <div class="box box3"><img src="../images/graphic/logoPkg/010.jpg" alt=""></div>
                 </td>
             </tr>
         </table>
-        <table>
+        <table class="graphic-table graphic-table--mosaic graphic-table--ratio-1-2-1" aria-label="Logo 作品集 第二列">
             <tr>
-                <td style="width: 25% " ;>
-                    <div class=" box box4"><img src="../images/graphic/logoPkg/003.jpg"></div>
+                <td>
+                    <div class="box box4"><img src="../images/graphic/logoPkg/003.jpg" alt=""></div>
                 </td>
-                <td style="width: 50%" ;>
-                    <div class=" box box6"><img src=" ../images/graphic/logoPkg/005.jpg">
-                    </div>
+                <td>
+                    <div class="box box6"><img src="../images/graphic/logoPkg/005.jpg" alt=""></div>
                 </td>
-                <td style="width: 25%;">
-                    <div class="box box5"><img src="../images/graphic/logoPkg/004.jpg"></div>
+                <td>
+                    <div class="box box5"><img src="../images/graphic/logoPkg/004.jpg" alt=""></div>
                 </td>
             </tr>
         </table>
 
-        <table>
+        <table class="graphic-table graphic-table--mosaic graphic-table--logo-row-4" aria-label="Logo 作品集 第三列">
             <tr>
                 <td>
-                    <div class="box box9"><img src="../images/graphic/logoPkg/006.jpg"></div>
+                    <div class="box box9"><img src="../images/graphic/logoPkg/006.jpg" alt=""></div>
                 </td>
                 <td>
-                    <div class="box box10"><img src="../images/graphic/logoPkg/007.jpg"></div>
+                    <div class="box box10"><img src="../images/graphic/logoPkg/007.jpg" alt=""></div>
                 </td>
                 <td>
-                    <div class="box box3"><img src="../images/graphic/logoPkg/002.jpg"></div>
+                    <div class="box box-inner-002"><img src="../images/graphic/logoPkg/002.jpg" alt=""></div>
                 </td>
                 <td>
-                    <div class="box box8"><img src="../images/graphic/logoPkg/009.jpg"></div>
+                    <div class="box box8"><img src="../images/graphic/logoPkg/009.jpg" alt=""></div>
                 </td>
             </tr>
         </table>

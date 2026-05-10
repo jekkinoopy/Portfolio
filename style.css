@@ -13,7 +13,153 @@
     /* 與 web.html 一致：卡片 .portfolio-item、膠囊 .tag */
     --radius-card: 20px;
     --radius-pill: 50px;
+    /* Graphic 拼貼、桌曆縮圖網格等：統一圖與圖之間間距 */
+    --graphic-media-gap: 18px;
+    /* 區塊小標（左直條）與下方圖庫的距離 */
+    --graphic-title-gap: 10px;
+    /* 馬賽克同一列：強制圖片顯示高度一致，寬度隨比例伸縮 */
+    --graphic-mosaic-img-h: clamp(152px, 24vw, 280px);
     font-size: 16px;
+}
+
+/* Graphic index / Logo 包裝：表格作品集（graphic.html、graphic/logoPkg.html） */
+.graphic-table {
+    width: 100%;
+}
+
+.graphic-table--strip {
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: var(--graphic-title-gap);
+}
+
+.graphic-table--strip td {
+    padding: 0;
+    vertical-align: bottom;
+}
+
+/*
+ * 馬賽克：tbody Grid + tr display:contents（等同 table 固定欄寬比例）。
+ * 第一列兩欄 1:1、第二列三欄 1:1:1（欄寬用 fr 比例，非依圖片寬亂排）。
+ * 未強制方形；同一列僅統一「顯示高度」--graphic-mosaic-img-h，圖片寬度隨原圖比例。
+ */
+.graphic-table--mosaic {
+    display: block;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 0;
+}
+
+.graphic-table--mosaic tbody {
+    display: grid;
+    gap: var(--graphic-media-gap);
+    align-items: center;
+}
+
+.graphic-table--mosaic tr {
+    display: contents;
+}
+
+.graphic-table--mosaic td {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 0;
+    padding: 0;
+}
+
+.graphic-table--logo-row-2 tbody {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.graphic-table--logo-row-3 tbody {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.graphic-table--logo-row-4 tbody {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.graphic-table--calendar-preview tbody {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.graphic-table--ratio-1-2-1 tbody {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
+}
+
+/* 兩張拼貼表上下相接時，留白與格線 gap 同級 */
+.graphic-table--mosaic + .graphic-table--mosaic {
+    margin-top: var(--graphic-media-gap);
+}
+
+.graphic-table--mosaic .box {
+    box-sizing: border-box;
+}
+
+/* 欄等寬 + box 等高（--graphic-mosaic-img-h），圖用 cover 從中心做最小裁切，
+ * 如此「不管幾張、上下高度都一致、欄寬平均」。 */
+.graphic-table--mosaic .box:not(.box1) {
+    width: 100%;
+    height: var(--graphic-mosaic-img-h);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    background: var(--bg-light);
+}
+
+.graphic-table--mosaic .box > a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.graphic-table--mosaic td img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.graphic-table--strip + .graphic-table--mosaic {
+    margin-top: 0;
+}
+
+/* 不同主題區塊之間（上一組圖庫 → 下一個小標） */
+.graphic-table--mosaic + .graphic-table--strip {
+    margin-top: calc(var(--graphic-media-gap) * 2.25);
+}
+
+@media (max-width: 1024px) {
+    :root {
+        --graphic-mosaic-img-h: clamp(138px, 34vw, 248px);
+    }
+
+    .graphic-table--logo-row-2 tbody,
+    .graphic-table--logo-row-3 tbody,
+    .graphic-table--logo-row-4 tbody,
+    .graphic-table--ratio-1-2-1 tbody,
+    .graphic-table--calendar-preview tbody {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* 三板：第三格另起一排，整列寬置中於「半欄寬」維持與其他卡片同尺寸 */
+    .graphic-table--mosaic tbody > tr > td:last-child:nth-child(3) {
+        grid-column: 1 / -1;
+    }
+
+    .graphic-table--mosaic tbody > tr > td:last-child:nth-child(3) .box:not(.box1) {
+        max-width: calc(50% - var(--graphic-media-gap) / 2);
+        margin-inline: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .graphic-table--mosaic tbody {
+        gap: max(12px, var(--graphic-media-gap));
+    }
 }
 
 /* 內頁：與首頁共用樣式但略縮小 rem 基準（首頁 index 的 <html> 不加 .page-inner） */
@@ -625,25 +771,25 @@ footer {
         margin: 0 auto;
     }
 
-    /* graphic / web 等以 table 排版的頁面：改為單欄堆疊 */
-    main.main-container > table {
+    /* graphic / web 等以 table 排版的頁面：改為單欄堆疊（Graphic 馬賽克除外，見 .graphic-table--mosaic） */
+    main.main-container > table:not(.graphic-table) {
         width: 100% !important;
         display: block;
     }
 
-    main.main-container > table tbody,
-    main.main-container > table thead {
+    main.main-container > table:not(.graphic-table) tbody,
+    main.main-container > table:not(.graphic-table) thead {
         display: block;
         width: 100%;
     }
 
-    main.main-container > table tr {
+    main.main-container > table:not(.graphic-table) tr {
         display: block;
         width: 100%;
     }
 
-    main.main-container > table td,
-    main.main-container > table th {
+    main.main-container > table:not(.graphic-table) td,
+    main.main-container > table:not(.graphic-table) th {
         display: block;
         width: 100% !important;
         height: auto !important;
