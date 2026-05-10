@@ -8,19 +8,25 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* 報價頁面專屬樣式 */
+        /* 報價頁面專屬樣式（字體與全站 Noto Serif TC 一致） */
         .pricing-section {
+            font-family: "Noto Serif TC", serif;
             max-width: 900px;
             margin: 40px auto;
             padding: 0 20px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         .pricing-table {
-            width: 100%;
+            width: max-content;
+            max-width: none;
+            margin-inline: auto;
+            table-layout: auto;
             border-collapse: separate;
             border-spacing: 0;
             background: #fff;
-            border-radius: 20px;
+            border-radius: var(--radius-card);
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(236, 197, 97, 0.1);
             margin-bottom: 50px;
@@ -37,6 +43,7 @@
             text-align: left;
             font-size: 1.1rem;
             letter-spacing: 1px;
+            white-space: nowrap;
         }
 
         .pricing-table td {
@@ -44,31 +51,81 @@
             border-bottom: 1px solid #f9f2e0;
             color: #666;
             vertical-align: middle;
+            white-space: nowrap;
         }
 
         .pricing-table tr:last-child td {
             border-bottom: none;
         }
 
-        /* 項目名稱加強 */
+        /* 項目名稱：勿對 td 設 flex，會破壞表格欄寬 → 內層 .service-name-row 排版 */
         .service-name {
             font-weight: bold;
             color: #a65d33;
-            /* 棕色系文字 */
-            width: 30%;
+            vertical-align: middle;
+        }
+
+        .service-name-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            min-width: 0;
+        }
+
+        /* 品項名稱 + 字後外開圖示，整段可點 */
+        .work-sample-link {
+            display: inline-flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            gap: 0.4rem;
+            line-height: 1.35;
+            color: inherit;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+
+        .work-sample-link span {
+            flex: 0 0 auto;
+            line-height: inherit;
+        }
+
+        .work-sample-link::after {
+            content: "\f35d";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            font-size: 0.6rem;
+            /* 與 span 同一套行高，flex 交叉軸才能與中文對齊；FA 字形略偏下再微調 */
+            line-height: inherit;
+            flex-shrink: 0;
+            position: relative;
+            top: calc(3px - 0.06em);
+            color: currentColor;
+            opacity: 0.92;
+        }
+
+        .service-name .work-sample-link:hover,
+        .service-name .work-sample-link:focus-visible {
+            color: #7a4528;
         }
 
         .price-tag {
-            font-family: "Ubuntu", sans-serif;
-            color: #ecc561;
-            font-weight: bold;
-            font-size: 1.1rem;
+            font-family: inherit;
+            color: #c9a227;
+            font-weight: 800;
+            font-size: 1.05rem;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
         }
 
         .note-text {
             font-size: 0.85rem;
             color: #999;
             line-height: 1.5;
+        }
+
+        .work-sample-link:focus-visible {
+            outline: 2px solid #ecc561;
+            outline-offset: 2px;
         }
 
         /* iPad / 平板 */
@@ -91,8 +148,17 @@
 
         /* 響應式調整 */
         @media (max-width: 600px) {
+            .pricing-table {
+                width: 100%;
+                min-width: 0;
+            }
+
             .pricing-table thead {
                 display: none;
+            }
+
+            .pricing-table th {
+                white-space: normal;
             }
 
             .pricing-table td {
@@ -100,6 +166,7 @@
                 width: 100% !important;
                 padding: 10px 20px;
                 border: none;
+                white-space: normal;
             }
 
             .pricing-table td:first-child {
@@ -111,13 +178,26 @@
                 border-bottom: 2px solid #f9f2e0;
                 display: block;
             }
+
+            .service-name-row {
+                flex-wrap: wrap;
+            }
+
+            .work-sample-link {
+                flex-wrap: wrap;
+                max-width: 100%;
+            }
+
+            .price-tag {
+                white-space: normal;
+            }
         }
 
         /* 底部提醒區 */
         .pricing-footer {
             background: #fffdf5;
             padding: 30px;
-            border-radius: 15px;
+            border-radius: var(--radius-card);
             border-left: 5px solid #ecc561;
             margin-top: 30px;
         }
@@ -167,32 +247,67 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="service-name">Logo 設計</td>
+                        <td class="service-name">
+                            <div class="service-name-row">
+                                <a href="graphic/logoPkg.html" class="work-sample-link" target="_blank"
+                                    rel="noopener noreferrer" title="另開新分頁：Logo & 包裝作品"
+                                    aria-label="另開新分頁瀏覽 Logo 與包裝作品"><span>Logo 設計</span></a>
+                            </div>
+                        </td>
                         <td class="price-tag">$8,000 - $15,000</td>
                         <td class="note-text">提案 2-3 款，含標準字、標誌規範、配色建議。</td>
                     </tr>
                     <tr>
-                        <td class="service-name">商業包裝設計</td>
+                        <td class="service-name">
+                            <div class="service-name-row">
+                                <a href="graphic/logoPkg.html" class="work-sample-link" target="_blank"
+                                    rel="noopener noreferrer" title="另開新分頁：包裝相關作品"
+                                    aria-label="另開新分頁瀏覽 Logo 與包裝作品"><span>商業包裝設計</span></a>
+                            </div>
+                        </td>
                         <td class="price-tag">$6,000 - $12,000</td>
                         <td class="note-text">依結構複雜度調整，含刀模圖與模擬示意圖。</td>
                     </tr>
                     <tr>
-                        <td class="service-name">商業插畫 (Procreate)</td>
+                        <td class="service-name">
+                            <div class="service-name-row">
+                                <a href="illustration.html" class="work-sample-link" target="_blank"
+                                    rel="noopener noreferrer" title="另開新分頁：插畫作品集" aria-label="另開新分頁瀏覽插畫作品"><span>商業插畫
+                                        (Procreate)</span></a>
+                            </div>
+                        </td>
                         <td class="price-tag">$3,000 - $6,000 / 幅</td>
                         <td class="note-text">精緻角色或場景繪製，依用途分授權費用。</td>
                     </tr>
                     <tr>
-                        <td class="service-name">一頁式網頁開發</td>
+                        <td class="service-name">
+                            <div class="service-name-row">
+                                <a href="web.html" class="work-sample-link" target="_blank" rel="noopener noreferrer"
+                                    title="另開新分頁：網頁作品" aria-label="另開新分頁瀏覽 Web 作品"><span>一頁式網頁開發</span></a>
+                            </div>
+                        </td>
                         <td class="price-tag">$12,000 - $25,000</td>
                         <td class="note-text">HTML5/CSS3/JS 手寫代碼，含 RWD 響應式佈局。</td>
                     </tr>
                     <tr>
-                        <td class="service-name">社群推播圖 (Banner)</td>
+                        <td class="service-name">
+                            <div class="service-name-row">
+                                <a href="graphic.html" class="work-sample-link" target="_blank"
+                                    rel="noopener noreferrer" title="另開新分頁：平面作品總覽"
+                                    aria-label="另開新分頁瀏覽 Graphic 作品"><span>社群推播圖 (Banner)</span></a>
+                            </div>
+                        </td>
                         <td class="price-tag">$800 - $1,500 / 張</td>
                         <td class="note-text">固定排版長期配合另有折扣。</td>
                     </tr>
                     <tr>
-                        <td class="service-name">企業名片設計</td>
+                        <td class="service-name">
+                            <div class="service-name-row">
+                                <a href="graphic.html" class="work-sample-link" target="_blank"
+                                    rel="noopener noreferrer" title="另開新分頁：平面作品總覽"
+                                    aria-label="另開新分頁瀏覽 Graphic 作品"><span>企業名片設計</span></a>
+                            </div>
+                        </td>
                         <td class="price-tag">$2,000 - $3,500</td>
                         <td class="note-text">含單/雙面排版，提供發印建議。</td>
                     </tr>

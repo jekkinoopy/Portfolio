@@ -4,6 +4,8 @@
     --text-main: #555;
     --text-light: #808080;
     --bg-card: #fffef4;
+    --radius-card: 20px;
+    --radius-pill: 50px;
 }
 
 * {
@@ -139,7 +141,7 @@ p {
     padding: 8px 0 8px 18px;
     position: relative;
     border-left: 6px solid var(--primary-color);
-    border-radius: 10px;
+    border-radius: var(--radius-card);
 }
 
 .exp-item h3 span {
@@ -231,7 +233,7 @@ p {
     width: 104px;
     height: 104px;
     border: 2px solid #eee;
-    border-radius: 8px;
+    border-radius: var(--radius-card);
     display: block;
     background: #fff;
 }
@@ -252,7 +254,7 @@ p {
     margin-left: 20px;
     padding: 6px 0 2px 12px;
     border-left: 3px solid rgba(236, 197, 97, 0.55);
-    border-radius: 6px;
+    border-radius: var(--radius-card);
     /* 比 exp-item 更細的左邊框，保留層級差異 */
 }
 
@@ -275,7 +277,7 @@ p {
     flex: 1;
     height: 10px;
     background: #eee;
-    border-radius: 10px;
+    border-radius: var(--radius-pill);
     border: 1px solid var(--primary-color);
     overflow: hidden;
     position: relative;

@@ -10,6 +10,9 @@
     --black: #333333;
     --bg-light: #f9f9f9;
     --white: #f1f1f1;
+    /* 與 web.html 一致：卡片 .portfolio-item、膠囊 .tag */
+    --radius-card: 20px;
+    --radius-pill: 50px;
     font-size: 16px;
 }
 
@@ -103,7 +106,7 @@ header {
     /* 使用你的主色黃 #FFDD00 讓文字明顯 */
     margin-top: 10px;
     padding: 6px 12px;
-    border-radius: 30px;
+    border-radius: var(--radius-pill);
     font-size: 1rem;
     white-space: nowrap;
     z-index: 100;
@@ -145,7 +148,7 @@ header {
     list-style: none;
     min-width: 180px;
     padding: 10px 0;
-    border-radius: 8px;
+    border-radius: var(--radius-card);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--light-yellow);
 
@@ -213,7 +216,7 @@ header {
     /* 使用你的主色黃 #FFDD00 讓文字明顯 */
     margin-top: 10px;
     padding: 6px 12px;
-    border-radius: 30px;
+    border-radius: var(--radius-pill);
     font-size: 1rem;
     white-space: nowrap;
     z-index: 100;
@@ -339,6 +342,7 @@ header {
     background: var(--bg-light);
     height: 400px;
     overflow: hidden;
+    border-radius: var(--radius-card);
     /* border: 1px solid #eee; */
     transition: transform 0.4s ease;
 }
@@ -407,7 +411,7 @@ header {
     height: 6px;
     background: var(--primary-yellow);
     margin: 10px auto 0;
-    border-radius: 10px;
+    border-radius: var(--radius-pill);
 }
 
 .page-title p {
@@ -428,7 +432,7 @@ header {
 .portfolio-item {
     background: #fff;
     /* 或 var(--card-bg) */
-    border-radius: 20px;
+    border-radius: var(--radius-card);
     overflow: hidden;
     vertical-align: top;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
@@ -456,7 +460,7 @@ header {
     background: var(--primary-yellow);
     color: #fff;
     padding: 4px 12px;
-    border-radius: 50px;
+    border-radius: var(--radius-pill);
     font-size: 0.75rem;
     font-weight: bold;
 }

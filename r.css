@@ -4,6 +4,8 @@
     --text-main: #555;
     --text-light: #808080;
     --bg-card: #fffef4;
+    --radius-card: 20px;
+    --radius-pill: 50px;
 }
 
 * {
@@ -139,7 +141,7 @@ p {
     padding-left: 20px;
     position: relative;
     border-left: 6px solid var(--primary-color);
-    border-radius: 10px;
+    border-radius: var(--radius-card);
 }
 
 .exp-item h3 span {
@@ -217,7 +219,7 @@ p {
     flex: 1;
     height: 10px;
     background: #eee;
-    border-radius: 10px;
+    border-radius: var(--radius-pill);
     border: 1px solid var(--primary-color);
     overflow: hidden;
     position: relative;

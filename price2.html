@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Price List | Jekkinoopy Design Studio</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
@@ -22,6 +25,7 @@
             padding: 40px 20px;
             display: flex;
             justify-content: center;
+            font-family: "Noto Serif TC", serif;
         }
 
         .canvas {
@@ -58,7 +62,7 @@
             align-items: center;
             background: rgba(255, 236, 179, 0.3);
             padding: 15px;
-            border-radius: 4px;
+            border-radius: var(--radius-card);
         }
 
         .services-list {
@@ -110,7 +114,16 @@
         /* 表格區 */
         .price-list {
             width: 100%;
+            table-layout: fixed;
             border-collapse: collapse;
+        }
+
+        .price-list col.item {
+            width: 58%;
+        }
+
+        .price-list col.money {
+            width: 42%;
         }
 
         .price-list tr:nth-child(odd) {
@@ -124,13 +137,63 @@
 
         .item-name {
             font-size: 1.4rem;
-            width: 40%;
+            vertical-align: middle;
+        }
+
+        .item-name-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            min-width: 0;
+        }
+
+        .work-sample-link {
+            display: inline-flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            max-width: 100%;
+            min-width: 0;
+            line-height: 1.35;
+            color: inherit;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+
+        .work-sample-link span {
+            flex: 0 1 auto;
+            min-width: 0;
+            line-height: inherit;
+        }
+
+        .work-sample-link::after {
+            content: "\f35d";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            font-size: 0.88rem;
+            line-height: inherit;
+            flex-shrink: 0;
+            position: relative;
+            top: calc(2px - 0.05em);
+            color: currentColor;
+            opacity: 0.92;
+        }
+
+        .item-name .work-sample-link:hover,
+        .item-name .work-sample-link:focus-visible {
+            color: #a65d33;
+        }
+
+        .work-sample-link:focus-visible {
+            outline: 2px solid #ecc561;
+            outline-offset: 2px;
         }
 
         .item-price {
             font-size: 1.4rem;
             text-align: right;
             font-weight: bold;
+            white-space: nowrap;
         }
 
         /* 備註區 */
@@ -206,6 +269,14 @@
             .item-price {
                 font-size: clamp(1rem, 2.8vw, 1.35rem);
             }
+
+            .item-price {
+                white-space: normal;
+            }
+
+            .item-name-row {
+                flex-wrap: wrap;
+            }
         }
     </style>
 </head>
@@ -238,32 +309,64 @@
         <div class="slogan">Design that feels gentle and real.</div>
 
         <table class="price-list">
+            <colgroup>
+                <col class="item">
+                <col class="money">
+            </colgroup>
             <tr>
-                <td class="item-name">商品白底圖</td>
+                <td class="item-name">
+                    <div class="item-name-row">
+                        <a href="graphic.html" class="work-sample-link" target="_blank" rel="noopener noreferrer" title="另開新分頁：平面作品" aria-label="另開新分頁瀏覽 Graphic 作品"><span>商品白底圖</span></a>
+                    </div>
+                </td>
                 <td class="item-price">$600 / 張</td>
             </tr>
             <tr>
-                <td class="item-name">商品情境圖</td>
+                <td class="item-name">
+                    <div class="item-name-row">
+                        <a href="graphic.html" class="work-sample-link" target="_blank" rel="noopener noreferrer" title="另開新分頁：平面作品" aria-label="另開新分頁瀏覽 Graphic 作品"><span>商品情境圖</span></a>
+                    </div>
+                </td>
                 <td class="item-price">$800 / 張</td>
             </tr>
             <tr>
-                <td class="item-name">DM 海報</td>
+                <td class="item-name">
+                    <div class="item-name-row">
+                        <a href="graphic.html" class="work-sample-link" target="_blank" rel="noopener noreferrer" title="另開新分頁：平面作品" aria-label="另開新分頁瀏覽 Graphic 作品"><span>DM 海報</span></a>
+                    </div>
+                </td>
                 <td class="item-price">$1,500 起 / 依尺寸</td>
             </tr>
             <tr>
-                <td class="item-name">名片</td>
+                <td class="item-name">
+                    <div class="item-name-row">
+                        <a href="graphic.html" class="work-sample-link" target="_blank" rel="noopener noreferrer" title="另開新分頁：平面作品" aria-label="另開新分頁瀏覽 Graphic 作品"><span>名片</span></a>
+                    </div>
+                </td>
                 <td class="item-price">$2,000 ~ 5,000 / 雙面</td>
             </tr>
             <tr>
-                <td class="item-name">banner</td>
+                <td class="item-name">
+                    <div class="item-name-row">
+                        <a href="web.html" class="work-sample-link" target="_blank" rel="noopener noreferrer" title="另開新分頁：網頁作品" aria-label="另開新分頁瀏覽 Web 作品"><span>banner</span></a>
+                    </div>
+                </td>
                 <td class="item-price">$800 ~ 1,500 / 張</td>
             </tr>
             <tr>
-                <td class="item-name">產品包裝</td>
+                <td class="item-name">
+                    <div class="item-name-row">
+                        <a href="graphic/logoPkg.html" class="work-sample-link" target="_blank" rel="noopener noreferrer" title="另開新分頁：Logo & 包裝" aria-label="另開新分頁瀏覽 Logo 與包裝設計"><span>產品包裝</span></a>
+                    </div>
+                </td>
                 <td class="item-price">$5,000 ~ 30,000 / 依類型</td>
             </tr>
             <tr>
-                <td class="item-name">UI / UX</td>
+                <td class="item-name">
+                    <div class="item-name-row">
+                        <a href="web.html" class="work-sample-link" target="_blank" rel="noopener noreferrer" title="另開新分頁：網頁作品" aria-label="另開新分頁瀏覽 Web 作品"><span>UI / UX</span></a>
+                    </div>
+                </td>
                 <td class="item-price">
                     單頁 $2,000 ~ 8,500<br>
                     整案 $20,000 起
