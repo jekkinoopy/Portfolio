@@ -8,7 +8,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
@@ -17,103 +18,206 @@
             --soft-yellow: #ffecb3;
             --text-gray: #555;
             --accent-gray: #4a4a4a;
+            --info-card-bg: linear-gradient(160deg, rgba(255, 254, 250, 0.98) 0%, rgba(255, 249, 236, 0.96) 45%, rgba(255, 244, 226, 0.94) 100%);
+            --info-card-border: rgba(166, 93, 51, 0.16);
+            --info-card-shadow: 0 1px 0 rgba(255, 255, 255, 0.85) inset, 0 10px 28px rgba(166, 93, 51, 0.07), 0 2px 8px rgba(0, 0, 0, 0.04);
+            --info-accent: rgba(236, 197, 97, 0.55);
+        }
+
+        html {
+            overflow-x: hidden;
         }
 
         body {
-            background-color: #fdfcf8;
             margin: 0;
-            padding: 40px 20px;
+            padding: 14px 16px 18px;
+            box-sizing: border-box;
+            min-height: 100dvh;
+            overflow-x: hidden;
+            overflow-y: auto;
+            background-color: #fdfcf8;
             display: flex;
             justify-content: center;
+            align-items: flex-start;
             font-family: "Noto Serif TC", serif;
         }
 
         .canvas {
-            width: 800px;
-            background: #fff;
-            position: relative;
-            padding: 60px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            /* 背景裝飾色塊 */
+            width: 700px;
+            max-width: 100%;
             background:
                 linear-gradient(135deg, var(--warm-yellow) 10%, transparent 10%) 0 0,
-                linear-gradient(225deg, var(--warm-yellow) 10%, transparent 10%) 100% 0;
+                linear-gradient(225deg, var(--warm-yellow) 10%, transparent 10%) 100% 0,
+                #fff;
             background-size: 100% 100%;
             background-repeat: no-repeat;
+            position: relative;
+            padding: 24px 38px 22px;
+            box-sizing: border-box;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         }
 
-        /* 右上角資訊區 */
+        /* 右上角：四項 2×2；信箱在 QR 下方但不限寬、不強制斷字 */
         .top-right-box {
             position: absolute;
-            top: 40px;
-            right: 40px;
+            top: 30px;
+            right: 36px;
             text-align: left;
             font-size: 0.8rem;
+            max-width: min(340px, calc(100% - 48px));
         }
 
         .studio-name {
             letter-spacing: 2px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            color: var(--accent-gray);
         }
 
         .info-card {
             display: flex;
-            gap: 15px;
-            align-items: center;
-            background: rgba(255, 236, 179, 0.3);
-            padding: 15px;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0;
+            background: var(--info-card-bg);
+            border: 1px solid var(--info-card-border);
             border-radius: var(--radius-card);
+            box-shadow: var(--info-card-shadow);
+            padding: 14px 16px 12px;
+            overflow: hidden;
+        }
+
+        .info-card-row {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
         }
 
         .services-list {
             list-style: none;
             padding: 0;
             margin: 0;
-            border-left: 1px solid var(--text-gray);
-            padding-left: 10px;
-            line-height: 1.8;
+            margin-left: 2px;
+            padding-left: 12px;
+            border-left: 2px solid var(--info-accent);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 12px;
+            row-gap: 6px;
+            line-height: 1.3;
+            font-size: 0.78rem;
+            color: #4a4038;
+        }
+
+        .services-list li {
+            white-space: nowrap;
+            font-weight: 500;
+            letter-spacing: 0.02em;
         }
 
         .qr-placeholder {
-            width: 60px;
-            height: 60px;
+            flex-shrink: 0;
+            width: 54px;
+            height: 54px;
+            padding: 3px;
             background: #fff;
-            border: 1px solid #ddd;
+            border: 1px solid rgba(166, 93, 51, 0.12);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(166, 93, 51, 0.08);
         }
 
-        /* 標題區 */
+        .qr-placeholder img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+
+        .top-right-email {
+            margin: 0;
+            margin-top: 8px;
+            padding-top: 10px;
+            font-size: 0.74rem;
+            line-height: 1.4;
+            text-align: right;
+            white-space: nowrap;
+            color: #5c5348;
+        }
+
+        .top-right-email i {
+            margin-right: 5px;
+            color: #a65d33;
+            opacity: 0.9;
+        }
+
+        /* 標題區：中文水印僅與英文大標交錯，不壓灰條與下方說明 */
         .header-section {
-            margin-top: 20px;
-            margin-bottom: 80px;
+            position: relative;
+            margin-top: 8px;
+            margin-bottom: 10px;
+            padding-right: 230px;
+            /* 預留右上角卡片高度，避免壓到表格第一列 */
+            min-height: 186px;
         }
 
-        .main-title {
-            font-size: 5rem;
+        .title-stack {
+            position: relative;
+            display: inline-block;
+            max-width: 100%;
+        }
+
+        .title-stack .main-title {
+            position: relative;
+            z-index: 1;
+            font-size: 3rem;
             color: var(--accent-gray);
             margin: 0;
-            line-height: 0.8;
+            line-height: 0.92;
+            font-weight: 700;
         }
 
-        .sub-title-cn {
-            font-size: 3rem;
-            color: rgba(0, 0, 0, 0.05);
-            font-weight: bold;
+        .title-stack .sub-title-cn {
             position: absolute;
-            top: 110px;
-            left: 80px;
+            top: 114%;
+            left: 7.2rem;
+            transform: translateY(-52%);
+            z-index: 0;
+            pointer-events: none;
+            font-size: 2.55rem;
+            color: rgba(0, 0, 0, 0.06);
+            font-weight: bold;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .header-accent-bar {
+            width: 88px;
+            height: 8px;
+            background: #4a4a4a;
+            margin-top: 10px;
         }
 
         .slogan {
-            font-size: 1.5rem;
+            font-size: 0.92rem;
+            font-weight: 400;
             color: var(--text-gray);
-            text-align: center;
-            margin: 40px 0;
-            letter-spacing: 2px;
+            text-align: left;
+            margin: 10px 0 0;
+            margin-left: 2px;
+            padding-top: 8px;
+            padding-left: 12px;
+            border-left: 2px solid rgba(74, 74, 74, 0.18);
+            letter-spacing: 0.04em;
+            line-height: 1.5;
+            max-width: min(22rem, 100%);
         }
 
         /* 表格區 */
         .price-list {
             width: 100%;
+            margin-top: 8px;
             table-layout: fixed;
             border-collapse: collapse;
         }
@@ -131,13 +235,15 @@
         }
 
         .price-list td {
-            padding: 20px;
+            padding: 8px 14px;
             color: var(--text-gray);
         }
 
         .item-name {
-            font-size: 1.4rem;
+            font-size: 1rem;
+            font-weight: 500;
             vertical-align: middle;
+            line-height: 1.5;
         }
 
         .item-name-row {
@@ -150,11 +256,9 @@
         .work-sample-link {
             display: inline-flex;
             align-items: center;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
             gap: 0.4rem;
-            max-width: 100%;
-            min-width: 0;
-            line-height: 1.35;
+            line-height: 1.45;
             color: inherit;
             text-decoration: none;
             border-radius: 3px;
@@ -170,7 +274,7 @@
             content: "\f35d";
             font-family: "Font Awesome 6 Free";
             font-weight: 900;
-            font-size: 0.88rem;
+            font-size: 0.65rem;
             line-height: inherit;
             flex-shrink: 0;
             position: relative;
@@ -190,23 +294,50 @@
         }
 
         .item-price {
-            font-size: 1.4rem;
+            font-size: 0.88rem;
             text-align: right;
-            font-weight: bold;
+            font-weight: 500;
             white-space: nowrap;
+            line-height: 1.5;
+            vertical-align: middle;
         }
 
-        /* 備註區 */
+        /* UI/UX 兩行價錢：行距略分開 */
+        .item-price--stack {
+            white-space: normal;
+            line-height: 1.35;
+        }
+
+        .item-price--stack .price-line {
+            display: block;
+        }
+
+        .item-price--stack .price-line+.price-line {
+            margin-top: 0.7rem;
+        }
+
+        /* 備註區：略緊但不擠成一團 */
         .notes {
-            margin-top: 60px;
+            margin-top: 14px;
             font-size: 0.85rem;
             color: #888;
-            line-height: 1.8;
+            line-height: 1.42;
         }
 
         .notes ul {
             list-style: none;
             padding-left: 15px;
+            margin: 6px 0 0;
+        }
+
+        .notes li {
+            margin: 0;
+            padding: 0;
+            line-height: 1.36;
+        }
+
+        .notes li+li {
+            margin-top: 0.22em;
         }
 
         .notes li::before {
@@ -216,61 +347,86 @@
 
         .version {
             text-align: right;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: #ccc;
-            margin-top: 30px;
+            margin-top: 6px;
+        }
+
+        /* 桌機：隱藏捲軸軌（仍可滾輪／觸控捲），不鎖畫布高度、版面維持自然 */
+        @media (min-width: 1025px) {
+            body {
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+
+            body::-webkit-scrollbar {
+                width: 0;
+                height: 0;
+            }
         }
 
         @media (max-width: 1024px) {
             body {
                 padding: 24px 16px;
+                min-height: 0;
             }
 
             .canvas {
                 width: 100%;
-                max-width: 800px;
-                padding: 36px 24px;
+                max-width: 700px;
+                padding: 32px 22px;
             }
 
             .top-right-box {
                 position: relative;
                 top: auto;
                 right: auto;
-                margin-bottom: 24px;
+                max-width: none;
+                margin-bottom: 18px;
                 font-size: 0.75rem;
             }
 
+            .top-right-email {
+                text-align: left;
+                white-space: normal;
+            }
+
             .header-section {
-                margin-bottom: 48px;
+                margin-bottom: 28px;
+                padding-right: 0;
+                min-height: 0;
             }
 
-            .main-title {
-                font-size: clamp(2.5rem, 12vw, 5rem);
+            .title-stack .main-title {
+                font-size: clamp(2rem, 9vw, 3rem);
             }
 
-            .sub-title-cn {
-                font-size: clamp(1.5rem, 6vw, 3rem);
+            .title-stack .sub-title-cn {
+                position: relative;
                 top: auto;
                 left: auto;
-                position: relative;
-                margin-top: 12px;
+                transform: none;
+                margin-top: 8px;
+                font-size: clamp(1.2rem, 5vw, 1.75rem);
             }
 
             .slogan {
-                font-size: 1.2rem;
-                margin: 28px 0;
+                font-size: 0.92rem;
+                margin-top: 12px;
+                margin-left: 0;
+                padding-top: 8px;
             }
 
             .price-list td {
-                padding: 16px 14px;
+                padding: 10px 12px;
             }
 
-            .item-name,
-            .item-price {
-                font-size: clamp(1rem, 2.8vw, 1.35rem);
+            .item-name {
+                font-size: clamp(0.95rem, 2.5vw, 1.05rem);
             }
 
             .item-price {
+                font-size: clamp(0.85rem, 2.2vw, 0.88rem);
                 white-space: normal;
             }
 
@@ -287,26 +443,30 @@
         <div class="top-right-box">
             <div class="studio-name">JEKKINOOPY DESIGN STUDIO</div>
             <div class="info-card">
-                <ul class="services-list">
-                    <li>平面設計</li>
-                    <li>包裝設計</li>
-                    <li>UIUX設計</li>
-                    <li>插畫設計</li>
-                </ul>
-                <div class="qr-placeholder">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=jekkinoopy" alt="qr">
+                <div class="info-card-row">
+                    <ul class="services-list">
+                        <li>平面設計</li>
+                        <li>包裝設計</li>
+                        <li>UIUX設計</li>
+                        <li>插畫設計</li>
+                    </ul>
+                    <div class="qr-placeholder">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=52x52&data=jekkinoopy" alt="qr">
+                    </div>
                 </div>
+                <p class="top-right-email"><i class="fa-regular fa-envelope" aria-hidden="true"></i>
+                    jekkinoopy@gmail.com</p>
             </div>
-            <p style="margin-top:10px;"><i class="fa-regular fa-envelope"></i> jekkinoopy@gmail.com</p>
         </div>
 
         <div class="header-section">
-            <h1 class="main-title">PRICE LIST</h1>
-            <div class="sub-title-cn">設計價目表</div>
-            <div style="width:120px; height:15px; background:#4a4a4a; margin-top:30px;"></div>
+            <div class="title-stack">
+                <h1 class="main-title">PRICE LIST</h1>
+                <div class="sub-title-cn" aria-hidden="true">設計價目表</div>
+            </div>
+            <div class="header-accent-bar" aria-hidden="true"></div>
+            <p class="slogan">Design that feels gentle and real.</p>
         </div>
-
-        <div class="slogan">Design that feels gentle and real.</div>
 
         <table class="price-list">
             <colgroup>
@@ -316,7 +476,8 @@
             <tr>
                 <td class="item-name">
                     <div class="item-name-row">
-                        <a href="graphic.html" class="work-sample-link" target="_blank" rel="noopener noreferrer" title="另開新分頁：平面作品" aria-label="另開新分頁瀏覽 Graphic 作品"><span>商品白底圖</span></a>
+                        <a href="graphic.html" class="work-sample-link" target="_blank" rel="noopener noreferrer"
+                            title="另開新分頁：平面作品" aria-label="另開新分頁瀏覽 Graphic 作品"><span>商品白底圖</span></a>
                     </div>
                 </td>
                 <td class="item-price">$600 / 張</td>
@@ -324,7 +485,8 @@
             <tr>
                 <td class="item-name">
                     <div class="item-name-row">
-                        <a href="graphic.html" class="work-sample-link" target="_blank" rel="noopener noreferrer" title="另開新分頁：平面作品" aria-label="另開新分頁瀏覽 Graphic 作品"><span>商品情境圖</span></a>
+                        <a href="graphic.html" class="work-sample-link" target="_blank" rel="noopener noreferrer"
+                            title="另開新分頁：平面作品" aria-label="另開新分頁瀏覽 Graphic 作品"><span>商品情境圖</span></a>
                     </div>
                 </td>
                 <td class="item-price">$800 / 張</td>
@@ -332,7 +494,8 @@
             <tr>
                 <td class="item-name">
                     <div class="item-name-row">
-                        <a href="graphic.html" class="work-sample-link" target="_blank" rel="noopener noreferrer" title="另開新分頁：平面作品" aria-label="另開新分頁瀏覽 Graphic 作品"><span>DM 海報</span></a>
+                        <a href="graphic.html" class="work-sample-link" target="_blank" rel="noopener noreferrer"
+                            title="另開新分頁：平面作品" aria-label="另開新分頁瀏覽 Graphic 作品"><span>DM 海報</span></a>
                     </div>
                 </td>
                 <td class="item-price">$1,500 起 / 依尺寸</td>
@@ -340,7 +503,8 @@
             <tr>
                 <td class="item-name">
                     <div class="item-name-row">
-                        <a href="graphic.html" class="work-sample-link" target="_blank" rel="noopener noreferrer" title="另開新分頁：平面作品" aria-label="另開新分頁瀏覽 Graphic 作品"><span>名片</span></a>
+                        <a href="graphic.html" class="work-sample-link" target="_blank" rel="noopener noreferrer"
+                            title="另開新分頁：平面作品" aria-label="另開新分頁瀏覽 Graphic 作品"><span>名片</span></a>
                     </div>
                 </td>
                 <td class="item-price">$2,000 ~ 5,000 / 雙面</td>
@@ -348,7 +512,8 @@
             <tr>
                 <td class="item-name">
                     <div class="item-name-row">
-                        <a href="web.html" class="work-sample-link" target="_blank" rel="noopener noreferrer" title="另開新分頁：網頁作品" aria-label="另開新分頁瀏覽 Web 作品"><span>banner</span></a>
+                        <a href="web.html" class="work-sample-link" target="_blank" rel="noopener noreferrer"
+                            title="另開新分頁：網頁作品" aria-label="另開新分頁瀏覽 Web 作品"><span>banner</span></a>
                     </div>
                 </td>
                 <td class="item-price">$800 ~ 1,500 / 張</td>
@@ -356,7 +521,9 @@
             <tr>
                 <td class="item-name">
                     <div class="item-name-row">
-                        <a href="graphic/logoPkg.html" class="work-sample-link" target="_blank" rel="noopener noreferrer" title="另開新分頁：Logo & 包裝" aria-label="另開新分頁瀏覽 Logo 與包裝設計"><span>產品包裝</span></a>
+                        <a href="graphic/logoPkg.html" class="work-sample-link" target="_blank"
+                            rel="noopener noreferrer" title="另開新分頁：Logo & 包裝"
+                            aria-label="另開新分頁瀏覽 Logo 與包裝設計"><span>產品包裝</span></a>
                     </div>
                 </td>
                 <td class="item-price">$5,000 ~ 30,000 / 依類型</td>
@@ -364,12 +531,13 @@
             <tr>
                 <td class="item-name">
                     <div class="item-name-row">
-                        <a href="web.html" class="work-sample-link" target="_blank" rel="noopener noreferrer" title="另開新分頁：網頁作品" aria-label="另開新分頁瀏覽 Web 作品"><span>UI / UX</span></a>
+                        <a href="web.html" class="work-sample-link" target="_blank" rel="noopener noreferrer"
+                            title="另開新分頁：網頁作品" aria-label="另開新分頁瀏覽 Web 作品"><span>UI / UX</span></a>
                     </div>
                 </td>
-                <td class="item-price">
-                    單頁 $2,000 ~ 8,500<br>
-                    整案 $20,000 起
+                <td class="item-price item-price--stack">
+                    <span class="price-line">單頁 $2,000 ~ 8,500</span>
+                    <span class="price-line">整案 $20,000 起</span>
                 </td>
             </tr>
         </table>
