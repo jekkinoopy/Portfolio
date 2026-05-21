@@ -41,13 +41,14 @@
             margin: 0 0 32px;
         }
 
-        /* 取代 intro-box：區塊內小標＋說明 */
+        /* 取代 intro-box：區塊內小標＋說明（用 div，避免套用全站 header 黃底） */
         .manual-section__head {
             display: flex;
             align-items: flex-start;
             gap: 16px;
             margin-bottom: 24px;
-            padding-bottom: 18px;
+            padding: 0 0 18px;
+            background: none;
             border-bottom: 2px solid var(--light-yellow);
         }
 
@@ -324,8 +325,8 @@
 <body>
     <header class="container">
         <nav class="navbar">
-            <div class="container">
-                <ul class="nav-links">
+            <div class="container nav-shell">
+                <ul class="nav-links nav-links--start">
                     <li><a href="about.html" class="active">About</a></li>
                     <li class="dropdown">
                         <a href="graphic.html">Graphic</a>
@@ -340,10 +341,12 @@
                             <li class="downDisabled" data-tooltip="作品建置中"><a href="productDetail.html">商品長條圖文</a></li>
                         </ul>
                     </li>
+                </ul>
+                <a class="nav-logo" href="index.html" aria-label="首頁">
+                    <img src="images/noopylogov.png" alt="Jekkinoopy Studio">
+                </a>
+                <ul class="nav-links nav-links--end">
                     <li><a href="illustration.html">Illustration</a></li>
-                    <li class="nav-logo">
-                        <a href="index.html" aria-label="首頁"><img src="images/noopylogov.png" alt="Noopy"></a>
-                    </li>
                     <li><a href="web.html">Web</a></li>
                 </ul>
             </div>
@@ -362,20 +365,20 @@
                     <h3 id="manual-mbti-title">MBTI</h3>
                 </div>
 
-                <header class="manual-section__head">
+                <div class="manual-section__head">
                     <span class="manual-section__tag" aria-hidden="true">📊</span>
                     <div>
                         <p class="manual-section__title">系統人格總覽</p>
                         <p class="manual-section__desc">測試結果呈現「藍色功能面與黃色生活面精密配比」——維度之間沒有被鎖死在單一標籤，而是依情境自由切換大腦配置，同時伴隨高能伺服器永不停止運轉的物理代價。</p>
                     </div>
-                </header>
+                </div>
 
-                <header class="manual-section__head">
+                <div class="manual-section__head">
                     <span class="manual-section__tag" aria-hidden="true">💡</span>
                     <div>
                         <p class="manual-section__title">基於觀察的精密配比</p>
                     </div>
-                </header>
+                </div>
 
                 <div class="mbti-ratio-chart" aria-label="MBTI 指數配比">
                 <div class="mbti-ratio-item">
@@ -451,13 +454,13 @@
                     <h3 id="manual-hd-title">人類圖</h3>
                 </div>
 
-                <header class="manual-section__head">
+                <div class="manual-section__head">
                     <span class="manual-section__tag" aria-hidden="true">⚡</span>
                     <div>
                         <p class="manual-section__title">核心硬體特徵</p>
                         <p class="manual-section__desc">【上方高能瘋狂運轉，下方留白百變躺平】排除命理玄學，純粹解構大腦過載與多軌並行的能量配置。</p>
                     </div>
-                </header>
+                </div>
 
                 <div class="component-block">
                 <div class="component-title">🧠 頭腦與邏輯中心：頂配硬體連線<span class="badge-defined">有定義（彩色）</span></div>

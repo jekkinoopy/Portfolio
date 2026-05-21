@@ -209,35 +209,43 @@ header {
     padding: 20px 50px;
 }
 
-.navbar .container {
-    position: relative;
+/* 導覽項目依數量左右平分：4 項＝2+2，6 項＝3+3（HTML 分進 --start / --end） */
+.nav-shell {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    column-gap: 28px;
+    width: 100%;
 }
 
 .nav-links {
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     list-style: none;
     gap: 28px 36px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links--start {
+    justify-content: flex-end;
+}
+
+.nav-links--end {
+    justify-content: flex-start;
 }
 
 .nav-logo {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    line-height: 0;
-    z-index: 2;
-}
-
-.nav-logo a {
     display: block;
+    line-height: 0;
+    justify-self: center;
 }
 
 .nav-logo img {
-    height: 52px;
+    height: 56px;
     width: auto;
+    max-width: min(300px, 38vw);
     display: block;
 }
 
@@ -719,25 +727,29 @@ footer {
         padding: 16px 20px;
     }
 
-    .nav-links {
-        gap: 18px 22px;
-        flex-wrap: wrap;
-        justify-content: center;
-        row-gap: 10px;
+    .nav-shell {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        row-gap: 12px;
     }
 
     .nav-logo {
-        position: static;
-        transform: none;
-        flex: 0 0 100%;
-        display: flex;
-        justify-content: center;
-        margin: 0 0 10px;
         order: -1;
     }
 
+    .nav-links--start,
+    .nav-links--end {
+        justify-content: center;
+    }
+
+    .nav-links {
+        gap: 18px 22px;
+        row-gap: 10px;
+    }
+
     .nav-logo img {
-        height: 44px;
+        height: 48px;
+        max-width: min(260px, 88vw);
     }
 
     .nav-links a {
