@@ -127,32 +127,33 @@
         .container-2 {
             margin-top: 28px;
             min-height: 400px;
+            align-items: center;
         }
 
         .item21 {
-            width: 48%;
+            flex: 1;
+            min-width: 0;
             min-height: 400px;
             background: linear-gradient(145deg, var(--pink-pale) 0%, var(--rational-pale) 55%, var(--emotional-pale) 100%);
             border-radius: var(--radius);
-            border: 2px dashed var(--pink-soft);
+            border: 2px solid var(--pink-soft);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 16px;
-            padding: 32px;
+            gap: 14px;
+            padding: 20px;
             text-align: center;
-            position: relative;
             overflow: hidden;
         }
 
-        .item21::after {
-            content: "🏘️";
-            position: absolute;
-            font-size: 5rem;
-            opacity: 0.12;
-            right: -8px;
-            bottom: -12px;
+        .hero-img {
+            width: 100%;
+            max-height: 280px;
+            object-fit: contain;
+            border-radius: 14px;
+            background: #fff;
+            box-shadow: 0 8px 24px rgba(240, 101, 149, 0.15);
         }
 
         .hero-badge {
@@ -166,21 +167,35 @@
             border: 1px solid var(--pink-soft);
         }
 
-        .hero-visual-title {
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--text-dark);
-            line-height: 1.35;
+        .hero-visual-sub {
+            font-size: 0.8rem;
+            color: var(--text);
         }
 
-        .hero-visual-sub {
-            font-size: 0.85rem;
-            color: var(--text);
-            max-width: 240px;
+        .hero-visual-sub a {
+            color: var(--love);
+            font-weight: 600;
+        }
+
+        .item21-mid {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 8px;
+        }
+
+        .hero-mid-img {
+            width: min(220px, 28vw);
+            max-height: 380px;
+            height: auto;
+            object-fit: contain;
+            display: block;
         }
 
         .item22 {
-            width: 48%;
+            flex: 1;
+            min-width: 0;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -320,48 +335,33 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
         }
 
-        .cell-avatar {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.35rem;
-            margin-bottom: 4px;
+        /* 3×3 細胞圖：yumi/cells-sprite.png — 改 background-position 對應格位 */
+        .cell-sprite {
+            --cell-sprite-url: url("yumi/cells-sprite.png");
+            width: 110px;
+            height: 110px;
+            flex-shrink: 0;
+            margin-bottom: 10px;
+            background-image: var(--cell-sprite-url);
+            background-repeat: no-repeat;
+            background-size: 300% 300%;
         }
 
-        .item41 .cell-avatar {
-            background: var(--rational-pale);
-            box-shadow: 0 0 0 3px rgba(77, 171, 247, 0.25);
+        /* 格位參考（%）：左上 0 0｜中上 50% 0｜右上 100% 0｜左中 0 50%｜正中 50% 50%｜右中 100% 50%｜左下 0 100%｜中下 50% 100%｜右下 100% 100% */
+        .item41 .cell-sprite {
+            background-position: 100% 50%;
         }
 
-        .item42 .cell-avatar {
-            background: var(--emotional-pale);
-            box-shadow: 0 0 0 3px rgba(177, 151, 252, 0.3);
+        .item42 .cell-sprite {
+            background-position: 100% 0%;
         }
 
-        .item43 .cell-avatar {
-            background: var(--fashion-pale);
-            box-shadow: 0 0 0 3px rgba(252, 196, 25, 0.35);
+        .item43 .cell-sprite {
+            background-position: 0% 50%;
         }
 
-        .item44 .cell-avatar {
-            background: var(--pink-pale);
-            box-shadow: 0 0 0 3px rgba(240, 101, 149, 0.35);
-        }
-
-        .item44 .cell-avatar::after {
-            content: "♥";
-            position: absolute;
-            margin-top: -28px;
-            margin-left: 22px;
-            font-size: 0.65rem;
-            color: var(--love);
-        }
-
-        .item44 .cell-avatar {
-            position: relative;
+        .item44 .cell-sprite {
+            background-position: 50% 50%;
         }
 
         .cell-name {
@@ -397,6 +397,12 @@
             text-align: center;
             font-size: 0.75rem;
             color: #adb5bd;
+            line-height: 1.7;
+        }
+
+        .footer-note a {
+            color: var(--love);
+            font-weight: 600;
         }
 
         @media (max-width: 768px) {
@@ -405,6 +411,7 @@
             }
 
             .container-2 .item21,
+            .container-2 .item21-mid,
             .container-2 .item22,
             .container-3 .item31,
             .container-3 .item32,
@@ -442,9 +449,12 @@
     <!-- 2️⃣ 主視覺 -->
     <div class="container container-2">
         <div class="item21">
+            <img class="hero-img" src="https://resource02.ulifestyle.com.hk/ulcms/content/article/thumbnail/1280x720/ub/20220617172616__bc255dd0d5268a68f672cfe9e21bc1c2.jpg" alt="《柔美的細胞小將2》細胞角色介紹主圖">
             <span class="hero-badge">CELL VILLAGE</span>
-            <p class="hero-visual-title">腦內細胞<br>開會中</p>
-            <p class="hero-visual-sub">粉紅愛情、冷靜理性、暴走感性——像劇裡一樣可愛又吵鬧。</p>
+            <p class="hero-visual-sub">圖片來源：<a href="https://ubeauty.com.hk/girlstalk/movie-and-show/10023092/-%E6%9F%94%E7%BE%8E%E7%9A%84%E7%B4%B0%E8%83%9E%E5%B0%8F%E5%B0%872-44%E5%80%8B%E7%B4%B0%E8%83%9E%E8%A7%92%E8%89%B2%E4%BB%8B%E7%B4%B9-%E5%88%A5%E6%9C%89%E5%B1%85%E5%BF%83%E7%B4%B0%E8%83%9E%E5%8F%AA%E7%A9%BF%E5%86%85%E8%A4%B2-%E5%8F%AF%E6%84%9B%E5%8F%88%E6%90%9E%E7%AC%91-" target="_blank" rel="noopener noreferrer">U Beauty</a></p>
+        </div>
+        <div class="item21-mid">
+            <img class="hero-mid-img" src="yumi/001e3504-86aa-4a8c-aae9-0117cfe14896.jpg" alt="柔美與細胞小將">
         </div>
         <div class="item22">
             <span class="page-kicker">YUMI'S CELLS</span>
@@ -475,28 +485,32 @@
     <!-- 4️⃣ 核心細胞（對應劇中角色設定） -->
     <div class="container container-4">
         <div class="item41">
-            <span class="cell-avatar" aria-hidden="true">🧠</span>
+            <div class="cell-sprite" role="img" aria-label="理性細胞"></div>
             <span class="cell-name">理性細胞</span>
             <span class="cell-desc">一撮瀏海 · 冷靜副領導<br>連夜趕工也不准偷懶</span>
         </div>
         <div class="item42">
-            <span class="cell-avatar" aria-hidden="true">💧</span>
+            <div class="cell-sprite" role="img" aria-label="感性細胞"></div>
             <span class="cell-name">感性細胞</span>
             <span class="cell-desc">雙馬尾 · 看夕陽就爆哭<br>半夜多愁善感担当</span>
         </div>
         <div class="item43">
-            <span class="cell-avatar" aria-hidden="true">👒</span>
+            <div class="cell-sprite" role="img" aria-label="時尚細胞"></div>
             <span class="cell-name">時尚細胞</span>
             <span class="cell-desc">棒球帽墨鏡 · 購物慾爆表<br>跟吝嗇細胞是死對頭</span>
         </div>
         <div class="item44">
-            <span class="cell-avatar" aria-hidden="true">🦸</span>
+            <div class="cell-sprite" role="img" aria-label="愛情細胞"></div>
             <span class="cell-name">愛情細胞</span>
             <span class="cell-desc">粉紅披風 · 頭頂小愛心<br>細胞村領袖（曾昏迷中）</span>
         </div>
     </div>
 
-    <p class="footer-note">視覺參考韓劇《柔美的細胞小將》細胞村風格 · 概念展示頁</p>
+    <p class="footer-note">
+        細胞圖片引用自
+        <a href="https://ubeauty.com.hk/girlstalk/movie-and-show/10023092/-%E6%9F%94%E7%BE%8E%E7%9A%84%E7%B4%B0%E8%83%9E%E5%B0%8F%E5%B0%872-44%E5%80%8B%E7%B4%B0%E8%83%9E%E8%A7%92%E8%89%B2%E4%BB%8B%E7%B4%B9-%E5%88%A5%E6%9C%89%E5%B1%85%E5%BF%83%E7%B4%B0%E8%83%9E%E5%8F%AA%E7%A9%BF%E5%86%85%E8%A4%B2-%E5%8F%AF%E6%84%9B%E5%8F%88%E6%90%9E%E7%AC%91-">《柔美的細胞小將2》44個細胞角色介紹｜U Beauty</a>
+        · 概念展示頁
+    </p>
 
 </body>
 
