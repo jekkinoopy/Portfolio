@@ -36,10 +36,16 @@
             margin-bottom: 0;
         }
 
+        /* 三大區塊主標：與 Graphic 相同 box1 */
+        .about-manual .box.box1 {
+            margin: 0 0 32px;
+        }
+
+        /* 取代 intro-box：區塊內小標＋說明 */
         .manual-section__head {
             display: flex;
-            align-items: center;
-            gap: 18px;
+            align-items: flex-start;
+            gap: 16px;
             margin-bottom: 24px;
             padding-bottom: 18px;
             border-bottom: 2px solid var(--light-yellow);
@@ -47,8 +53,8 @@
 
         .manual-section__tag {
             flex-shrink: 0;
-            width: 3rem;
-            height: 3rem;
+            width: 2.5rem;
+            height: 2.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -57,29 +63,22 @@
             color: #fff;
             font-size: 1rem;
             font-weight: 800;
+            line-height: 1;
         }
 
         .manual-section__title {
             margin: 0;
-            font-size: 2rem;
+            font-size: 1.15rem;
             font-weight: 800;
             color: var(--primary-dark-brown);
         }
 
         .manual-section__desc {
-            margin: 6px 0 0;
+            margin: 8px 0 0;
             font-size: 1rem;
-            color: var(--dark-gray);
-            font-weight: 500;
-            line-height: 1.5;
-        }
-
-        .about-manual .manual-body {
-            margin: 0 0 28px;
-        }
-
-        .about-manual .manual-body strong {
-            color: var(--primary-dark-brown);
+            color: var(--black);
+            font-weight: 400;
+            line-height: 1.75;
         }
 
         .component-block {
@@ -293,10 +292,6 @@
         }
 
         @media (max-width: 768px) {
-            .manual-section__title {
-                font-size: clamp(1.65rem, 4.2vw, 2rem);
-            }
-
             .mbti-ratio-row {
                 grid-template-columns: 1fr;
                 gap: 6px;
@@ -361,19 +356,24 @@
 
         <article class="manual-part">
             <section class="manual-section" id="mbti" aria-labelledby="manual-mbti-title">
+                <div class="box box1">
+                    <h3 id="manual-mbti-title">MBTI</h3>
+                </div>
+
                 <header class="manual-section__head">
-                    <span class="manual-section__tag" aria-hidden="true">01</span>
+                    <span class="manual-section__tag" aria-hidden="true">📊</span>
                     <div>
-                        <h3 class="manual-section__title" id="manual-mbti-title">MBTI</h3>
-                        <p class="manual-section__desc">全端工程師 × 品牌設計師的特質電路圖</p>
+                        <p class="manual-section__title">系統人格總覽</p>
+                        <p class="manual-section__desc">測試結果呈現「藍色功能面與黃色生活面精密配比」——維度之間沒有被鎖死在單一標籤，而是依情境自由切換大腦配置，同時伴隨高能伺服器永不停止運轉的物理代價。</p>
                     </div>
                 </header>
-                <p class="manual-body">
-                    <strong>系統人格總覽：</strong>
-                    測試結果呈現「藍色功能面與黃色生活面精密配比」——維度之間沒有被鎖死在單一標籤，而是依情境自由切換大腦配置，同時伴隨高能伺服器永不停止運轉的物理代價。
-                </p>
 
-                <p class="manual-body"><strong>基於觀察的精密配比</strong></p>
+                <header class="manual-section__head">
+                    <span class="manual-section__tag" aria-hidden="true">💡</span>
+                    <div>
+                        <p class="manual-section__title">基於觀察的精密配比</p>
+                    </div>
+                </header>
 
                 <div class="mbti-ratio-chart" aria-label="MBTI 指數配比">
                 <div class="mbti-ratio-item">
@@ -445,16 +445,17 @@
             </section>
 
             <section class="manual-section" id="human-design" aria-labelledby="manual-hd-title">
+                <div class="box box1">
+                    <h3 id="manual-hd-title">人類圖</h3>
+                </div>
+
                 <header class="manual-section__head">
-                    <span class="manual-section__tag" aria-hidden="true">02</span>
+                    <span class="manual-section__tag" aria-hidden="true">⚡</span>
                     <div>
-                        <h3 class="manual-section__title" id="manual-hd-title">人類圖</h3>
-                        <p class="manual-section__desc">硬體晶片架構 · 排除命理，純解構能量配置</p>
+                        <p class="manual-section__title">核心硬體特徵</p>
+                        <p class="manual-section__desc">【上方高能瘋狂運轉，下方留白百變躺平】排除命理玄學，純粹解構大腦過載與多軌並行的能量配置。</p>
                     </div>
                 </header>
-                <p class="manual-body">
-                    <strong>核心硬體特徵：</strong>【上方高能瘋狂運轉，下方留白百變躺平】排除命理玄學，純粹解構大腦過載與多軌並行的能量配置。
-                </p>
 
                 <div class="component-block">
                 <div class="component-title">🧠 頭腦與邏輯中心：頂配硬體連線<span class="badge-defined">有定義（彩色）</span></div>
@@ -488,13 +489,9 @@
             </section>
 
             <section class="manual-section" id="summary" aria-labelledby="manual-summary-title">
-                <header class="manual-section__head">
-                    <span class="manual-section__tag" aria-hidden="true">03</span>
-                    <div>
-                        <h3 class="manual-section__title" id="manual-summary-title">總結</h3>
-                        <p class="manual-section__desc">跨 MBTI 與人類圖的綜合使用說明</p>
-                    </div>
-                </header>
+                <div class="box box1">
+                    <h3 id="manual-summary-title">總結</h3>
+                </div>
 
                 <div class="about-placeholder">
                     <strong>內容建置中</strong>
