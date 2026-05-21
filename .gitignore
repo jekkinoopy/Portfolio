@@ -1,0 +1,7 @@
+# GitHub 不接受單檔 >100MB；影片／大型原始檔僅保留本機
+vedio/
+*.mp4
+
+# 大型 Adobe 原始檔（路徑含大量設計稿）
+images/graphic/calendarBag/新增資料夾/
+images/graphic/cardTicket/dm/餓到失控MENU/
