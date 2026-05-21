@@ -206,7 +206,7 @@ header {
 }
 
 .navbar {
-    padding: 20px 50px;
+    padding: 10px 50px;
 }
 
 /* 導覽項目依數量左右平分：4 項＝2+2，6 項＝3+3（HTML 分進 --start / --end） */
@@ -240,12 +240,19 @@ header {
     display: block;
     line-height: 0;
     justify-self: center;
+    flex-shrink: 0;
 }
 
+/* Logo 967×154（橫式）：只鎖高度，寬度隨比例；禁止 height + max-width 並用（會壓扁） */
 .nav-logo img {
-    height: 56px;
+    --nav-logo-ratio: 967 / 154;
+    height: clamp(52px, 6.5vw, 72px);
     width: auto;
-    max-width: min(300px, 38vw);
+    max-width: none;
+    max-height: none;
+    aspect-ratio: var(--nav-logo-ratio);
+    object-fit: contain;
+    object-position: center;
     display: block;
 }
 
@@ -724,13 +731,13 @@ footer {
     }
 
     .navbar {
-        padding: 16px 20px;
+        padding: 8px 20px;
     }
 
     .nav-shell {
         grid-template-columns: 1fr;
         justify-items: center;
-        row-gap: 12px;
+        row-gap: 8px;
     }
 
     .nav-logo {
@@ -748,8 +755,9 @@ footer {
     }
 
     .nav-logo img {
-        height: 48px;
-        max-width: min(260px, 88vw);
+        height: clamp(44px, 12vw, 60px);
+        width: auto;
+        max-width: none;
     }
 
     .nav-links a {
