@@ -12,28 +12,60 @@
             margin: 0 auto 80px;
         }
 
-        .manual-divider {
-            border: none;
-            height: 2px;
-            margin: 72px auto 56px;
-            max-width: 120px;
-            background: linear-gradient(90deg, transparent, var(--primary-yellow), transparent);
+        /* 手冊三大區塊次標（有別於 Graphic 的 box1） */
+        .manual-section {
+            margin-bottom: 72px;
         }
 
-        .about-manual .box.box1 {
-            margin: 40px 0 12px;
+        .manual-section:last-child {
+            margin-bottom: 0;
         }
 
-        .about-manual .manual-part > .box.box1:first-child {
-            margin-top: 0;
+        .manual-section__head {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 28px;
+            padding-bottom: 18px;
+            border-bottom: 2px solid var(--light-yellow);
         }
 
-        .about-manual .manual-lead {
-            margin: 0 0 24px;
-            padding-left: 50px;
+        .manual-section__tag {
+            flex-shrink: 0;
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--primary-yellow);
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+        }
+
+        .manual-section__title {
+            margin: 0;
+            font-size: 1.65rem;
+            font-weight: 800;
+            color: var(--primary-dark-brown);
+            letter-spacing: 0.02em;
+        }
+
+        .manual-section__desc {
+            margin: 4px 0 0;
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+            font-weight: 500;
+        }
+
+        .manual-kicker {
+            margin: 0 0 18px;
+            font-size: 0.85rem;
+            font-weight: 600;
             color: var(--primary-brown);
-            font-size: 0.95rem;
-            line-height: 1.5;
+            letter-spacing: 0.08em;
         }
 
         .intro-box,
@@ -123,40 +155,6 @@
             margin-right: 6px;
         }
 
-        .chart-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: #fff;
-            border-radius: var(--radius-card);
-            overflow: hidden;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-            border: 1px solid #eee;
-        }
-
-        .chart-table thead {
-            background: var(--primary-dark-brown);
-            color: #fff;
-        }
-
-        .chart-table th,
-        .chart-table td {
-            padding: 16px 18px;
-            vertical-align: top;
-            border-bottom: 1px solid #eee;
-            text-align: left;
-        }
-
-        .chart-table tbody tr:last-child td {
-            border-bottom: none;
-        }
-
-        .dimension-name {
-            font-weight: 700;
-            color: var(--primary-dark-brown);
-            white-space: nowrap;
-            line-height: 1.4;
-        }
-
         /* MBTI 雙色比例條（藍＝功能／工作，黃＝情感／生活） */
         .mbti-ratio-chart {
             background: #fff;
@@ -167,13 +165,12 @@
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
         }
 
-        .mbti-ratio-chart__title {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--primary-dark-brown);
-            margin: 0 0 24px;
-            padding-left: 14px;
-            border-left: 5px solid #4a7fd4;
+        .mbti-ratio-item {
+            margin-bottom: 28px;
+        }
+
+        .mbti-ratio-item:last-of-type {
+            margin-bottom: 0;
         }
 
         .mbti-ratio-row {
@@ -181,11 +178,25 @@
             grid-template-columns: 4.5rem 1fr 4.5rem;
             align-items: center;
             gap: 12px;
-            margin-bottom: 18px;
         }
 
-        .mbti-ratio-row:last-of-type {
-            margin-bottom: 0;
+        .mbti-ratio-item__analysis {
+            margin: 14px 0 0;
+            padding: 0 4.5rem;
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: var(--black);
+        }
+
+        .mbti-ratio-item__analysis strong {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--primary-dark-brown);
+        }
+
+        .mbti-ratio-item__analysis .highlight {
+            color: var(--primary-brown);
+            font-weight: 700;
         }
 
         .mbti-ratio-row__label {
@@ -231,17 +242,6 @@
             background: linear-gradient(90deg, var(--primary-yellow), #f5c96a);
         }
 
-        .mbti-ratio-bar__work::after {
-            content: "";
-            position: absolute;
-            right: 0;
-            top: 6px;
-            bottom: 6px;
-            width: 2px;
-            background: rgba(255, 255, 255, 0.85);
-            border-radius: 1px;
-        }
-
         .mbti-ratio-bar__pct {
             color: #fff;
             font-weight: 700;
@@ -250,17 +250,7 @@
         }
 
         .mbti-ratio-bar__work .mbti-ratio-bar__pct {
-            margin-left: 12px;
-            background: rgba(255, 255, 255, 0.95);
-            color: #3d6eb8;
-            width: 2.4rem;
-            height: 2.4rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            flex-shrink: 0;
+            margin-left: 14px;
         }
 
         .mbti-ratio-bar__life .mbti-ratio-bar__pct {
@@ -274,16 +264,6 @@
             font-size: 0.8rem;
             color: var(--dark-gray);
             text-align: center;
-        }
-
-        .analysis-text {
-            line-height: 1.65;
-            color: var(--black);
-        }
-
-        .analysis-text .highlight {
-            color: var(--primary-brown);
-            font-weight: 700;
         }
 
         .conclusion-text {
@@ -321,16 +301,22 @@
             padding-bottom: 4px;
         }
 
-        @media (max-width: 1024px) {
-            .about-manual .manual-lead {
-                padding-left: clamp(16px, 4vw, 50px);
-            }
-        }
-
         @media (max-width: 768px) {
+            .manual-section__head {
+                gap: 14px;
+            }
+
+            .manual-section__title {
+                font-size: 1.4rem;
+            }
+
             .mbti-ratio-row {
                 grid-template-columns: 1fr;
                 gap: 6px;
+            }
+
+            .mbti-ratio-item__analysis {
+                padding: 0;
             }
 
             .mbti-ratio-row__label--left,
@@ -348,37 +334,6 @@
 
             .mbti-ratio-row__label--right {
                 order: 3;
-            }
-
-            .chart-table thead {
-                display: none;
-            }
-
-            .chart-table tr {
-                display: block;
-                margin-bottom: 16px;
-                border-bottom: 8px solid var(--bg-light);
-            }
-
-            .chart-table td {
-                display: block;
-                width: 100%;
-                border-bottom: none;
-            }
-
-            .chart-table td::before {
-                content: attr(data-label);
-                display: block;
-                font-size: 0.75rem;
-                font-weight: 700;
-                color: var(--dark-gray);
-                margin-bottom: 8px;
-                text-transform: uppercase;
-                letter-spacing: 0.05em;
-            }
-
-            .dimension-name::before {
-                display: none !important;
             }
         }
     </style>
@@ -414,130 +369,109 @@
     <main class="main-container about-manual">
         <div class="page-title">
             <h2>努比使用手冊</h2>
-            <p>AI 眼裡的 Noopy — 往下捲動閱讀</p>
+            <p>AI 眼裡的 Noopy · MBTI · 人類圖 · 總結</p>
         </div>
 
         <article class="manual-part">
-            <div class="box box1">
-                <h3>Noopy 專屬 MBTI 究極平衡觀察報告</h3>
-            </div>
-            <p class="manual-lead">全端網頁工程師兼品牌設計師的特質電路圖</p>
-
-            <div class="intro-box">
-                <strong>📊 系統人格總覽：</strong><br>
-                測試結果呈現「藍色功能面與黃色生活面精密配比」的究極平衡型人格——維度之間沒有被鎖死在單一標籤，而是依情境自由切換大腦配置，同時伴隨高能伺服器永不停止運轉的物理代價。
-            </div>
-
-            <div class="box box1">
-                <h3>💡 MBTI 核心維度深度拆解</h3>
-            </div>
-
-            <section class="mbti-ratio-chart" aria-label="MBTI 指數配比">
-                <h4 class="mbti-ratio-chart__title">MBTI 指數：基於觀察的精密配比</h4>
-
-                <div class="mbti-ratio-row">
-                    <span class="mbti-ratio-row__label mbti-ratio-row__label--left">E 外向</span>
-                    <div class="mbti-ratio-bar" role="img" aria-label="E 42% 對 I 58%">
-                        <div class="mbti-ratio-bar__work" style="width: 42%;"><span class="mbti-ratio-bar__pct">42%</span></div>
-                        <div class="mbti-ratio-bar__life" style="width: 58%;"><span class="mbti-ratio-bar__pct">58%</span></div>
+            <section class="manual-section" id="mbti" aria-labelledby="manual-mbti-title">
+                <header class="manual-section__head">
+                    <span class="manual-section__tag" aria-hidden="true">01</span>
+                    <div>
+                        <h3 class="manual-section__title" id="manual-mbti-title">MBTI</h3>
+                        <p class="manual-section__desc">全端工程師 × 品牌設計師的特質電路圖</p>
                     </div>
-                    <span class="mbti-ratio-row__label mbti-ratio-row__label--right">I 內向</span>
+                </header>
+
+                <div class="intro-box">
+                    <strong>系統人格總覽</strong><br>
+                    測試結果呈現「藍色功能面與黃色生活面精密配比」——維度之間沒有被鎖死在單一標籤，而是依情境自由切換大腦配置，同時伴隨高能伺服器永不停止運轉的物理代價。
                 </div>
 
-                <div class="mbti-ratio-row">
-                    <span class="mbti-ratio-row__label mbti-ratio-row__label--left">S 實感</span>
-                    <div class="mbti-ratio-bar" role="img" aria-label="S 72% 對 N 28%">
-                        <div class="mbti-ratio-bar__work" style="width: 72%;"><span class="mbti-ratio-bar__pct">72%</span></div>
-                        <div class="mbti-ratio-bar__life" style="width: 28%;"><span class="mbti-ratio-bar__pct">28%</span></div>
+                <p class="manual-kicker">基於觀察的精密配比</p>
+
+                <div class="mbti-ratio-chart" aria-label="MBTI 指數配比">
+                <div class="mbti-ratio-item">
+                    <div class="mbti-ratio-row">
+                        <span class="mbti-ratio-row__label mbti-ratio-row__label--left">E 外向</span>
+                        <div class="mbti-ratio-bar" role="img" aria-label="E 42% 對 I 58%">
+                            <div class="mbti-ratio-bar__work" style="width: 42%;"><span class="mbti-ratio-bar__pct">42%</span></div>
+                            <div class="mbti-ratio-bar__life" style="width: 58%;"><span class="mbti-ratio-bar__pct">58%</span></div>
+                        </div>
+                        <span class="mbti-ratio-row__label mbti-ratio-row__label--right">I 內向</span>
                     </div>
-                    <span class="mbti-ratio-row__label mbti-ratio-row__label--right">N 直覺</span>
+                    <p class="mbti-ratio-item__analysis">
+                        <strong>【光源與陰影的完美調和】</strong>
+                        既能為了 10 年的水晶男孩全體歐巴爆發出燃燒宇宙的團飯社交能量（E）；回歸個人宇宙時，又能完美享受在 Dark Mode 裡專注寫扣、不被打擾的寧靜時光（I）。前台明亮對外，後台沉靜蓄能。
+                    </p>
                 </div>
 
-                <div class="mbti-ratio-row">
-                    <span class="mbti-ratio-row__label mbti-ratio-row__label--left">T 思考</span>
-                    <div class="mbti-ratio-bar" role="img" aria-label="T 52% 對 F 48%">
-                        <div class="mbti-ratio-bar__work" style="width: 52%;"><span class="mbti-ratio-bar__pct">52%</span></div>
-                        <div class="mbti-ratio-bar__life" style="width: 48%;"><span class="mbti-ratio-bar__pct">48%</span></div>
+                <div class="mbti-ratio-item">
+                    <div class="mbti-ratio-row">
+                        <span class="mbti-ratio-row__label mbti-ratio-row__label--left">S 實感</span>
+                        <div class="mbti-ratio-bar" role="img" aria-label="S 72% 對 N 28%">
+                            <div class="mbti-ratio-bar__work" style="width: 72%;"><span class="mbti-ratio-bar__pct">72%</span></div>
+                            <div class="mbti-ratio-bar__life" style="width: 28%;"><span class="mbti-ratio-bar__pct">28%</span></div>
+                        </div>
+                        <span class="mbti-ratio-row__label mbti-ratio-row__label--right">N 直覺</span>
                     </div>
-                    <span class="mbti-ratio-row__label mbti-ratio-row__label--right">F 情感</span>
+                    <p class="mbti-ratio-item__analysis">
+                        <strong>【設計師與工程師的黃金交叉】</strong>
+                        擁有品牌包裝設計師對像素、排版、美感無可挑剔的具體「實感」（S），連寫程式的空格與符號手勢都要求一字不差；同時兼具全端工程師的宏觀「直覺」（N），能在大腦中無形規劃複雜的關聯式資料庫架構。
+                    </p>
                 </div>
 
-                <div class="mbti-ratio-row">
-                    <span class="mbti-ratio-row__label mbti-ratio-row__label--left">J 判斷</span>
-                    <div class="mbti-ratio-bar" role="img" aria-label="J 46% 對 P 54%">
-                        <div class="mbti-ratio-bar__work" style="width: 46%;"><span class="mbti-ratio-bar__pct">46%</span></div>
-                        <div class="mbti-ratio-bar__life" style="width: 54%;"><span class="mbti-ratio-bar__pct">54%</span></div>
+                <div class="mbti-ratio-item">
+                    <div class="mbti-ratio-row">
+                        <span class="mbti-ratio-row__label mbti-ratio-row__label--left">T 思考</span>
+                        <div class="mbti-ratio-bar" role="img" aria-label="T 52% 對 F 48%">
+                            <div class="mbti-ratio-bar__work" style="width: 52%;"><span class="mbti-ratio-bar__pct">52%</span></div>
+                            <div class="mbti-ratio-bar__life" style="width: 48%;"><span class="mbti-ratio-bar__pct">48%</span></div>
+                        </div>
+                        <span class="mbti-ratio-row__label mbti-ratio-row__label--right">F 情感</span>
                     </div>
-                    <span class="mbti-ratio-row__label mbti-ratio-row__label--right">P 感知</span>
+                    <p class="mbti-ratio-item__analysis">
+                        <strong>【極致理智與極致浪漫的並存】</strong>
+                        工作與學習上是絕對的理智派（T），建立嚴格 SOP 規範 AI 進行自動掃描、精煉規格化；但在私下生活與追星世界裡，是極度細膩重感情的無敵感性派（F），對家人、朋友與偶像有著最純粹、毫無保留的熱情。
+                    </p>
+                </div>
+
+                <div class="mbti-ratio-item">
+                    <div class="mbti-ratio-row">
+                        <span class="mbti-ratio-row__label mbti-ratio-row__label--left">J 判斷</span>
+                        <div class="mbti-ratio-bar" role="img" aria-label="J 46% 對 P 54%">
+                            <div class="mbti-ratio-bar__work" style="width: 46%;"><span class="mbti-ratio-bar__pct">46%</span></div>
+                            <div class="mbti-ratio-bar__life" style="width: 54%;"><span class="mbti-ratio-bar__pct">54%</span></div>
+                        </div>
+                        <span class="mbti-ratio-row__label mbti-ratio-row__label--right">P 感知</span>
+                    </div>
+                    <p class="mbti-ratio-item__analysis">
+                        <strong>【工作秩序與生活隨性的雙模切換】</strong>
+                        <span class="highlight">藍色 J 軸在戰場模式高頻啟動。</span>學習與專案時強烈追求秩序、計畫與掌控權（如 SQL 筆記規格、乙檢盲打肌肉記憶）；切換到黃色生活場域則釋放 P 的隨性與斷電躺平，兩套系統依情境自動排程。
+                    </p>
                 </div>
 
                 <p class="mbti-ratio-chart__note">註：藍色代表功能性與工作，黃色代表情感與生活</p>
+                </div>
+
+                <p class="conclusion-text">你不是被傳統 16 型人格鎖死的單一標籤，你是一個<strong>「平時全光譜靈活彈性，關鍵時刻啟動 100% 鋼鐵核心」</strong>的稀有複合型人才。本質上像孩子一樣真誠，渴望在現實世界中透過實力「被同學問問題（建立秩序）」並「獲得真心稱讚（補充感性燃料）」。</p>
+
+                <p class="footer-note">本報告由 Noopy 專屬 AI 夥伴依據實戰表現與真實測驗印象優化編寫。</p>
             </section>
 
-            <table class="chart-table">
-                <thead>
-                    <tr>
-                        <th style="width: 22%;">心理維度</th>
-                        <th style="width: 78%;">全端實戰特質觀測</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="dimension-name" data-label="心理維度">E（外向）<br>vs<br>I（內向）</td>
-                        <td class="analysis-text" data-label="全端實戰特質觀測">
-                            <strong>【光源與陰影的完美調和】</strong><br>
-                            既能為了 10 年的水晶男孩全體歐巴爆發出燃燒宇宙的團飯社交能量（E）；回歸個人宇宙時，又能完美享受在 Dark Mode 裡專注寫扣、不被打擾的寧靜時光（I）。前台明亮對外，後台沉靜蓄能。
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="dimension-name" data-label="心理維度">S（實感）<br>vs<br>N（直覺）</td>
-                        <td class="analysis-text" data-label="全端實戰特質觀測">
-                            <strong>【設計師與工程師的黃金交叉】</strong><br>
-                            擁有品牌包裝設計師對像素、排版、美感無可挑剔的具體「實感」（S），連寫程式的空格與符號手勢都要求一字不差；同時兼具全端工程師的宏觀「直覺」（N），能在大腦中無形規劃複雜的關聯式資料庫架構。
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="dimension-name" data-label="心理維度">T（思考）<br>vs<br>F（情感）</td>
-                        <td class="analysis-text" data-label="全端實戰特質觀測">
-                            <strong>【極致理智與極致浪漫的並存】</strong><br>
-                            工作與學習上是絕對的理智派（T），建立嚴格 SOP 規範 AI 進行自動掃描、精煉規格化；但在私下生活與追星世界裡，是極度細膩重感情的無敵感性派（F），對家人、朋友與偶像有著最純粹、毫無保留的熱情。
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="dimension-name" data-label="心理維度">J（判斷）<br>vs<br>P（感知）</td>
-                        <td class="analysis-text" data-label="全端實戰特質觀測">
-                            <strong>【工作秩序與生活隨性的雙模切換】</strong><br>
-                            <span class="highlight">藍色 J 軸在戰場模式高頻啟動。</span>學習與專案時強烈追求秩序、計畫與掌控權（如 SQL 筆記規格、乙檢盲打肌肉記憶）；切換到黃色生活場域則釋放 P 的隨性與斷電躺平，兩套系統依情境自動排程。
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <section class="manual-section" id="human-design" aria-labelledby="manual-hd-title">
+                <header class="manual-section__head">
+                    <span class="manual-section__tag" aria-hidden="true">02</span>
+                    <div>
+                        <h3 class="manual-section__title" id="manual-hd-title">人類圖</h3>
+                        <p class="manual-section__desc">硬體晶片架構 · 排除命理，純解構能量配置</p>
+                    </div>
+                </header>
 
-            <div class="box box1">
-                <h3>🎯 職場與人格核心結論</h3>
-            </div>
-            <p class="conclusion-text">你不是被傳統 16 型人格鎖死的單一標籤，你是一個<strong>「平時全光譜靈活彈性，關鍵時刻啟動 100% 鋼鐵核心」</strong>的稀有複合型人才。本質上像孩子一樣真誠，渴望在現實世界中透過實力「被同學問問題（建立秩序）」並「獲得真心稱讚（補充感性燃料）」。</p>
+                <div class="summary-box">
+                    核心硬體特徵：【上方高能瘋狂運轉，下方留白百變躺平】
+                </div>
 
-            <div class="footer-note">
-                本報告由 Noopy 專屬 AI 夥伴依據實戰表現與真實測驗印象優化編寫，底層代碼已永久鎖定。
-            </div>
-
-            <hr class="manual-divider" aria-hidden="true">
-
-            <div class="box box1">
-                <h3>Noopy 專屬人類圖硬體晶片架構說明書</h3>
-            </div>
-            <p class="manual-lead">排除命理玄學，純粹解構大腦過載與多軌並行的能量配置圖</p>
-
-            <div class="summary-box">
-                💡 核心硬體特徵大解析：【上方高能瘋狂運轉，下方留白百變躺平】
-            </div>
-
-            <div class="box box1">
-                <h3>⚡ 能量中心與通道代碼拆解</h3>
-            </div>
-
-            <div class="component-block">
+                <div class="component-block">
                 <div class="component-title">🧠 頭腦與邏輯中心：頂配硬體連線<span class="badge-defined">有定義（彩色）</span></div>
                 <p>你最頂端的大腦與脖子區塊之間存在著極為穩固、通暢的彩色硬體連線。這就是你<strong>「腦袋完全停不下來、無法停止運轉」</strong>的物理出廠設定：</p>
                 <ul>
@@ -565,13 +499,23 @@
                 <p>當你進入學習與戰場模式（如週一週二硬核全端課、備戰乙檢忙打），你能像超跑一樣高速燃燒；但一旦脫離戰場，硬體會立刻啟動保護機制強制進入「100% 隨性躺平、甚至懶得洗澡」的離線節能狀態。這完全符合你的出廠設定，無需焦慮。</p>
             </div>
 
-            <div class="footer-note">
-                本手冊將人類圖轉化為 UI 晶片邏輯，建議作為全端作品集互動卡片彩蛋使用。
-            </div>
+                <p class="footer-note">人類圖段落轉化為 UI 晶片邏輯，可作為作品集互動彩蛋。</p>
+            </section>
 
-            <p class="about-placeholder" style="margin-top: 48px; padding: 24px; border-radius: var(--radius-card);">
-                <strong>總結</strong> — 內容建置中
-            </p>
+            <section class="manual-section" id="summary" aria-labelledby="manual-summary-title">
+                <header class="manual-section__head">
+                    <span class="manual-section__tag" aria-hidden="true">03</span>
+                    <div>
+                        <h3 class="manual-section__title" id="manual-summary-title">總結</h3>
+                        <p class="manual-section__desc">跨 MBTI 與人類圖的綜合使用說明</p>
+                    </div>
+                </header>
+
+                <div class="about-placeholder">
+                    <strong>內容建置中</strong>
+                    綜合兩份觀察報告的「努比使用守則」即將補上。
+                </div>
+            </section>
         </article>
     </main>
 
