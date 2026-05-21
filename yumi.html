@@ -259,13 +259,38 @@
             min-height: 280px;
             background: var(--bg-card);
             border-radius: var(--radius);
-            padding: 28px 24px;
+            padding: 0;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
+            justify-content: flex-start;
+            overflow: hidden;
             border: 2px solid transparent;
             box-shadow: var(--shadow);
             transition: transform 0.2s ease;
+        }
+
+        .story-cover {
+            width: 100%;
+            height: 220px;
+            max-height: 220px;
+            object-fit: cover;
+            object-position: 50% 0%;
+            display: block;
+            flex-shrink: 0;
+            background: #f1f3f5;
+        }
+
+        .story-cover--pending {
+            object-fit: none;
+            background: linear-gradient(135deg, var(--emotional-pale) 0%, var(--pink-pale) 100%);
+        }
+
+        .story-body {
+            padding: 20px 24px 28px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            justify-content: flex-end;
         }
 
         .item31:hover,
@@ -274,19 +299,11 @@
             transform: translateY(-4px);
         }
 
-        .item31 {
-            border-color: var(--pink-soft);
-            background: linear-gradient(180deg, #fff 30%, var(--pink-pale) 100%);
-        }
-
-        .item32 {
-            border-color: #a5d8ff;
-            background: linear-gradient(180deg, #fff 30%, var(--rational-pale) 100%);
-        }
-
+        .item31,
+        .item32,
         .item33 {
-            border-color: #d0bfff;
-            background: linear-gradient(180deg, #fff 30%, var(--emotional-pale) 100%);
+            border-color: #e9ecef;
+            background: var(--bg-card);
         }
 
         .story-stage {
@@ -348,17 +365,18 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
         }
 
-        /* yumi/cells-sprite.png — 改各格 background-position */
+        /* yumi/cells-sprite.png — 略放大裁切，避開格線藍邊 */
         .cell-sprite {
             --cell-sprite-url: url("yumi/cells-sprite.png");
+            --cell-sprite-zoom: 334%;
             width: 100%;
             aspect-ratio: var(--cell-sprite-aspect);
             flex-shrink: 0;
             margin: 0;
+            background-color: #f8c830;
             background-image: var(--cell-sprite-url);
             background-repeat: no-repeat;
-            /* 3×3 格：寬高同比例放大，避免單格被拉扁 */
-            background-size: 300% 300%;
+            background-size: var(--cell-sprite-zoom) var(--cell-sprite-zoom);
         }
 
         .cell-text {
@@ -369,41 +387,16 @@
             flex: 1;
         }
 
-        .item41 .cell-sprite {
-            background-position: 0% 0%;
-        }
-
-        .item42 .cell-sprite {
-            background-position: 50% 0%;
-        }
-
-        .item43 .cell-sprite {
-            background-position: 100% 0%;
-        }
-
-        .item44 .cell-sprite {
-            background-position: 0% 50%;
-        }
-
-        .item45 .cell-sprite {
-            background-position: 50% 50%;
-        }
-
-        .item46 .cell-sprite {
-            background-position: 100% 50%;
-        }
-
-        .item47 .cell-sprite {
-            background-position: 0% 100%;
-        }
-
-        .item48 .cell-sprite {
-            background-position: 50% 100%;
-        }
-
-        .item49 .cell-sprite {
-            background-position: 100% 100%;
-        }
+        /* 3×3 格位 — 依實際裁切微調 %（理性細胞基準 5% 4%） */
+        .item41 .cell-sprite { background-position: 5% 4%; }
+        .item42 .cell-sprite { background-position: 50% 3%; }
+        .item43 .cell-sprite { background-position: 95% 4%; }
+        .item44 .cell-sprite { background-position: 5% 50%; }
+        .item45 .cell-sprite { background-position: 50% 50%; }
+        .item46 .cell-sprite { background-position: 95% 50%; }
+        .item47 .cell-sprite { background-position: 5% 96%; }
+        .item48 .cell-sprite { background-position: 50% 96%; }
+        .item49 .cell-sprite { background-position: 95% 96%; }
 
         .cell-name {
             font-weight: 800;
@@ -425,82 +418,6 @@
             border-left: 3px solid #dee2e6;
             border-radius: 0;
             background: #f8f9fa;
-        }
-
-        .item41 .cell-desc {
-            border-left-color: #4dabf7;
-            background: var(--rational-pale);
-        }
-
-        .item42 .cell-desc {
-            border-left-color: var(--food);
-            background: #fff4e6;
-        }
-
-        .item43 .cell-desc {
-            border-left-color: var(--emotional);
-            background: var(--emotional-pale);
-        }
-
-        .item44 .cell-desc {
-            border-left-color: var(--fashion);
-            background: var(--fashion-pale);
-        }
-
-        .item45 .cell-desc {
-            border-left-color: var(--love);
-            background: var(--pink-pale);
-        }
-
-        .item46 .cell-desc {
-            border-left-color: #339af0;
-            background: #e7f5ff;
-        }
-
-        .item47 .cell-desc {
-            border-left-color: #868e96;
-            background: #f1f3f5;
-        }
-
-        .item48 .cell-desc {
-            border-left-color: #e64980;
-            background: #fff0f6;
-        }
-
-        .item41 .cell-name {
-            color: #1971c2;
-        }
-
-        .item42 .cell-name {
-            color: #e67700;
-        }
-
-        .item43 .cell-name {
-            color: #7950f2;
-        }
-
-        .item44 .cell-name {
-            color: #e67700;
-        }
-
-        .item45 .cell-name {
-            color: var(--love);
-        }
-
-        .item46 .cell-name {
-            color: #1971c2;
-        }
-
-        .item47 .cell-name {
-            color: #495057;
-        }
-
-        .item48 .cell-name {
-            color: #c2255c;
-        }
-
-        .item49 .cell-name {
-            color: #862e9c;
         }
 
         .footer-note {
@@ -567,37 +484,43 @@
     <!-- 2️⃣ 主視覺 -->
     <div class="container container-2">
         <div class="item21">
-            <img class="hero-img"
-                src="https://resource02.ulifestyle.com.hk/ulcms/content/article/thumbnail/1280x720/ub/20220617172616__bc255dd0d5268a68f672cfe9e21bc1c2.jpg"
-                alt="《柔美的細胞小將2》細胞角色介紹主圖">
+            <img class="hero-img" src="yumi/25.jpg" alt="《柔美的細胞小將2》細胞角色介紹主圖">
             <span class="hero-badge">CELL VILLAGE</span>
-            <p class="hero-visual-sub">圖片來源：<a
-                    href="https://ubeauty.com.hk/girlstalk/movie-and-show/10023092/-%E6%9F%94%E7%BE%8E%E7%9A%84%E7%B4%B0%E8%83%9E%E5%B0%8F%E5%B0%872-44%E5%80%8B%E7%B4%B0%E8%83%9E%E8%A7%92%E8%89%B2%E4%BB%8B%E7%B4%B9-%E5%88%A5%E6%9C%89%E5%B1%85%E5%BF%83%E7%B4%B0%E8%83%9E%E5%8F%AA%E7%A9%BF%E5%86%85%E8%A4%B2-%E5%8F%AF%E6%84%9B%E5%8F%88%E6%90%9E%E7%AC%91-"
-                    target="_blank" rel="noopener noreferrer">U Beauty</a></p>
+
         </div>
         <div class="item22">
             <span class="page-kicker">YUMI'S CELLS</span>
             <h1>這座村莊的主人，<em>永遠是柔美自己</em></h1>
-            <p>改編自人氣韓劇《柔美的細胞小將》的視覺語彙：真人戀愛 × Q 版細胞開會。經歷心碎與重新出發，柔美在創作裡找到方向；而溫暖堅定的辛順錄告訴她——在愛裡，不必一味迎合，你本來就可以是主角。</p>
+            <p>《柔美的細胞小將》全三季是一部橫跨五年的經典成長愛情劇。故事核心講述平凡上班族「金柔美」在經歷三段不同的戀情後，如何從一個盲目付出、受盡心碎的女孩，最終轉變為懂得愛自己、收穫真愛的明星作家。
+            </p>
         </div>
     </div>
 
     <!-- 3️⃣ 第 1・2・3 季 -->
     <div class="container container-3">
         <div class="item31">
-            <div class="story-stage">具雄 / Goo Woong</div>
-            <div class="story-title">直男程式設計師</div>
-            <div class="story-desc">簡單直率的腦袋讓嘴饞細胞天天吃飽，卻也曾讓愛情細胞受盡委屈，是讓由美初次體會深刻戀愛的起點。</div>
+            <img class="story-cover" src="yumi/1.jpeg" alt="第 1 季">
+            <div class="story-body">
+                <div class="story-stage">具雄 / Goo Woong</div>
+                <div class="story-title">直男程式設計師</div>
+                <div class="story-desc">簡單直率的腦袋讓嘴饞細胞天天吃飽，卻也曾讓愛情細胞受盡委屈，是讓由美初次體會深刻戀愛的起點。</div>
+            </div>
         </div>
         <div class="item32">
-            <div class="story-stage">劉八筆 / Yoo Babi</div>
-            <div class="story-title">完美多情的營銷組長</div>
-            <div class="story-desc">溫柔貼心到讓感性細胞與時尚細胞天天心動，可惜名偵探細胞最後還是發現了他的動搖，留下遺憾。</div>
+            <img class="story-cover" src="yumi/2.jpeg" alt="第 2 季">
+            <div class="story-body">
+                <div class="story-stage">劉八筆 / Yoo Babi</div>
+                <div class="story-title">完美多情的營銷組長</div>
+                <div class="story-desc">溫柔貼心到讓感性細胞與時尚細胞天天心動，可惜名偵探細胞最後還是發現了他的動搖，留下遺憾。</div>
+            </div>
         </div>
         <div class="item33">
-            <div class="story-stage">辛馴鹿] / Shin Soon Rok</div>
-            <div class="story-title">命中注定的溫柔插畫家</div>
-            <div class="story-desc">傲嬌又成熟的守護，讓色心細胞興奮到冒煙、歇斯底里細胞全退散，全心全意讓愛情細胞再次甦醒。</div>
+            <img class="story-cover" src="yumi/3.jpg" alt="第 3 季">
+            <div class="story-body">
+                <div class="story-stage">辛馴鹿 / Shin Soon Rok</div>
+                <div class="story-title">命中注定的溫柔負責編輯</div>
+                <div class="story-desc">傲嬌又成熟的守護，讓色心細胞興奮到冒煙、歇斯底里細胞全退散，全心全意讓愛情細胞再次甦醒。</div>
+            </div>
         </div>
     </div>
 
@@ -661,13 +584,6 @@
         </div>
     </div>
 
-    <p class="footer-note">
-        細胞圖片引用自
-        <a
-            href="https://ubeauty.com.hk/girlstalk/movie-and-show/10023092/-%E6%9F%94%E7%BE%8E%E7%9A%84%E7%B4%B0%E8%83%9E%E5%B0%8F%E5%B0%872-44%E5%80%8B%E7%B4%B0%E8%83%9E%E8%A7%92%E8%89%B2%E4%BB%8B%E7%B4%B9-%E5%88%A5%E6%9C%89%E5%B1%85%E5%BF%83%E7%B4%B0%E8%83%9E%E5%8F%AA%E7%A9%BF%E5%86%85%E8%A4%B2-%E5%8F%AF%E6%84%9B%E5%8F%88%E6%90%9E%E7%AC%91-">《柔美的細胞小將2》44個細胞角色介紹｜U
-            Beauty</a>
-        · 概念展示頁
-    </p>
 
 </body>
 
