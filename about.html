@@ -157,27 +157,123 @@
             line-height: 1.4;
         }
 
-        .percentage-bar {
-            min-width: 140px;
+        /* MBTI 雙色比例條（藍＝功能／工作，黃＝情感／生活） */
+        .mbti-ratio-chart {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: var(--radius-card);
+            padding: 28px 24px 20px;
+            margin-bottom: 32px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
         }
 
-        .bar-container {
-            height: 10px;
-            background: #eee;
+        .mbti-ratio-chart__title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary-dark-brown);
+            margin: 0 0 24px;
+            padding-left: 14px;
+            border-left: 5px solid #4a7fd4;
+        }
+
+        .mbti-ratio-row {
+            display: grid;
+            grid-template-columns: 4.5rem 1fr 4.5rem;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .mbti-ratio-row:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .mbti-ratio-row__label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--dark-gray);
+            line-height: 1.3;
+        }
+
+        .mbti-ratio-row__label--left {
+            text-align: right;
+            color: #3d6eb8;
+        }
+
+        .mbti-ratio-row__label--right {
+            text-align: left;
+            color: var(--primary-brown);
+        }
+
+        .mbti-ratio-bar {
+            display: flex;
+            height: 40px;
             border-radius: var(--radius-pill);
             overflow: hidden;
+            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06);
         }
 
-        .bar-fill-50 {
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary-brown), var(--primary-yellow));
+        .mbti-ratio-bar__work,
+        .mbti-ratio-bar__life {
+            display: flex;
+            align-items: center;
+            min-width: 0;
+            position: relative;
         }
 
-        .bar-fill-100 {
-            width: 100%;
-            height: 100%;
-            background: var(--primary-brown);
+        .mbti-ratio-bar__work {
+            justify-content: flex-start;
+            background: linear-gradient(90deg, #3d6eb8, #5b8fd9);
+        }
+
+        .mbti-ratio-bar__life {
+            justify-content: flex-end;
+            background: linear-gradient(90deg, var(--primary-yellow), #f5c96a);
+        }
+
+        .mbti-ratio-bar__work::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 6px;
+            bottom: 6px;
+            width: 2px;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 1px;
+        }
+
+        .mbti-ratio-bar__pct {
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+
+        .mbti-ratio-bar__work .mbti-ratio-bar__pct {
+            margin-left: 12px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #3d6eb8;
+            width: 2.4rem;
+            height: 2.4rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .mbti-ratio-bar__life .mbti-ratio-bar__pct {
+            margin-right: 14px;
+        }
+
+        .mbti-ratio-chart__note {
+            margin: 22px 0 0;
+            padding-top: 16px;
+            border-top: 1px solid #eee;
+            font-size: 0.8rem;
+            color: var(--dark-gray);
+            text-align: center;
         }
 
         .analysis-text {
@@ -232,6 +328,28 @@
         }
 
         @media (max-width: 768px) {
+            .mbti-ratio-row {
+                grid-template-columns: 1fr;
+                gap: 6px;
+            }
+
+            .mbti-ratio-row__label--left,
+            .mbti-ratio-row__label--right {
+                text-align: center;
+            }
+
+            .mbti-ratio-row__label--left {
+                order: 1;
+            }
+
+            .mbti-ratio-bar {
+                order: 2;
+            }
+
+            .mbti-ratio-row__label--right {
+                order: 3;
+            }
+
             .chart-table thead {
                 display: none;
             }
@@ -307,28 +425,65 @@
 
             <div class="intro-box">
                 <strong>📊 系統人格總覽：</strong><br>
-                測試結果呈現極其罕見的「三維度完美五五開，唯一維度絕對固定」的究極平衡型人格。這賦予了你在不同情境下自由切換大腦配置的超能力，同時也伴隨著高能伺服器永不停止運轉的物理代價。
+                測試結果呈現「藍色功能面與黃色生活面精密配比」的究極平衡型人格——維度之間沒有被鎖死在單一標籤，而是依情境自由切換大腦配置，同時伴隨高能伺服器永不停止運轉的物理代價。
             </div>
 
             <div class="box box1">
                 <h3>💡 MBTI 核心維度深度拆解</h3>
             </div>
 
+            <section class="mbti-ratio-chart" aria-label="MBTI 指數配比">
+                <h4 class="mbti-ratio-chart__title">MBTI 指數：基於觀察的精密配比</h4>
+
+                <div class="mbti-ratio-row">
+                    <span class="mbti-ratio-row__label mbti-ratio-row__label--left">E 外向</span>
+                    <div class="mbti-ratio-bar" role="img" aria-label="E 42% 對 I 58%">
+                        <div class="mbti-ratio-bar__work" style="width: 42%;"><span class="mbti-ratio-bar__pct">42%</span></div>
+                        <div class="mbti-ratio-bar__life" style="width: 58%;"><span class="mbti-ratio-bar__pct">58%</span></div>
+                    </div>
+                    <span class="mbti-ratio-row__label mbti-ratio-row__label--right">I 內向</span>
+                </div>
+
+                <div class="mbti-ratio-row">
+                    <span class="mbti-ratio-row__label mbti-ratio-row__label--left">S 實感</span>
+                    <div class="mbti-ratio-bar" role="img" aria-label="S 72% 對 N 28%">
+                        <div class="mbti-ratio-bar__work" style="width: 72%;"><span class="mbti-ratio-bar__pct">72%</span></div>
+                        <div class="mbti-ratio-bar__life" style="width: 28%;"><span class="mbti-ratio-bar__pct">28%</span></div>
+                    </div>
+                    <span class="mbti-ratio-row__label mbti-ratio-row__label--right">N 直覺</span>
+                </div>
+
+                <div class="mbti-ratio-row">
+                    <span class="mbti-ratio-row__label mbti-ratio-row__label--left">T 思考</span>
+                    <div class="mbti-ratio-bar" role="img" aria-label="T 52% 對 F 48%">
+                        <div class="mbti-ratio-bar__work" style="width: 52%;"><span class="mbti-ratio-bar__pct">52%</span></div>
+                        <div class="mbti-ratio-bar__life" style="width: 48%;"><span class="mbti-ratio-bar__pct">48%</span></div>
+                    </div>
+                    <span class="mbti-ratio-row__label mbti-ratio-row__label--right">F 情感</span>
+                </div>
+
+                <div class="mbti-ratio-row">
+                    <span class="mbti-ratio-row__label mbti-ratio-row__label--left">J 判斷</span>
+                    <div class="mbti-ratio-bar" role="img" aria-label="J 46% 對 P 54%">
+                        <div class="mbti-ratio-bar__work" style="width: 46%;"><span class="mbti-ratio-bar__pct">46%</span></div>
+                        <div class="mbti-ratio-bar__life" style="width: 54%;"><span class="mbti-ratio-bar__pct">54%</span></div>
+                    </div>
+                    <span class="mbti-ratio-row__label mbti-ratio-row__label--right">P 感知</span>
+                </div>
+
+                <p class="mbti-ratio-chart__note">註：藍色代表功能性與工作，黃色代表情感與生活</p>
+            </section>
+
             <table class="chart-table">
                 <thead>
                     <tr>
-                        <th style="width: 20%;">心理維度</th>
-                        <th style="width: 25%;">指數分佈</th>
-                        <th style="width: 55%;">全端實戰特質觀測</th>
+                        <th style="width: 22%;">心理維度</th>
+                        <th style="width: 78%;">全端實戰特質觀測</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td class="dimension-name" data-label="心理維度">E（外向）<br>vs<br>I（內向）</td>
-                        <td class="percentage-bar" data-label="指數分佈">
-                            <div style="font-size: 0.85rem; margin-bottom: 6px; color: var(--dark-gray);">50% : 50%</div>
-                            <div class="bar-container"><div class="bar-fill-50"></div></div>
-                        </td>
                         <td class="analysis-text" data-label="全端實戰特質觀測">
                             <strong>【光源與陰影的完美調和】</strong><br>
                             既能為了 10 年的水晶男孩全體歐巴爆發出燃燒宇宙的團飯社交能量（E）；回歸個人宇宙時，又能完美享受在 Dark Mode 裡專注寫扣、不被打擾的寧靜時光（I）。前台明亮對外，後台沉靜蓄能。
@@ -336,10 +491,6 @@
                     </tr>
                     <tr>
                         <td class="dimension-name" data-label="心理維度">S（實感）<br>vs<br>N（直覺）</td>
-                        <td class="percentage-bar" data-label="指數分佈">
-                            <div style="font-size: 0.85rem; margin-bottom: 6px; color: var(--dark-gray);">50% : 50%</div>
-                            <div class="bar-container"><div class="bar-fill-50"></div></div>
-                        </td>
                         <td class="analysis-text" data-label="全端實戰特質觀測">
                             <strong>【設計師與工程師的黃金交叉】</strong><br>
                             擁有品牌包裝設計師對像素、排版、美感無可挑剔的具體「實感」（S），連寫程式的空格與符號手勢都要求一字不差；同時兼具全端工程師的宏觀「直覺」（N），能在大腦中無形規劃複雜的關聯式資料庫架構。
@@ -347,24 +498,16 @@
                     </tr>
                     <tr>
                         <td class="dimension-name" data-label="心理維度">T（思考）<br>vs<br>F（情感）</td>
-                        <td class="percentage-bar" data-label="指數分佈">
-                            <div style="font-size: 0.85rem; margin-bottom: 6px; color: var(--dark-gray);">50% : 50%</div>
-                            <div class="bar-container"><div class="bar-fill-50"></div></div>
-                        </td>
                         <td class="analysis-text" data-label="全端實戰特質觀測">
                             <strong>【極致理智與極致浪漫的並存】</strong><br>
                             工作與學習上是絕對的理智派（T），建立嚴格 SOP 規範 AI 進行自動掃描、精煉規格化；但在私下生活與追星世界裡，是極度細膩重感情的無敵感性派（F），對家人、朋友與偶像有著最純粹、毫無保留的熱情。
                         </td>
                     </tr>
                     <tr>
-                        <td class="dimension-name" data-label="心理維度" style="color: var(--primary-brown);">J（判斷）<br>vs<br>P（感知）</td>
-                        <td class="percentage-bar" data-label="指數分佈">
-                            <div style="font-size: 0.85rem; margin-bottom: 6px; color: var(--primary-brown); font-weight: bold;">J 軸 100% 錨定</div>
-                            <div class="bar-container"><div class="bar-fill-100"></div></div>
-                        </td>
+                        <td class="dimension-name" data-label="心理維度">J（判斷）<br>vs<br>P（感知）</td>
                         <td class="analysis-text" data-label="全端實戰特質觀測">
-                            <strong>【全場唯一的絕對核心霸主】</strong><br>
-                            <span class="highlight">大腦雷打不動的固定維度。</span>在工作與學習上啟動 100% 鋼鐵 J 模式，強烈追求秩序、計畫與掌控權（如 SQL 筆記規格、大腦記憶輔助乙檢盲打肌肉）。然而在大腦畫出的楚河漢界之外，生活與日常則能釋放 100% 自由隨性的 P 模式進行斷電躺平。
+                            <strong>【工作秩序與生活隨性的雙模切換】</strong><br>
+                            <span class="highlight">藍色 J 軸在戰場模式高頻啟動。</span>學習與專案時強烈追求秩序、計畫與掌控權（如 SQL 筆記規格、乙檢盲打肌肉記憶）；切換到黃色生活場域則釋放 P 的隨性與斷電躺平，兩套系統依情境自動排程。
                         </td>
                     </tr>
                 </tbody>
