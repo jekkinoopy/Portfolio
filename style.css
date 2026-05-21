@@ -132,6 +132,19 @@
     margin-top: calc(var(--graphic-media-gap) * 2.25);
 }
 
+/* 內頁區塊小標（Graphic、About 等） */
+.box.box1 {
+    height: fit-content;
+    border-left: 10px solid var(--primary-dark-brown);
+}
+
+.box.box1 h3 {
+    font-size: 2rem;
+    padding-left: 50px;
+    margin: 0;
+    color: var(--primary-dark-brown);
+}
+
 @media (max-width: 1024px) {
     :root {
         --graphic-mosaic-img-h: clamp(138px, 34vw, 248px);
@@ -822,8 +835,8 @@ footer {
         margin: 0;
     }
 
-    /* Graphic 子頁大標題列（ logoPkg 等） */
-    main.main-container .box1 h3 {
+    /* 內頁區塊小標（Graphic、About 等） */
+    .box.box1 h3 {
         padding-left: clamp(16px, 4vw, 50px);
         font-size: clamp(1.65rem, 4.2vw, 2.35rem);
     }
