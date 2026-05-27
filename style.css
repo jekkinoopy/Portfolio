@@ -209,7 +209,7 @@ header {
     padding: 10px 50px;
 }
 
-/* 導覽項目依數量左右平分：4 項＝2+2，6 項＝3+3（HTML 分進 --start / --end） */
+/* 導覽左右平分：左 About・Graphic・Illustration｜右 Video・UI/UX・Web */
 .nav-shell {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
