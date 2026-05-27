@@ -316,7 +316,7 @@
             return { number: Number(m[1]), side: m[2].toUpperCase() };
         }
 
-        function buildCalendarDisplayOrder(fileNames) {
+        function buildCalendarDisplayOrder(fileNames, singleColumn = false) {
             const cover = [];
             const back = [];
             const middle = [];
@@ -336,6 +336,13 @@
             });
 
             middle.sort((a, b) => {
+                // 一欄時：月份順序，且同月先 A 再 B（正面→反面）
+                if (singleColumn) {
+                    if (a.number !== b.number) return a.number - b.number;
+                    return (a.side === "A" ? 0 : 1) - (b.side === "A" ? 0 : 1);
+                }
+
+                // 兩欄時：維持既有交錯排列（便於左右對照）
                 const groupA = Math.floor(a.number / 2);
                 const groupB = Math.floor(b.number / 2);
                 if (groupA !== groupB) return groupA - groupB;
@@ -349,6 +356,10 @@
             return [...cover, ...middle.map((item) => item.name), ...back];
         }
 
+        function isSingleColumnLayout() {
+            return window.matchMedia("(max-width: 700px)").matches;
+        }
+
         function getDisplayFilenames(project) {
             if (!project.id.startsWith("calendar-")) {
                 return [...project.images];
@@ -357,7 +368,7 @@
             if (!allParse) {
                 return [...project.images];
             }
-            const ordered = buildCalendarDisplayOrder([...project.images]);
+            const ordered = buildCalendarDisplayOrder([...project.images], isSingleColumnLayout());
             return ordered.length ? ordered : [...project.images];
         }
 
@@ -453,6 +464,11 @@
             if (event.key === "ArrowLeft") showPrev();
             if (event.key === "ArrowRight") showNext();
             if (event.key === "Escape") closeLightbox();
+        });
+
+        // 斷點跨越時（兩欄 <-> 一欄）重排桌曆順序
+        window.matchMedia("(max-width: 700px)").addEventListener("change", () => {
+            renderThumbs();
         });
 
         renderSwitcher();
