@@ -116,6 +116,26 @@
         }
         .thumb-item.single { grid-column: 1 / -1; }
 
+        /* 2020 桌曆：內頁滿寬，首頁/尾頁 50% 置中；不改圖片原始比例 */
+        .thumb-grid.is-calendar-2020 .thumb-item img {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            object-fit: cover;
+        }
+
+        .thumb-grid.is-calendar-2020 .thumb-item.cover,
+        .thumb-grid.is-calendar-2020 .thumb-item.back {
+            grid-column: 1 / -1;
+        }
+
+        .thumb-grid.is-calendar-2020 .thumb-item.cover .thumb-media,
+        .thumb-grid.is-calendar-2020 .thumb-item.back .thumb-media {
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         /* 遮邊：蓋住切線與白邊，不改圖片比例 */
         .thumb-media::after {
             content: "";
@@ -369,6 +389,7 @@
         function renderThumbs() {
             panelTitle.textContent = activeProject.title;
             thumbGrid.innerHTML = "";
+            thumbGrid.classList.toggle("is-calendar-2020", activeProject.id === "calendar-2020");
             const names = getActiveOrderedNames();
             const imagePaths = names.map((name) => `${activeProject.basePath}${name}`);
             imagePaths.forEach((src, index) => {
