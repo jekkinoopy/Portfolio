@@ -394,8 +394,25 @@
             return ordered.length ? ordered : [...project.images];
         }
 
+        function getLightboxDisplayFilenames(project) {
+            if (!project.id.startsWith("calendar-")) {
+                return [...project.images];
+            }
+            const allParse = project.images.every((n) => parseCalendarSheet(n));
+            if (!allParse) {
+                return [...project.images];
+            }
+            // 燈箱固定用同月正反順序（A -> B），便於左右鍵連續閱讀
+            const ordered = buildCalendarDisplayOrder([...project.images], true);
+            return ordered.length ? ordered : [...project.images];
+        }
+
         function getActiveOrderedNames() {
             return getDisplayFilenames(activeProject);
+        }
+
+        function getActiveLightboxNames() {
+            return getLightboxDisplayFilenames(activeProject);
         }
 
         function getActiveImagePaths() {
@@ -435,7 +452,7 @@
                 }
                 const button = document.createElement("button");
                 button.type = "button";
-                button.addEventListener("click", () => openLightbox(index));
+                button.addEventListener("click", () => openLightboxByName(names[index]));
                 const media = document.createElement("div");
                 media.className = "thumb-media";
                 const img = document.createElement("img");
@@ -450,11 +467,16 @@
         }
 
         function updateLightbox() {
-            const names = getActiveOrderedNames();
+            const names = getActiveLightboxNames();
             const imagePaths = names.map((name) => `${activeProject.basePath}${name}`);
             lightboxImage.src = imagePaths[currentIndex];
             lightboxImage.alt = names[currentIndex];
             lightboxIndex.textContent = `${currentIndex + 1} / ${imagePaths.length}`;
+        }
+        function openLightboxByName(name) {
+            const names = getActiveLightboxNames();
+            const idx = names.indexOf(name);
+            openLightbox(idx >= 0 ? idx : 0);
         }
         function openLightbox(index) {
             currentIndex = index;
