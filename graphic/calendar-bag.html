@@ -247,7 +247,7 @@
     <script>
         const projects = [
             { id: "calendar-2020", label: "2020 桌曆", icon: "fa-calendar-days", title: "2020 桌曆內頁", basePath: "../images/graphic/calendarBag/2020c/", images: ["2020桌曆_00A-1.jpeg","2020桌曆_00B-1.jpeg","2020桌曆_01A-1.jpeg","2020桌曆_02A-1.jpeg","2020桌曆_01B-1.jpeg","2020桌曆_02B-1.jpeg","2020桌曆_03A-1.jpeg","2020桌曆_04A-1.jpeg","2020桌曆_03B-1.jpeg","2020桌曆_04B-1.jpeg","2020桌曆_05A-1.jpeg","2020桌曆_06A-1.jpeg","2020桌曆_05B-1.jpeg","2020桌曆_06B-1.jpeg","2020桌曆_07A-1.jpeg","2020桌曆_08A-1.jpeg","2020桌曆_07B-1.jpeg","2020桌曆_08B-1.jpeg","2020桌曆_09A-1.jpeg","2020桌曆_10A-1.jpeg","2020桌曆_09B-1.jpeg","2020桌曆_10B-1.jpeg","2020桌曆_11A-1.jpeg","2020桌曆_12A-1.jpeg","2020桌曆_11B-1.jpeg","2020桌曆_13A-1.jpeg"] },
-            { id: "calendar-2021", label: "2021 桌曆", icon: "fa-calendar-check", title: "2021 桌曆內頁", basePath: "../images/graphic/calendarBag/2021c/", images: ["2021桌曆_00A.jpg","2021桌曆_01B.jpeg","2021桌曆_02A.jpg","2021桌曆_03A.jpeg","2021桌曆_03B.jpg","2021桌曆_04B.jpeg","2021桌曆_05A.jpg","2021桌曆_06A.jpeg","2021桌曆_06B.jpg","2021桌曆_07B.jpeg","2021桌曆_08A.jpg","2021桌曆_09A.jpeg","2021桌曆_09B.jpg","2021桌曆_10B.jpeg","2021桌曆_11A.jpg","2021桌曆_12A.jpeg","2021桌曆_12B.jpg","2021桌曆_13.jpg"] },
+            { id: "calendar-2021", label: "2021 桌曆", icon: "fa-calendar-check", title: "2021 桌曆內頁", basePath: "../images/graphic/calendarBag/2021c/", images: ["2021桌曆_00A.jpg","2021桌曆_01A.jpg","2021桌曆_01B.jpg","2021桌曆_02A.jpg","2021桌曆_02B.jpg","2021桌曆_03A.jpeg","2021桌曆_03B.jpg","2021桌曆_04A.jpg","2021桌曆_04B.jpeg","2021桌曆_05A.jpg","2021桌曆_05B.jpg","2021桌曆_06A.jpeg","2021桌曆_06B.jpg","2021桌曆_07A.jpg","2021桌曆_07B.jpeg","2021桌曆_08A.jpg","2021桌曆_08B.jpg","2021桌曆_09A.jpeg","2021桌曆_09B.jpg","2021桌曆_10A.jpg","2021桌曆_10B.jpeg","2021桌曆_11A.jpg","2021桌曆_11B.jpg","2021桌曆_12A.jpeg","2021桌曆_12B.jpg","2021桌曆_13.jpg"] },
             { id: "bag-2020", label: "2020 購物袋", icon: "fa-bag-shopping", title: "2020 購物袋設計", basePath: "../images/graphic/calendarBag/2020b/", images: ["2020_購物袋_A_春1.jpeg","2020_購物袋_B_夏2.jpeg","2020_購物袋_C_秋1.jpeg","2020_購物袋_D_冬2.jpg"] },
             /* 順序：春 → 夏 → 秋 → 冬（同季有 1/2 版本） */
             { id: "bag-2021", label: "2021 購物袋", icon: "fa-bag-shopping", title: "2021 購物袋設計", basePath: "../images/graphic/calendarBag/2021b/", images: ["_1__44x-100_(3).jpeg","2021_購物袋_B_夏1.jpg","2021_購物袋_C_秋1.jpg","2021_購物袋_D_冬2.jpeg"] }
@@ -319,15 +319,16 @@
         syncUrlToActiveProject();
 
         function parseCalendarSheet(name) {
-            const m = String(name).match(/(\d{2})([AB])(?:-\d+|)\.(?:jpe?g|jpeg|JPEG|jpg)$/i);
+            // 允許 13.jpg 這類沒有 A/B 側面的檔名
+            const m = String(name).match(/(\d{2})([AB])?(?:-\d+|)\.(?:jpe?g|jpeg|jpg)$/i);
             if (!m) return null;
-            return { number: Number(m[1]), side: m[2].toUpperCase() };
+            return { number: Number(m[1]), side: m[2] ? m[2].toUpperCase() : null };
         }
 
         function buildCalendarDisplayOrder(fileNames, singleColumn = false) {
             const cover = [];
             const back = [];
-            const middle = [];
+            const sheetMap = new Map();
 
             fileNames.forEach((name) => {
                 const meta = parseCalendarSheet(name);
@@ -336,32 +337,40 @@
                     cover.push(name);
                     return;
                 }
-                if (meta.number === 13 && meta.side === "A") {
+                if (meta.number === 13) {
                     back.push(name);
                     return;
                 }
-                middle.push({ name, ...meta });
+                if (!meta.side) return;
+                sheetMap.set(`${meta.number}${meta.side}`, name);
             });
 
-            middle.sort((a, b) => {
-                // 一欄時：月份順序，且同月先 A 再 B（正面→反面）
-                if (singleColumn) {
-                    if (a.number !== b.number) return a.number - b.number;
-                    return (a.side === "A" ? 0 : 1) - (b.side === "A" ? 0 : 1);
+            const middle = [];
+
+            if (singleColumn) {
+                // 一欄：每月 A -> B
+                for (let m = 1; m <= 12; m += 1) {
+                    const a = sheetMap.get(`${m}A`);
+                    const b = sheetMap.get(`${m}B`);
+                    if (a) middle.push(a);
+                    if (b) middle.push(b);
                 }
+            } else {
+                // 兩欄：1月正反、2月反正，奇數月 A->B，偶數月 B->A
+                for (let m = 1; m <= 12; m += 1) {
+                    const a = sheetMap.get(`${m}A`);
+                    const b = sheetMap.get(`${m}B`);
+                    if (m % 2 === 1) {
+                        if (a) middle.push(a);
+                        if (b) middle.push(b);
+                    } else {
+                        if (b) middle.push(b);
+                        if (a) middle.push(a);
+                    }
+                }
+            }
 
-                // 兩欄時：維持既有交錯排列（便於左右對照）
-                const groupA = Math.floor(a.number / 2);
-                const groupB = Math.floor(b.number / 2);
-                if (groupA !== groupB) return groupA - groupB;
-
-                const orderMap = { A0: 0, A1: 1, B0: 2, B1: 3 };
-                const aKey = `${a.side}${a.number % 2}`;
-                const bKey = `${b.side}${b.number % 2}`;
-                return (orderMap[aKey] ?? 99) - (orderMap[bKey] ?? 99);
-            });
-
-            return [...cover, ...middle.map((item) => item.name), ...back];
+            return [...cover, ...middle, ...back];
         }
 
         function isSingleColumnLayout() {
