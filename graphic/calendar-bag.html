@@ -172,7 +172,17 @@
     <header class="container">
         <nav class="navbar">
             <div class="container nav-shell">
-                <ul class="nav-links nav-links--start">
+                <a class="nav-logo" href="../index.html" aria-label="首頁">
+                    <img src="../images/noopylogov.png" alt="Jekkinoopy Studio">
+                </a>
+                <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav-menu"
+                    aria-label="開啟選單">
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                </button>
+                <div class="nav-menu" id="site-nav-menu">
+                    <ul class="nav-links nav-links--start">
                     <li><a href="../about.html">About</a></li>
                     <li class="dropdown">
                         <a href="../graphic.html">Graphic</a>
@@ -188,15 +198,13 @@
                         </ul>
                     </li>
                     <li><a href="../illustration.html">Illustration</a></li>
-                </ul>
-                <a class="nav-logo" href="../index.html" aria-label="首頁">
-                    <img src="../images/noopylogov.png" alt="Jekkinoopy Studio">
-                </a>
-                <ul class="nav-links nav-links--end">
+                    </ul>
+                    <ul class="nav-links nav-links--end">
                     <li class="downDisabled" data-tooltip="作品建置中"><a href="../video.html">Video</a></li>
                     <li class="downDisabled" data-tooltip="作品建置中"><a href="../uiux.html">UI/UX</a></li>
                     <li><a href="../web.html">Web</a></li>
-                </ul>
+                    </ul>
+                </div>
             </div>
         </nav>
     </header>
@@ -474,5 +482,6 @@
         renderSwitcher();
         renderThumbs();
     </script>
+    <script src="../nav.js"></script>
 </body>
 </html>

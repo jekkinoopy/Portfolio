@@ -64,31 +64,39 @@
     <header>
         <nav class="navbar">
             <div class="container nav-shell">
-                <ul class="nav-links nav-links--start">
-                    <li><a href="about.html">About</a></li>
-                    <li class="dropdown">
-                        <a href="graphic.html">Graphic</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="./graphic/logoPkg.html">Logo & 包裝設計</a></li>
-                            <li><a href="graphic/calendar-bag.html">桌曆 & 購物袋</a></li>
-                            <li class="downDisabled" data-tooltip="作品建置中"><a href="stationery.html">名片/卡片/票券/DM</a></li>
-                            <li class="downDisabled" data-tooltip="作品建置中"><a href="webBanner.html">網站視覺 Banner</a></li>
-                            <li class="downDisabled" data-tooltip="作品建置中"><a href="socialMedia.html">社群推播圖</a></li>
-                            <li class="downDisabled" data-tooltip="作品建置中"><a href="largeFormat.html">大圖輸出</a></li>
-                            <li class="downDisabled" data-tooltip="作品建置中"><a href="editorial.html">書刊</a></li>
-                            <li class="downDisabled" data-tooltip="作品建置中"><a href="productDetail.html">商品長條圖文</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="illustration.html">Illustration</a></li>
-                </ul>
                 <a class="nav-logo" href="index.html" aria-label="首頁">
                     <img src="images/noopylogov.png" alt="Jekkinoopy Studio">
                 </a>
-                <ul class="nav-links nav-links--end">
-                    <li class="downDisabled" data-tooltip="作品建置中"><a href="video.html">Video</a></li>
-                    <li class="downDisabled" data-tooltip="作品建置中"><a href="uiux.html">UI/UX</a></li>
-                    <li><a href="web.html">Web</a></li>
-                </ul>
+                <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav-menu"
+                    aria-label="開啟選單">
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                </button>
+                <div class="nav-menu" id="site-nav-menu">
+                    <ul class="nav-links nav-links--start">
+                        <li><a href="about.html">About</a></li>
+                        <li class="dropdown">
+                            <a href="graphic.html">Graphic</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="./graphic/logoPkg.html">Logo & 包裝設計</a></li>
+                                <li><a href="graphic/calendar-bag.html">桌曆 & 購物袋</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="stationery.html">名片/卡片/票券/DM</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="webBanner.html">網站視覺 Banner</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="socialMedia.html">社群推播圖</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="largeFormat.html">大圖輸出</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="editorial.html">書刊</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="productDetail.html">商品長條圖文</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="illustration.html">Illustration</a></li>
+                    </ul>
+                    <ul class="nav-links nav-links--end">
+                        <li class="downDisabled" data-tooltip="作品建置中"><a href="video.html">Video</a></li>
+                        <li class="downDisabled" data-tooltip="作品建置中"><a href="uiux.html">UI/UX</a></li>
+                        <li><a href="web.html">Web</a></li>
+                    </ul>
+                </div>
             </div>
         </nav>
         <div class="hero-section">
@@ -153,6 +161,7 @@
         <small>&copy; 2026 JEKKINOOPY. All rights reserved.</small>
     </footer>
 
+    <script src="nav.js"></script>
 </body>
 
 </html>
