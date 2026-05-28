@@ -1,0 +1,262 @@
+/* 全站導覽頁 · 本站風格（搭配 style.css） */
+body.site-guide-page {
+    background-color: var(--white);
+}
+
+body.site-guide-page .site-guide-nav-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--light-yellow);
+    box-shadow: 0 4px 18px rgba(89, 56, 37, 0.12);
+}
+
+body.site-guide-page .site-guide-nav-sticky .navbar {
+    padding: 10px 0;
+}
+
+body.site-guide-page .site-guide-main {
+    width: min(1100px, 92%);
+    margin: 0 auto 80px;
+    padding-top: 24px;
+}
+
+body.site-guide-page .site-guide-lead {
+    color: var(--dark-gray);
+    line-height: 1.75;
+    margin-bottom: 28px;
+    font-size: 0.95rem;
+}
+
+body.site-guide-page .site-guide-lead code {
+    font-size: 0.88em;
+    background: var(--bg-light);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--primary-dark-brown);
+}
+
+body.site-guide-page .site-guide-group {
+    margin-bottom: 48px;
+}
+
+body.site-guide-page .site-guide-group .section-title {
+    font-size: 1.5rem;
+    color: var(--primary-dark-brown);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--primary-yellow);
+    display: inline-block;
+}
+
+body.site-guide-page .site-guide-nav-sub {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--dark-gray);
+}
+
+body.site-guide-page .site-guide-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 24px;
+    font-size: 0.88rem;
+    color: var(--dark-gray);
+    margin-bottom: 12px;
+}
+
+body.site-guide-page .site-guide-legend__on {
+    color: var(--primary-brown);
+}
+
+body.site-guide-page .site-guide-legend__off {
+    color: #bbb;
+}
+
+body.site-guide-page .site-guide-nav-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: var(--radius-card);
+    border: 1px solid rgba(166, 93, 51, 0.18);
+    background: #fff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+}
+
+body.site-guide-page .site-guide-nav-table,
+body.site-guide-page .site-guide-mini-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+}
+
+body.site-guide-page .site-guide-nav-table caption,
+body.site-guide-page .site-guide-nav-caption {
+    caption-side: top;
+    text-align: left;
+    padding: 10px 14px 0;
+    font-size: 0.82rem;
+    color: var(--dark-gray);
+}
+
+body.site-guide-page .site-guide-nav-table thead th,
+body.site-guide-page .site-guide-mini-table thead th {
+    background: var(--primary-dark-brown);
+    color: var(--white);
+    font-weight: 600;
+    text-align: left;
+    padding: 12px 14px;
+    white-space: nowrap;
+}
+
+body.site-guide-page .site-guide-mini-table th[scope="row"] {
+    background: var(--bg-light);
+    color: var(--primary-dark-brown);
+    font-weight: 600;
+    width: 28%;
+    white-space: nowrap;
+    vertical-align: top;
+}
+
+body.site-guide-page .site-guide-nav-table td,
+body.site-guide-page .site-guide-mini-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(166, 93, 51, 0.1);
+    vertical-align: top;
+    line-height: 1.55;
+}
+
+body.site-guide-page .site-guide-nav-table tbody tr:hover td {
+    background: rgba(255, 220, 136, 0.18);
+}
+
+body.site-guide-page .site-guide-nav-menu-cell {
+    text-align: left;
+    white-space: nowrap;
+    width: 1%;
+}
+
+body.site-guide-page .site-guide-nav-table tr[data-site-guide-depth="1"] .site-guide-nav-menu-cell {
+    padding-left: 0.65rem;
+}
+
+body.site-guide-page .site-guide-nav-table tr[data-site-guide-depth="2"] .site-guide-nav-menu-cell {
+    padding-left: 1.1rem;
+}
+
+body.site-guide-page .site-guide-nav-table tr[data-site-guide-depth="3"] .site-guide-nav-menu-cell {
+    padding-left: 1.85rem;
+}
+
+body.site-guide-page .site-guide-nav-table tr[data-site-guide-depth="4"] .site-guide-nav-menu-cell {
+    padding-left: 2.6rem;
+}
+
+body.site-guide-page .site-guide-nav-table tr[data-site-guide-depth="2"] .site-guide-nav-name::before {
+    content: "——\00a0";
+}
+
+body.site-guide-page .site-guide-nav-table tr[data-site-guide-depth="3"] .site-guide-nav-name::before {
+    content: "————\00a0";
+}
+
+body.site-guide-page .site-guide-nav-table tr[data-site-guide-depth="4"] .site-guide-nav-name::before {
+    content: "——————\00a0";
+}
+
+body.site-guide-page .site-guide-nav-table tr[data-site-guide-depth] .site-guide-nav-name::before {
+    display: inline;
+    font-family: inherit;
+    font-size: 0.92em;
+    color: rgba(89, 56, 37, 0.35);
+    letter-spacing: 0.02em;
+}
+
+body.site-guide-page .site-guide-nav-name,
+body.site-guide-page .site-guide-nav-name a {
+    white-space: nowrap;
+    color: var(--primary-dark-brown);
+    font-weight: 600;
+}
+
+body.site-guide-page .site-guide-nav-name a:hover {
+    color: var(--primary-brown);
+}
+
+body.site-guide-page .site-guide-nav-desc {
+    color: var(--black);
+    min-width: 200px;
+}
+
+body.site-guide-page .site-guide-nav-link-cell code {
+    font-size: 0.82em;
+    color: var(--primary-brown);
+    word-break: break-all;
+    white-space: normal;
+}
+
+body.site-guide-page .site-guide-nav-link-cell a {
+    color: var(--primary-brown);
+}
+
+body.site-guide-page .site-guide-nav-nolink {
+    color: var(--dark-gray);
+    font-style: italic;
+}
+
+body.site-guide-page .site-guide-subh {
+    font-size: 1.05rem;
+    color: var(--primary-brown);
+    margin: 24px 0 10px;
+}
+
+body.site-guide-page .site-guide-fine-print {
+    font-size: 0.85rem;
+    color: var(--dark-gray);
+    margin-top: 12px;
+}
+
+body.site-guide-page .site-guide-fine-print--center {
+    text-align: center;
+}
+
+body.site-guide-page .site-guide-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: var(--radius-pill);
+    background: var(--light-yellow);
+    color: var(--primary-dark-brown);
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+body.site-guide-page .site-guide-tag--draft {
+    background: var(--bg-light);
+    color: var(--dark-gray);
+}
+
+body.site-guide-page .site-guide-tag--redirect {
+    background: rgba(166, 93, 51, 0.15);
+}
+
+body.site-guide-page .site-guide-inline-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    margin-top: 10px;
+    padding: 0;
+}
+
+body.site-guide-page .site-guide-inline-links a {
+    color: var(--primary-brown);
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    body.site-guide-page .site-guide-nav-table thead th:nth-child(2),
+    body.site-guide-page .site-guide-nav-table tbody td:nth-child(2) {
+        display: none;
+    }
+}
