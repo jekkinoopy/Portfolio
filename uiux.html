@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="page-inner">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI/UX | Jekkinoopy's portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="photo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <header class="container">
+        <nav class="navbar">
+            <div class="container nav-shell">
+                <a class="nav-logo" href="index.html" aria-label="首頁">
+                    <img src="images/noopylogov.png" alt="Jekkinoopy Studio">
+                </a>
+                <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav-menu"
+                    aria-label="開啟選單">
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                </button>
+                <div class="nav-menu" id="site-nav-menu">
+                    <ul class="nav-links nav-links--start">
+                        <li class="downDisabled" data-tooltip="作品建置中"><a href="about.html">About</a></li>
+                        <li class="dropdown">
+                            <a href="graphic.html">Graphic</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="graphic/logoPkg.html">Logo & 包裝設計</a></li>
+                                <li><a href="graphic/calendar-bag.html">桌曆 & 購物袋</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="stationery.html">名片/卡片/票券/DM</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="webBanner.html">網站視覺 Banner</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="socialMedia.html">社群推播圖</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="largeFormat.html">大圖輸出</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="editorial.html">書刊</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="productDetail.html">商品長條圖文</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="illustration.html">Illustration</a></li>
+                    </ul>
+                    <ul class="nav-links nav-links--end">
+                        <li class="downDisabled" data-tooltip="作品建置中"><a href="photo.html">Photo</a></li>
+                        <li class="downDisabled" data-tooltip="作品建置中"><a href="uiux.html">UI/UX</a></li>
+                        <li><a href="web.html">Web</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        <div class="page-title">
+            <h2>UI/UX</h2>
+            <p>介面設計案例 · 預覽稿（Nav 尚未開放）</p>
+        </div>
+
+        <div class="uiux-showcase">
+            <article class="uiux-case">
+                <div class="uiux-case-visual">
+                    <img src="images/uiux/2023_網頁設計_展盈mockup.jpg" alt="展盈企業 mockup">
+                </div>
+                <div class="uiux-case-copy">
+                    <span class="uiux-tag">企業官網</span>
+                    <h3>展盈企業 · 首頁視覺</h3>
+                    <p>以品牌色延伸資訊層級，桌面版強調信任感與服務模組；RWD 斷點下保留 CTA 與聯絡動線。</p>
+                    <p class="uiux-meta">Figma · 2023</p>
+                </div>
+            </article>
+
+            <article class="uiux-case">
+                <div class="uiux-case-visual uiux-case-visual--device">
+                    <img src="images/uiux/iPhone 13, 12 Pro Max – 1.jpg" alt="婚禮 App 手機畫面">
+                    <img src="images/uiux/2023_UIUX_wedding_.jpg" alt="婚禮 App 流程">
+                </div>
+                <div class="uiux-case-copy">
+                    <span class="uiux-tag">App 流程</span>
+                    <h3>婚禮籌備 · 雙裝置預覽</h3>
+                    <p>左側實機 mockup、右側流程總覽，適合展示跨畫面一致性；與 Photo「活動膠卷」同樣強調橫向閱讀節奏。</p>
+                    <p class="uiux-meta">UI Flow · 2023</p>
+                </div>
+            </article>
+
+            <article class="uiux-case">
+                <div class="uiux-case-visual">
+                    <img src="images/uiux/2023_網頁設計_0805展盈index.jpg" alt="展盈 index 長圖">
+                </div>
+                <div class="uiux-case-copy">
+                    <span class="uiux-tag">Landing</span>
+                    <h3>展盈 · Index 長捲軸</h3>
+                    <p>單欄全寬 mockup，適合電商／型錄型首頁；版面語彙對齊 Web 頁大卡片，但改為全出血展示。</p>
+                    <p class="uiux-meta">Web Design · 2023</p>
+                </div>
+            </article>
+
+            <article class="uiux-case">
+                <div class="uiux-case-visual">
+                    <img src="images/uiux/2023_UIUX_健康飲食.jpeg" alt="健康飲食 App">
+                </div>
+                <div class="uiux-case-copy">
+                    <span class="uiux-tag">健康 App</span>
+                    <h3>飲食紀錄 · 資訊卡片</h3>
+                    <p>圓角卡片與黃標籤呼應全站 `--radius-card` / `--primary-yellow`；適合功能型、數據導向作品。</p>
+                    <p class="uiux-meta">Mobile UI · 2023</p>
+                </div>
+            </article>
+
+            <article class="uiux-case">
+                <div class="uiux-case-visual">
+                    <img src="images/uiux/2023_webdesign_手工皂.jpeg" alt="手工皂電商">
+                </div>
+                <div class="uiux-case-copy">
+                    <span class="uiux-tag">電商</span>
+                    <h3>手工皂品牌 · 商品頁</h3>
+                    <p>溫暖色調與留白對齊 Graphic 包裝攝影區；可與 Photo「商品馬賽克」互相導流。</p>
+                    <p class="uiux-meta">E-commerce · 2023</p>
+                </div>
+            </article>
+
+            <article class="uiux-case">
+                <div class="uiux-case-visual">
+                    <img src="images/uiux/Web 1920 – 1.jpg" alt="1920 寬屏介面">
+                </div>
+                <div class="uiux-case-copy">
+                    <span class="uiux-tag">Desktop</span>
+                    <h3>1920 寬屏 · 儀表版型</h3>
+                    <p>最後一則採全寬桌面 mockup，與 Web Dev 表格卡片形成對照——同一品牌色，不同資訊密度。</p>
+                    <p class="uiux-meta">Dashboard · 2023</p>
+                </div>
+            </article>
+        </div>
+
+        <p class="photo-section-link"><a href="photo.html">前往 Photo 排版預覽</a></p>
+    </main>
+
+    <footer class="footer">
+        <a href="mailto:jekkinoopy@gmail.com" class="contact-email">
+            <small>如有合作意願，歡迎隨時聯繫</small>
+            jekkinoopy@gmail.com
+        </a>
+        <small>&copy; 2026 JEKKINOOPY. All rights reserved.</small>
+    </footer>
+
+    <script src="nav.js"></script>
+</body>
+
+</html>

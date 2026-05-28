@@ -1,0 +1,418 @@
+/* Photo / UI·UX 作品集：共用設計 token，與 Graphic 馬賽克間距、圓角一致 */
+:root {
+    --photo-gap: var(--graphic-media-gap);
+    --photo-tile-h: clamp(168px, 26vw, 300px);
+    --photo-portrait-ratio: 4 / 5;
+    --photo-film-ratio: 16 / 10;
+}
+
+.photo-section-link {
+    text-align: right;
+    margin: 0 0 calc(var(--photo-gap) * 2);
+}
+
+.photo-section-link a {
+    color: var(--primary-brown);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    transition: color 0.2s ease;
+}
+
+.photo-section-link a:hover {
+    color: var(--primary-dark-brown);
+}
+
+.photo-section-link a::after {
+    content: " →";
+}
+
+/* —— 人像：雙欄交錯（呼應 Illustration 律動，比例改為直幅）—— */
+.photo-portrait-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: calc(var(--photo-gap) * 1.25) calc(var(--photo-gap) * 1.75);
+    padding: 8px 0 32px;
+}
+
+.photo-portrait-item {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    cursor: zoom-in;
+}
+
+.photo-portrait-item:nth-child(even) {
+    margin-top: clamp(28px, 5vw, 56px);
+}
+
+.photo-portrait-frame {
+    width: 100%;
+    aspect-ratio: var(--photo-portrait-ratio);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    background: var(--bg-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photo-portrait-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.photo-portrait-item:hover .photo-portrait-frame {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(89, 56, 37, 0.12);
+}
+
+/* —— 活動：橫向膠卷 + 一大兩小特寫 —— */
+.photo-filmstrip-wrap {
+    margin-bottom: calc(var(--photo-gap) * 1.5);
+}
+
+.photo-filmstrip-label {
+    font-size: 0.85rem;
+    color: var(--dark-gray);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.photo-filmstrip {
+    display: flex;
+    gap: var(--photo-gap);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 4px 2px 20px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-yellow) transparent;
+}
+
+.photo-filmstrip-item {
+    flex: 0 0 min(78vw, 540px);
+    scroll-snap-align: start;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    cursor: zoom-in;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    aspect-ratio: var(--photo-film-ratio);
+}
+
+.photo-filmstrip-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.photo-event-feature {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    gap: var(--photo-gap);
+    padding-bottom: 32px;
+}
+
+.photo-event-feature .photo-event-hero {
+    grid-row: span 2;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    cursor: zoom-in;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    min-height: clamp(280px, 42vw, 480px);
+}
+
+.photo-event-feature .photo-event-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.photo-event-side {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    cursor: zoom-in;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+}
+
+.photo-event-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* —— 風景：瀑布流，完整呈現比例（不強裁）—— */
+.photo-masonry {
+    column-count: 3;
+    column-gap: var(--photo-gap);
+    padding: 8px 0 40px;
+}
+
+.photo-masonry-item {
+    break-inside: avoid;
+    margin-bottom: var(--photo-gap);
+    border: 0;
+    padding: 0;
+    width: 100%;
+    background: transparent;
+    cursor: zoom-in;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    background-color: var(--bg-light);
+    display: block;
+    transition: transform 0.25s ease;
+}
+
+.photo-masonry-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    vertical-align: middle;
+}
+
+.photo-masonry-item:hover {
+    transform: scale(1.01);
+}
+
+/* Graphic 馬賽克內的可點擊圖（商品／活動補列） */
+.graphic-table--mosaic button[data-photo-lightbox] {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    cursor: zoom-in;
+}
+
+/* —— UI/UX：案例卡（與 Web 卡片語彙相近，版面左右交替）—— */
+.uiux-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--photo-gap) * 2.5);
+    padding: 16px 0 48px;
+}
+
+.uiux-case {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: calc(var(--photo-gap) * 1.5);
+    align-items: center;
+    padding: clamp(20px, 3vw, 32px);
+    border-radius: var(--radius-card);
+    background: var(--bg-light);
+    border: 1px solid rgba(166, 93, 51, 0.14);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.uiux-case:nth-child(even) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+}
+
+.uiux-case:nth-child(even) .uiux-case-visual {
+    order: 2;
+}
+
+.uiux-case:nth-child(even) .uiux-case-copy {
+    order: 1;
+}
+
+.uiux-case-visual {
+    border-radius: calc(var(--radius-card) - 4px);
+    overflow: hidden;
+    background: #e8e4df;
+    line-height: 0;
+}
+
+.uiux-case-visual img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.uiux-case-visual--device {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--photo-gap);
+    align-items: end;
+    background: transparent;
+}
+
+.uiux-case-visual--device img {
+    border-radius: calc(var(--radius-card) - 6px);
+    box-shadow: 0 10px 30px rgba(89, 56, 37, 0.1);
+}
+
+.uiux-tag {
+    display: inline-block;
+    background: var(--primary-yellow);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: var(--radius-pill);
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.uiux-case-copy h3 {
+    font-size: 1.35rem;
+    color: var(--primary-dark-brown);
+    margin-bottom: 10px;
+}
+
+.uiux-case-copy p {
+    color: var(--dark-gray);
+    line-height: 1.75;
+    font-size: 0.95rem;
+}
+
+.uiux-meta {
+    margin-top: 14px;
+    font-size: 0.8rem;
+    color: var(--primary-brown);
+    letter-spacing: 0.06em;
+}
+
+/* Lightbox（Photo 子頁共用） */
+.photo-lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(51, 51, 51, 0.88);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 20px;
+}
+
+.photo-lightbox.open {
+    display: flex;
+}
+
+.photo-lightbox__content {
+    position: relative;
+    width: min(1100px, 94vw);
+    max-height: 90vh;
+}
+
+.photo-lightbox__content img {
+    width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    display: block;
+    border-radius: var(--radius-card);
+}
+
+.photo-lightbox__close {
+    position: absolute;
+    top: -44px;
+    right: 0;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.photo-lightbox__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    cursor: pointer;
+}
+
+.photo-lightbox__nav:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+.photo-lightbox__nav--prev {
+    left: -52px;
+}
+
+.photo-lightbox__nav--next {
+    right: -52px;
+}
+
+.photo-lightbox__index {
+    margin-top: 12px;
+    text-align: center;
+    color: #fff;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+}
+
+@media (max-width: 1024px) {
+    .photo-portrait-grid {
+        gap: var(--photo-gap);
+    }
+
+    .photo-portrait-item:nth-child(even) {
+        margin-top: 20px;
+    }
+
+    .photo-masonry {
+        column-count: 2;
+    }
+
+    .photo-event-feature {
+        grid-template-columns: 1fr;
+    }
+
+    .photo-event-feature .photo-event-hero {
+        grid-row: auto;
+        min-height: 240px;
+    }
+
+    .uiux-case,
+    .uiux-case:nth-child(even) {
+        grid-template-columns: 1fr;
+    }
+
+    .uiux-case:nth-child(even) .uiux-case-visual,
+    .uiux-case:nth-child(even) .uiux-case-copy {
+        order: unset;
+    }
+
+    .photo-lightbox__nav--prev {
+        left: 8px;
+    }
+
+    .photo-lightbox__nav--next {
+        right: 8px;
+    }
+}
+
+@media (max-width: 600px) {
+    .photo-portrait-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .photo-portrait-item:nth-child(even) {
+        margin-top: 0;
+    }
+
+    .photo-masonry {
+        column-count: 1;
+    }
+}
