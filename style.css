@@ -277,24 +277,24 @@ header {
     display: none;
     flex-direction: column;
     justify-content: center;
-    gap: 6px;
-    width: 44px;
-    height: 44px;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
     padding: 0;
-    border: 2px solid var(--primary-brown);
-    border-radius: var(--radius-card);
-    background: var(--white);
+    border: 0;
+    border-radius: 0;
+    background: transparent;
     cursor: pointer;
     flex-shrink: 0;
 }
 
 .nav-toggle__bar {
     display: block;
-    width: 22px;
-    height: 2px;
+    width: 24px;
+    height: 2.5px;
     margin: 0 auto;
     background: var(--primary-brown);
-    border-radius: 2px;
+    border-radius: 1px;
     transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
