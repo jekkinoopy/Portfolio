@@ -315,6 +315,13 @@ header {
     width: 100%;
 }
 
+/* 預設先收合；桌機再展開（需放在 .nav-menu 預設後方避免被覆蓋） */
+@media (min-width: 1400px) {
+    .nav-menu {
+        display: contents;
+    }
+}
+
 body.nav-open {
     overflow: hidden;
 }
