@@ -358,6 +358,11 @@ body.nav-open {
     color: var(--primary-dark-brown);
 }
 
+.nav-links a.active {
+    border-bottom: 3px solid var(--primary-yellow);
+    padding-bottom: 4px;
+}
+
 /* 1. 禁用狀態樣式 */
 .nav-links li.disabled {
     position: relative;
@@ -490,6 +495,12 @@ body.nav-open {
 .dropdown-menu a:hover {
     background-color: var(--light-yellow);
     color: var(--primary-dark-brown) !important;
+}
+
+.dropdown-menu a.active {
+    background-color: var(--light-yellow);
+    color: var(--primary-dark-brown) !important;
+    font-weight: 600 !important;
 }
 
 
