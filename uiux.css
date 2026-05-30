@@ -1,0 +1,383 @@
+/* UI/UX 頁面：略放寬主欄，減少左右留白 */
+.main-container.uiux-project,
+.main-container:has(> .uiux-showcase) {
+    width: min(94%, 1180px);
+}
+
+.uiux-case--banner {
+    grid-template-columns: 1fr;
+    align-items: start;
+}
+
+.uiux-case--banner .uiux-case-copy {
+    order: unset;
+    max-width: none;
+}
+
+.uiux-case--banner .uiux-case-visual {
+    display: none;
+}
+
+/* —— 手機畫面表格：以四欄寬＋間距為單元，2/3/4 張並列皆同尺寸、列水平置中 —— */
+.graphic-table--uiux-screen {
+    --uiux-screen-col-w: calc((100% - 3 * var(--graphic-media-gap)) / 4);
+}
+
+.graphic-table--uiux-screen tbody {
+    display: flex;
+    flex-direction: column;
+    gap: var(--graphic-media-gap);
+}
+
+.graphic-table--mosaic.graphic-table--uiux-screen tbody,
+.graphic-table--uiux-screen.graphic-table--logo-row-2 tbody,
+.graphic-table--uiux-screen.graphic-table--logo-row-3 tbody,
+.graphic-table--uiux-screen.graphic-table--logo-row-4 tbody {
+    display: flex;
+    flex-direction: column;
+    gap: var(--graphic-media-gap);
+}
+
+.graphic-table--uiux-screen tr {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--graphic-media-gap);
+    width: 100%;
+}
+
+.graphic-table--uiux-screen td {
+    flex: 0 0 var(--uiux-screen-col-w);
+    max-width: var(--uiux-screen-col-w);
+    min-width: 0;
+    display: block;
+    padding: 0;
+}
+
+.uiux-screen-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    margin: 0;
+}
+
+.graphic-table--mosaic.graphic-table--uiux-screen .box:not(.box1) {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    background: var(--bg-light);
+    box-shadow: 0 8px 22px rgba(89, 56, 37, 0.08);
+}
+
+.graphic-table--uiux-screen .box button[data-photo-lightbox] {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    cursor: zoom-in;
+    line-height: 0;
+}
+
+.graphic-table--mosaic.graphic-table--uiux-screen .box img,
+.graphic-table--uiux-screen .box > img {
+    width: 100%;
+    height: auto;
+    display: block;
+    vertical-align: middle;
+}
+
+.uiux-screen-table__caption {
+    margin: 10px 0 0;
+    font-size: 0.8rem;
+    color: var(--dark-gray);
+    text-align: center;
+    line-height: 1.4;
+}
+
+.uiux-module__layout-label + .graphic-table--uiux-screen {
+    margin-top: 0;
+}
+
+.graphic-table--uiux-screen + .uiux-module__layout-label {
+    margin-top: calc(var(--photo-gap) * 1.5);
+}
+
+.graphic-table--uiux-screen + .graphic-table--uiux-screen {
+    margin-top: var(--graphic-media-gap);
+}
+
+.graphic-table--uiux-screen tbody > tr > td:last-child:nth-child(3) {
+    grid-column: auto;
+    max-width: var(--uiux-screen-col-w);
+    margin-inline: 0;
+}
+
+.uiux-project-intro {
+    padding: clamp(20px, 3vw, 32px);
+    margin-bottom: calc(var(--photo-gap) * 2);
+    border-radius: var(--radius-card);
+    background: var(--bg-light);
+    border: 1px solid rgba(166, 93, 51, 0.14);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.uiux-project-intro__lead {
+    color: var(--dark-gray);
+    line-height: 1.8;
+    font-size: 0.98rem;
+    margin: 0 auto 1.25rem;
+    max-width: 72ch;
+    text-align: center;
+}
+
+.uiux-project-intro__meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 16px;
+    margin-bottom: calc(var(--photo-gap) * 1.75);
+    font-size: 0.82rem;
+    color: var(--primary-brown);
+    letter-spacing: 0.06em;
+}
+
+.uiux-project-intro__meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.uiux-project-intro__meta span::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--primary-yellow);
+}
+
+.uiux-project-intro h3 {
+    font-size: 1.2rem;
+    color: var(--primary-dark-brown);
+    margin: 0 0 14px;
+    letter-spacing: 0.04em;
+    text-align: center;
+}
+
+/* —— 資訊架構圖 —— */
+.uiux-ia {
+    display: grid;
+    gap: calc(var(--photo-gap) * 1.5);
+}
+
+.uiux-ia__map {
+    display: grid;
+    gap: var(--photo-gap);
+    padding: clamp(16px, 2.5vw, 24px);
+    border-radius: calc(var(--radius-card) - 4px);
+    background: linear-gradient(165deg, #fff 0%, #f3efe9 100%);
+    border: 1px solid rgba(89, 56, 37, 0.1);
+}
+
+.uiux-ia__hub {
+    text-align: center;
+    padding: 14px 20px;
+    border-radius: var(--radius-card);
+    background: var(--primary-dark-brown);
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+.uiux-ia__hub small {
+    display: block;
+    margin-top: 4px;
+    font-weight: 400;
+    font-size: 0.78rem;
+    opacity: 0.85;
+    letter-spacing: 0.04em;
+}
+
+.uiux-ia__row {
+    display: grid;
+    gap: 10px;
+}
+
+.uiux-ia__row-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--primary-brown);
+}
+
+.uiux-ia__nodes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.uiux-ia__node {
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    background: #fff;
+    border: 1px solid rgba(166, 93, 51, 0.22);
+    color: var(--primary-dark-brown);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.uiux-ia__node--accent {
+    background: var(--primary-yellow);
+    border-color: var(--primary-yellow);
+    color: #fff;
+}
+
+.uiux-ia__tree {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 10px;
+}
+
+.uiux-ia__branch {
+    padding: 12px 14px;
+    border-radius: calc(var(--radius-card) - 6px);
+    background: #fff;
+    border-left: 4px solid var(--primary-yellow);
+}
+
+.uiux-ia__branch strong {
+    display: block;
+    font-size: 0.88rem;
+    color: var(--primary-dark-brown);
+    margin-bottom: 6px;
+}
+
+.uiux-ia__branch ul {
+    margin: 0;
+    padding-left: 1.1em;
+    font-size: 0.78rem;
+    color: var(--dark-gray);
+    line-height: 1.55;
+}
+
+.uiux-ia__note {
+    margin: 0 auto;
+    max-width: 72ch;
+    font-size: 0.82rem;
+    color: var(--dark-gray);
+    line-height: 1.65;
+    text-align: center;
+}
+
+/* —— 模組導覽 —— */
+.uiux-module-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: calc(var(--photo-gap) * 2);
+    padding-bottom: calc(var(--photo-gap) * 1.25);
+    border-bottom: 1px solid rgba(166, 93, 51, 0.16);
+}
+
+.uiux-module-nav a {
+    padding: 8px 16px;
+    border-radius: var(--radius-pill);
+    background: var(--bg-light);
+    border: 1px solid rgba(166, 93, 51, 0.18);
+    color: var(--primary-dark-brown);
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.uiux-module-nav a:hover {
+    background: var(--primary-yellow);
+    border-color: var(--primary-yellow);
+    color: #fff;
+}
+
+/* —— 功能模組區 —— */
+.uiux-module + .uiux-module {
+    margin-top: calc(var(--graphic-media-gap) * 2.25);
+}
+
+.uiux-module__desc {
+    color: var(--dark-gray);
+    font-size: 0.92rem;
+    line-height: 1.7;
+    margin: 0 0 calc(var(--photo-gap) * 1.25);
+}
+
+.uiux-module__layout-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--primary-brown);
+    margin: calc(var(--photo-gap) * 1.25) 0 10px;
+}
+
+/* 空／滿狀態：併入手機畫面表格 */
+.uiux-state-pair__tag {
+    display: block;
+    margin-bottom: 10px;
+    padding: 3px 10px;
+    border-radius: var(--radius-pill);
+    background: rgba(243, 193, 76, 0.25);
+    color: var(--primary-dark-brown);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-align: center;
+}
+
+.uiux-state-pair__tag--empty {
+    background: rgba(119, 119, 119, 0.15);
+}
+
+.uiux-case__cta {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 10px 20px;
+    border-radius: var(--radius-pill);
+    background: var(--primary-dark-brown);
+    color: #fff !important;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    transition: background 0.2s ease;
+}
+
+.uiux-case__cta:hover {
+    background: var(--primary-brown);
+}
+
+.uiux-case__cta::after {
+    content: " →";
+}
+
+@media (max-width: 1024px) {
+    .graphic-table--uiux-screen {
+        --uiux-screen-col-w: calc((100% - var(--graphic-media-gap)) / 2);
+    }
+}
+
+@media (max-width: 600px) {
+    .main-container.uiux-project,
+    .main-container:has(> .uiux-showcase) {
+        width: 92%;
+    }
+
+    .graphic-table--uiux-screen {
+        --uiux-screen-col-w: min(100%, 280px);
+    }
+
+    .uiux-ia__tree {
+        grid-template-columns: 1fr 1fr;
+    }
+}
