@@ -316,9 +316,8 @@
     gap: 6px;
 }
 
-.uiux-meta__item i {
-    font-size: 0.95em;
-    opacity: 0.92;
+.uiux-meta__item .tool-icon {
+    font-size: inherit;
 }
 
 /* Lightbox（Photo 子頁共用） */

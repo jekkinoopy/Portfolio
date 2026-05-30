@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200..900&display=swap');
-
+@import url('tool-icon.css');
 
 :root {
     --primary-yellow: #F3C14C;
@@ -726,13 +726,7 @@ body.nav-open {
     font-weight: 500;
 }
 
-/* 全站統一：技術／設計工具 icon（fa-compass-drafting，文字區分軟體） */
-.tool-icon,
-.uiux-icon-tool {
-    font-size: 0.95em;
-    opacity: 0.92;
-}
-
+/* 全站工具 icon 樣式見 tool-icon.css（card-tools 排版） */
 .card-tools {
     margin: 0 0 10px;
     font-size: 0.78rem;

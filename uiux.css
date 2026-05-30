@@ -206,7 +206,7 @@
     display: none;
 }
 
-.uiux-tool i {
+.uiux-tool .tool-icon {
     font-size: inherit;
 }
 

@@ -1,4 +1,6 @@
 /* --- 基礎設定 --- */
+@import url('tool-icon.css');
+
 :root {
     --primary-color: #ecc561;
     --text-main: #555;
@@ -274,15 +276,6 @@ p {
     display: flex;
     align-items: center;
     gap: 5px;
-}
-
-.skill-item p::before {
-    font-family: "Font Awesome 6 Free";
-    font-weight: 900;
-    content: "\f568";
-    font-size: 0.82em;
-    opacity: 0.92;
-    flex-shrink: 0;
 }
 
 .bar {
