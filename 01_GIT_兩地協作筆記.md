@@ -129,7 +129,7 @@ git log --oneline origin/main -5
 ## 備註（2026-05-28）
 
 - 當時家裡已與 `origin/main` 同步，無進行中 merge。  
-- 待辦 → `00_TOMORROW_TODO.md` · 全站頁表 → `site-guide.html`
+- 待辦 → `00_TOMORROW_TODO.md` · 全站頁表 → `site-guide/`
 學校 ──commit──► GitHub ◄──commit── 家裡
          ▲                    │
          └──── 兩邊都先 commit 才 pull ────┘  → 一定要 merge

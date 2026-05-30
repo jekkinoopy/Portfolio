@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="page-inner">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Pricing | Jekkinoopy's portfolio</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* 報價頁面專屬樣式（字體與全站 Noto Serif TC 一致） */
+        .pricing-section {
+            font-family: "Noto Serif TC", serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .pricing-table {
+            width: max-content;
+            max-width: none;
+            margin-inline: auto;
+            table-layout: auto;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: #fff;
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(236, 197, 97, 0.1);
+            margin-bottom: 50px;
+        }
+
+        .pricing-table thead {
+            background-color: #ecc561;
+            /* 你的主色黃 */
+            color: #fff;
+        }
+
+        .pricing-table th {
+            padding: 20px;
+            text-align: left;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .pricing-table td {
+            padding: 18px 20px;
+            border-bottom: 1px solid #f9f2e0;
+            color: #666;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .pricing-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* 項目名稱：勿對 td 設 flex，會破壞表格欄寬 → 內層 .service-name-row 排版 */
+        .service-name {
+            font-weight: bold;
+            color: #a65d33;
+            vertical-align: middle;
+        }
+
+        .service-name-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            min-width: 0;
+        }
+
+        /* 品項名稱 + 字後外開圖示，整段可點 */
+        .work-sample-link {
+            display: inline-flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            gap: 0.4rem;
+            line-height: 1.35;
+            color: inherit;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+
+        .work-sample-link span {
+            flex: 0 0 auto;
+            line-height: inherit;
+        }
+
+        .work-sample-link::after {
+            content: "\f35d";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            font-size: 0.6rem;
+            /* 與 span 同一套行高，flex 交叉軸才能與中文對齊；FA 字形略偏下再微調 */
+            line-height: inherit;
+            flex-shrink: 0;
+            position: relative;
+            top: calc(3px - 0.06em);
+            color: currentColor;
+            opacity: 0.92;
+        }
+
+        .service-name .work-sample-link:hover,
+        .service-name .work-sample-link:focus-visible {
+            color: #7a4528;
+        }
+
+        .price-tag {
+            font-family: inherit;
+            color: #c9a227;
+            font-weight: 800;
+            font-size: 1.05rem;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+        }
+
+        .note-text {
+            font-size: 0.85rem;
+            color: #999;
+            line-height: 1.5;
+        }
+
+        .work-sample-link:focus-visible {
+            outline: 2px solid #ecc561;
+            outline-offset: 2px;
+        }
+
+        /* iPad / 平板 */
+        @media (max-width: 1024px) {
+            .pricing-section {
+                margin: 28px auto;
+                padding: 0 16px;
+            }
+
+            .pricing-table th,
+            .pricing-table td {
+                padding: 14px 16px;
+                font-size: 0.98rem;
+            }
+
+            .pricing-footer {
+                padding: 24px 20px;
+            }
+        }
+
+        /* 響應式調整 */
+        @media (max-width: 600px) {
+            .pricing-table {
+                width: 100%;
+                min-width: 0;
+            }
+
+            .pricing-table thead {
+                display: none;
+            }
+
+            .pricing-table th {
+                white-space: normal;
+            }
+
+            .pricing-table td {
+                display: block;
+                width: 100% !important;
+                padding: 10px 20px;
+                border: none;
+                white-space: normal;
+            }
+
+            .pricing-table td:first-child {
+                padding-top: 20px;
+                background: #fffdf5;
+            }
+
+            .pricing-table tr {
+                border-bottom: 2px solid #f9f2e0;
+                display: block;
+            }
+
+            .service-name-row {
+                flex-wrap: wrap;
+            }
+
+            .work-sample-link {
+                flex-wrap: wrap;
+                max-width: 100%;
+            }
+
+            .price-tag {
+                white-space: normal;
+            }
+        }
+
+        /* 底部提醒區 */
+        .pricing-footer {
+            background: #fffdf5;
+            padding: 30px;
+            border-radius: var(--radius-card);
+            border-left: 5px solid #ecc561;
+            margin-top: 30px;
+        }
+
+        .pricing-footer h4 {
+            margin-top: 0;
+            color: #a65d33;
+        }
+
+        .pricing-footer ul {
+            padding-left: 20px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <header class="container">
+        <nav class="navbar">
+            <div class="container">
+                <ul class="nav-links">
+                    <li class="downDisabled" data-tooltip="作品建置中"><a href="../about/">About</a></li>
+                    <li><a href="../graphic.html">Graphic</a></li>
+                    <li><a href="../illustration/">Illustration</a></li>
+                    <li><a href="../web/">Web</a></li>
+                    <li><a href="#" class="active">Pricing</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header> -->
+
+    <main class="main-container">
+        <div class="page-title">
+            <h2>Design Service & Pricing</h2>
+            <p>設計服務與報價參考 / 2026</p>
+        </div>
+
+        <section class="pricing-section">
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th>服務項目</th>
+                        <th>參考報價 (TWD)</th>
+                        <th>服務內容與備註</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="service-name">
+                            <div class="service-name-row">
+                                <a href="../graphic/logoPkg.html" class="work-sample-link" target="_blank"
+                                    rel="noopener noreferrer" title="另開新分頁：Logo & 包裝作品"
+                                    aria-label="另開新分頁瀏覽 Logo 與包裝作品"><span>Logo 設計</span></a>
+                            </div>
+                        </td>
+                        <td class="price-tag">$8,000 - $15,000</td>
+                        <td class="note-text">提案 2-3 款，含標準字、標誌規範、配色建議。</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name">
+                            <div class="service-name-row">
+                                <a href="../graphic/logoPkg.html" class="work-sample-link" target="_blank"
+                                    rel="noopener noreferrer" title="另開新分頁：包裝相關作品"
+                                    aria-label="另開新分頁瀏覽 Logo 與包裝作品"><span>商業包裝設計</span></a>
+                            </div>
+                        </td>
+                        <td class="price-tag">$6,000 - $12,000</td>
+                        <td class="note-text">依結構複雜度調整，含刀模圖與模擬示意圖。</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name">
+                            <div class="service-name-row">
+                                <a href="../illustration/" class="work-sample-link" target="_blank"
+                                    rel="noopener noreferrer" title="另開新分頁：插畫作品集" aria-label="另開新分頁瀏覽插畫作品"><span>商業插畫
+                                        (Procreate)</span></a>
+                            </div>
+                        </td>
+                        <td class="price-tag">$3,000 - $6,000 / 幅</td>
+                        <td class="note-text">精緻角色或場景繪製，依用途分授權費用。</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name">
+                            <div class="service-name-row">
+                                <a href="../web/" class="work-sample-link" target="_blank" rel="noopener noreferrer"
+                                    title="另開新分頁：網頁作品" aria-label="另開新分頁瀏覽 Web 作品"><span>一頁式網頁開發</span></a>
+                            </div>
+                        </td>
+                        <td class="price-tag">$12,000 - $25,000</td>
+                        <td class="note-text"><span class="card-tools meta-tool-row"><span class="tool-icon" aria-hidden="true"></span> HTML5 / CSS3 / JS 手寫代碼，含 RWD 響應式佈局。</span></td>
+                    </tr>
+                    <tr>
+                        <td class="service-name">
+                            <div class="service-name-row">
+                                <a href="../graphic.html" class="work-sample-link" target="_blank"
+                                    rel="noopener noreferrer" title="另開新分頁：平面作品總覽"
+                                    aria-label="另開新分頁瀏覽 Graphic 作品"><span>社群推播圖 (Banner)</span></a>
+                            </div>
+                        </td>
+                        <td class="price-tag">$800 - $1,500 / 張</td>
+                        <td class="note-text">固定排版長期配合另有折扣。</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name">
+                            <div class="service-name-row">
+                                <a href="../graphic.html" class="work-sample-link" target="_blank"
+                                    rel="noopener noreferrer" title="另開新分頁：平面作品總覽"
+                                    aria-label="另開新分頁瀏覽 Graphic 作品"><span>企業名片設計</span></a>
+                            </div>
+                        </td>
+                        <td class="price-tag">$2,000 - $3,500</td>
+                        <td class="note-text">含單/雙面排版，提供發印建議。</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="pricing-footer">
+                <h4><i class="fa-solid fa-circle-info"></i> 合作須知</h4>
+                <ul>
+                    <li>以上報價僅供參考，實際費用將依據需求複雜度與急件程度另行評估。</li>
+                    <li>確認合作後需先行支付 30% - 50% 訂金始開始排程。</li>
+                    <li>每項設計提供 3 次小範圍免費校正，超過需酌收修改費。</li>
+                    <li>如需購買原始檔 (AI/PSD/Project File)，需另計買斷費用。</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- <footer id="contact">
+        <a href="mailto:jekkinoopy@gmail.com" class="contact-email">
+            <small>如有合作意願，歡迎隨時聯繫</small>
+            jekkinoopy@gmail.com
+        </a>
+        <small>&copy; 2026 JEKKINOOPY. All rights reserved.</small>
+    </footer> -->
+</body>
+
+</html>

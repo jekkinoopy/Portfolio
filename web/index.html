@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="page-inner">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development | Jekkinoopy's portfolio</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        header {
+            padding: 0;
+        }
+
+        .web-portfolio-table {
+            /* height: 100%; */
+            margin: 10% auto;
+        }
+
+        table {
+            margin: 0 auto;
+            width: 80%;
+        }
+
+        td {
+            /* background-color: #777; */
+            /* justify-content: center; */
+        }
+
+        /* --- TABLE 核心美化 --- */
+        .web-portfolio-table {
+            width: 100%;
+            border-collapse: separate;
+            /* 關鍵：讓 border-spacing 生效 */
+            border-spacing: 25px;
+            /* 設定作品之間的間距 */
+            margin: 40px auto;
+        }
+
+        /* 讓 td 變成卡片 */
+        .portfolio-item {
+            background: var(--card-bg);
+            border-radius: var(--radius-card);
+            /* 大圓角 */
+            padding: 0;
+            overflow: hidden;
+            vertical-align: top;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+        }
+
+        /* 內容區塊 */
+        .card-link {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .img-box img {
+            width: 100%;
+            display: block;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+        }
+
+        /* 連結圖示 */
+        .link-icon {
+            color: #ccc;
+            font-size: 0.8rem;
+            margin-left: 5px;
+            transition: 0.3s;
+        }
+
+        .link-icon:hover {
+            color: var(--primary-yellow);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="container">
+        <nav class="navbar">
+            <div class="container nav-shell">
+                <a class="nav-logo" href="../index.html" aria-label="首頁">
+                    <img src="../assets/images/noopylogov.png" alt="Jekkinoopy Studio">
+                </a>
+                <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav-menu"
+                    aria-label="開啟選單">
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                </button>
+                <div class="nav-menu" id="site-nav-menu">
+                    <ul class="nav-links nav-links--start">
+                    <li class="downDisabled" data-tooltip="作品建置中"><a href="../about/">About</a></li>
+                    <li class="dropdown">
+                        <a href="../graphic.html">Graphic</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../graphic/logoPkg.html">Logo & 包裝設計</a></li>
+                            <li><a href="../graphic/calendar-bag.html">桌曆 & 購物袋</a></li>
+                            <li class="downDisabled" data-tooltip="作品建置中"><a href="../stationery.html">名片/卡片/票券/DM</a></li>
+                            <li class="downDisabled" data-tooltip="作品建置中"><a href="../webBanner.html">網站視覺 Banner</a></li>
+                            <li class="downDisabled" data-tooltip="作品建置中"><a href="../socialMedia.html">社群推播圖</a></li>
+                            <li class="downDisabled" data-tooltip="作品建置中"><a href="../largeFormat.html">大圖輸出</a></li>
+                            <li class="downDisabled" data-tooltip="作品建置中"><a href="../editorial.html">書刊</a></li>
+                            <li class="downDisabled" data-tooltip="作品建置中"><a href="../productDetail.html">商品長條圖文</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../illustration/">Illustration</a></li>
+                    </ul>
+                    <ul class="nav-links nav-links--end">
+                    <li class="downDisabled" data-tooltip="作品建置中"><a href="../photo/">Photo</a></li>
+                    <li class="downDisabled" data-tooltip="作品建置中"><a href="../uiux/">UI/UX</a></li>
+                    <li><a href="./" class="active">Web</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+    <main class="main-container">
+        <div class="page-title">
+            <h2>Web Dev</h2>
+            <p>PORTFOLIO / 2026-</p>
+        </div>
+        <table class="web-portfolio-table">
+            <tr>
+                <td class="portfolio-item" width="50%">
+                    <a href="https://jekkinoopy.github.io/Portfolio/" class="card-link">
+                        <img src="../assets/images/web/Portfolio.jpeg" width="100%" alt="努比設計作品集">
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span class="tag">個人作品</span>
+                                <span class="date"><i class="fa-regular fa-calendar"></i> 2026/04</span>
+                            </div>
+                            <p class="card-tools"><span class="tool-icon" aria-hidden="true"></span> HTML · CSS · JavaScript</p>
+                            <h3>努比設計作品集</h3>
+                            <p class="card-desc">結合設計背景開發的個人品牌門面。運用 CSS Grid
+                                與自定義變數系統建立模組化架構，徹底解決跨瀏覽器背景斷層與 RWD 跑版問題，展現從視覺美感至乾淨程式碼的執行力。</p>
+                        </div>
+                    </a>
+                </td>
+                <td class="portfolio-item" width="50%">
+                    <a href="https://jekkinoopy.github.io/SiongHing/" class="card-link">
+                        <img src="../assets/images/web/SiongHing.jpeg" width="100%" alt="上興棉被行">
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span class="tag">形象官網</span>
+                                <span class="date"><i class="fa-regular fa-calendar"></i> 2026/04</span>
+                            </div>
+                            <p class="card-tools"><span class="tool-icon" aria-hidden="true"></span> HTML · CSS · JavaScript</p>
+                            <h3>上興棉被行</h3>
+                            <p class="card-desc">
+                                將半世紀的傳統工藝數位化，以極簡主義與職人感視覺重新包裝。專案重點在於結構化資訊呈現，透過 Table 佈局穩定性與語意化標籤，在傳承溫度的同時提供流暢的導覽體驗。</p>
+                        </div>
+                    </a>
+                </td>
+
+            </tr>
+
+        </table>
+
+
+        <table class="web-portfolio-table">
+            <tr>
+                <td class="portfolio-item" width="50%">
+                    <a href="https://jekkinoopy.github.io/WebDev-Notes" class="card-link">
+                        <img src="../assets/images/web/thumbs/dev.png" width="100%" alt="努比全端網頁筆記">
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span class="tag">學習紀錄</span>
+                                <span class="date"><i class="fa-regular fa-calendar"></i> 2026/04</span>
+                            </div>
+                            <p class="card-tools"><span class="tool-icon" aria-hidden="true"></span> HTML · CSS · JavaScript</p>
+                            <h3>努比的全端網頁筆記</h3>
+                            <p class="card-desc">針對職訓課程開發的知識管理系統。整合 Notion 與
+                                HackMD 的區塊化設計思維，實作 Markdown 語法優化與 CSS 階層管理，將複雜的後端邏輯與資料庫關聯轉化為直觀的學習介面。</p>
+                        </div>
+                    </a>
+                </td>
+                <td class="portfolio-item" width="50%">
+                    <a href="https://jekkinoopy.github.io/sechskies/" class="card-link">
+                        <img src="../assets/images/web/thumbs/jekki.png" width=" 100%" alt="水晶男孩推廣部">
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span class="tag">形象官網</span>
+                                <span class="date"><i class="fa-regular fa-calendar"></i> 2026/04</span>
+                            </div>
+                            <p class="card-tools"><span class="tool-icon" aria-hidden="true"></span> HTML · CSS · JavaScript</p>
+                            <h3>水晶男孩推廣部</h3>
+                            <p class="card-desc">以經典偶像為主題的社群宣傳站點。實作高效能圖片加載優化與 CSS
+                                動畫反饋，並規劃表單交互功能與 SEO 標籤優化，在滿足大量視覺圖資呈現的同時，兼顧網頁載入速度與效能表現。</p>
+                        </div>
+                    </a>
+                </td>
+
+            </tr>
+
+        </table>
+        <table class="web-portfolio-table">
+            <tr>
+                <td class="portfolio-item" width="50%">
+                    <a href="https://jekkinoopy.github.io/ZHENCHENGVISION/" class="card-link">
+                        <img src="../assets/images/web/thumbs/jkbg.png" width="100%" alt="視野成珍攝影集">
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span class="tag">攝影作品</span>
+                                <span class="date"><i class="fa-regular fa-calendar"></i> 2026/04</span>
+                            </div>
+                            <p class="card-tools"><span class="tool-icon" aria-hidden="true"></span> PHP · MySQL · CSS</p>
+                            <h3>視野成珍</h3>
+                            <p class="card-desc">專為獲獎攝影師打造的數位藝廊。採用 PHP 與 MySQL
+                                實作動態後台管理系統，讓使用者能輕鬆上傳並管理高品質影像。設計重點在於沉浸式視覺與資料庫存取效能的完美平衡。</p>
+                        </div>
+                    </a>
+                </td>
+                <td class="portfolio-item" width="50%">
+                    <a href="https://jekkinoopy.github.io/conan-school/" class="card-link">
+                        <img src="../assets/images/web/thumbs/php+sql.png" width="100%" alt="米花町偵探學園">
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span class="tag">PHP 實作</span>
+                                <span class="date"><i class="fa-regular fa-calendar"></i> 2026/05</span>
+                            </div>
+                            <p class="card-tools"><span class="tool-icon" aria-hidden="true"></span> PHP · MySQL</p>
+                            <h3>米花町偵探學園</h3>
+                            <p class="card-desc">以名偵探主題包裝的學生管理系統練習站。以 PDO 連線
+                                school 資料庫，串接註冊表單、API 寫入、登入驗證與 Session 防護等 CRUD 流程。</p>
+                        </div>
+                    </a>
+                </td>
+            </tr>
+        </table>
+        <table class="web-portfolio-table">
+            <tr>
+                <td class="portfolio-item" width="50%">
+                    <a href="https://jekkinoopy.github.io/WebDev-Notes/courses/07-projects/practice/crayon/index.html"
+                        class="card-link">
+                        <img src="../assets/images/web/thumbs/crayon.png" width="100%" alt="野原家減肥管理中心">
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span class="tag">練習專案</span>
+                                <span class="date"><i class="fa-regular fa-calendar"></i> 2026/05</span>
+                            </div>
+                            <p class="card-tools"><span class="tool-icon" aria-hidden="true"></span> HTML · CSS · JavaScript</p>
+                            <h3>野原家減肥管理中心</h3>
+                            <p class="card-desc">
+                                蠟筆小新主題的單頁練習作品，整合體重監測、一週運動特訓表與飲食封印規劃，以趣味敘事包裝前端版面與互動區塊。</p>
+                        </div>
+                    </a>
+                </td>
+                <td class="portfolio-item downDisabled" width="50%" data-tooltip="作品建置中">
+                    <div class="card-link">
+                        <img src="../assets/images/uiux/2023_webdesign_手工皂.jpeg" width="100%" alt="手工皂品牌電商">
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span class="tag">電商網站</span>
+                                <span class="date"><i class="fa-regular fa-calendar"></i> 2023</span>
+                            </div>
+                            <p class="card-tools"><span class="tool-icon" aria-hidden="true"></span> HTML · CSS</p>
+                            <h3>手工皂品牌 · 商品頁</h3>
+                            <p class="card-desc">溫暖色調商品陳列，呼應 Graphic 區影像；RWD 商品頁版型，連結待上線。</p>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </main>
+
+
+    <footer id="contact">
+        <a href="mailto:jekkinoopy@gmail.com" class="contact-email">
+            <small>如有合作意願，歡迎隨時聯繫 </span>
+                jekkinoopy@gmail.com
+        </a>
+        <small>&copy; 2026 JEKKINOOPY. All rights reserved.</small>
+    </footer>
+
+    <script src="../assets/js/nav.js"></script>
+</body>
+
+</html>
