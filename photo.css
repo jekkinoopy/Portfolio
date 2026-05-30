@@ -304,6 +304,21 @@
     font-size: 0.8rem;
     color: var(--primary-brown);
     letter-spacing: 0.06em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    align-items: center;
+}
+
+.uiux-meta__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.uiux-meta__item i {
+    font-size: 0.95em;
+    opacity: 0.92;
 }
 
 /* Lightbox（Photo 子頁共用） */

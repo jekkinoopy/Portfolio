@@ -726,6 +726,30 @@ body.nav-open {
     font-weight: 500;
 }
 
+/* 全站統一：技術／設計工具 icon（fa-compass-drafting，文字區分軟體） */
+.tool-icon,
+.uiux-icon-tool {
+    font-size: 0.95em;
+    opacity: 0.92;
+}
+
+.card-tools {
+    margin: 0 0 10px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--primary-brown);
+    letter-spacing: 0.04em;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.meta-tool-row {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 6px;
+}
+
 /* --- 作品集卡片系統 --- */
 .portfolio-table {
     width: 100%;

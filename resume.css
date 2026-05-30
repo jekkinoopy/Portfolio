@@ -267,10 +267,22 @@ p {
 }
 
 .skill-item p {
-    flex: 0 0 96px;
+    flex: 0 0 108px;
     margin: 0;
     font-size: 0.82rem;
     line-height: 1.4;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.skill-item p::before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    content: "\f568";
+    font-size: 0.82em;
+    opacity: 0.92;
+    flex-shrink: 0;
 }
 
 .bar {

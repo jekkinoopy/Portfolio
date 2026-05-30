@@ -4,7 +4,8 @@
     width: min(94%, 1180px);
 }
 
-.uiux-case-visual button[data-photo-lightbox] {
+.uiux-case-visual button[data-photo-lightbox],
+.uiux-case-visual button[data-photo-cover] {
     display: block;
     width: 100%;
     border: 0;
@@ -19,7 +20,8 @@
     background: transparent;
 }
 
-.uiux-case-visual--cutout button[data-photo-lightbox] {
+.uiux-case-visual--cutout button[data-photo-lightbox],
+.uiux-case-visual--cutout button[data-photo-cover] {
     width: auto;
     max-width: 100%;
     margin-inline: auto;
@@ -31,6 +33,23 @@
     height: auto;
     display: block;
     margin-inline: auto;
+}
+
+.uiux-cover-link {
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    margin-inline: auto;
+    line-height: 0;
+    cursor: pointer;
+}
+
+.uiux-case-visual--cutout .uiux-cover-link img {
+    transition: transform 0.2s ease;
+}
+
+.uiux-cover-link:hover img {
+    transform: scale(1.02);
 }
 
 /* —— 手機畫面表格：以四欄寬＋間距為單元，2/3/4 張並列皆同尺寸、列水平置中 —— */
@@ -114,6 +133,10 @@
     line-height: 1.4;
 }
 
+.uiux-index {
+    margin-top: calc(var(--photo-gap) * 2.5);
+}
+
 .uiux-module__layout-label + .graphic-table--uiux-screen {
     margin-top: 0;
 }
@@ -173,6 +196,23 @@
     height: 6px;
     border-radius: 50%;
     background: var(--primary-yellow);
+}
+
+.uiux-project-intro__meta span.uiux-tool::before {
+    display: none;
+}
+
+.uiux-project-intro__meta span.uiux-meta-year::before {
+    display: none;
+}
+
+.uiux-tool i {
+    font-size: inherit;
+}
+
+.uiux-meta-year i {
+    font-size: 0.95em;
+    opacity: 0.92;
 }
 
 .uiux-project-intro h3 {
@@ -366,6 +406,10 @@
     font-weight: 700;
     letter-spacing: 0.04em;
     transition: background 0.2s ease;
+    border: 0;
+    cursor: pointer;
+    font-family: inherit;
+    text-decoration: none;
 }
 
 .uiux-case__cta:hover {

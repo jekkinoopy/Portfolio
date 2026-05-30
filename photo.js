@@ -54,13 +54,32 @@
             return btn.getAttribute("data-alt") || (img && img.alt) || "";
         });
 
+        function openAt(index) {
+            activeGallery = { sources: sources, alts: alts };
+            current = index;
+            open();
+        }
+
         triggers.forEach(function (btn, index) {
             btn.addEventListener("click", function () {
-                activeGallery = { sources: sources, alts: alts };
-                current = index;
-                open();
+                openAt(index);
             });
         });
+
+        galleryRoot.querySelectorAll("[data-photo-cover]").forEach(function (btn) {
+            btn.addEventListener("click", function () {
+                openAt(0);
+            });
+        });
+
+        var caseRoot = galleryRoot.closest(".uiux-case");
+        if (caseRoot) {
+            caseRoot.querySelectorAll("[data-photo-open]").forEach(function (btn) {
+                btn.addEventListener("click", function () {
+                    openAt(0);
+                });
+            });
+        }
     });
 
     if (btnClose) btnClose.addEventListener("click", close);
