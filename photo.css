@@ -251,7 +251,7 @@
 .uiux-case-visual {
     border-radius: calc(var(--radius-card) - 4px);
     overflow: hidden;
-    background: #e8e4df;
+    background: transparent;
     line-height: 0;
 }
 

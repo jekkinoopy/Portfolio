@@ -18,6 +18,9 @@
 
 .uiux-case-visual--cutout {
     background: transparent;
+    width: fit-content;
+    max-width: 100%;
+    justify-self: center;
 }
 
 .uiux-case-visual--cutout button[data-photo-lightbox],
@@ -33,96 +36,6 @@
     height: auto;
     display: block;
     margin-inline: auto;
-}
-
-/* —— 索引：完整 App 凸顯 / 練習作業收斂 —— */
-.uiux-showcase__heading {
-    margin: 0 0 calc(var(--photo-gap) * 1.25);
-    border-left: 10px solid var(--primary-dark-brown);
-}
-
-.uiux-showcase__heading h3 {
-    margin: 0;
-    padding-left: clamp(16px, 3vw, 36px);
-    font-size: clamp(1.35rem, 2.5vw, 1.75rem);
-    color: var(--primary-dark-brown);
-}
-
-.uiux-showcase__heading--secondary {
-    margin-top: calc(var(--photo-gap) * 2.25);
-    border-left-color: rgba(166, 93, 51, 0.35);
-}
-
-.uiux-showcase__heading--secondary h3 {
-    font-size: clamp(1.05rem, 2vw, 1.35rem);
-    font-weight: 700;
-    color: var(--primary-brown);
-}
-
-.uiux-showcase--featured {
-    gap: calc(var(--photo-gap) * 2.75);
-}
-
-.uiux-case--featured {
-    grid-template-columns: minmax(0, 1.28fr) minmax(0, 1fr);
-    padding: clamp(24px, 3.5vw, 40px);
-    border: 1px solid rgba(166, 93, 51, 0.22);
-    border-left: 5px solid var(--primary-yellow);
-    box-shadow: 0 14px 36px rgba(89, 56, 37, 0.1);
-}
-
-.uiux-case--featured:nth-child(even) {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.28fr);
-}
-
-.uiux-case--featured .uiux-case-visual--cutout img {
-    max-width: min(100%, clamp(280px, 38vw, 420px));
-    filter: drop-shadow(0 18px 32px rgba(89, 56, 37, 0.2));
-}
-
-.uiux-case--featured .uiux-case-copy.card-content h3 {
-    font-size: clamp(1.42rem, 2.6vw, 1.68rem);
-}
-
-.uiux-case--featured .tag {
-    background: var(--primary-dark-brown);
-}
-
-.uiux-showcase--practice {
-    gap: calc(var(--photo-gap) * 1.75);
-}
-
-.uiux-case--practice {
-    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1fr);
-    padding: clamp(14px, 2vw, 22px);
-    border-color: rgba(166, 93, 51, 0.1);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
-    background: rgba(255, 255, 255, 0.72);
-}
-
-.uiux-case--practice:nth-child(even) {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr);
-}
-
-.uiux-case--practice .uiux-case-visual {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.uiux-case--practice .uiux-case-visual img {
-    width: 100%;
-    max-width: min(100%, 420px);
-    margin-inline: auto;
-}
-
-.uiux-case--practice .uiux-case-copy.card-content h3 {
-    font-size: 1.12rem;
-}
-
-.uiux-case--practice .tag {
-    background: #b8a998;
-    font-size: 0.7rem;
 }
 
 .uiux-cover-link {
