@@ -6,12 +6,29 @@
     --photo-film-ratio: 16 / 10;
 }
 
-.photo-section-link {
+/* Photo 四大分類區塊（人像／商品／活動／風景） */
+.photo-category + .photo-category {
+    margin-top: calc(var(--graphic-media-gap) * 2.25);
+}
+
+.photo-category__heading {
+    height: fit-content;
+    border-left: 10px solid var(--primary-dark-brown);
+}
+
+.photo-category__heading h3 {
+    font-size: 2rem;
+    padding-left: 50px;
+    margin: 0;
+    color: var(--primary-dark-brown);
+}
+
+.photo-category__link {
     text-align: right;
     margin: 0 0 calc(var(--photo-gap) * 2);
 }
 
-.photo-section-link a {
+.photo-category__link a {
     color: var(--primary-brown);
     font-size: 0.95rem;
     font-weight: 600;
@@ -19,11 +36,11 @@
     transition: color 0.2s ease;
 }
 
-.photo-section-link a:hover {
+.photo-category__link a:hover {
     color: var(--primary-dark-brown);
 }
 
-.photo-section-link a::after {
+.photo-category__link a::after {
     content: " →";
 }
 
@@ -400,6 +417,11 @@
 
     .photo-lightbox__nav--next {
         right: 8px;
+    }
+
+    .photo-category__heading h3 {
+        padding-left: clamp(16px, 4vw, 50px);
+        font-size: clamp(1.65rem, 4.2vw, 2.35rem);
     }
 }
 
