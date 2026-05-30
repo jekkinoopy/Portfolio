@@ -209,7 +209,7 @@ header {
     padding: 10px 50px;
 }
 
-/* 導覽左右平分：左 About・Graphic・Illustration｜右 Video・UI/UX・Web */
+/* 導覽左右平分：左 關於・平面・插畫｜右 攝影・介面・網頁（hover 英文，寬度見 nav.js --nav-w） */
 .nav-shell {
     display: flex;
     flex-wrap: wrap;
@@ -344,6 +344,67 @@ body.nav-open {
     object-fit: contain;
     object-position: center;
     display: block;
+}
+
+@media (min-width: 1400px) {
+    .nav-links {
+        flex-wrap: nowrap;
+    }
+}
+
+/* 主導覽雙語：--nav-w 依英文長度預留，中文置中、hover 換英文不裁切 */
+@media (min-width: 1400px) {
+    .nav-link-bi {
+        display: inline-grid;
+        width: var(--nav-w, 5em);
+        grid-template-areas: "label";
+        place-items: center;
+        text-align: center;
+        white-space: nowrap;
+        user-select: none;
+        -webkit-user-select: none;
+        vertical-align: top;
+    }
+
+    .nav-link-bi__zh,
+    .nav-link-bi__en {
+        grid-area: label;
+        transition: opacity 0.12s ease;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    .nav-link-bi__en {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .nav-link-bi:hover .nav-link-bi__zh,
+    .nav-link-bi:focus-visible .nav-link-bi__zh {
+        opacity: 0;
+    }
+
+    .nav-link-bi:hover .nav-link-bi__en,
+    .nav-link-bi:focus-visible .nav-link-bi__en {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 1399px) {
+    .nav-link-bi {
+        display: inline;
+    }
+
+    .nav-link-bi__en {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .nav-link-bi__zh,
+    .nav-link-bi__en {
+        transition: none;
+    }
 }
 
 .nav-links a {
@@ -773,9 +834,19 @@ body.nav-open {
     font-weight: 500;
     color: var(--primary-brown);
     letter-spacing: 0.04em;
+    line-height: 1.4;
     display: inline-flex;
     align-items: center;
     gap: 6px;
+}
+
+.card-content .card-tools,
+.card-meta .card-tools {
+    color: var(--primary-brown);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    line-height: 1.4;
 }
 
 .meta-tool-row {
@@ -809,6 +880,26 @@ body.nav-open {
 
 .card-content {
     padding: 24px;
+    box-sizing: border-box;
+}
+
+.uiux-case-copy.card-content {
+    padding: 0;
+}
+
+.card-content h3 {
+    margin: 0;
+    line-height: 1.35;
+}
+
+.card-desc {
+    margin: 8px 0 0;
+    padding: 0;
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.75;
+    text-align: left;
+    hanging-punctuation: allow-end;
 }
 
 /* 聯絡資訊 */
