@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="page-inner">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鴻閣 UI | UI/UX | Jekkinoopy's portfolio</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../photo.css">
+    <link rel="stylesheet" href="../uiux.css">
+    <link rel="stylesheet" href="hongge.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <header class="container">
+        <nav class="navbar">
+            <div class="container nav-shell">
+                <a class="nav-logo" href="../index.html" aria-label="首頁">
+                    <img src="../images/noopylogov.png" alt="Jekkinoopy Studio">
+                </a>
+                <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav-menu"
+                    aria-label="開啟選單">
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                </button>
+                <div class="nav-menu" id="site-nav-menu">
+                    <ul class="nav-links nav-links--start">
+                        <li class="downDisabled" data-tooltip="作品建置中"><a href="../about.html">About</a></li>
+                        <li class="dropdown">
+                            <a href="../graphic.html">Graphic</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../graphic/logoPkg.html">Logo & 包裝設計</a></li>
+                                <li><a href="../graphic/calendar-bag.html">桌曆 & 購物袋</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../stationery.html">名片/卡片/票券/DM</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../webBanner.html">網站視覺 Banner</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../socialMedia.html">社群推播圖</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../largeFormat.html">大圖輸出</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../editorial.html">書刊</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../productDetail.html">商品長條圖文</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../illustration.html">Illustration</a></li>
+                    </ul>
+                    <ul class="nav-links nav-links--end">
+                        <li class="downDisabled" data-tooltip="作品建置中"><a href="../photo.html">Photo</a></li>
+                        <li class="downDisabled" data-tooltip="作品建置中"><a href="../uiux.html">UI/UX</a></li>
+                        <li><a href="../web.html">Web</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-container uiux-project uiux-project--hongge">
+        <div class="page-title">
+            <h2>UI/UX</h2>
+            <p>鴻閣 · 遊戲平台 App 介面</p>
+        </div>
+
+        <p class="photo-category__link"><a href="../uiux.html">返回 UI/UX 總覽</a></p>
+
+        <section class="uiux-project-intro" id="intro">
+            <p class="uiux-project-intro__lead">
+                鴻閣為直式手機遊戲平台 App 介面專案，模組架構與維亞系列相同（大廳、商城、聊天、贈禮、公會等）。素材目錄為 <code>images/uiux/final</code>；此頁依<strong>版型</strong>精選代表畫面，同類布局只保留一張，並保留空狀態、流程等 UX 範例。
+            </p>
+            <div class="uiux-project-intro__meta">
+                <span>Mobile App UI</span>
+                <span>Figma</span>
+                <span>直式 9:16</span>
+                <span>90+ 畫面 · 精選展示</span>
+            </div>
+
+            <h3>UI 資訊架構</h3>
+            <div class="uiux-ia">
+                <div class="uiux-ia__map" role="img" aria-label="鴻閣 App 資訊架構：大廳為中心，底部五 tab、左側快捷入口">
+                    <div class="uiux-ia__hub">
+                        大廳 index
+                        <small>遊戲分類 · 搜尋 · 跑馬燈 · VIP 列</small>
+                    </div>
+                    <div class="uiux-ia__row">
+                        <p class="uiux-ia__row-label">左側浮動快捷</p>
+                        <div class="uiux-ia__nodes">
+                            <span class="uiux-ia__node uiux-ia__node--accent">儲值 → 商城</span>
+                            <span class="uiux-ia__node">任務</span>
+                            <span class="uiux-ia__node">分享</span>
+                            <span class="uiux-ia__node">聊天室</span>
+                        </div>
+                    </div>
+                    <div class="uiux-ia__row">
+                        <p class="uiux-ia__row-label">底部主導覽（5 tab）</p>
+                        <div class="uiux-ia__nodes">
+                            <span class="uiux-ia__node">活動</span>
+                            <span class="uiux-ia__node">排行榜</span>
+                            <span class="uiux-ia__node uiux-ia__node--accent">商城</span>
+                            <span class="uiux-ia__node">送禮</span>
+                            <span class="uiux-ia__node">公會</span>
+                        </div>
+                    </div>
+                    <div class="uiux-ia__row">
+                        <p class="uiux-ia__row-label">個人與設定（大廳入口）</p>
+                        <div class="uiux-ia__nodes">
+                            <span class="uiux-ia__node">personal 個人中心</span>
+                            <span class="uiux-ia__node">VIP</span>
+                            <span class="uiux-ia__node">設定</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="uiux-ia__tree">
+                    <div class="uiux-ia__branch">
+                        <strong>商城</strong>
+                        <ul>
+                            <li>快速儲值 grid</li>
+                            <li>一般儲值列表</li>
+                            <li>申請存款</li>
+                        </ul>
+                    </div>
+                    <div class="uiux-ia__branch">
+                        <strong>personal</strong>
+                        <ul>
+                            <li>我的／my</li>
+                            <li>存摺、信箱、好友</li>
+                        </ul>
+                    </div>
+                    <div class="uiux-ia__branch">
+                        <strong>聊天室</strong>
+                        <ul>
+                            <li>公頻／私聊</li>
+                            <li>好友清單</li>
+                        </ul>
+                    </div>
+                    <div class="uiux-ia__branch">
+                        <strong>贈禮</strong>
+                        <ul>
+                            <li>贈禮中心</li>
+                            <li>紀錄、說明</li>
+                        </ul>
+                    </div>
+                    <div class="uiux-ia__branch">
+                        <strong>公會</strong>
+                        <ul>
+                            <li>我的／所有公會</li>
+                            <li>公會戰</li>
+                        </ul>
+                    </div>
+                    <div class="uiux-ia__branch">
+                        <strong>系統功能</strong>
+                        <ul>
+                            <li>排行榜、任務</li>
+                            <li>活動、VIP</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="uiux-ia__note">資料夾結構即模組切分：根目錄為各功能主入口，子資料夾為流程步驟、空狀態與說明頁。下方畫面依此 IA 分區展示。</p>
+            </div>
+        </section>
+
+        <nav class="uiux-module-nav" aria-label="模組捷徑">
+            <a href="#lobby">大廳</a>
+            <a href="#mall">商城</a>
+            <a href="#chat">聊天室</a>
+            <a href="#gift">贈禮</a>
+            <a href="#guild">公會</a>
+            <a href="#profile">個人中心</a>
+            <a href="#system">系統功能</a>
+        </nav>
+
+        <div data-photo-gallery>
+
+            <section class="uiux-module uiux-module--lobby" id="lobby">
+                <table class="graphic-table graphic-table--strip">
+                    <tr>
+                        <td>
+                            <div class="photo-category__heading">
+                                <h3>大廳</h3>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <p class="uiux-module__desc">主畫面整合 VIP 列、活動 banner、遊戲分類 tab 與左側快捷入口；搜尋為覆蓋式子畫面。</p>
+                <table class="graphic-table graphic-table--mosaic graphic-table--uiux-screen graphic-table--logo-row-2" aria-label="大廳畫面">
+                    <tr>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../images/uiux/final/index.jpg" data-alt="大廳主畫面">
+                                        <img src="../images/uiux/final/index.jpg" alt="大廳主畫面">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">主畫面</figcaption>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../images/uiux/final/index/search.jpg" data-alt="遊戲搜尋">
+                                        <img src="../images/uiux/final/index/search.jpg" alt="遊戲搜尋">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">搜尋</figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+
+            <section class="uiux-module uiux-module--mall" id="mall">
+                <table class="graphic-table graphic-table--strip">
+                    <tr>
+                        <td>
+                            <div class="photo-category__heading">
+                                <h3>商城</h3>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <p class="uiux-module__desc">儲值彈窗含快速／一般兩段；各支付方式卡片版型相同，僅展示一種 grid 與申請存款表單。</p>
+                <table class="graphic-table graphic-table--mosaic graphic-table--uiux-screen graphic-table--logo-row-3" aria-label="商城畫面">
+                    <tr>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../images/uiux/final/商城.jpg" data-alt="商城主彈窗">
+                                        <img src="../images/uiux/final/商城.jpg" alt="商城主彈窗">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">主彈窗</figcaption>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../images/uiux/final/商城/快速儲值/信用卡.jpg" data-alt="快速儲值">
+                                        <img src="../images/uiux/final/商城/快速儲值/信用卡.jpg" alt="快速儲值">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">快速儲值</figcaption>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../images/uiux/final/商城/申請存款.jpg" data-alt="申請存款">
+                                        <img src="../images/uiux/final/商城/申請存款.jpg" alt="申請存款">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">申請存款</figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+
+            <section class="uiux-module uiux-module--chat" id="chat">
+                <table class="graphic-table graphic-table--strip">
+                    <tr>
+                        <td>
+                            <div class="photo-category__heading">
+                                <h3>聊天室</h3>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <p class="uiux-module__desc">公頻／私聊共用 bubble 版型；好友清單另附空狀態。</p>
+                <table class="graphic-table graphic-table--mosaic graphic-table--uiux-screen graphic-table--logo-row-3" aria-label="聊天室畫面">
+                    <tr>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../images/uiux/final/聊天室/公頻.jpg" data-alt="公頻聊天">
+                                        <img src="../images/uiux/final/聊天室/公頻.jpg" alt="公頻聊天">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">公頻</figcaption>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../images/uiux/final/聊天室/私聊.jpg" data-alt="私聊">
+                                        <img src="../images/uiux/final/聊天室/私聊.jpg" alt="私聊">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">私聊</figcaption>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../images/uiux/final/聊天室/好友清單/無好友.jpg" data-alt="好友清單空狀態">
+                                        <img src="../images/uiux/final/聊天室/好友清單/無好友.jpg" alt="好友清單空狀態">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">無好友</figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+
+            <section class="uiux-module uiux-module--gift" id="gift">
+                <table class="graphic-table graphic-table--strip">
+                    <tr>
+                        <td>
+                            <div class="photo-category__heading">
+                                <h3>贈禮</h3>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <p class="uiux-module__desc">贈禮中心、紀錄與教學頁為不同版型；教學類說明頁擇一代表。</p>
+                <table class="graphic-table graphic-table--mosaic graphic-table--uiux-screen graphic-table--logo-row-3" aria-label="贈禮畫面">
+                    <tr>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../images/uiux/final/贈禮/贈禮.jpg" data-alt="贈禮入口">
+                                        <img src="../images/uiux/final/贈禮/贈禮.jpg" alt="贈禮入口">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">入口</figcaption>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../images/uiux/final/贈禮/贈禮中心/全部.jpg" data-alt="贈禮中心">
+                                        <img src="../images/uiux/final/贈禮/贈禮中心/全部.jpg" alt="贈禮中心">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">贈禮中心</figcaption>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../images/uiux/final/贈禮/贈禮說明/送禮教學.jpg" data-alt="送禮教學">
+                                        <img src="../images/uiux/final/贈禮/贈禮說明/送禮教學.jpg" alt="送禮教學">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">送禮教學</figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+
+            <section class="uiux-module uiux-module--guild" id="guild">
+                <table class="graphic-table graphic-table--strip">
+                    <tr>
+                        <td>
+                            <div class="photo-category__heading">
+                                <h3>公會</h3>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <p class="uiux-module__desc">公會列表與公會戰說明為兩種版型：列表頁 vs 規則 modal。</p>
+                <table class="graphic-table graphic-table--mosaic graphic-table--uiux-screen graphic-table--logo-row-2" aria-label="公會畫面">
+                    <tr>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../images/uiux/final/我的公會.jpg" data-alt="我的公會">
+                                        <img src="../images/uiux/final/我的公會.jpg" alt="我的公會">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">我的公會</figcaption>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../images/uiux/final/公會戰說明.jpg" data-alt="公會戰說明">
+                                        <img src="../images/uiux/final/公會戰說明.jpg" alt="公會戰說明">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">公會戰說明</figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+
+            <section class="uiux-module uiux-module--profile" id="profile">
+                <table class="graphic-table graphic-table--strip">
+                    <tr>
+                        <td>
+                            <div class="photo-category__heading">
+                                <h3>個人中心</h3>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <p class="uiux-module__desc">personal 模組含存摺、信箱、好友與 my 子頁；表單類版型相近，擇二並列。</p>
+                <p class="uiux-module__layout-label">空／滿狀態 · 存摺</p>
+                <table class="graphic-table graphic-table--mosaic graphic-table--uiux-screen graphic-table--logo-row-2" aria-label="存摺空滿狀態">
+                    <tr>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <span class="uiux-state-pair__tag">有紀錄</span>
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../images/uiux/final/personal/存摺/有紀錄.jpg" data-alt="存摺有紀錄">
+                                        <img src="../images/uiux/final/personal/存摺/有紀錄.jpg" alt="存摺有紀錄">
+                                    </button>
+                                </div>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <span class="uiux-state-pair__tag uiux-state-pair__tag--empty">無紀錄</span>
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../images/uiux/final/personal/存摺/無紀錄.jpg" data-alt="存摺無紀錄">
+                                        <img src="../images/uiux/final/personal/存摺/無紀錄.jpg" alt="存摺無紀錄">
+                                    </button>
+                                </div>
+                            </figure>
+                        </td>
+                    </tr>
+                </table>
+                <p class="uiux-module__layout-label">表單流程（擇二）</p>
+                <table class="graphic-table graphic-table--mosaic graphic-table--uiux-screen graphic-table--logo-row-2" aria-label="個人資料編輯">
+                    <tr>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../images/uiux/final/personal/my/輸入新暱稱.jpg" data-alt="輸入新暱稱">
+                                        <img src="../images/uiux/final/personal/my/輸入新暱稱.jpg" alt="輸入新暱稱">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">輸入新暱稱</figcaption>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../images/uiux/final/personal/my/更換頭像.jpg" data-alt="更換頭像">
+                                        <img src="../images/uiux/final/personal/my/更換頭像.jpg" alt="更換頭像">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">更換頭像</figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+
+            <section class="uiux-module uiux-module--system" id="system">
+                <table class="graphic-table graphic-table--strip">
+                    <tr>
+                        <td>
+                            <div class="photo-category__heading">
+                                <h3>系統功能</h3>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <p class="uiux-module__desc">排行榜、任務、VIP、設定各擇一；活動附列表＋內頁。</p>
+                <table class="graphic-table graphic-table--mosaic graphic-table--uiux-screen graphic-table--logo-row-4" aria-label="系統功能畫面">
+                    <tr>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../images/uiux/final/排行榜/富豪榜.jpg" data-alt="富豪榜">
+                                        <img src="../images/uiux/final/排行榜/富豪榜.jpg" alt="富豪榜">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">排行榜</figcaption>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../images/uiux/final/任務/初級任務.jpg" data-alt="初級任務">
+                                        <img src="../images/uiux/final/任務/初級任務.jpg" alt="初級任務">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">任務</figcaption>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../images/uiux/final/VIP/VIP等級.jpg" data-alt="VIP 等級">
+                                        <img src="../images/uiux/final/VIP/VIP等級.jpg" alt="VIP 等級">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">VIP</figcaption>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../images/uiux/final/設定.jpg" data-alt="設定">
+                                        <img src="../images/uiux/final/設定.jpg" alt="設定">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">設定</figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                </table>
+                <p class="uiux-module__layout-label">活動 · 列表＋內頁</p>
+                <table class="graphic-table graphic-table--mosaic graphic-table--uiux-screen graphic-table--logo-row-2" aria-label="活動畫面">
+                    <tr>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../images/uiux/final/活動/列表.jpg" data-alt="活動列表">
+                                        <img src="../images/uiux/final/活動/列表.jpg" alt="活動列表">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">列表</figcaption>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../images/uiux/final/活動/內頁.jpg" data-alt="活動內頁">
+                                        <img src="../images/uiux/final/活動/內頁.jpg" alt="活動內頁">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">內頁</figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+
+        </div>
+    </main>
+
+    <div class="photo-lightbox" id="photo-lightbox" aria-hidden="true">
+        <div class="photo-lightbox__content">
+            <button type="button" class="photo-lightbox__close" id="photo-lightbox-close" aria-label="關閉">&times;</button>
+            <button type="button" class="photo-lightbox__nav photo-lightbox__nav--prev" id="photo-lightbox-prev" aria-label="上一張"><i class="fa-solid fa-chevron-left"></i></button>
+            <img id="photo-lightbox-img" src="" alt="">
+            <button type="button" class="photo-lightbox__nav photo-lightbox__nav--next" id="photo-lightbox-next" aria-label="下一張"><i class="fa-solid fa-chevron-right"></i></button>
+            <p class="photo-lightbox__index" id="photo-lightbox-index"></p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <a href="mailto:jekkinoopy@gmail.com" class="contact-email">
+            <small>如有合作意願，歡迎隨時聯繫</small>
+            jekkinoopy@gmail.com
+        </a>
+        <small>&copy; 2026 JEKKINOOPY. All rights reserved.</small>
+    </footer>
+
+    <script src="../nav.js"></script>
+    <script src="../photo.js"></script>
+</body>
+
+</html>
