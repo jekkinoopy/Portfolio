@@ -4,18 +4,33 @@
     width: min(94%, 1180px);
 }
 
-.uiux-case--banner {
-    grid-template-columns: 1fr;
-    align-items: start;
+.uiux-case-visual button[data-photo-lightbox] {
+    display: block;
+    width: 100%;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    cursor: zoom-in;
+    line-height: 0;
 }
 
-.uiux-case--banner .uiux-case-copy {
-    order: unset;
-    max-width: none;
+.uiux-case-visual--cutout {
+    background: transparent;
 }
 
-.uiux-case--banner .uiux-case-visual {
-    display: none;
+.uiux-case-visual--cutout button[data-photo-lightbox] {
+    width: auto;
+    max-width: 100%;
+    margin-inline: auto;
+}
+
+.uiux-case-visual--cutout img {
+    width: auto;
+    max-width: min(100%, 220px);
+    height: auto;
+    display: block;
+    margin-inline: auto;
 }
 
 /* —— 手機畫面表格：以四欄寬＋間距為單元，2/3/4 張並列皆同尺寸、列水平置中 —— */

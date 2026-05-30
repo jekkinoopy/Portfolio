@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="page-inner">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>婚禮 App | UI/UX | Jekkinoopy's portfolio</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../photo.css">
+    <link rel="stylesheet" href="../uiux.css">
+    <link rel="stylesheet" href="wedding.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <header class="container">
+        <nav class="navbar">
+            <div class="container nav-shell">
+                <a class="nav-logo" href="../index.html" aria-label="首頁">
+                    <img src="../images/noopylogov.png" alt="Jekkinoopy Studio">
+                </a>
+                <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav-menu"
+                    aria-label="開啟選單">
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                </button>
+                <div class="nav-menu" id="site-nav-menu">
+                    <ul class="nav-links nav-links--start">
+                        <li class="downDisabled" data-tooltip="作品建置中"><a href="../about.html">About</a></li>
+                        <li class="dropdown">
+                            <a href="../graphic.html">Graphic</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../graphic/logoPkg.html">Logo & 包裝設計</a></li>
+                                <li><a href="../graphic/calendar-bag.html">桌曆 & 購物袋</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../stationery.html">名片/卡片/票券/DM</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../webBanner.html">網站視覺 Banner</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../socialMedia.html">社群推播圖</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../largeFormat.html">大圖輸出</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../editorial.html">書刊</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../productDetail.html">商品長條圖文</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../illustration.html">Illustration</a></li>
+                    </ul>
+                    <ul class="nav-links nav-links--end">
+                        <li class="downDisabled" data-tooltip="作品建置中"><a href="../photo.html">Photo</a></li>
+                        <li class="downDisabled" data-tooltip="作品建置中"><a href="../uiux.html">UI/UX</a></li>
+                        <li><a href="../web.html">Web</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-container uiux-project uiux-project--wedding">
+        <div class="page-title">
+            <h2>UI/UX</h2>
+            <p>婚禮籌備 · App 流程</p>
+        </div>
+
+        <p class="photo-category__link"><a href="../uiux.html">返回 UI/UX 總覽</a></p>
+
+        <section class="uiux-project-intro" id="intro">
+            <p class="uiux-project-intro__lead">
+                婚禮籌備 App：實機 mockup 與流程總覽為同一專案，展示跨畫面一致性與資訊層級。
+            </p>
+            <div class="uiux-project-intro__meta">
+                <span>Mobile App UI</span>
+                <span>UI Flow</span>
+                <span>2023</span>
+            </div>
+        </section>
+
+        <div data-photo-gallery>
+            <section class="uiux-module uiux-module--flow" id="screens">
+                <table class="graphic-table graphic-table--mosaic graphic-table--uiux-screen graphic-table--logo-row-2" aria-label="婚禮 App 畫面">
+                    <tr>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../images/uiux/iPhone 13, 12 Pro Max – 1.jpg" data-alt="婚禮 App 實機">
+                                        <img src="../images/uiux/iPhone 13, 12 Pro Max – 1.jpg" alt="婚禮 App 實機">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">實機 mockup</figcaption>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../images/uiux/2023_UIUX_wedding_.jpg" data-alt="婚禮 App 流程">
+                                        <img src="../images/uiux/2023_UIUX_wedding_.jpg" alt="婚禮 App 流程">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">流程總覽</figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+        </div>
+    </main>
+
+    <div class="photo-lightbox" id="photo-lightbox" aria-hidden="true">
+        <div class="photo-lightbox__content">
+            <button type="button" class="photo-lightbox__close" id="photo-lightbox-close" aria-label="關閉">&times;</button>
+            <button type="button" class="photo-lightbox__nav photo-lightbox__nav--prev" id="photo-lightbox-prev" aria-label="上一張"><i class="fa-solid fa-chevron-left"></i></button>
+            <img id="photo-lightbox-img" src="" alt="">
+            <button type="button" class="photo-lightbox__nav photo-lightbox__nav--next" id="photo-lightbox-next" aria-label="下一張"><i class="fa-solid fa-chevron-right"></i></button>
+            <p class="photo-lightbox__index" id="photo-lightbox-index"></p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <a href="mailto:jekkinoopy@gmail.com" class="contact-email">
+            <small>如有合作意願，歡迎隨時聯繫</small>
+            jekkinoopy@gmail.com
+        </a>
+        <small>&copy; 2026 JEKKINOOPY. All rights reserved.</small>
+    </footer>
+
+    <script src="../nav.js"></script>
+    <script src="../photo.js"></script>
+</body>
+
+</html>
