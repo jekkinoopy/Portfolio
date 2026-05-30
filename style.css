@@ -726,9 +726,49 @@ body.nav-open {
     font-weight: 500;
 }
 
-/* 全站工具 icon 樣式見 tool-icon.css（card-tools 排版） */
-.card-tools {
+/* 作品卡片 meta：tag／date／工具（Web、UI/UX 共用） */
+.card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
     margin: 0 0 10px;
+    gap: 12px;
+}
+
+.card-meta .tag {
+    margin-bottom: 0;
+}
+
+.card-meta .card-tools {
+    margin: 0;
+}
+
+.tag {
+    display: inline-block;
+    background: var(--primary-yellow);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: var(--radius-pill);
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.date {
+    font-size: 0.75rem;
+    color: var(--dark-gray);
+    margin: 0;
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* 全站工具 icon 樣式見 tool-icon.css */
+.card-tools {
+    margin: 0 0 12px;
     font-size: 0.78rem;
     font-weight: 500;
     color: var(--primary-brown);
@@ -770,33 +810,6 @@ body.nav-open {
 .card-content {
     padding: 24px;
 }
-
-.card-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-/* 標籤與時間樣式 */
-.tag {
-    background: var(--primary-yellow);
-    color: #fff;
-    padding: 4px 12px;
-    border-radius: var(--radius-pill);
-    font-size: 0.75rem;
-    font-weight: bold;
-}
-
-.date {
-    font-size: 0.75rem;
-    color: var(--dark-gray);
-}
-
-.date i {
-    margin-right: 5px;
-}
-
 
 /* 聯絡資訊 */
 footer {

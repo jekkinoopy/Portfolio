@@ -198,21 +198,18 @@
     background: var(--primary-yellow);
 }
 
-.uiux-project-intro__meta span.uiux-tool::before {
-    display: none;
+.uiux-project-intro .card-meta {
+    max-width: 72ch;
+    margin: 0 auto 8px;
 }
 
-.uiux-project-intro__meta span.uiux-meta-year::before {
-    display: none;
+.uiux-project-intro .card-meta:has(.date) {
+    justify-content: space-between;
 }
 
-.uiux-tool .tool-icon {
-    font-size: inherit;
-}
-
-.uiux-meta-year i {
-    font-size: 0.95em;
-    opacity: 0.92;
+.uiux-project-intro .card-tools {
+    max-width: 72ch;
+    margin: 0 auto calc(var(--photo-gap) * 1.25);
 }
 
 .uiux-project-intro h3 {
