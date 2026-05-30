@@ -225,7 +225,7 @@ header {
         grid-template-columns: 1fr auto 1fr;
         grid-template-areas: "nav-start nav-logo nav-end";
         align-items: center;
-        column-gap: 22px;
+        column-gap: 28px;
         row-gap: 0;
         flex-wrap: nowrap;
         justify-content: stretch;
@@ -336,7 +336,7 @@ body.nav-open {
 /* Logo 967×154（橫式）：只鎖高度，寬度隨比例 */
 .nav-logo img {
     --nav-logo-ratio: 967 / 154;
-    height: clamp(32px, 3.5vw, 44px);
+    height: clamp(46px, 5.2vw, 60px);
     width: auto;
     max-width: none;
     max-height: none;
@@ -971,7 +971,7 @@ footer {
     }
 
     .nav-logo img {
-        height: clamp(36px, 9vw, 48px);
+        height: clamp(40px, 10vw, 52px);
         width: auto;
         max-width: none;
     }
