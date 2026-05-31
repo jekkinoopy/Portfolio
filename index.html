@@ -37,15 +37,21 @@
             /* 關鍵：讓 Header 佔據除了 Footer 以外的所有剩餘空間 */
         }
 
-        .navbar {
-            display: flex;
-            justify-content: center;
-            padding: 20px 50px;
-            flex-shrink: 0;
-            /* 3. 防止導覽列被壓縮 */
-        }
+    .navbar {
+        display: flex;
+        justify-content: center;
+        padding: 20px 50px;
+        flex-shrink: 0;
+        /* 3. 防止導覽列被壓縮 */
+    }
 
-        .hero-section {
+    @media (max-width: 1399px) {
+        .navbar {
+            padding: 10px 16px;
+        }
+    }
+
+    .hero-section {
             display: flex;
             flex: 1;
             /* 4. 關鍵：讓 hero 自動佔滿剩餘的所有高度 */

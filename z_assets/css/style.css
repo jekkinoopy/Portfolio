@@ -907,11 +907,37 @@ footer {
         padding: 10px 20px;
     }
 
+    /* Logo + 漢堡固定同一列；選單展開時整塊另起一排 */
+    .nav-shell {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-areas: "nav-logo nav-toggle";
+        align-items: center;
+        column-gap: 12px;
+        row-gap: 0;
+    }
+
+    .nav-logo {
+        grid-area: nav-logo;
+        justify-self: start;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .nav-logo img {
+        height: clamp(34px, 8vw, 48px);
+        max-width: 100%;
+        width: auto;
+    }
+
     .nav-toggle {
         display: flex;
+        grid-area: nav-toggle;
+        justify-self: end;
     }
 
     .nav-menu {
+        grid-column: 1 / -1;
         flex-direction: column;
         align-items: stretch;
         gap: 20px;
@@ -934,6 +960,7 @@ footer {
         align-items: center;
         width: 100%;
         gap: 14px;
+        flex-wrap: nowrap;
     }
 
     .nav-links a {
@@ -976,12 +1003,6 @@ footer {
 
     .navbar {
         padding: 8px 20px;
-    }
-
-    .nav-logo img {
-        height: clamp(40px, 10vw, 52px);
-        width: auto;
-        max-width: none;
     }
 
     .nav-links a {
@@ -1126,6 +1147,11 @@ footer {
 }
 
 @media (max-width: 768px) {
+    .navbar .container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
     .portfolio-grid-web {
         grid-template-columns: 1fr;
     }
