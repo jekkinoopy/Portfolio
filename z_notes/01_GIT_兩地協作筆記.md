@@ -105,7 +105,7 @@ flowchart TD
 
 | 原因 | 說明 |
 |------|------|
-| 熱門檔重疊 | `graphic.html`、`style.css`、`calendar-bag.html`、導覽 — 兩邊常一起改 |
+| 熱門檔重疊 | `graphic/`、`style.css`、`calendar-bag.html`、導覽 — 兩邊常一起改 |
 | 忘記 push | 家裡 commit 了沒 push，學校又在舊版上改 |
 | 忘記先 pull | 家裡先改才 pull，本機已有 commit → 必 merge |
 | 大檔 | 單檔 >100MB push 會失敗，曾用 `reset --soft` 重寫歷史 |
