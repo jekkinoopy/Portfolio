@@ -300,16 +300,98 @@
 
 .photo-lightbox__content {
     position: relative;
-    width: min(1100px, 94vw);
-    max-height: 90vh;
+    width: min(1400px, 96vw);
+    max-height: 92vh;
+    display: flex;
+    flex-direction: column;
 }
 
-.photo-lightbox__content img {
-    width: 100%;
-    max-height: 90vh;
-    object-fit: contain;
+.photo-lightbox__stage {
+    overflow: auto;
+    flex: 1;
+    min-height: 0;
+    max-height: calc(92vh - 88px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-overflow-scrolling: touch;
+    cursor: zoom-in;
+    touch-action: pan-x pan-y;
+}
+
+.photo-lightbox__stage.is-zoomed {
+    cursor: grab;
+    overflow: hidden;
+}
+
+.photo-lightbox__stage.is-dragging {
+    cursor: grabbing;
+}
+
+.photo-lightbox__stage img {
     display: block;
     border-radius: var(--radius-card);
+    transform-origin: center center;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: calc(92vh - 88px);
+    object-fit: contain;
+}
+
+.photo-lightbox__stage.is-tall {
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.photo-lightbox__stage.is-tall img {
+    width: min(1200px, 100%);
+    max-width: none;
+    max-height: none;
+    min-width: min(720px, 100%);
+}
+
+@media (max-width: 768px) {
+    .photo-lightbox__stage.is-tall img {
+        min-width: 100%;
+    }
+
+    .photo-lightbox__zoom-hint {
+        font-size: 0.72rem;
+    }
+}
+
+.photo-lightbox__toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.photo-lightbox__toolbar button {
+    min-width: 36px;
+    height: 36px;
+    padding: 0 10px;
+    border: 0;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.photo-lightbox__toolbar button:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+.photo-lightbox__zoom-hint {
+    width: 100%;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
 }
 
 .photo-lightbox__close {
