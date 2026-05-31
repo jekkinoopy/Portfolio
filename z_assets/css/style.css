@@ -365,7 +365,8 @@ body.nav-open {
     color: var(--primary-dark-brown);
 }
 
-.nav-links a.active {
+.nav-links > li > a.active,
+.nav-links li.dropdown > a.active {
     border-bottom: 3px solid var(--primary-yellow);
     padding-bottom: 4px;
 }
@@ -497,17 +498,24 @@ body.nav-open {
     white-space: nowrap;
     transition: background 0.2s ease;
     text-align: center;
+    text-decoration: none !important;
+    border-bottom: none;
 }
 
 .dropdown-menu a:hover {
     background-color: var(--light-yellow);
     color: var(--primary-dark-brown) !important;
+    text-decoration: none !important;
+    border-bottom: none;
 }
 
 .dropdown-menu a.active {
     background-color: var(--light-yellow);
     color: var(--primary-dark-brown) !important;
     font-weight: 600 !important;
+    text-decoration: none !important;
+    border-bottom: none;
+    padding-bottom: 10px;
 }
 
 
