@@ -1,30 +1,16 @@
-/* UI/UX 總覽封面：原圖 1440×3943，裁切高度對齊首屏底部黃線；寬度縮放時同比裁切 */
+/* 星塵領域 · 總覽封面圖（比例見 desktop-covers.css） */
 .uiux-cover-link--xingchen-hero {
-    --xingchen-src-w: 1440;
-    --xingchen-crop-h: 918;
-    --xingchen-cover-pos-x: 50%;
-    --xingchen-cover-pos-y: 0%;
-
     display: block;
-    width: 100%;
-    aspect-ratio: var(--xingchen-src-w) / var(--xingchen-crop-h);
-    height: auto;
     border-radius: var(--radius-card);
     overflow: hidden;
     background-image: url("../../images/uiux/星塵領域/index.jpg");
     background-repeat: no-repeat;
-    background-size: 100% auto;
-    background-position: var(--xingchen-cover-pos-x) var(--xingchen-cover-pos-y);
     box-shadow: 0 8px 22px rgba(89, 56, 37, 0.08);
     transition: box-shadow 0.2s ease;
 }
 
 .uiux-cover-link--xingchen-hero:hover {
     box-shadow: 0 12px 28px rgba(89, 56, 37, 0.12);
-}
-
-.uiux-case-visual--xingchen-cover {
-    width: 100%;
 }
 
 /* 星塵領域官網 · 寬版畫面全欄展示 */

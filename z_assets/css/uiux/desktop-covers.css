@@ -1,0 +1,30 @@
+/* UI/UX 總覽 · 桌機官網封面：統一 3:2，框高固定比例、圖以 cover 裁切（頂部對齊） */
+:root {
+    --uiux-desktop-cover-ratio: 3 / 2;
+}
+
+.uiux-case-visual--desktop-cover {
+    width: 100%;
+    aspect-ratio: var(--uiux-desktop-cover-ratio);
+    overflow: hidden;
+    line-height: 0;
+}
+
+.uiux-case-visual--desktop-cover .uiux-cover-link--luba-hero,
+.uiux-case-visual--desktop-cover .uiux-cover-link--xingchen-hero {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    background-size: cover;
+    background-position: 50% 0%;
+}
+
+.uiux-case-visual--desktop-cover > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    border-radius: 0;
+    box-shadow: none;
+}

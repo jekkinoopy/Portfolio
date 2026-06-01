@@ -4,6 +4,11 @@ vedio/
 
 # Adobe 原始檔（保留本機，不進 repo）
 *.ai
+*.psd
+*.eps
+
+# 星塵案場原始／參考（網站用 星塵領域/ 匯出 jpg）
+z_assets/images/uiux/FR-星塵領域/
 
 # 大型設計稿資料夾（legacy + z_assets）
 images/graphic/calendarBag/新增資料夾/
