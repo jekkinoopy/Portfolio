@@ -1,6 +1,6 @@
 # TODO
 
-> 檔案結構 → `z_notes/02_專案檔案結構.md` · 全站頁表 → `z_misc/site-guide/`
+> 檔案結構 → `z_notes/02_專案檔案結構.md` · 全站頁表 → `z_misc/site-guide/` · Photo 分類 → `z_notes/03_Photo照片分類建議.md`
 
 - [ ] 合併包裝設計（購物袋放同一頁）
 - [ ] 找爆米花和量華包裝袋
