@@ -9,6 +9,7 @@
         food: '食物',
         holiday: '節日賀卡',
         character: '人物',
+        chara: '角色插畫',
         ip: 'IP 角色',
         humanities: '社會人文',
         leisure: '休閒',
@@ -64,7 +65,8 @@
 
     function itemMatchesTheme(item, theme) {
         if (theme === 'all') return true;
-        return itemThemes(item).indexOf(theme) !== -1;
+        var themes = itemThemes(item);
+        return themes.indexOf(theme) !== -1;
     }
 
     function applyFilter(theme) {

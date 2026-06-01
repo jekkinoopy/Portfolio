@@ -1,6 +1,6 @@
 # Illustration 插畫分類建議
 
-> 你用過 **Painter · Photoshop · Illustrator · Procreate**，其中 **Procreate 最多**。  
+> 你用過 **Procreate · MediBang Paint · Painter · Photoshop · Illustrator**，其中 **Procreate 最多**。  
 > 現站 `illustration/index.html` 是**單一方格網**，hover 顯示 `#Procreate`；本筆記定：檔案怎麼收、標籤怎麼打、要不要依軟體拆頁。  
 > 相關：`illustration/index.html` · `z_assets/images/illust/` · `z_assets/css/illustration.css`
 
@@ -35,7 +35,7 @@ z_assets/images/illust/
 
 **檔名習慣（可沿用）：** `YYYY_電繪_MMDD主題.jpg` 或 `主題.jpg`；**不必**在檔名寫軟體（軟體靠資料夾 + 網頁標籤）。
 
-**`新增資料夾/pan/`：** 若裡面是 Painter 時期作品，整理時搬到 `painter/YYYY/`，避免和 Procreate 混在一起。
+**`新增資料夾/pan/`：** 早期電繪混放；依實際軟體標 `#MediBang` 或 `#Painter`，整理時可拆到 `medibang/YYYY/`、`painter/YYYY/`。
 
 ---
 
@@ -48,10 +48,11 @@ z_assets/images/illust/
 | `animal` | 動物 | 貓狗、鳥、怪獸、海洋生物 | 狐狸、梅花鹿、科基、水母 |
 | `food` | 食物 | **能吃或當餐點的**：甜點、水果、飲料、食材 | 馬卡龍、起司、橘子、荷包蛋 |
 | `holiday` | 節日賀卡 | 節慶、賀卡、祝福圖 | 中秋快樂、哆啦A夢賀卡（`ip holiday`） |
-| `character` | 人物 | **原創**人為主角；拿玩偶、橡皮鴨仍算人物 | 水手服、帥哥、志溶九份 |
+| `character` | 人物 | **原創**真人／Q 版人為主角；拿玩偶、橡皮鴨仍算人物 | 水手服、帥哥、志溶九份 |
+| `chara` | **角色插畫** | **原創**非真人角色（怪獸、精靈、擬人化生物等） | 怪獸派對 `monster(大).jpg` |
 | `ip` | **IP 角色** | 動畫、電影、遊戲等既有角色之同人／賀卡／練習 | 毛怪眼怪、蝙蝠俠、霍格華茲信 |
 | `humanities` | **社會人文** | 廟宇、建築、地景與文化場域（非純自然風景） | 集應廟 |
-| `leisure` | **休閒** | 游泳、划船、泳池等戶外／水上玩樂（人可入鏡） | 潛水、泳圈 |
+| `leisure` | **休閒** | 戶外放鬆、戲水、草坡散步等（人可入鏡；風景為輔） | 潛水、泳圈、藍天白雲少女 |
 | `scene` | **自然** | 夢境、風景、植物、海洋氛圍（無明顯休閒活動） | 宇宙、夢境、火山、嫩枝 |
 | `other` | **其它** | 難歸類的練習、靜物、光影研究 | 燈泡、怪獸特寫 |
 
@@ -64,12 +65,16 @@ z_assets/images/illust/
 | `帥哥.jpg` | — | **人物**（2023.9.29 比耶眨眼，另一張） |
 | 燈泡、難歸類練習 | 動物、食物、自然 | **其它** |
 | 寶石、水滴 | 動物、食物 | **自然** |
-| 眼睛特寫、五官練習 | 動物、食物、自然 | **人物**；站上原檔名 `琥珀色寶石.jpg` 誤標，已改 `眼睛.jpg` |
+| 眼睛特寫、五官練習 | 動物、食物、自然 | **人物**；**兩張都上站**：`琥珀色寶石.jpg`＝琥珀眼（#Procreate）、`眼睛.jpg`＝藍眼（#Illustrator） |
 | 熊貓、科基、狐狸 | — | 動物 |
+| 原創怪獸、MONSTER 派對圖 | 動物、IP | **角色插畫** |
 | 哆啦A夢、蝙蝠俠、哈利波特、怪獸電力公司 | 人物、動物 | **IP 角色**（哆啦A夢賀卡另加 `holiday`） |
 | 廟宇、牌樓、老街建築 | 自然 | **社會人文** |
-| `幽靈.jpg` 三隻幽靈（2023.10.16） | 其它、節日 | **自然**（你指定左上歸自然；非寫實風景但站內歸此） |
+| `嫩枝.jpg` | — | **自然**（內容是植物嫩枝，2023.10.4） |
+| `未命名的作品.jpg` | 角色插畫 | **自然**（檔名誤導；內容是山丘夕陽 2023.10.30，**不是** Painter 黃色方塊） |
+| `幽靈.jpg` 三隻幽靈（2023.10.16） | — | 目前 **自然**；若你要改回其它再說 |
 | 划船、浮潛、泳池戲水 | 自然、人物 | **休閒**（活動為主；純風景仍歸自然） |
+| 草坡上看雲的女孩（`藍天白雲少女`） | 自然、人物 | **休閒**（戶外休閒感，非純風景） |
 
 **多主題（可同時入兩類篩選）：** `data-theme` 用**空格**分隔，例如 IP 賀卡：`data-theme="ip holiday"`（哆啦A夢賀卡同時出現在「IP 角色」與「節日賀卡」）。
 
@@ -90,7 +95,8 @@ z_assets/images/illust/
 | **Procreate** | iPad 塗鴉、日常插畫、大部分完成稿 | `#Procreate` | **預設**；`.procreate` 原檔放 `_source/` |
 | **Photoshop** | 合成、修圖、賀卡排版、筆刷後期、網格製圖 | `#Photoshop` | 若只在 PS 加字／調色，主畫仍 Procreate → 見下方「跨軟體」 |
 | **Illustrator** | 向量線稿、Logo 化角色、春聯字、幾何平塗 | `#Illustrator` | 和 **Graphic**（商業平面）重疊時：委託／品牌案 → Graphic；個人創作 → Illustration |
-| **Painter** | 仿水彩／油畫、厚塗、電繪板時期 | `#Painter` | 量少可集中一區展示，不必獨立整頁 |
+| **MediBang Paint** | 早期電繪、厚塗練習（如 `pan/` 部分檔） | `#MediBang` | 勿與 Corel Painter 混標；例：`青春的嘟嘟` |
+| **Painter** | Corel Painter 仿水彩／油畫 | `#Painter` | 與 MediBang 分開標 |
 
 ### 單張「主軟體」判斷（快速）
 

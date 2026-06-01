@@ -50,8 +50,14 @@
             padding: 40px 0;
         }
 
+        /* 交錯只負責下移，卡片外觀與左右欄相同 */
         .illus-item--stagger {
             margin-top: clamp(28px, 4vw, 50px);
+        }
+
+        .illus-item--stagger .illus-img-wrapper {
+            border: 1px solid rgba(166, 93, 51, 0.18);
+            box-shadow: 0 8px 24px rgba(89, 56, 37, 0.12);
         }
 
         /* 作品卡片（同一列欄寬一致 + 正方形圖框 → 視覺列高一致） */
@@ -62,16 +68,17 @@
             flex-direction: column;
         }
 
-        /* 強制 IG 方形比例 */
+        /* 強制 IG 方形比例；全卡統一邊框陰影（交錯列僅下移，不另套樣式） */
         .illus-img-wrapper {
             position: relative;
             width: 100%;
             aspect-ratio: 1 / 1;
             overflow: hidden;
             border-radius: var(--radius-card);
-            /* 延續你 Web 頁面的圓角感 */
-            background: #eee;
-            transition: 0.3s;
+            background: #fff;
+            border: 1px solid rgba(166, 93, 51, 0.18);
+            box-shadow: 0 8px 24px rgba(89, 56, 37, 0.12);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         /* 圖片本人：解決你放不進去的問題 */
@@ -83,10 +90,15 @@
             display: block;
         }
 
+        /* 含參考小圖或構圖偏高：完整顯示不裁頭（如毛怪眼怪） */
+        .illus-img-wrapper--contain img {
+            object-fit: contain;
+            object-position: center center;
+        }
+
         .illus-item:hover .illus-img-wrapper {
             transform: rotate(0.5deg) scale(1.02);
-            /* 增加一點手繪的隨性晃動感 */
-            /* box-shadow: 0 15px 30px rgba(166, 93, 51, 0.15); */
+            box-shadow: 0 12px 28px rgba(89, 56, 37, 0.14);
         }
 
         .illus-info {
