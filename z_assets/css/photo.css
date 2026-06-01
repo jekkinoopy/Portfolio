@@ -294,6 +294,51 @@
     margin: 0 0 10px;
 }
 
+/* UI/UX 總覽：鴻閣＋維亞並排兩欄；其餘全寬交替；桌機區獨立一組 */
+.uiux-showcase__group--desktop {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--photo-gap) * 2.5);
+}
+
+.uiux-showcase__pair {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: calc(var(--photo-gap) * 1.5);
+}
+
+.uiux-showcase__pair .uiux-case,
+.uiux-showcase__pair .uiux-case:nth-child(even) {
+    grid-template-columns: 1fr;
+    gap: var(--photo-gap);
+    align-items: stretch;
+    padding: clamp(16px, 2vw, 24px);
+}
+
+.uiux-showcase__pair .uiux-case:nth-child(even) .uiux-case-visual,
+.uiux-showcase__pair .uiux-case:nth-child(even) .uiux-case-copy {
+    order: unset;
+}
+
+.uiux-showcase__pair .uiux-case-copy.card-content h3 {
+    font-size: 1.1rem;
+}
+
+.uiux-showcase__pair .card-desc {
+    font-size: 0.88rem;
+    line-height: 1.65;
+}
+
+.uiux-showcase__pair .uiux-case-visual--cutout img {
+    max-width: min(100%, 200px);
+}
+
+.uiux-showcase__pair .uiux-case__cta {
+    margin-top: 12px;
+    padding: 8px 16px;
+    font-size: 0.82rem;
+}
+
 /* Lightbox（Photo 子頁共用） */
 .photo-lightbox {
     position: fixed;
@@ -488,6 +533,10 @@
     .uiux-case:nth-child(even) .uiux-case-visual,
     .uiux-case:nth-child(even) .uiux-case-copy {
         order: unset;
+    }
+
+    .uiux-showcase__pair {
+        grid-template-columns: 1fr;
     }
 
     .photo-lightbox__nav--prev {
