@@ -1,6 +1,6 @@
 ---
 description: UI/UX 總覽 uiux/index.html 排序、標籤、桌機 mockup
-globs: uiux/index.html,uiux/**/*.html,z_assets/css/photo.css
+globs: uiux/index.html,uiux/**/*.html,z_assets/css/photo.css,z_misc/site-guide/index.html
 alwaysApply: false
 ---
 
@@ -34,3 +34,7 @@ alwaysApply: false
 - 把泰韋～飲食改成兩欄 grid。
 - 加「手機版官網／桌機官網／單頁燈箱」等區塊小標（除非使用者明確要求）。
 - 用裝置名稱當黃色 tag。
+
+## 全站導覽
+
+- 調整 `uiux/index.html` 案例順序、新增專案頁或總覽卡後，**同步**更新 `z_misc/site-guide/index.html`（順序與總覽一致；有獨立 HTML 為 depth 2，僅總覽燈箱為 depth 3、連至 `uiux/`）。
