@@ -248,15 +248,15 @@
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
 }
 
-.uiux-case:nth-child(even) {
+.uiux-showcase__flow > .uiux-case:nth-child(even) {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
 }
 
-.uiux-case:nth-child(even) .uiux-case-visual {
+.uiux-showcase__flow > .uiux-case:nth-child(even) .uiux-case-visual {
     order: 2;
 }
 
-.uiux-case:nth-child(even) .uiux-case-copy {
+.uiux-showcase__flow > .uiux-case:nth-child(even) .uiux-case-copy {
     order: 1;
 }
 
@@ -294,8 +294,8 @@
     margin: 0 0 10px;
 }
 
-/* UI/UX 總覽：鴻閣＋維亞並排兩欄；其餘全寬交替；桌機區獨立一組 */
-.uiux-showcase__group--desktop {
+/* UI/UX 總覽：鴻閣＋維亞兩欄；其餘官網一列依日期新→舊 */
+.uiux-showcase__flow {
     display: flex;
     flex-direction: column;
     gap: calc(var(--photo-gap) * 2.5);
@@ -525,13 +525,13 @@
         min-height: 240px;
     }
 
-    .uiux-case,
-    .uiux-case:nth-child(even) {
+    .uiux-showcase__flow > .uiux-case,
+    .uiux-showcase__flow > .uiux-case:nth-child(even) {
         grid-template-columns: 1fr;
     }
 
-    .uiux-case:nth-child(even) .uiux-case-visual,
-    .uiux-case:nth-child(even) .uiux-case-copy {
+    .uiux-showcase__flow > .uiux-case:nth-child(even) .uiux-case-visual,
+    .uiux-showcase__flow > .uiux-case:nth-child(even) .uiux-case-copy {
         order: unset;
     }
 
