@@ -30,3 +30,19 @@ alwaysApply: true
 窄宽区块（如 `max-width: 72ch`）长段落：区块 `margin-inline: auto`，文字靠左。短标（≤10 字）区块与文字皆可置中。
 
 **禁止**：长段落整段居中（除非用户要求）；短标题无故靠左与下方置中图片不对齐。
+
+## 燈箱（`photo-lightbox` / `z_assets/js/photo.js`）
+
+使用者已定規格，**不得**擅自改回「整圖塞進框內、無捲動、上限 125%」。
+
+| 項目 | 規則 |
+|------|------|
+| 縮放方式 | **置中縮放**：`#photo-lightbox-img` 使用 `transform-origin: center` + `translate` + `scale` |
+| 禁止 | `frame.style.zoom` 或刪除 `is-tall` CSS 後硬壓長圖 |
+| 一般橫圖 | stage 內 flex **置中**；100% 依 `max-height: calc(92vh - 88px)` |
+| 長圖 | 高寬比 ≥ 1.4 → `is-tall`：以**寬度**為主、高度可超出、stage `overflow: auto` **可捲** |
+| 放大後 | scale > 1 → `is-zoomed`、可**拖曳平移** |
+| 縮放範圍 | 50%～400%，步進 0.25；Ctrl／⌘＋滾輪縮放；長圖未放大時滾輪用來捲動 |
+| 操作提示 | 工具列保留：長圖可捲動 · Ctrl＋滾輪縮放 · 拖曳平移 · 雙擊重設 |
+
+曾有一次錯誤提交 `fix: 燈箱移除卷軸` 破壞上述行為；修燈箱時以 **`feat: 燈箱可縮放捲動`** 的置中 transform 為準，不要只恢復捲動卻改用 `zoom`。

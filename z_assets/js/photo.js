@@ -17,23 +17,14 @@
         stage.appendChild(lightboxImg);
     }
 
-    var frame = lightbox.querySelector(".photo-lightbox__frame");
-    if (stage && !frame) {
-        frame = document.createElement("div");
-        frame.className = "photo-lightbox__frame";
-        stage.appendChild(frame);
-        frame.appendChild(lightboxImg);
-    } else if (!frame && stage) {
-        frame = stage;
-    }
-
     if (content && !lightbox.querySelector(".photo-lightbox__toolbar")) {
         var toolbar = document.createElement("div");
         toolbar.className = "photo-lightbox__toolbar";
         toolbar.innerHTML =
             '<button type="button" id="photo-lightbox-zoom-out" aria-label="縮小">−</button>' +
             '<button type="button" id="photo-lightbox-zoom-reset" aria-label="重設縮放">100%</button>' +
-            '<button type="button" id="photo-lightbox-zoom-in" aria-label="放大">+</button>';
+            '<button type="button" id="photo-lightbox-zoom-in" aria-label="放大">+</button>' +
+            '<span class="photo-lightbox__zoom-hint">長圖可捲動 · Ctrl＋滾輪縮放 · 拖曳平移 · 雙擊重設</span>';
         content.appendChild(toolbar);
     }
 
@@ -46,9 +37,16 @@
     var activeGallery = null;
     var current = 0;
     var scale = 1;
+    var panX = 0;
+    var panY = 0;
+    var dragging = false;
+    var dragStartX = 0;
+    var dragStartY = 0;
+    var panStartX = 0;
+    var panStartY = 0;
 
     var MIN_SCALE = 0.5;
-    var MAX_SCALE = 1.25;
+    var MAX_SCALE = 4;
     var SCALE_STEP = 0.25;
     var TALL_RATIO = 1.4;
 
@@ -58,27 +56,31 @@
         if (btnZoomOut) btnZoomOut.disabled = scale <= MIN_SCALE;
     }
 
-    function applyZoom() {
-        if (frame) frame.style.zoom = scale;
-        else lightboxImg.style.zoom = scale;
+    function applyTransform() {
+        lightboxImg.style.transform =
+            "translate(" + panX + "px, " + panY + "px) scale(" + scale + ")";
+        if (stage) {
+            stage.classList.toggle("is-zoomed", scale > 1.02);
+        }
         updateScaleLabel();
     }
 
     function resetZoom() {
         scale = 1;
-        applyZoom();
+        panX = 0;
+        panY = 0;
+        applyTransform();
     }
 
     function setScale(next) {
         scale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, next));
-        applyZoom();
+        applyTransform();
     }
 
-    function onImageReady() {
-        if (!lightboxImg.naturalWidth || !stage) return;
+    function updateLayoutMode() {
+        if (!stage || !lightboxImg.naturalWidth) return;
         var ratio = lightboxImg.naturalHeight / lightboxImg.naturalWidth;
         stage.classList.toggle("is-tall", ratio >= TALL_RATIO);
-        resetZoom();
     }
 
     function updateNavVisibility() {
@@ -89,15 +91,13 @@
 
     function render() {
         if (!activeGallery) return;
-        scale = 1;
-        if (frame) frame.style.zoom = 1;
-        else lightboxImg.style.zoom = 1;
-        lightboxImg.onload = onImageReady;
+        resetZoom();
+        lightboxImg.onload = updateLayoutMode;
         lightboxImg.src = activeGallery.sources[current];
         lightboxImg.alt = activeGallery.alts[current];
         updateNavVisibility();
         if (lightboxImg.complete && lightboxImg.naturalWidth) {
-            onImageReady();
+            updateLayoutMode();
         }
     }
 
@@ -106,7 +106,6 @@
         lightbox.classList.add("open");
         lightbox.setAttribute("aria-hidden", "false");
         document.body.style.overflow = "hidden";
-        requestAnimationFrame(onImageReady);
     }
 
     function close() {
@@ -114,11 +113,8 @@
         lightbox.setAttribute("aria-hidden", "true");
         document.body.style.overflow = "";
         activeGallery = null;
-        scale = 1;
-        if (frame) frame.style.zoom = 1;
-        else lightboxImg.style.zoom = 1;
-        if (stage) stage.classList.remove("is-tall");
-        updateScaleLabel();
+        resetZoom();
+        if (stage) stage.classList.remove("is-tall", "is-zoomed", "is-dragging");
     }
 
     function step(delta) {
@@ -199,11 +195,39 @@
     if (stage) {
         stage.addEventListener("wheel", function (e) {
             if (!lightbox.classList.contains("open")) return;
-            if (!e.ctrlKey && !e.metaKey) return;
+            var zoomIntent = e.ctrlKey || e.metaKey || scale > 1.02 || !stage.classList.contains("is-tall");
+            if (!zoomIntent) return;
             e.preventDefault();
             setScale(scale + (e.deltaY < 0 ? SCALE_STEP : -SCALE_STEP));
         }, { passive: false });
+
+        stage.addEventListener("mousedown", function (e) {
+            if (e.button !== 0 || scale <= 1) return;
+            dragging = true;
+            dragStartX = e.clientX;
+            dragStartY = e.clientY;
+            panStartX = panX;
+            panStartY = panY;
+            stage.classList.add("is-dragging");
+        });
+
+        stage.addEventListener("dblclick", function (e) {
+            e.preventDefault();
+            resetZoom();
+        });
     }
+
+    document.addEventListener("mousemove", function (e) {
+        if (!dragging) return;
+        panX = panStartX + (e.clientX - dragStartX);
+        panY = panStartY + (e.clientY - dragStartY);
+        applyTransform();
+    });
+
+    document.addEventListener("mouseup", function () {
+        dragging = false;
+        if (stage) stage.classList.remove("is-dragging");
+    });
 
     lightbox.addEventListener("click", function (e) {
         if (e.target === lightbox) close();
@@ -218,4 +242,6 @@
         if (e.key === "-") setScale(scale - SCALE_STEP);
         if (e.key === "0") resetZoom();
     });
+
+    updateScaleLabel();
 })();
