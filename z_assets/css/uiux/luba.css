@@ -1,0 +1,26 @@
+/* 陸八 · 1920 桌機官網總覽封面 */
+.uiux-cover-link--luba-hero {
+    --luba-src-w: 1920;
+    --luba-crop-h: 880;
+
+    display: block;
+    width: 100%;
+    aspect-ratio: var(--luba-src-w) / var(--luba-crop-h);
+    height: auto;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    background-image: url("../../images/uiux/陸八 (3)/Home/1920/Hug height.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: 50% 0%;
+    box-shadow: 0 8px 22px rgba(89, 56, 37, 0.08);
+    transition: box-shadow 0.2s ease;
+}
+
+.uiux-cover-link--luba-hero:hover {
+    box-shadow: 0 12px 28px rgba(89, 56, 37, 0.12);
+}
+
+.uiux-case-visual--luba-cover {
+    width: 100%;
+}
