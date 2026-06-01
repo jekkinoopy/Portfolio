@@ -1,0 +1,34 @@
+/* 星塵領域官網 · 寬版畫面全欄展示 */
+.graphic-table--uiux-web.graphic-table--uiux-screen {
+    --uiux-screen-col-w: 100%;
+}
+
+.graphic-table--uiux-web.graphic-table--uiux-screen td {
+    flex: 0 0 100%;
+    max-width: min(100%, 960px);
+}
+
+.graphic-table--uiux-web.graphic-table--logo-row-2 td,
+.graphic-table--uiux-web.graphic-table--logo-row-3 td {
+    flex: 0 0 calc((100% - var(--graphic-media-gap)) / 2);
+    max-width: calc((100% - var(--graphic-media-gap)) / 2);
+}
+
+@media (min-width: 900px) {
+    .graphic-table--uiux-web.graphic-table--logo-row-3 td {
+        flex: 0 0 calc((100% - 2 * var(--graphic-media-gap)) / 3);
+        max-width: calc((100% - 2 * var(--graphic-media-gap)) / 3);
+    }
+}
+
+@media (max-width: 899px) {
+    .graphic-table--uiux-web.graphic-table--logo-row-3 td {
+        flex: 0 0 calc((100% - var(--graphic-media-gap)) / 2);
+        max-width: calc((100% - var(--graphic-media-gap)) / 2);
+    }
+}
+
+.uiux-project--xingchen .uiux-case-visual img,
+.main-container.uiux-project--xingchen .box img {
+    object-fit: contain;
+}

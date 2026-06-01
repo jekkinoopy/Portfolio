@@ -55,6 +55,18 @@
     transform: scale(1.02);
 }
 
+.uiux-case-visual:not(.uiux-case-visual--cutout) .uiux-cover-link {
+    width: 100%;
+}
+
+.uiux-case-visual:not(.uiux-case-visual--cutout) .uiux-cover-link img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-card);
+    box-shadow: 0 8px 22px rgba(89, 56, 37, 0.08);
+}
+
 /* —— 手機畫面表格：以四欄寬＋間距為單元，2/3/4 張並列皆同尺寸、列水平置中 —— */
 .graphic-table--uiux-screen {
     --uiux-screen-col-w: calc((100% - 3 * var(--graphic-media-gap)) / 4);
