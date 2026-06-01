@@ -1,0 +1,26 @@
+/* UI/UX 總覽封面：首頁長圖裁切首屏（原圖 1440×3600） */
+.uiux-cover-link--taiwei-hero {
+    --taiwei-src-w: 1440;
+    --taiwei-crop-h: 900;
+
+    display: block;
+    width: 100%;
+    aspect-ratio: var(--taiwei-src-w) / var(--taiwei-crop-h);
+    height: auto;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    background-image: url("../../images/uiux/泰韋企業有限公司/TAIE WEIE-首頁(最新消息尺寸復原).jpg");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: 50% 0%;
+    box-shadow: 0 8px 22px rgba(89, 56, 37, 0.08);
+    transition: box-shadow 0.2s ease;
+}
+
+.uiux-cover-link--taiwei-hero:hover {
+    box-shadow: 0 12px 28px rgba(89, 56, 37, 0.12);
+}
+
+.uiux-case-visual--taiwei-cover {
+    width: 100%;
+}

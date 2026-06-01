@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="page-inner">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>泰韋企業 | UI/UX | Jekkinoopy's portfolio</title>
+    <link rel="stylesheet" href="../z_assets/css/style.css">
+    <link rel="stylesheet" href="../z_assets/css/photo.css">
+    <link rel="stylesheet" href="../z_assets/css/uiux.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <header class="container">
+        <nav class="navbar">
+            <div class="container nav-shell">
+                <a class="nav-logo" href="../index.html" aria-label="首頁">
+                    <img src="../z_assets/images/noopylogov.png" alt="Jekkinoopy Studio">
+                </a>
+                <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav-menu"
+                    aria-label="開啟選單">
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                </button>
+                <div class="nav-menu" id="site-nav-menu">
+                    <ul class="nav-links nav-links--start">
+                        <li class="downDisabled" data-tooltip="作品建置中"><a href="../about/">About</a></li>
+                        <li class="dropdown">
+                            <a href="../graphic/">Graphic</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../graphic/logoPkg.html">Logo & 包裝設計</a></li>
+                                <li><a href="../graphic/calendar-bag.html">桌曆 & 購物袋</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../stationery.html">名片/卡片/票券/DM</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../webBanner.html">網站視覺 Banner</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../socialMedia.html">社群推播圖</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../largeFormat.html">大圖輸出</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../editorial.html">書刊</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../productDetail.html">商品長條圖文</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../illustration/">Illustration</a></li>
+                    </ul>
+                    <ul class="nav-links nav-links--end">
+                        <li class="downDisabled" data-tooltip="作品建置中"><a href="../photo/">Photo</a></li>
+                        <li><a href="../uiux/">UI/UX</a></li>
+                        <li><a href="../web/">Web</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-container uiux-project uiux-project--taiwei">
+        <div class="page-title">
+            <h2>UI/UX</h2>
+            <p>PORTFOLIO / 2023-</p>
+        </div>
+
+        <p class="photo-category__link photo-category__link--back"><a href="../uiux/">返回 UI/UX 總覽</a></p>
+
+        <section class="uiux-project-intro" id="intro">
+            <p class="uiux-project-intro__lead">
+                泰韋企業有限公司品牌官網與會員電商流程 UI，涵蓋首頁、商品瀏覽、購物車結帳、會員中心與帳戶管理，以及文章、聯絡與銷售據點等服務頁；畫面以手機版為主，依模組分區展示。
+            </p>
+            <div class="uiux-project-intro__meta">
+                <span>Mobile Web UI</span>
+                <span>電商 · 會員</span>
+                <span>RWD 規劃</span>
+            </div>
+            <div class="card-meta">
+                <p class="card-tools"><span class="tool-icon" aria-hidden="true"></span> Figma</p>
+                <span class="date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> 2025/05</span>
+            </div>
+
+            <h3>UI 資訊架構</h3>
+            <div class="uiux-ia">
+                <div class="uiux-ia__map" role="img" aria-label="泰韋官網：首頁連結商品、購物車與會員模組">
+                    <div class="uiux-ia__hub">
+                        首頁
+                        <small>最新消息 · 商品入口 · 導覽</small>
+                    </div>
+                    <div class="uiux-ia__row">
+                        <p class="uiux-ia__row-label">主要模組</p>
+                        <div class="uiux-ia__nodes">
+                            <span class="uiux-ia__node uiux-ia__node--accent">商品</span>
+                            <span class="uiux-ia__node">購物車</span>
+                            <span class="uiux-ia__node">會員中心</span>
+                            <span class="uiux-ia__node">文章</span>
+                            <span class="uiux-ia__node">服務</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="uiux-ia__tree">
+                    <div class="uiux-ia__branch">
+                        <strong>購物流程</strong>
+                        <ul>
+                            <li>商品列表 · 內頁</li>
+                            <li>購物車步驟</li>
+                            <li>訂單明細</li>
+                        </ul>
+                    </div>
+                    <div class="uiux-ia__branch">
+                        <strong>會員</strong>
+                        <ul>
+                            <li>註冊 · 登入相關</li>
+                            <li>我的帳戶 · 訂單 · 願望清單</li>
+                        </ul>
+                    </div>
+                    <div class="uiux-ia__branch">
+                        <strong>服務</strong>
+                        <ul>
+                            <li>聯絡我們</li>
+                            <li>銷售據點</li>
+                            <li>網站須知</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="uiux-ia__note">素材目錄：<code>../z_assets/images/uiux/泰韋企業有限公司</code></p>
+            </div>
+        </section>
+
+        <nav class="uiux-module-nav" aria-label="模組捷徑">
+            <a href="#shop">商品</a>
+            <a href="#cart">購物車</a>
+            <a href="#member">會員</a>
+            <a href="#articles">文章</a>
+            <a href="#service">服務</a>
+        </nav>
+
+        <div data-photo-gallery>
+
+            <section class="uiux-module" id="shop">
+                <table class="graphic-table graphic-table--strip">
+                    <tr>
+                        <td>
+                            <div class="photo-category__heading">
+                                <h3>首頁 · 商品</h3>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <table class="graphic-table graphic-table--mosaic graphic-table--uiux-screen graphic-table--logo-row-3" aria-label="首頁與商品">
+                    <tr>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-首頁(最新消息尺寸復原).jpg" data-alt="首頁">
+                                        <img src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-首頁(最新消息尺寸復原).jpg" alt="首頁">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">首頁</figcaption>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-商品列表(確認OK.jpg" data-alt="商品列表">
+                                        <img src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-商品列表(確認OK.jpg" alt="商品列表">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">商品列表</figcaption>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-商品內頁(確認OK.jpg" data-alt="商品內頁">
+                                        <img src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-商品內頁(確認OK.jpg" alt="商品內頁">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">商品內頁</figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+
+            <section class="uiux-module" id="cart">
+                <table class="graphic-table graphic-table--strip">
+                    <tr>
+                        <td>
+                            <div class="photo-category__heading">
+                                <h3>購物車 · 訂單</h3>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <table class="graphic-table graphic-table--mosaic graphic-table--uiux-screen graphic-table--logo-row-2" aria-label="購物車步驟 1–2">
+                    <tr>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-購物車01(間距調整確認ok).jpg" data-alt="購物車 01">
+                                        <img src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-購物車01(間距調整確認ok).jpg" alt="購物車 01">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">購物車 01</figcaption>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-購物車02(提醒紅字顏色調整.提示文字調整).jpg" data-alt="購物車 02">
+                                        <img src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-購物車02(提醒紅字顏色調整.提示文字調整).jpg" alt="購物車 02">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">購物車 02</figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                </table>
+                <table class="graphic-table graphic-table--mosaic graphic-table--uiux-screen graphic-table--logo-row-2" aria-label="購物車步驟 3–4與訂單">
+                    <tr>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-購物車03(對話框圓角6).jpg" data-alt="購物車 03">
+                                        <img src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-購物車03(對話框圓角6).jpg" alt="購物車 03">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">購物車 03</figcaption>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-購物車04(對話框圓角6).jpg" data-alt="購物車 04">
+                                        <img src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-購物車04(對話框圓角6).jpg" alt="購物車 04">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">購物車 04</figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                </table>
+                <table class="graphic-table graphic-table--mosaic graphic-table--uiux-screen graphic-table--logo-row-2" aria-label="訂單明細">
+                    <tr>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-訂單明細.jpg" data-alt="訂單明細">
+                                        <img src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-訂單明細.jpg" alt="訂單明細">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">訂單明細</figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+
+            <section class="uiux-module" id="member">
+                <table class="graphic-table graphic-table--strip">
+                    <tr>
+                        <td>
+                            <div class="photo-category__heading">
+                                <h3>會員中心</h3>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <table class="graphic-table graphic-table--mosaic graphic-table--uiux-screen graphic-table--logo-row-2" aria-label="註冊與密碼">
+                    <tr>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-註冊會員(改圓角框).jpg" data-alt="註冊會員">
+                                        <img src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-註冊會員(改圓角框).jpg" alt="註冊會員">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">註冊會員</figcaption>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-忘記密碼(ok).jpg" data-alt="忘記密碼">
+                                        <img src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-忘記密碼(ok).jpg" alt="忘記密碼">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">忘記密碼</figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-修改密碼.jpg" data-alt="修改密碼">
+                                        <img src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-修改密碼.jpg" alt="修改密碼">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">修改密碼</figcaption>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-會員中心(改圓角框).jpg" data-alt="會員中心">
+                                        <img src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-會員中心(改圓角框).jpg" alt="會員中心">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">會員中心</figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                </table>
+                <table class="graphic-table graphic-table--mosaic graphic-table--uiux-screen graphic-table--logo-row-3" aria-label="我的帳戶相關">
+                    <tr>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-我的帳戶(版面確認).jpg" data-alt="我的帳戶">
+                                        <img src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-我的帳戶(版面確認).jpg" alt="我的帳戶">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">我的帳戶</figcaption>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-我的訂單(提醒紅字顏色調整).jpg" data-alt="我的訂單">
+                                        <img src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-我的訂單(提醒紅字顏色調整).jpg" alt="我的訂單">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">我的訂單</figcaption>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-我的願望清單(版面確認).jpg" data-alt="我的願望清單">
+                                        <img src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-我的願望清單(版面確認).jpg" alt="我的願望清單">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">我的願望清單</figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+
+            <section class="uiux-module" id="articles">
+                <table class="graphic-table graphic-table--strip">
+                    <tr>
+                        <td>
+                            <div class="photo-category__heading">
+                                <h3>文章</h3>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <table class="graphic-table graphic-table--mosaic graphic-table--uiux-screen graphic-table--logo-row-2" aria-label="文章列表與內頁">
+                    <tr>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-文章列表(最新消息尺寸).jpg" data-alt="文章列表">
+                                        <img src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-文章列表(最新消息尺寸).jpg" alt="文章列表">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">文章列表</figcaption>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-文章內頁(ok).jpg" data-alt="文章內頁">
+                                        <img src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-文章內頁(ok).jpg" alt="文章內頁">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">文章內頁</figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+
+            <section class="uiux-module" id="service">
+                <table class="graphic-table graphic-table--strip">
+                    <tr>
+                        <td>
+                            <div class="photo-category__heading">
+                                <h3>服務頁</h3>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <table class="graphic-table graphic-table--mosaic graphic-table--uiux-screen graphic-table--logo-row-3" aria-label="聯絡、據點、須知">
+                    <tr>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-聯絡我們(移除驗證碼 對話框圓角6).jpg" data-alt="聯絡我們">
+                                        <img src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-聯絡我們(移除驗證碼 對話框圓角6).jpg" alt="聯絡我們">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">聯絡我們</figcaption>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-銷售據點(改型態分類名稱.分區大標移除).jpg" data-alt="銷售據點">
+                                        <img src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-銷售據點(改型態分類名稱.分區大標移除).jpg" alt="銷售據點">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">銷售據點</figcaption>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure class="uiux-screen-cell">
+                                <div class="box">
+                                    <button type="button" data-photo-lightbox data-src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-網站須知(收合icon大小位置調整).jpg" data-alt="網站須知">
+                                        <img src="../z_assets/images/uiux/泰韋企業有限公司/TAIE WEIE-網站須知(收合icon大小位置調整).jpg" alt="網站須知">
+                                    </button>
+                                </div>
+                                <figcaption class="uiux-screen-table__caption">網站須知</figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+
+        </div>
+    </main>
+
+    <div class="photo-lightbox" id="photo-lightbox" aria-hidden="true">
+        <div class="photo-lightbox__content">
+            <button type="button" class="photo-lightbox__close" id="photo-lightbox-close" aria-label="關閉">&times;</button>
+            <button type="button" class="photo-lightbox__nav photo-lightbox__nav--prev" id="photo-lightbox-prev" aria-label="上一張"><i class="fa-solid fa-chevron-left"></i></button>
+            <img id="photo-lightbox-img" src="" alt="">
+            <button type="button" class="photo-lightbox__nav photo-lightbox__nav--next" id="photo-lightbox-next" aria-label="下一張"><i class="fa-solid fa-chevron-right"></i></button>
+            <p class="photo-lightbox__index" id="photo-lightbox-index"></p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <a href="mailto:jekkinoopy@gmail.com" class="contact-email">
+            <small>如有合作意願，歡迎隨時聯繫</small>
+            jekkinoopy@gmail.com
+        </a>
+        <small>&copy; 2026 JEKKINOOPY. All rights reserved.</small>
+    </footer>
+
+    <script src="../z_assets/js/nav.js"></script>
+    <script src="../z_assets/js/photo.js"></script>
+</body>
+
+</html>

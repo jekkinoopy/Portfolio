@@ -1,0 +1,45 @@
+/* 泰韋旗下品牌官網首頁長圖：總覽封面同比裁切首屏 */
+.uiux-hero-thumb {
+    --hero-src-w: 1440;
+    --hero-crop-h: 920;
+
+    display: block;
+    width: 100%;
+    aspect-ratio: var(--hero-src-w) / var(--hero-crop-h);
+    height: auto;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: 50% 0%;
+    box-shadow: 0 8px 22px rgba(89, 56, 37, 0.08);
+    cursor: zoom-in;
+    transition: box-shadow 0.2s ease;
+}
+
+.uiux-hero-thumb:hover {
+    box-shadow: 0 12px 28px rgba(89, 56, 37, 0.12);
+}
+
+.uiux-hero-thumb--rio {
+    background-image: url("../../images/uiux/rio-首頁.jpg");
+}
+
+.uiux-hero-thumb--gecko {
+    background-image: url("../../images/uiux/gecko-首頁.jpg");
+}
+
+.uiux-hero-thumb--em {
+    background-image: url("../../images/uiux/em-首頁.jpg");
+}
+
+.uiux-hero-thumb--equo {
+    background-image: url("../../images/uiux/EQUO-首頁.jpg");
+    --hero-crop-h: 780;
+}
+
+.uiux-hero-thumb--hikari {
+    background-image: url("../../images/uiux/hikari-首頁.jpg");
+}
