@@ -2,20 +2,20 @@
         .illus-filters {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px 12px;
+            gap: 6px 8px;
             justify-content: center;
-            margin: 0 0 8px;
+            margin: 0 0 20px;
             padding: 0;
         }
 
         .illus-filter {
             font: inherit;
-            font-size: 0.95rem;
-            padding: 0.45rem 1rem;
-            border: 1px solid rgba(166, 93, 51, 0.35);
+            font-size: 0.8rem;
+            padding: 0.28rem 0.65rem;
+            border: 1px solid rgba(166, 93, 51, 0.28);
             border-radius: 999px;
-            background: #fff;
-            color: var(--primary-dark-brown);
+            background: transparent;
+            color: rgba(80, 50, 30, 0.85);
             cursor: pointer;
             transition: background 0.2s, color 0.2s, border-color 0.2s;
         }
@@ -30,24 +30,15 @@
             color: #fff;
         }
 
-        .illus-filter-status {
-            text-align: center;
-            font-size: 0.9rem;
-            color: rgba(80, 50, 30, 0.75);
-            margin: 0 0 24px;
-            min-height: 1.4em;
-        }
-
         .illus-item.is-filtered-out {
-            display: none;
+            display: none !important;
         }
 
-        .illus-overlay__theme {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 0.35rem;
-            letter-spacing: 0.04em;
+        .illus-overlay__tool {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            opacity: 0.92;
         }
 
         /* 插畫專屬交錯佈局 */
@@ -120,18 +111,15 @@
         .illus-overlay {
             position: absolute;
             inset: 0;
-            background: var(--primary-dark-brown);
+            background: rgba(62, 38, 22, 0.72);
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 0.25rem;
             opacity: 0;
-            transition: 0.3s;
+            transition: opacity 0.25s;
             color: #fff;
-            font-weight: bold;
             text-align: center;
-            padding: 12px;
+            padding: 8px;
         }
 
         .illus-item:hover .illus-overlay {

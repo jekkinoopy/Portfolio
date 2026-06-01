@@ -1,7 +1,6 @@
 (function () {
     var grid = document.querySelector('.illustration-grid');
     var filters = document.querySelector('.illus-filters');
-    var statusEl = document.getElementById('illus-filter-status');
     if (!grid || !filters) return;
 
     var themeLabels = {
@@ -10,7 +9,8 @@
         food: '食物',
         holiday: '節日賀卡',
         character: '人物',
-        scene: '氛圍場景'
+        scene: '自然',
+        other: '其它'
     };
 
     var items = Array.prototype.slice.call(grid.querySelectorAll('.illus-item'));
@@ -34,23 +34,12 @@
     }
 
     function applyFilter(theme) {
-        var visible = 0;
         items.forEach(function (item) {
-            var match = theme === 'all' || item.getAttribute('data-theme') === theme;
+            var itemTheme = (item.getAttribute('data-theme') || '').trim();
+            var match = theme === 'all' || itemTheme === theme;
             item.classList.toggle('is-filtered-out', !match);
-            item.hidden = !match;
-            if (match) visible += 1;
+            item.setAttribute('aria-hidden', match ? 'false' : 'true');
         });
-
-        if (statusEl) {
-            if (theme === 'all') {
-                statusEl.textContent = '共 ' + items.length + ' 件作品';
-            } else if (visible === 0) {
-                statusEl.textContent = '「' + themeLabels[theme] + '」目前沒有作品，請選其他主題。';
-            } else {
-                statusEl.textContent = '「' + themeLabels[theme] + '」' + visible + ' 件';
-            }
-        }
 
         setActiveFilter(theme);
     }
