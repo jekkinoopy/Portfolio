@@ -9,6 +9,9 @@
         food: '食物',
         holiday: '節日賀卡',
         character: '人物',
+        ip: 'IP 角色',
+        humanities: '社會人文',
+        leisure: '休閒',
         scene: '自然',
         other: '其它'
     };
@@ -33,6 +36,25 @@
         });
     }
 
+    function staggerColumns() {
+        return window.matchMedia('(min-width: 992px)').matches ? 3 : 2;
+    }
+
+    function applyStagger() {
+        var cols = staggerColumns();
+        items.forEach(function (item) {
+            item.classList.remove('illus-item--stagger');
+        });
+        var visible = items.filter(function (item) {
+            return !item.classList.contains('is-filtered-out');
+        });
+        visible.forEach(function (item, index) {
+            if (index % cols === 1) {
+                item.classList.add('illus-item--stagger');
+            }
+        });
+    }
+
     function applyFilter(theme) {
         items.forEach(function (item) {
             var itemTheme = (item.getAttribute('data-theme') || '').trim();
@@ -42,6 +64,7 @@
         });
 
         setActiveFilter(theme);
+        applyStagger();
     }
 
     filters.addEventListener('click', function (e) {
@@ -62,5 +85,8 @@
     }
 
     window.addEventListener('hashchange', filterFromHash);
+    window.addEventListener('resize', function () {
+        applyStagger();
+    });
     filterFromHash();
 })();

@@ -41,13 +41,17 @@
             opacity: 0.92;
         }
 
-        /* 插畫方格（齊列；篩選時不依 DOM nth-child 交錯，避免節奏錯亂） */
+        /* 插畫方格；中欄下移由 JS 依「可見順序」加 .illus-item--stagger */
         .illustration-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             align-items: start;
             gap: 32px 28px;
             padding: 40px 0;
+        }
+
+        .illus-item--stagger {
+            margin-top: clamp(28px, 4vw, 50px);
         }
 
         /* 作品卡片（同一列欄寬一致 + 正方形圖框 → 視覺列高一致） */
@@ -116,6 +120,16 @@
             .illustration-grid {
                 grid-template-columns: repeat(3, 1fr);
                 gap: 36px 32px;
+            }
+
+            .illus-item--stagger {
+                margin-top: 50px;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .illus-item--stagger {
+                margin-top: clamp(24px, 5vw, 40px);
             }
         }
 
