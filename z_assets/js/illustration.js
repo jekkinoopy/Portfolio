@@ -55,10 +55,21 @@
         });
     }
 
+    function itemThemes(item) {
+        return (item.getAttribute('data-theme') || '')
+            .trim()
+            .split(/\s+/)
+            .filter(Boolean);
+    }
+
+    function itemMatchesTheme(item, theme) {
+        if (theme === 'all') return true;
+        return itemThemes(item).indexOf(theme) !== -1;
+    }
+
     function applyFilter(theme) {
         items.forEach(function (item) {
-            var itemTheme = (item.getAttribute('data-theme') || '').trim();
-            var match = theme === 'all' || itemTheme === theme;
+            var match = itemMatchesTheme(item, theme);
             item.classList.toggle('is-filtered-out', !match);
             item.setAttribute('aria-hidden', match ? 'false' : 'true');
         });
