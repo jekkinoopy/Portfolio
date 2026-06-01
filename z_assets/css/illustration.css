@@ -41,13 +41,12 @@
             opacity: 0.92;
         }
 
-        /* 插畫專屬交錯佈局 */
+        /* 插畫方格（齊列；篩選時不依 DOM nth-child 交錯，避免節奏錯亂） */
         .illustration-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            align-items: stretch;
-            gap: 60px 40px;
-            /* 上下間距大一點，預留給位移空間 */
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            align-items: start;
+            gap: 32px 28px;
             padding: 40px 0;
         }
 
@@ -78,19 +77,6 @@
             object-fit: cover;
             /* 確保圖片填滿方形且不變形 */
             display: block;
-        }
-
-        /* 創造「不統一」的關鍵：讓偶數項或特定項變大或偏移 */
-        @media (min-width: 992px) {
-            .illus-item:nth-child(3n+1) {
-                grid-column: span 1;
-                grid-row: span 1;
-            }
-
-            /* 讓部分卡片往下偏移，產生交錯律動 */
-            .illus-item:nth-child(even) {
-                margin-top: 50px;
-            }
         }
 
         .illus-item:hover .illus-img-wrapper {
@@ -126,16 +112,17 @@
             opacity: 1;
         }
 
-        @media (max-width: 1024px) {
+        @media (min-width: 992px) {
             .illustration-grid {
-                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-                gap: 40px 24px;
-                padding: 28px 0;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 36px 32px;
             }
         }
 
-        @media (max-width: 1024px) and (min-width: 769px) {
-            .illus-item:nth-child(even) {
-                margin-top: 32px;
+        @media (max-width: 1024px) {
+            .illustration-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: 28px 24px;
+                padding: 28px 0;
             }
         }

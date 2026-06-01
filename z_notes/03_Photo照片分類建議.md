@@ -86,7 +86,7 @@ z_assets/images/photo/
 | 你的分類 | 暫用現有頁面 | 版型特點 |
 |----------|--------------|----------|
 | 景點／風景 | `landscape.html` | 瀑布流、完整比例（最適合橫直混雜的風景） |
-| 貓狗 | `product.html` 或 `event.html` | 馬賽克等列高 **或** 橫向膠卷；貓狗直幅多可試 `portrait.html` 交錯 |
+| 貓狗 | `pets.html` | 直幅交錯（同 `portrait.html` 版型） |
 | 人物（少） | `portrait.html` | 直幅 4:5 交錯，張數少也好看 |
 | 商品／活動 | **先不上** 或 index 隱藏該區 | 避免訪客以為你是商業活動攝影 |
 
@@ -113,10 +113,11 @@ z_assets/images/photo/
 
 ## 七、之後改版 Photo 區時（給自己的 checklist）
 
-- [ ] `index.html` 三大區順序：景點 → 貓狗 → 人物  
-- [ ] 重新命名標題（例：風景／街景 → **景點與風景**；新增 **貓狗** 頁或併入專頁）  
-- [ ] 更新 `z_misc/site-guide/index.html` Photo 子項  
-- [ ] 無商品／活動案時，從總覽拿掉或標「籌備中」  
+- [x] `index.html` 三大區順序：景點 → 貓狗 → 人物  
+- [x] 標題：`landscape`＝景點與風景、`pets.html`＝貓狗、`portrait`＝人物  
+- [x] 更新 `z_misc/site-guide/index.html` Photo 子項  
+- [x] 商品／活動自總覽移除；`product.html`／`event.html` 僅轉址  
+- [ ] 依 `places/`、`pets/`、`people/` 資料夾替換各頁實際照片（現為過渡期舊檔）  
 - [ ] Nav 仍為「作品建置中」直到你滿意再上線  
 
 ---
