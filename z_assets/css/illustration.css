@@ -1,417 +1,432 @@
 /* 主題篩選 */
-        .illus-filters {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px 8px;
-            justify-content: center;
-            margin: 0 0 20px;
-            padding: 0;
-        }
+.illus-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 8px;
+    justify-content: center;
+    margin: 0 0 20px;
+    padding: 0;
+}
 
-        .illus-filter {
-            font: inherit;
-            font-size: 0.8rem;
-            padding: 0.28rem 0.65rem;
-            border: 1px solid rgba(166, 93, 51, 0.28);
-            border-radius: 999px;
-            background: transparent;
-            color: rgba(80, 50, 30, 0.85);
-            cursor: pointer;
-            transition: background 0.2s, color 0.2s, border-color 0.2s;
-        }
+.illus-filter {
+    font: inherit;
+    font-size: 0.8rem;
+    padding: 0.28rem 0.65rem;
+    border: 1px solid rgba(166, 93, 51, 0.28);
+    border-radius: 999px;
+    background: transparent;
+    color: rgba(80, 50, 30, 0.85);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
 
-        .illus-filter:hover {
-            border-color: var(--primary-dark-brown);
-        }
+.illus-filter:hover {
+    border-color: var(--primary-dark-brown);
+}
 
-        .illus-filter.is-active {
-            background: var(--primary-dark-brown);
-            border-color: var(--primary-dark-brown);
-            color: #fff;
-        }
+.illus-filter.is-active {
+    background: var(--primary-dark-brown);
+    border-color: var(--primary-dark-brown);
+    color: #fff;
+}
 
-        .illus-item.is-filtered-out {
-            display: none !important;
-        }
+.illus-item.is-filtered-out {
+    display: none !important;
+}
 
-        .illus-overlay__tool {
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.02em;
-            opacity: 0.92;
-        }
+.illus-overlay__tool {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    opacity: 0.92;
+}
 
-        /* 插畫方格；中欄下移由 JS 依「可見順序」加 .illus-item--stagger */
-        .illustration-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            align-items: start;
-            gap: 32px 28px;
-            padding: 40px 0;
-        }
+/* 插畫方格；中欄下移由 JS 依「可見順序」加 .illus-item--stagger */
+.illustration-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+    gap: 32px 28px;
+    padding: 40px 0;
+}
 
-        /* 交錯只負責下移，卡片外觀與左右欄相同 */
-        .illus-item--stagger {
-            margin-top: clamp(28px, 4vw, 50px);
-        }
+/* 交錯只負責下移，卡片外觀與左右欄相同 */
+.illus-item--stagger {
+    margin-top: clamp(28px, 4vw, 50px);
+}
 
-        .illus-item--stagger .illus-img-wrapper {
-            border: 1px solid rgba(166, 93, 51, 0.18);
-            box-shadow: 0 8px 24px rgba(89, 56, 37, 0.12);
-        }
+.illus-item--stagger .illus-img-wrapper {
+    border: 1px solid rgba(166, 93, 51, 0.18);
+    box-shadow: 0 8px 24px rgba(89, 56, 37, 0.12);
+}
 
-        /* 作品卡片（同一列欄寬一致 + 正方形圖框 → 視覺列高一致） */
-        .illus-item {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
+/* 作品卡片（同一列欄寬一致 + 正方形圖框 → 視覺列高一致） */
+.illus-item {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
 
-        /* 強制 IG 方形比例；全卡統一邊框陰影（交錯列僅下移，不另套樣式） */
-        .illus-img-wrapper {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            overflow: hidden;
-            border-radius: var(--radius-card);
-            background: #fff;
-            border: 1px solid rgba(166, 93, 51, 0.18);
-            box-shadow: 0 8px 24px rgba(89, 56, 37, 0.12);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+/* 強制 IG 方形比例；全卡統一邊框陰影（交錯列僅下移，不另套樣式） */
+.illus-img-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: var(--radius-card);
+    background: #fff;
+    border: 1px solid rgba(166, 93, 51, 0.18);
+    box-shadow: 0 8px 24px rgba(89, 56, 37, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-        /* 作業：@keyframes 四角循環（上→右→下→左）；線段固定，轉角 rotate */
-        .illus-img-wrapper::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 18%;
-            height: 2px;
-            background: var(--primary-yellow);
-            border-radius: 1px;
-            transform-origin: 0% 50%;
-            opacity: 0;
-            pointer-events: none;
-            z-index: 10;
-            transition: opacity 0.2s ease;
-        }
+/* 作業：@keyframes 四角循環（上→右→下→左）；線段固定，轉角 rotate */
+.illus-img-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 18%;
+    height: 2px;
+    background: var(--primary-yellow);
+    border-radius: 1px;
+    transform-origin: 0% 50%;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10;
+    transition: opacity 0.2s ease;
+}
 
-        @keyframes illus-border-run {
-            /* 循環起點＝終點（位置、角度、軸心必須完全一致） */
-            0%,
-            100% {
-                left: 0;
-                top: 0;
-                transform: rotate(0deg);
-                transform-origin: 0% 50%;
-            }
+@keyframes illus-border-run {
 
-            /* 上：左 → 右（軸心：線段右端） */
-            6% {
-                left: 15%;
-                top: 0;
-                transform: rotate(0deg);
-                transform-origin: 100% 50%;
-            }
+    /* 循環起點＝終點（位置、角度、軸心必須完全一致） */
+    0%,
+    100% {
+        left: 0;
+        top: 0;
+        transform: rotate(0deg);
+        transform-origin: 0% 50%;
+    }
 
-            12% {
-                left: 30%;
-                top: 0;
-                transform: rotate(0deg);
-                transform-origin: 100% 50%;
-            }
+    /* 上：左 → 右（軸心：線段右端） */
+    6% {
+        left: 15%;
+        top: 0;
+        transform: rotate(0deg);
+        transform-origin: 100% 50%;
+    }
 
-            18% {
-                left: 45%;
-                top: 0;
-                transform: rotate(0deg);
-                transform-origin: 100% 50%;
-            }
+    12% {
+        left: 30%;
+        top: 0;
+        transform: rotate(0deg);
+        transform-origin: 100% 50%;
+    }
 
-            24% {
-                left: calc(100% - 18%);
-                top: 0;
-                transform: rotate(0deg);
-                transform-origin: 100% 50%;
-            }
+    18% {
+        left: 45%;
+        top: 0;
+        transform: rotate(0deg);
+        transform-origin: 100% 50%;
+    }
 
-            /* 右上轉角（軸心固定右端，旋轉拆段） */
-            25% {
-                left: calc(100% - 18%);
-                top: 0;
-                transform: rotate(30deg);
-                transform-origin: 100% 50%;
-            }
+    24% {
+        left: calc(100% - 18%);
+        top: 0;
+        transform: rotate(0deg);
+        transform-origin: 100% 50%;
+    }
 
-            26% {
-                left: calc(100% - 18%);
-                top: 0;
-                transform: rotate(60deg);
-                transform-origin: 100% 50%;
-            }
+    /* 右上轉角（軸心固定右端，旋轉拆段） */
+    25% {
+        left: calc(100% - 18%);
+        top: 0;
+        transform: rotate(30deg);
+        transform-origin: 100% 50%;
+    }
 
-            27% {
-                left: calc(100% - 18%);
-                top: 0;
-                transform: rotate(90deg);
-                transform-origin: 100% 50%;
-            }
+    26% {
+        left: calc(100% - 18%);
+        top: 0;
+        transform: rotate(60deg);
+        transform-origin: 100% 50%;
+    }
 
-            /* 右：上 → 下 */
-            31% {
-                left: calc(100% - 18%);
-                top: 15%;
-                transform: rotate(90deg);
-                transform-origin: 100% 50%;
-            }
+    27% {
+        left: calc(100% - 18%);
+        top: 0;
+        transform: rotate(90deg);
+        transform-origin: 100% 50%;
+    }
 
-            37% {
-                left: calc(100% - 18%);
-                top: 30%;
-                transform: rotate(90deg);
-                transform-origin: 100% 50%;
-            }
+    /* 右：上 → 下 */
+    31% {
+        left: calc(100% - 18%);
+        top: 15%;
+        transform: rotate(90deg);
+        transform-origin: 100% 50%;
+    }
 
-            43% {
-                left: calc(100% - 18%);
-                top: 45%;
-                transform: rotate(90deg);
-                transform-origin: 100% 50%;
-            }
+    37% {
+        left: calc(100% - 18%);
+        top: 30%;
+        transform: rotate(90deg);
+        transform-origin: 100% 50%;
+    }
 
-            49% {
-                left: calc(100% - 18%);
-                top: calc(100% - 18%);
-                transform: rotate(90deg);
-                transform-origin: 100% 50%;
-            }
+    43% {
+        left: calc(100% - 18%);
+        top: 45%;
+        transform: rotate(90deg);
+        transform-origin: 100% 50%;
+    }
 
-            /* 右下轉角（軸心固定右端，旋轉拆段） */
-            50% {
-                left: calc(100% - 18%);
-                top: calc(100% - 12%);
-                transform: rotate(120deg);
-                transform-origin: 100% 50%;
-            }
+    49% {
+        left: calc(100% - 18%);
+        top: calc(100% - 18%);
+        transform: rotate(90deg);
+        transform-origin: 100% 50%;
+    }
 
-            51% {
-                left: calc(100% - 18%);
-                top: calc(100% - 6%);
-                transform: rotate(150deg);
-                transform-origin: 100% 50%;
-            }
+    /* 右下轉角（軸心固定右端，旋轉拆段） */
+    50% {
+        left: calc(100% - 18%);
+        top: calc(100% - 12%);
+        transform: rotate(120deg);
+        transform-origin: 100% 50%;
+    }
 
-            52% {
-                left: calc(100% - 18%);
-                top: calc(100% - 2px);
-                transform: rotate(180deg);
-                transform-origin: 100% 50%;
-            }
+    51% {
+        left: calc(100% - 18%);
+        top: calc(100% - 6%);
+        transform: rotate(150deg);
+        transform-origin: 100% 50%;
+    }
 
-            /* 下：右 → 左（軸心：線段右端貼右下角） */
-            56% {
-                left: calc(100% - 33%);
-                top: calc(100% - 2px);
-                transform: rotate(180deg);
-                transform-origin: 100% 50%;
-            }
+    52% {
+        left: calc(100% - 18%);
+        top: calc(100% - 2px);
+        transform: rotate(180deg);
+        transform-origin: 100% 50%;
+    }
 
-            62% {
-                left: 45%;
-                top: calc(100% - 2px);
-                transform: rotate(180deg);
-                transform-origin: 100% 50%;
-            }
+    /* 下：右 → 左（軸心：線段右端貼右下角） */
+    56% {
+        left: calc(100% - 33%);
+        top: calc(100% - 2px);
+        transform: rotate(180deg);
+        transform-origin: 100% 50%;
+    }
 
-            68% {
-                left: 30%;
-                top: calc(100% - 2px);
-                transform: rotate(180deg);
-                transform-origin: 100% 50%;
-            }
+    62% {
+        left: 45%;
+        top: calc(100% - 2px);
+        transform: rotate(180deg);
+        transform-origin: 100% 50%;
+    }
 
-            71% {
-                left: 12%;
-                top: calc(100% - 2px);
-                transform: rotate(180deg);
-                transform-origin: 100% 50%;
-            }
+    68% {
+        left: 30%;
+        top: calc(100% - 2px);
+        transform: rotate(180deg);
+        transform-origin: 100% 50%;
+    }
 
-            /* 左下轉角（軸心固定左端；left 內縮 1px 貼邊可見） */
-            73% {
-                left: 1px;
-                top: calc(100% - 2px);
-                transform: rotate(180deg);
-                transform-origin: 0% 50%;
-            }
+    71% {
+        left: 12%;
+        top: calc(100% - 2px);
+        transform: rotate(180deg);
+        transform-origin: 100% 50%;
+    }
 
-            74% {
-                left: 1px;
-                top: calc(100% - 2px);
-                transform: rotate(210deg);
-                transform-origin: 0% 50%;
-            }
+    /* 左下轉角（軸心固定左端；left 內縮 1px 貼邊可見） */
+    73% {
+        left: 1px;
+        top: calc(100% - 2px);
+        transform: rotate(180deg);
+        transform-origin: 0% 50%;
+    }
 
-            75% {
-                left: 1px;
-                top: calc(100% - 2px);
-                transform: rotate(240deg);
-                transform-origin: 0% 50%;
-            }
+    74% {
+        left: 1px;
+        top: calc(100% - 2px);
+        transform: rotate(210deg);
+        transform-origin: 0% 50%;
+    }
 
-            76% {
-                left: 1px;
-                top: calc(100% - 2px);
-                transform: rotate(270deg);
-                transform-origin: 0% 50%;
-            }
+    75% {
+        left: 1px;
+        top: calc(100% - 2px);
+        transform: rotate(240deg);
+        transform-origin: 0% 50%;
+    }
 
-            /* 左：下 → 上（內縮 1px 貼左邊） */
-            80% {
-                left: 1px;
-                top: calc(100% - 18%);
-                transform: rotate(270deg);
-                transform-origin: 0% 50%;
-            }
+    76% {
+        left: 1px;
+        top: calc(100% - 2px);
+        transform: rotate(270deg);
+        transform-origin: 0% 50%;
+    }
 
-            86% {
-                left: 1px;
-                top: 62%;
-                transform: rotate(270deg);
-                transform-origin: 0% 50%;
-            }
+    /* 左：下 → 上（內縮 1px 貼左邊） */
+    80% {
+        left: 1px;
+        top: calc(100% - 18%);
+        transform: rotate(270deg);
+        transform-origin: 0% 50%;
+    }
 
-            92% {
-                left: 1px;
-                top: 38%;
-                transform: rotate(270deg);
-                transform-origin: 0% 50%;
-            }
+    86% {
+        left: 1px;
+        top: 62%;
+        transform: rotate(270deg);
+        transform-origin: 0% 50%;
+    }
 
-            96% {
-                left: 1px;
-                top: 14%;
-                transform: rotate(270deg);
-                transform-origin: 0% 50%;
-            }
+    92% {
+        left: 1px;
+        top: 38%;
+        transform: rotate(270deg);
+        transform-origin: 0% 50%;
+    }
 
-            /* 左上轉角 */
-            97% {
-                left: 1px;
-                top: 4%;
-                transform: rotate(270deg);
-                transform-origin: 0% 50%;
-            }
+    96% {
+        left: 1px;
+        top: 14%;
+        transform: rotate(270deg);
+        transform-origin: 0% 50%;
+    }
 
-            98% {
-                left: 0;
-                top: 0;
-                transform: rotate(300deg);
-                transform-origin: 0% 50%;
-            }
+    /* 左上轉角 */
+    97% {
+        left: 1px;
+        top: 4%;
+        transform: rotate(270deg);
+        transform-origin: 0% 50%;
+    }
 
-            99% {
-                left: 0;
-                top: 0;
-                transform: rotate(330deg);
-                transform-origin: 0% 50%;
-            }
-        }
+    98% {
+        left: 0;
+        top: 0;
+        transform: rotate(300deg);
+        transform-origin: 0% 50%;
+    }
 
-        /* 全格作品卡 hover 皆啟用（含 contain / monster 變體） */
-        .illustration-grid .illus-item:hover .illus-img-wrapper::after {
-            opacity: 1;
-            animation: illus-border-run 3s linear infinite;
-        }
+    99% {
+        left: 0;
+        top: 0;
+        transform: rotate(330deg);
+        transform-origin: 0% 50%;
+    }
+}
 
-        /* 圖片本人：解決你放不進去的問題 */
-        .illus-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            /* 確保圖片填滿方形且不變形 */
-            display: block;
-        }
+/* 全格作品卡 hover 皆啟用（含 contain / monster 變體） */
+.illustration-grid .illus-item:hover .illus-img-wrapper::after {
+    opacity: 1;
+    animation: illus-border-run 3s linear infinite;
+}
 
-        /* 含參考小圖或構圖偏高：完整顯示不裁頭（如毛怪眼怪） */
-        .illus-img-wrapper--contain img {
-            object-fit: contain;
-            object-position: center center;
-        }
+/* 圖片本人：解決你放不進去的問題 */
+.illus-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 確保圖片填滿方形且不變形 */
+    display: block;
+}
 
-        /* 怪獸派對：保腳裁頂部 monster 字 */
-        .illus-img-wrapper--monster img {
-            object-fit: cover;
-            object-position: center bottom;
-        }
+/* 含參考小圖或構圖偏高：完整顯示不裁頭（如毛怪眼怪） */
+.illus-img-wrapper--contain img {
+    object-fit: contain;
+    object-position: center center;
+}
 
-        .illus-item:hover .illus-img-wrapper {
-            transform: rotate(1.5deg) scale(1.03);
-            box-shadow: 0 16px 36px rgba(89, 56, 37, 0.2);
-        }
+/* 怪獸派對：保腳裁頂部 monster 字 */
+.illus-img-wrapper--monster img {
+    object-fit: cover;
+    object-position: center bottom;
+}
 
-        .illus-item:nth-child(even):hover .illus-img-wrapper {
-            transform: rotate(-1.5deg) scale(1.03);
-        }
+.illus-item:hover .illus-img-wrapper {
+    transform: rotate(1.5deg) scale(1.03);
+    box-shadow: 0 16px 36px rgba(89, 56, 37, 0.2);
+}
 
-        .illus-info {
-            padding: 15px 5px;
-        }
+.illus-item:nth-child(even):hover .illus-img-wrapper {
+    transform: rotate(-1.5deg) scale(1.03);
+}
 
-        .illus-info h3 {
-            font-size: 1.1rem;
-            color: var(--primary-dark-brown);
-        }
+.illus-info {
+    padding: 15px 5px;
+}
 
-        .illus-overlay {
-            position: absolute;
-            inset: 0;
-            z-index: 2;
-            background: rgba(62, 38, 22, 0.72);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.25s;
-            color: #fff;
-            text-align: center;
-            padding: 8px;
-        }
+.illus-info h3 {
+    font-size: 1.1rem;
+    color: var(--primary-dark-brown);
+}
 
-        .illus-item:hover .illus-overlay {
-            opacity: 1;
-        }
+.illus-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: rgba(62, 38, 22, 0.72);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.25s;
+    color: #fff;
+    text-align: center;
+    padding: 8px;
+}
 
-        @media (prefers-reduced-motion: reduce) {
-            .illustration-grid .illus-item:hover .illus-img-wrapper::after {
-                animation: none;
-                transform: rotate(0deg);
-            }
-        }
+.illus-item:hover .illus-overlay {
+    opacity: 1;
+}
 
-        @media (min-width: 992px) {
-            .illustration-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 36px 32px;
-            }
+@media (prefers-reduced-motion: reduce) {
+    .illustration-grid .illus-item:hover .illus-img-wrapper::after {
+        animation: none;
+        transform: rotate(0deg);
+    }
+}
 
-            .illus-item--stagger {
-                margin-top: 50px;
-            }
-        }
+@media (max-width: 1400px) {
+    .illustration-grid {
+        grid-template-columns: repeat(2, minmax(400px, 1fr));
+        gap: 28px 24px;
+        padding: 28px 0;
+    }
+}
 
-        @media (max-width: 991px) {
-            .illus-item--stagger {
-                margin-top: clamp(24px, 5vw, 40px);
-            }
-        }
+@media (max-width: 1030px) {
+    .illustration-grid {
+        grid-template-columns: 1fr;
+    }
+}
 
-        @media (max-width: 1024px) {
-            .illustration-grid {
-                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-                gap: 28px 24px;
-                padding: 28px 0;
-            }
-        }
+
+@media (min-width: 992px) {
+    .illustration-grid {
+        /* grid-template-columns: repeat(3, 1fr); */
+        gap: 36px 32px;
+    }
+
+    .illus-item--stagger {
+        margin-top: 50px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .illus-item--stagger {
+        margin-top: clamp(24px, 5vw, 40px);
+    }
+
+    .illustration-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 24px 0;
+    }
+}
