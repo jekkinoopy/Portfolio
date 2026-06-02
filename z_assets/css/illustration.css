@@ -81,6 +81,203 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
+        /* 作業：@keyframes 四角循環（上→右→下→左）；線段固定，轉角 rotate */
+        .illus-img-wrapper::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 18%;
+            height: 2px;
+            background: var(--primary-yellow);
+            border-radius: 1px;
+            transform-origin: 100% 50%;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 10;
+            transition: opacity 0.2s ease;
+        }
+
+        @keyframes illus-border-run {
+            /* 上：左 → 右（軸心：線段右端） */
+            0% {
+                left: 0;
+                top: 0;
+                transform: rotate(0deg);
+                transform-origin: 100% 50%;
+            }
+
+            6% {
+                left: 15%;
+                top: 0;
+                transform: rotate(0deg);
+                transform-origin: 100% 50%;
+            }
+
+            12% {
+                left: 30%;
+                top: 0;
+                transform: rotate(0deg);
+                transform-origin: 100% 50%;
+            }
+
+            18% {
+                left: 45%;
+                top: 0;
+                transform: rotate(0deg);
+                transform-origin: 100% 50%;
+            }
+
+            24% {
+                left: calc(100% - 18%);
+                top: 0;
+                transform: rotate(0deg);
+                transform-origin: 100% 50%;
+            }
+
+            25% {
+                left: calc(100% - 18%);
+                top: 0;
+                transform: rotate(90deg);
+                transform-origin: 100% 50%;
+            }
+
+            /* 右：上 → 下 */
+            31% {
+                left: calc(100% - 18%);
+                top: 15%;
+                transform: rotate(90deg);
+                transform-origin: 100% 50%;
+            }
+
+            37% {
+                left: calc(100% - 18%);
+                top: 30%;
+                transform: rotate(90deg);
+                transform-origin: 100% 50%;
+            }
+
+            43% {
+                left: calc(100% - 18%);
+                top: 45%;
+                transform: rotate(90deg);
+                transform-origin: 100% 50%;
+            }
+
+            49% {
+                left: calc(100% - 18%);
+                top: calc(100% - 18%);
+                transform: rotate(90deg);
+                transform-origin: 100% 50%;
+            }
+
+            /* 下：右 → 左（軸心：線段右端貼右下角） */
+            50% {
+                left: calc(100% - 18%);
+                top: calc(100% - 2px);
+                transform: rotate(180deg);
+                transform-origin: 100% 50%;
+            }
+
+            56% {
+                left: calc(100% - 33%);
+                top: calc(100% - 2px);
+                transform: rotate(180deg);
+                transform-origin: 100% 50%;
+            }
+
+            62% {
+                left: 45%;
+                top: calc(100% - 2px);
+                transform: rotate(180deg);
+                transform-origin: 100% 50%;
+            }
+
+            68% {
+                left: 30%;
+                top: calc(100% - 2px);
+                transform: rotate(180deg);
+                transform-origin: 100% 50%;
+            }
+
+            71% {
+                left: 12%;
+                top: calc(100% - 2px);
+                transform: rotate(180deg);
+                transform-origin: 100% 50%;
+            }
+
+            /* 底邊抵左下角：軸心改左端 */
+            73% {
+                left: 0;
+                top: calc(100% - 2px);
+                transform: rotate(180deg);
+                transform-origin: 0% 50%;
+            }
+
+            74% {
+                left: 0;
+                top: calc(100% - 2px);
+                transform: rotate(225deg);
+                transform-origin: 0% 50%;
+            }
+
+            75% {
+                left: 0;
+                top: calc(100% - 2px);
+                transform: rotate(270deg);
+                transform-origin: 0% 50%;
+            }
+
+            /* 左：下 → 上（軸心：線段左端，貼左邊） */
+            78% {
+                left: 0;
+                top: calc(100% - 18%);
+                transform: rotate(270deg);
+                transform-origin: 0% 50%;
+            }
+
+            84% {
+                left: 0;
+                top: 62%;
+                transform: rotate(270deg);
+                transform-origin: 0% 50%;
+            }
+
+            90% {
+                left: 0;
+                top: 38%;
+                transform: rotate(270deg);
+                transform-origin: 0% 50%;
+            }
+
+            96% {
+                left: 0;
+                top: 14%;
+                transform: rotate(270deg);
+                transform-origin: 0% 50%;
+            }
+
+            98% {
+                left: 0;
+                top: 0;
+                transform: rotate(315deg);
+                transform-origin: 0% 50%;
+            }
+
+            100% {
+                left: 0;
+                top: 0;
+                transform: rotate(360deg);
+                transform-origin: 100% 50%;
+            }
+        }
+
+        .illus-item:hover .illus-img-wrapper::after {
+            opacity: 1;
+            animation: illus-border-run 3s linear infinite;
+        }
+
         /* 圖片本人：解決你放不進去的問題 */
         .illus-img-wrapper img {
             width: 100%;
@@ -123,6 +320,7 @@
         .illus-overlay {
             position: absolute;
             inset: 0;
+            z-index: 2;
             background: rgba(62, 38, 22, 0.72);
             display: flex;
             align-items: center;
@@ -136,6 +334,13 @@
 
         .illus-item:hover .illus-overlay {
             opacity: 1;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .illus-item:hover .illus-img-wrapper::after {
+                animation: none;
+                transform: rotate(0deg);
+            }
         }
 
         @media (min-width: 992px) {
