@@ -239,67 +239,67 @@
                 transform-origin: 100% 50%;
             }
 
-            /* 左下轉角（軸心固定左端，拉長時間） */
+            /* 左下轉角（軸心固定左端；left 內縮 2px 避免線段被裁切） */
             73% {
-                left: 0;
+                left: 2px;
                 top: calc(100% - 2px);
                 transform: rotate(180deg);
                 transform-origin: 0% 50%;
             }
 
             74% {
-                left: 0;
+                left: 2px;
                 top: calc(100% - 2px);
                 transform: rotate(210deg);
                 transform-origin: 0% 50%;
             }
 
             75% {
-                left: 0;
+                left: 2px;
                 top: calc(100% - 2px);
                 transform: rotate(240deg);
                 transform-origin: 0% 50%;
             }
 
             76% {
-                left: 0;
+                left: 2px;
                 top: calc(100% - 2px);
                 transform: rotate(270deg);
                 transform-origin: 0% 50%;
             }
 
-            /* 左：下 → 上（軸心：線段左端，貼左邊） */
+            /* 左：下 → 上（貼內側，避免線在框外） */
             80% {
-                left: 0;
+                left: 2px;
                 top: calc(100% - 18%);
                 transform: rotate(270deg);
                 transform-origin: 0% 50%;
             }
 
             86% {
-                left: 0;
+                left: 2px;
                 top: 62%;
                 transform: rotate(270deg);
                 transform-origin: 0% 50%;
             }
 
             92% {
-                left: 0;
+                left: 2px;
                 top: 38%;
                 transform: rotate(270deg);
                 transform-origin: 0% 50%;
             }
 
             96% {
-                left: 0;
+                left: 2px;
                 top: 14%;
                 transform: rotate(270deg);
                 transform-origin: 0% 50%;
             }
 
-            /* 左上轉角（軸心維持左端，旋轉拆段、不換 origin） */
+            /* 左上轉角 */
             97% {
-                left: 0;
+                left: 2px;
                 top: 4%;
                 transform: rotate(270deg);
                 transform-origin: 0% 50%;
