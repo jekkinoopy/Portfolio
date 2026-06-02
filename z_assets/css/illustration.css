@@ -96,9 +96,19 @@
             object-position: center center;
         }
 
+        /* 怪獸派對：保腳裁頂部 monster 字 */
+        .illus-img-wrapper--monster img {
+            object-fit: cover;
+            object-position: center bottom;
+        }
+
         .illus-item:hover .illus-img-wrapper {
-            transform: rotate(0.5deg) scale(1.02);
-            box-shadow: 0 12px 28px rgba(89, 56, 37, 0.14);
+            transform: rotate(1.5deg) scale(1.03);
+            box-shadow: 0 16px 36px rgba(89, 56, 37, 0.2);
+        }
+
+        .illus-item:nth-child(even):hover .illus-img-wrapper {
+            transform: rotate(-1.5deg) scale(1.03);
         }
 
         .illus-info {
