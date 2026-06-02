@@ -91,7 +91,7 @@
             height: 2px;
             background: var(--primary-yellow);
             border-radius: 1px;
-            transform-origin: 100% 50%;
+            transform-origin: 0% 50%;
             opacity: 0;
             pointer-events: none;
             z-index: 10;
@@ -99,14 +99,16 @@
         }
 
         @keyframes illus-border-run {
-            /* 上：左 → 右（軸心：線段右端） */
-            0% {
+            /* 循環起點＝終點（位置、角度、軸心必須完全一致） */
+            0%,
+            100% {
                 left: 0;
                 top: 0;
                 transform: rotate(0deg);
-                transform-origin: 100% 50%;
+                transform-origin: 0% 50%;
             }
 
+            /* 上：左 → 右（軸心：線段右端） */
             6% {
                 left: 15%;
                 top: 0;
@@ -207,7 +209,7 @@
                 transform-origin: 100% 50%;
             }
 
-            /* 底邊抵左下角：軸心改左端 */
+            /* 左下轉角（軸心固定左端，拉長時間） */
             73% {
                 left: 0;
                 top: calc(100% - 2px);
@@ -218,11 +220,18 @@
             74% {
                 left: 0;
                 top: calc(100% - 2px);
-                transform: rotate(225deg);
+                transform: rotate(210deg);
                 transform-origin: 0% 50%;
             }
 
             75% {
+                left: 0;
+                top: calc(100% - 2px);
+                transform: rotate(240deg);
+                transform-origin: 0% 50%;
+            }
+
+            76% {
                 left: 0;
                 top: calc(100% - 2px);
                 transform: rotate(270deg);
@@ -230,21 +239,21 @@
             }
 
             /* 左：下 → 上（軸心：線段左端，貼左邊） */
-            78% {
+            80% {
                 left: 0;
                 top: calc(100% - 18%);
                 transform: rotate(270deg);
                 transform-origin: 0% 50%;
             }
 
-            84% {
+            86% {
                 left: 0;
                 top: 62%;
                 transform: rotate(270deg);
                 transform-origin: 0% 50%;
             }
 
-            90% {
+            92% {
                 left: 0;
                 top: 38%;
                 transform: rotate(270deg);
@@ -258,18 +267,26 @@
                 transform-origin: 0% 50%;
             }
 
-            98% {
+            /* 左上轉角（軸心維持左端，旋轉拆段、不換 origin） */
+            97% {
                 left: 0;
-                top: 0;
-                transform: rotate(315deg);
+                top: 4%;
+                transform: rotate(270deg);
                 transform-origin: 0% 50%;
             }
 
-            100% {
+            98% {
                 left: 0;
                 top: 0;
-                transform: rotate(360deg);
-                transform-origin: 100% 50%;
+                transform: rotate(300deg);
+                transform-origin: 0% 50%;
+            }
+
+            99% {
+                left: 0;
+                top: 0;
+                transform: rotate(330deg);
+                transform-origin: 0% 50%;
             }
         }
 
