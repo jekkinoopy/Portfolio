@@ -137,7 +137,22 @@
                 transform-origin: 100% 50%;
             }
 
+            /* 右上轉角（軸心固定右端，旋轉拆段） */
             25% {
+                left: calc(100% - 18%);
+                top: 0;
+                transform: rotate(30deg);
+                transform-origin: 100% 50%;
+            }
+
+            26% {
+                left: calc(100% - 18%);
+                top: 0;
+                transform: rotate(60deg);
+                transform-origin: 100% 50%;
+            }
+
+            27% {
                 left: calc(100% - 18%);
                 top: 0;
                 transform: rotate(90deg);
@@ -173,14 +188,29 @@
                 transform-origin: 100% 50%;
             }
 
-            /* 下：右 → 左（軸心：線段右端貼右下角） */
+            /* 右下轉角（軸心固定右端，旋轉拆段） */
             50% {
+                left: calc(100% - 18%);
+                top: calc(100% - 12%);
+                transform: rotate(120deg);
+                transform-origin: 100% 50%;
+            }
+
+            51% {
+                left: calc(100% - 18%);
+                top: calc(100% - 6%);
+                transform: rotate(150deg);
+                transform-origin: 100% 50%;
+            }
+
+            52% {
                 left: calc(100% - 18%);
                 top: calc(100% - 2px);
                 transform: rotate(180deg);
                 transform-origin: 100% 50%;
             }
 
+            /* 下：右 → 左（軸心：線段右端貼右下角） */
             56% {
                 left: calc(100% - 33%);
                 top: calc(100% - 2px);
@@ -290,7 +320,8 @@
             }
         }
 
-        .illus-item:hover .illus-img-wrapper::after {
+        /* 全格作品卡 hover 皆啟用（含 contain / monster 變體） */
+        .illustration-grid .illus-item:hover .illus-img-wrapper::after {
             opacity: 1;
             animation: illus-border-run 3s linear infinite;
         }
@@ -354,7 +385,7 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .illus-item:hover .illus-img-wrapper::after {
+            .illustration-grid .illus-item:hover .illus-img-wrapper::after {
                 animation: none;
                 transform: rotate(0deg);
             }
