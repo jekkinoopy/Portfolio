@@ -1,35 +1,35 @@
 ---
-description: 作品集排版与文案约定
+description: 作品集排版與文案約定
 alwaysApply: true
 ---
 
-# 作品集约定
+# 作品集約定
 
-## 图片排版
+## 圖片排版
 
-展示作品图（摄影、UI mockup、Graphic 等）时，**禁止**用固定宽高的容器 + `object-fit: contain` 把图锁在小区块里，造成大量空白。
+展示作品圖（攝影、UI mockup、Graphic 等）時，**禁止**用固定寬高的容器 + `object-fit: contain` 把圖鎖在小區塊裡，造成大量空白。
 
-**二择一**：
+**二擇一**：
 
-1. **框配合图**：容器不设固定 `height`；`img { width: 100%; height: auto; }`
-2. **图撑满栏宽**：多栏并排时，每栏等宽，图 `width: 100%; height: auto`（**不要**再套 `max-height` 把直式图压扁）
+1. **框配合圖**：容器不設固定 `height`；`img { width: 100%; height: auto; }`
+2. **圖撐滿欄寬**：多欄並排時，每欄等寬，圖 `width: 100%; height: auto`（**不要**再套 `max-height` 把直式圖壓扁）
 
-**禁止**：固定 `height` / `max-height` 的 `.box` 包住完整 mockup 却用 `object-fit: contain` 居中缩小
+**禁止**：固定 `height` / `max-height` 的 `.box` 包住完整 mockup 卻用 `object-fit: contain` 居中縮小
 
-**UI 手机画面**（`graphic-table--uiux-screen`）：以四栏宽 + `--graphic-media-gap` 为固定单元；2／3 张一列时 `justify-content: center`，**不可**因 `logo-row-2/3` 让图忽大忽小。需裁切统一高度的横图缩图才用 `object-fit: cover`（Graphic 马赛克）。
+**UI 手機畫面**（`graphic-table--uiux-screen`）：以四欄寬 + `--graphic-media-gap` 為固定單元；2／3 張一列時 `justify-content: center`，**不可**因 `logo-row-2/3` 讓圖忽大忽小。需裁切統一高度的橫圖縮圖才用 `object-fit: cover`（Graphic 馬賽克）。
 
-## 文案对齐
+## 文案對齊
 
-除非用户**明确指定**，依同一段落的可见字数判断（中文一字算一字）：
+除非使用者**明確指定**，依同一段落的可見字數判斷（中文一字算一字）：
 
-| 同段字数 | 对齐 |
+| 同段字數 | 對齊 |
 |----------|------|
 | ≤10 字 | `text-align: center` |
 | >10 字 | `text-align: left` |
 
-窄宽区块（如 `max-width: 72ch`）长段落：区块 `margin-inline: auto`，文字靠左。短标（≤10 字）区块与文字皆可置中。
+窄寬區塊（如 `max-width: 72ch`）長段落：區塊 `margin-inline: auto`，文字靠左。短標（≤10 字）區塊與文字皆可置中。
 
-**禁止**：长段落整段居中（除非用户要求）；短标题无故靠左与下方置中图片不对齐。
+**禁止**：長段落整段居中（除非使用者要求）；短標題無故靠左與下方置中圖片不對齊。
 
 ## 燈箱（`photo-lightbox` / `z_assets/js/photo.js`）
 
