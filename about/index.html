@@ -319,6 +319,177 @@
                 order: 3;
             }
         }
+
+        /* ── 技能搜尋 ── */
+        .search-box {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .search-box input {
+            width: 100%;
+            max-width: 400px;
+            height: 42px;
+            border: 2px solid var(--primary-yellow);
+            border-radius: var(--radius-pill);
+            padding: 0 20px;
+            font-size: 1rem;
+            font-family: "Noto Serif TC", serif;
+            color: var(--black);
+            outline: none;
+            transition: border-color 0.2s;
+            background: #fff;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary-brown);
+        }
+
+        .search-box button {
+            height: 42px;
+            padding: 0 24px;
+            border: none;
+            border-radius: var(--radius-pill);
+            background: var(--primary-brown);
+            color: #fff;
+            font-size: 0.95rem;
+            font-family: "Noto Serif TC", serif;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+
+        .search-box button:hover {
+            background: var(--primary-dark-brown);
+        }
+
+        .search-result-hint {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+            min-height: 1.4em;
+            margin-bottom: 24px;
+        }
+
+        .skill-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            border: 1px solid #f0e8d0;
+            margin-bottom: 28px;
+        }
+
+        .skill-table thead {
+            background: var(--primary-yellow);
+            color: #fff;
+        }
+
+        .skill-table th {
+            padding: 12px 18px;
+            font-size: 0.88rem;
+            letter-spacing: 0.08em;
+            text-align: left;
+        }
+
+        .skill-table td {
+            padding: 13px 18px;
+            font-size: 0.9rem;
+            color: #555;
+            border-bottom: 1px solid #f9f2e0;
+            vertical-align: middle;
+        }
+
+        .skill-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .skill-row {
+            transition: background 0.15s;
+        }
+
+        .skill-row:hover {
+            background: #fffdf5;
+        }
+
+        .skill-row.is-match {
+            background: #fffbe8;
+        }
+
+        .skill-row.is-hidden {
+            display: none;
+        }
+
+        .skill-name {
+            font-weight: 700;
+            color: var(--primary-brown);
+            white-space: nowrap;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .skill-tag {
+            background: var(--light-yellow);
+            color: var(--primary-dark-brown);
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 2px 9px;
+            border-radius: var(--radius-pill);
+        }
+
+        .skill-level {
+            white-space: nowrap;
+            color: var(--primary-yellow);
+            letter-spacing: 2px;
+            font-size: 1rem;
+        }
+
+        .skill-level .empty {
+            color: #ddd;
+        }
+
+        .badge--ing {
+            background: #ffe0a0;
+            color: #a06400;
+        }
+
+        .no-result {
+            text-align: center;
+            padding: 24px 0;
+            color: var(--dark-gray);
+            font-size: 0.92rem;
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .search-box {
+                flex-direction: column;
+            }
+
+            .search-box input {
+                max-width: 100%;
+            }
+
+            .search-box button {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .skill-table th:nth-child(3),
+            .skill-table td:nth-child(3) {
+                display: none;
+            }
+        }
     </style>
 </head>
 
@@ -366,7 +537,7 @@
     <main class="main-container about-manual">
         <div class="page-title">
             <h2>努比使用手冊</h2>
-            <p>AI 眼裡的 Noopy · MBTI · 人類圖 · 總結</p>
+            <p>AI 眼裡的 Noopy · MBTI · 人類圖 · 技能 · 總結</p>
         </div>
 
         <article class="manual-part">
@@ -503,6 +674,157 @@
                 <p class="footer-note">人類圖段落轉化為 UI 晶片邏輯，可作為作品集互動彩蛋。</p>
             </section>
 
+            <!-- ── 技能 ── -->
+            <section class="manual-section" id="skills" aria-labelledby="manual-skills-title">
+                <div class="box box1">
+                    <h3 id="manual-skills-title">技能</h3>
+                </div>
+
+                <div class="manual-section__head">
+                    <span class="manual-section__tag" aria-hidden="true">🔍</span>
+                    <div>
+                        <p class="manual-section__title">輸入關鍵字搜尋技能</p>
+                        <p class="manual-section__desc">試試：插畫、Figma、RWD、排版、PHP……</p>
+                    </div>
+                </div>
+
+                <div class="search-box">
+                    <input type="text" id="skillSearch" placeholder="輸入關鍵字，例如：插畫、Figma、RWD…">
+                    <button type="button" id="searchBtn">搜尋</button>
+                </div>
+                <p class="search-result-hint" id="searchHint"></p>
+
+                <!-- 領域能力 -->
+                <p class="component-title" style="margin-bottom:12px;">領域能力</p>
+                <table class="skill-table">
+                    <thead>
+                        <tr>
+                            <th>領域</th>
+                            <th>關鍵字</th>
+                            <th>熟練度</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="skill-row" data-keywords="平面設計 graphic logo 包裝 banner 名片 排版 視覺 印刷">
+                            <td class="skill-name">平面設計</td>
+                            <td><div class="skill-tags"><span class="skill-tag">Logo</span><span class="skill-tag">包裝</span><span class="skill-tag">Banner</span><span class="skill-tag">名片</span><span class="skill-tag">排版</span><span class="skill-tag">印刷</span></div></td>
+                            <td class="skill-level">★★★★<span class="empty">★</span></td>
+                        </tr>
+                        <tr class="skill-row" data-keywords="插畫 illustration procreate 動物 食物 角色 賀卡 人物 場景 自然 手繪 數位">
+                            <td class="skill-name">插畫繪製</td>
+                            <td><div class="skill-tags"><span class="skill-tag">Procreate</span><span class="skill-tag">動物</span><span class="skill-tag">角色</span><span class="skill-tag">場景</span><span class="skill-tag">賀卡</span><span class="skill-tag">手繪</span></div></td>
+                            <td class="skill-level">★★★★<span class="empty">★</span></td>
+                        </tr>
+                        <tr class="skill-row" data-keywords="uiux ui ux 介面 figma 原型 線框 wireframe 使用者 流程 體驗">
+                            <td class="skill-name">UI/UX 設計</td>
+                            <td><div class="skill-tags"><span class="skill-tag">Figma</span><span class="skill-tag">線框稿</span><span class="skill-tag">原型</span><span class="skill-tag">使用者流程</span></div></td>
+                            <td class="skill-level">★★★<span class="empty">★★</span></td>
+                        </tr>
+                        <tr class="skill-row" data-keywords="網頁 前端 html css javascript js rwd 響應式 切版 web frontend">
+                            <td class="skill-name">網頁前端</td>
+                            <td><div class="skill-tags"><span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span><span class="skill-tag">JavaScript</span><span class="skill-tag">RWD</span><span class="skill-tag">切版</span></div></td>
+                            <td class="skill-level">★★★<span class="empty">★★</span></td>
+                        </tr>
+                        <tr class="skill-row" data-keywords="後端 backend php sql mysql 資料庫 server 學習中">
+                            <td class="skill-name">網頁後端 <span class="badge badge--ing">學習中</span></td>
+                            <td><div class="skill-tags"><span class="skill-tag">PHP</span><span class="skill-tag">MySQL</span><span class="skill-tag">資料庫</span></div></td>
+                            <td class="skill-level">★★<span class="empty">★★★</span></td>
+                        </tr>
+                        <tr class="skill-row" data-keywords="攝影 photo 風景 景點 人像 寵物 貓 狗 商品 活動 nikon">
+                            <td class="skill-name">攝影</td>
+                            <td><div class="skill-tags"><span class="skill-tag">風景</span><span class="skill-tag">人像</span><span class="skill-tag">寵物</span><span class="skill-tag">商品</span><span class="skill-tag">活動</span></div></td>
+                            <td class="skill-level">★★★<span class="empty">★★</span></td>
+                        </tr>
+                        <tr class="skill-row" data-keywords="影音 多媒體 premiere after effects animate 剪輯 後製 動態 動畫 影片">
+                            <td class="skill-name">影音多媒體</td>
+                            <td><div class="skill-tags"><span class="skill-tag">Premiere</span><span class="skill-tag">After Effects</span><span class="skill-tag">Animate</span><span class="skill-tag">剪輯</span><span class="skill-tag">後製</span></div></td>
+                            <td class="skill-level">★★★<span class="empty">★★</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- 使用工具 -->
+                <p class="component-title" style="margin-bottom:12px;">使用工具</p>
+                <table class="skill-table">
+                    <thead>
+                        <tr>
+                            <th>工具</th>
+                            <th>類別 / 用途</th>
+                            <th>熟練度</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="skill-row" data-keywords="illustrator ai adobe 向量 logo 平面設計 排版 設計">
+                            <td class="skill-name">Adobe Illustrator</td>
+                            <td><div class="skill-tags"><span class="skill-tag">設計</span><span class="skill-tag">向量繪圖</span><span class="skill-tag">Logo</span><span class="skill-tag">排版</span></div></td>
+                            <td class="skill-level">★★★★<span class="empty">★</span></td>
+                        </tr>
+                        <tr class="skill-row" data-keywords="photoshop ps adobe 修圖 合成 banner 影像 設計">
+                            <td class="skill-name">Adobe Photoshop</td>
+                            <td><div class="skill-tags"><span class="skill-tag">設計</span><span class="skill-tag">修圖</span><span class="skill-tag">合成</span><span class="skill-tag">Banner</span></div></td>
+                            <td class="skill-level">★★★★<span class="empty">★</span></td>
+                        </tr>
+                        <tr class="skill-row" data-keywords="indesign id adobe 書刊 dm 印刷 排版 設計">
+                            <td class="skill-name">Adobe InDesign</td>
+                            <td><div class="skill-tags"><span class="skill-tag">設計</span><span class="skill-tag">書刊</span><span class="skill-tag">DM</span><span class="skill-tag">印刷排版</span></div></td>
+                            <td class="skill-level">★★★<span class="empty">★★</span></td>
+                        </tr>
+                        <tr class="skill-row" data-keywords="procreate 插畫 ipad 手繪 數位 動物 角色 賀卡">
+                            <td class="skill-name">Procreate</td>
+                            <td><div class="skill-tags"><span class="skill-tag">插畫</span><span class="skill-tag">iPad 手繪</span><span class="skill-tag">數位繪圖</span></div></td>
+                            <td class="skill-level">★★★<span class="empty">★★</span></td>
+                        </tr>
+                        <tr class="skill-row" data-keywords="figma ui ux 介面 原型 線框 wireframe 設計">
+                            <td class="skill-name">Figma</td>
+                            <td><div class="skill-tags"><span class="skill-tag">UI/UX</span><span class="skill-tag">介面設計</span><span class="skill-tag">原型</span></div></td>
+                            <td class="skill-level">★★★<span class="empty">★★</span></td>
+                        </tr>
+                        <tr class="skill-row" data-keywords="adobe xd ui ux 介面 原型 線框 設計">
+                            <td class="skill-name">Adobe XD</td>
+                            <td><div class="skill-tags"><span class="skill-tag">UI/UX</span><span class="skill-tag">介面設計</span><span class="skill-tag">原型</span></div></td>
+                            <td class="skill-level">★★<span class="empty">★★★</span></td>
+                        </tr>
+                        <tr class="skill-row" data-keywords="html css 前端 切版 rwd 響應式 網頁 web">
+                            <td class="skill-name">HTML5 / CSS3</td>
+                            <td><div class="skill-tags"><span class="skill-tag">前端</span><span class="skill-tag">切版</span><span class="skill-tag">RWD</span></div></td>
+                            <td class="skill-level">★★★<span class="empty">★★</span></td>
+                        </tr>
+                        <tr class="skill-row" data-keywords="javascript js jquery 互動 動畫 前端 網頁 web">
+                            <td class="skill-name">JavaScript / jQuery</td>
+                            <td><div class="skill-tags"><span class="skill-tag">前端</span><span class="skill-tag">互動功能</span><span class="skill-tag">jQuery</span></div></td>
+                            <td class="skill-level">★★<span class="empty">★★★</span></td>
+                        </tr>
+                        <tr class="skill-row" data-keywords="php mysql sql 後端 資料庫 backend server 學習中">
+                            <td class="skill-name">PHP + MySQL <span class="badge badge--ing">學習中</span></td>
+                            <td><div class="skill-tags"><span class="skill-tag">後端</span><span class="skill-tag">資料庫</span></div></td>
+                            <td class="skill-level">★★<span class="empty">★★★</span></td>
+                        </tr>
+                        <tr class="skill-row" data-keywords="git github 版本控制 協作 branch commit">
+                            <td class="skill-name">Git</td>
+                            <td><div class="skill-tags"><span class="skill-tag">版本控制</span><span class="skill-tag">協作</span><span class="skill-tag">GitHub</span></div></td>
+                            <td class="skill-level">★★<span class="empty">★★★</span></td>
+                        </tr>
+                        <tr class="skill-row" data-keywords="vscode codepen dreamweaver 網頁 開發環境 編輯器 ide">
+                            <td class="skill-name">VSCode / Codepen</td>
+                            <td><div class="skill-tags"><span class="skill-tag">開發環境</span><span class="skill-tag">網頁</span><span class="skill-tag">Dreamweaver</span></div></td>
+                            <td class="skill-level">★★★<span class="empty">★★</span></td>
+                        </tr>
+                        <tr class="skill-row" data-keywords="premiere after effects animate 影音 剪輯 後製 動態 動畫 影片 多媒體">
+                            <td class="skill-name">Premiere / After Effects</td>
+                            <td><div class="skill-tags"><span class="skill-tag">影音</span><span class="skill-tag">剪輯</span><span class="skill-tag">後製</span><span class="skill-tag">Animate</span></div></td>
+                            <td class="skill-level">★★★<span class="empty">★★</span></td>
+                        </tr>
+                        <tr class="skill-row" data-keywords="excel word 辦公 office 文書 試算表 報告">
+                            <td class="skill-name">Excel / Word</td>
+                            <td><div class="skill-tags"><span class="skill-tag">辦公應用</span><span class="skill-tag">試算表</span><span class="skill-tag">文書</span></div></td>
+                            <td class="skill-level">★★★★<span class="empty">★</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p class="no-result" id="noResult">找不到「<span id="noResultKeyword"></span>」相關技能，換個關鍵字試試？</p>
+            </section>
+
             <section class="manual-section" id="summary" aria-labelledby="manual-summary-title">
                 <div class="box box1">
                     <h3 id="manual-summary-title">總結</h3>
@@ -524,6 +846,77 @@
         <small>&copy; 2026 JEKKINOOPY. All rights reserved.</small>
     </footer>
     <script src="../z_assets/js/nav.js"></script>
+
+    <!-- jQuery（和老師一樣的 CDN） -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            // 1. bind — 跟老師一樣先抓元素
+            const searchInput = $('#skillSearch');
+            const searchBtn   = $('#searchBtn');
+            const searchHint  = $('#searchHint');
+            const noResult    = $('#noResult');
+            const allRows     = $('.skill-row');
+
+            // 2. action — 搜尋邏輯（封裝成 function，按鈕和即時輸入都能呼叫）
+            function doSearch() {
+                // 懶人包：統一轉小寫再比對（跟老師的 Number() 轉型同概念）
+                let keyword = searchInput.val().trim().toLowerCase();
+
+                if (keyword === '') {
+                    allRows.removeClass('is-hidden is-match');
+                    searchHint.text('');
+                    noResult.hide();
+                    return;
+                }
+
+                let matchCount = 0;
+
+                // 跟老師的 result = getMoney * Math.pow(...) 一樣：逐一對每列做運算
+                allRows.each(function () {
+                    let rowKeywords = $(this).data('keywords').toLowerCase();
+                    let rowText     = $(this).text().toLowerCase();
+
+                    if (rowKeywords.includes(keyword) || rowText.includes(keyword)) {
+                        $(this).removeClass('is-hidden').addClass('is-match');
+                        matchCount++;
+                    } else {
+                        $(this).addClass('is-hidden').removeClass('is-match');
+                    }
+                });
+
+                // 3. output — 更新提示（跟老師的 mySpan.text(tmpText) 同概念）
+                if (matchCount > 0) {
+                    searchHint.text(`找到 ${matchCount} 項符合「${searchInput.val().trim()}」的技能`);
+                    noResult.hide();
+                } else {
+                    searchHint.text('');
+                    $('#noResultKeyword').text(searchInput.val().trim());
+                    noResult.show();
+                }
+            }
+
+            // 按鈕 click（老師的 myBtn.click）
+            searchBtn.click(function () {
+                doSearch();
+            });
+
+            // 即時輸入也觸發，體驗更好
+            searchInput.on('input', function () {
+                doSearch();
+            });
+
+            // Enter 也可送出
+            searchInput.on('keydown', function (e) {
+                if (e.key === 'Enter') doSearch();
+            });
+
+        });
+    </script>
 </body>
 
 </html>
