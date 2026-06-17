@@ -121,7 +121,7 @@
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .badge-defined,
@@ -228,7 +228,7 @@
         .mbti-ratio-item__analysis strong {
             display: block;
             margin-bottom: 10px;
-            font-size: 1.05rem;
+            font-size: 1.2rem;
             letter-spacing: 0.04em;
             color: var(--primary-dark-brown);
         }
@@ -433,12 +433,12 @@
 
         /* ── 技能 Card Grid ── */
         .skill-section-label {
-            font-size: 0.78rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.06em;
             color: var(--primary-brown);
             text-transform: uppercase;
-            margin: 28px 0 14px;
+            margin: 48px 0 16px;
             padding: 5px 14px;
             background: var(--light-yellow);
             border-radius: var(--radius-pill);
@@ -456,7 +456,7 @@
             background: #fff;
             border: 1px solid #eee;
             border-radius: var(--radius-card);
-            padding: 18px 20px;
+            padding: 24px;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
             transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
@@ -485,21 +485,47 @@
 
         .skill-name {
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 1.2rem;
             color: var(--primary-brown);
             line-height: 1.3;
-        }
-
-        .skill-stars {
             white-space: nowrap;
-            color: var(--primary-yellow);
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-            flex-shrink: 0;
         }
 
-        .skill-stars .empty {
-            color: #ddd;
+        .skill-bar {
+            flex: 1;
+            height: 10px;
+            background: #eee;
+            border-radius: var(--radius-pill);
+            overflow: hidden;
+            margin: 8px 0 10px;
+        }
+
+        .skill-bar__fill {
+            height: 100%;
+            width: var(--level, 0%);
+            background: linear-gradient(90deg, var(--primary-yellow), #e8a030);
+            border-radius: 4px;
+            transition: width 0.6s ease;
+        }
+
+                .skill-tools {
+            margin-top: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .skill-tool-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .skill-tool-name {
+            flex: 0 0 160px;
+            font-size: 1rem;
+            color: var(--dark-gray);
+            white-space: nowrap;
         }
 
         .skill-tags {
@@ -511,7 +537,7 @@
         .skill-tag {
             background: transparent;
             color: var(--dark-gray);
-            font-size: 0.75rem;
+            font-size: 0.9rem;
             font-weight: 400;
             padding: 0;
             border-radius: 0;
@@ -526,7 +552,7 @@
         .badge--ing {
             background: #ffe0a0;
             color: #a06400;
-            font-size: 0.7rem;
+            font-size: 0.85rem;
             font-weight: 700;
             padding: 2px 8px;
             border-radius: var(--radius-pill);
@@ -798,185 +824,128 @@
                 </div>
                 <p class="search-result-hint" id="searchHint"></p>
 
-                <!-- 領域能力 -->
                 <span class="skill-section-label">領域能力</span>
                 <div class="skill-grid">
-                    <div class="skill-row" data-keywords="平面設計 graphic logo 包裝 banner 名片 排版 視覺 印刷">
-                        <div class="skill-card__head">
-                            <span class="skill-name">平面設計</span>
-                            <span class="skill-stars">★★★★<span class="empty">★</span></span>
+
+                    <div class="skill-row" data-keywords="平面設計 graphic logo 包裝 banner 名片 排版 視覺 印刷 illustrator photoshop indesign ai ps id adobe">
+                        <span class="skill-name">平面設計</span>
+                        <div class="skill-tags"><span class="skill-tag">Logo</span><span class="skill-tag">包裝</span><span class="skill-tag">Banner</span><span class="skill-tag">名片</span><span class="skill-tag">排版</span><span class="skill-tag">印刷</span></div>
+                        <div class="skill-tools">
+                        <div class="skill-tool-item">
+                            <span class="skill-tool-name">Illustrator</span>
+                            <div class="skill-bar"><div class="skill-bar__fill" style="--level: 85%"></div></div>
                         </div>
-                        <div class="skill-tags"><span class="skill-tag">Logo</span><span
-                                class="skill-tag">包裝</span><span class="skill-tag">Banner</span><span
-                                class="skill-tag">名片</span><span class="skill-tag">排版</span><span
-                                class="skill-tag">印刷</span></div>
-                    </div>
-                    <div class="skill-row" data-keywords="插畫 illustration procreate 動物 食物 角色 賀卡 人物 場景 自然 手繪 數位">
-                        <div class="skill-card__head">
-                            <span class="skill-name">插畫繪製</span>
-                            <span class="skill-stars">★★★★<span class="empty">★</span></span>
+                        <div class="skill-tool-item">
+                            <span class="skill-tool-name">Photoshop</span>
+                            <div class="skill-bar"><div class="skill-bar__fill" style="--level: 85%"></div></div>
                         </div>
-                        <div class="skill-tags"><span class="skill-tag">Procreate</span><span
-                                class="skill-tag">動物</span><span class="skill-tag">角色</span><span
-                                class="skill-tag">場景</span><span class="skill-tag">賀卡</span><span
-                                class="skill-tag">手繪</span></div>
-                    </div>
-                    <div class="skill-row" data-keywords="uiux ui ux 介面 figma 原型 線框 wireframe 使用者 流程 體驗">
-                        <div class="skill-card__head">
-                            <span class="skill-name">UI/UX 設計</span>
-                            <span class="skill-stars">★★★<span class="empty">★★</span></span>
+                        <div class="skill-tool-item">
+                            <span class="skill-tool-name">InDesign</span>
+                            <div class="skill-bar"><div class="skill-bar__fill" style="--level: 75%"></div></div>
                         </div>
-                        <div class="skill-tags"><span class="skill-tag">Figma</span><span
-                                class="skill-tag">線框稿</span><span class="skill-tag">原型</span><span
-                                class="skill-tag">使用者流程</span></div>
-                    </div>
-                    <div class="skill-row" data-keywords="網頁 前端 html css javascript js rwd 響應式 切版 web frontend">
-                        <div class="skill-card__head">
-                            <span class="skill-name">網頁前端</span>
-                            <span class="skill-stars">★★★<span class="empty">★★</span></span>
                         </div>
-                        <div class="skill-tags"><span class="skill-tag">HTML5</span><span
-                                class="skill-tag">CSS3</span><span class="skill-tag">JavaScript</span><span
-                                class="skill-tag">RWD</span><span class="skill-tag">切版</span></div>
                     </div>
-                    <div class="skill-row" data-keywords="後端 backend php sql mysql 資料庫 server 學習中">
-                        <div class="skill-card__head">
-                            <span class="skill-name">網頁後端 <span class="badge badge--ing">學習中</span></span>
-                            <span class="skill-stars">★★<span class="empty">★★★</span></span>
+
+                    <div class="skill-row" data-keywords="插畫 illustration procreate 動物 食物 角色 賀卡 人物 場景 手繪 數位 ipad">
+                        <span class="skill-name">插畫繪製</span>
+                        <div class="skill-tags"><span class="skill-tag">動物</span><span class="skill-tag">角色</span><span class="skill-tag">場景</span><span class="skill-tag">賀卡</span><span class="skill-tag">手繪</span></div>
+                        <div class="skill-tools">
+                        <div class="skill-tool-item">
+                            <span class="skill-tool-name">Procreate</span>
+                            <div class="skill-bar"><div class="skill-bar__fill" style="--level: 75%"></div></div>
                         </div>
-                        <div class="skill-tags"><span class="skill-tag">PHP</span><span
-                                class="skill-tag">MySQL</span><span class="skill-tag">資料庫</span></div>
+                        </div>
                     </div>
+
+                    <div class="skill-row" data-keywords="uiux ui ux 介面 figma xd 原型 線框 wireframe 使用者 流程 體驗 adobe">
+                        <span class="skill-name">UI/UX 設計</span>
+                        <div class="skill-tags"><span class="skill-tag">線框稿</span><span class="skill-tag">原型</span><span class="skill-tag">使用者流程</span></div>
+                        <div class="skill-tools">
+                        <div class="skill-tool-item">
+                            <span class="skill-tool-name">Figma</span>
+                            <div class="skill-bar"><div class="skill-bar__fill" style="--level: 70%"></div></div>
+                        </div>
+                        <div class="skill-tool-item">
+                            <span class="skill-tool-name">Adobe XD</span>
+                            <div class="skill-bar"><div class="skill-bar__fill" style="--level: 50%"></div></div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-row" data-keywords="網頁 前端 html css javascript js rwd 響應式 切版 web frontend jquery vscode codepen css grid">
+                        <span class="skill-name">網頁前端</span>
+                        <div class="skill-tags"><span class="skill-tag">RWD</span><span class="skill-tag">切版</span><span class="skill-tag">CSS Grid</span><span class="skill-tag">互動功能</span></div>
+                        <div class="skill-tools">
+                        <div class="skill-tool-item">
+                            <span class="skill-tool-name">HTML5 / CSS3</span>
+                            <div class="skill-bar"><div class="skill-bar__fill" style="--level: 80%"></div></div>
+                        </div>
+                        <div class="skill-tool-item">
+                            <span class="skill-tool-name">JavaScript / jQuery</span>
+                            <div class="skill-bar"><div class="skill-bar__fill" style="--level: 65%"></div></div>
+                        </div>
+                        <div class="skill-tool-item">
+                            <span class="skill-tool-name">VSCode / Codepen</span>
+                            <div class="skill-bar"><div class="skill-bar__fill" style="--level: 75%"></div></div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-row" data-keywords="後端 backend php sql mysql 資料庫 server xampp pdo crud session git github 版本控制">
+                        <span class="skill-name">網頁後端 <span class="badge badge--ing">學習中</span></span>
+                        <div class="skill-tags"><span class="skill-tag">資料庫</span><span class="skill-tag">XAMPP</span><span class="skill-tag">PDO</span><span class="skill-tag">Git</span></div>
+                        <div class="skill-tools">
+                        <div class="skill-tool-item">
+                            <span class="skill-tool-name">PHP + MySQL</span>
+                            <div class="skill-bar"><div class="skill-bar__fill" style="--level: 45%"></div></div>
+                        </div>
+                        <div class="skill-tool-item">
+                            <span class="skill-tool-name">Git</span>
+                            <div class="skill-bar"><div class="skill-bar__fill" style="--level: 50%"></div></div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-row" data-keywords="影音 多媒體 premiere after effects animate 剪輯 後製 動態 動畫 影片 adobe">
+                        <span class="skill-name">影音多媒體</span>
+                        <div class="skill-tags"><span class="skill-tag">剪輯</span><span class="skill-tag">後製</span><span class="skill-tag">動態設計</span></div>
+                        <div class="skill-tools">
+                        <div class="skill-tool-item">
+                            <span class="skill-tool-name">Premiere</span>
+                            <div class="skill-bar"><div class="skill-bar__fill" style="--level: 60%"></div></div>
+                        </div>
+                        <div class="skill-tool-item">
+                            <span class="skill-tool-name">After Effects</span>
+                            <div class="skill-bar"><div class="skill-bar__fill" style="--level: 60%"></div></div>
+                        </div>
+                        <div class="skill-tool-item">
+                            <span class="skill-tool-name">Animate</span>
+                            <div class="skill-bar"><div class="skill-bar__fill" style="--level: 55%"></div></div>
+                        </div>
+                        </div>
+                    </div>
+
                     <div class="skill-row" data-keywords="攝影 photo 風景 景點 人像 寵物 貓 狗 商品 活動 nikon">
-                        <div class="skill-card__head">
-                            <span class="skill-name">攝影</span>
-                            <span class="skill-stars">★★★<span class="empty">★★</span></span>
-                        </div>
-                        <div class="skill-tags"><span class="skill-tag">風景</span><span class="skill-tag">人像</span><span
-                                class="skill-tag">寵物</span><span class="skill-tag">商品</span><span
-                                class="skill-tag">活動</span></div>
+                        <span class="skill-name">攝影</span>
+                        <div class="skill-tags"><span class="skill-tag">風景</span><span class="skill-tag">人像</span><span class="skill-tag">寵物</span><span class="skill-tag">商品</span><span class="skill-tag">活動</span></div>
                     </div>
-                    <div class="skill-row" data-keywords="影音 多媒體 premiere after effects animate 剪輯 後製 動態 動畫 影片">
-                        <div class="skill-card__head">
-                            <span class="skill-name">影音多媒體</span>
-                            <span class="skill-stars">★★★<span class="empty">★★</span></span>
-                        </div>
-                        <div class="skill-tags"><span class="skill-tag">Premiere</span><span class="skill-tag">After
-                                Effects</span><span class="skill-tag">Animate</span><span
-                                class="skill-tag">剪輯</span><span class="skill-tag">後製</span></div>
-                    </div>
-                </div>
 
-                <!-- 使用工具 -->
-                <span class="skill-section-label">使用工具</span>
-                <div class="skill-grid">
-                    <div class="skill-row" data-keywords="illustrator ai adobe 向量 logo 平面設計 排版 設計">
-                        <div class="skill-card__head">
-                            <span class="skill-name">Adobe Illustrator</span>
-                            <span class="skill-stars">★★★★<span class="empty">★</span></span>
-                        </div>
-                        <div class="skill-tags"><span class="skill-tag">設計</span><span
-                                class="skill-tag">向量繪圖</span><span class="skill-tag">Logo</span><span
-                                class="skill-tag">排版</span></div>
-                    </div>
-                    <div class="skill-row" data-keywords="photoshop ps adobe 修圖 合成 banner 影像 設計">
-                        <div class="skill-card__head">
-                            <span class="skill-name">Adobe Photoshop</span>
-                            <span class="skill-stars">★★★★<span class="empty">★</span></span>
-                        </div>
-                        <div class="skill-tags"><span class="skill-tag">設計</span><span class="skill-tag">修圖</span><span
-                                class="skill-tag">合成</span><span class="skill-tag">Banner</span></div>
-                    </div>
-                    <div class="skill-row" data-keywords="indesign id adobe 書刊 dm 印刷 排版 設計">
-                        <div class="skill-card__head">
-                            <span class="skill-name">Adobe InDesign</span>
-                            <span class="skill-stars">★★★<span class="empty">★★</span></span>
-                        </div>
-                        <div class="skill-tags"><span class="skill-tag">設計</span><span class="skill-tag">書刊</span><span
-                                class="skill-tag">DM</span><span class="skill-tag">印刷排版</span></div>
-                    </div>
-                    <div class="skill-row" data-keywords="procreate 插畫 ipad 手繪 數位 動物 角色 賀卡">
-                        <div class="skill-card__head">
-                            <span class="skill-name">Procreate</span>
-                            <span class="skill-stars">★★★<span class="empty">★★</span></span>
-                        </div>
-                        <div class="skill-tags"><span class="skill-tag">插畫</span><span class="skill-tag">iPad
-                                手繪</span><span class="skill-tag">數位繪圖</span></div>
-                    </div>
-                    <div class="skill-row" data-keywords="figma ui ux 介面 原型 線框 wireframe 設計">
-                        <div class="skill-card__head">
-                            <span class="skill-name">Figma</span>
-                            <span class="skill-stars">★★★<span class="empty">★★</span></span>
-                        </div>
-                        <div class="skill-tags"><span class="skill-tag">UI/UX</span><span
-                                class="skill-tag">介面設計</span><span class="skill-tag">原型</span></div>
-                    </div>
-                    <div class="skill-row" data-keywords="adobe xd ui ux 介面 原型 線框 設計">
-                        <div class="skill-card__head">
-                            <span class="skill-name">Adobe XD</span>
-                            <span class="skill-stars">★★<span class="empty">★★★</span></span>
-                        </div>
-                        <div class="skill-tags"><span class="skill-tag">UI/UX</span><span
-                                class="skill-tag">介面設計</span><span class="skill-tag">原型</span></div>
-                    </div>
-                    <div class="skill-row" data-keywords="html css 前端 切版 rwd 響應式 網頁 web">
-                        <div class="skill-card__head">
-                            <span class="skill-name">HTML5 / CSS3</span>
-                            <span class="skill-stars">★★★<span class="empty">★★</span></span>
-                        </div>
-                        <div class="skill-tags"><span class="skill-tag">前端</span><span class="skill-tag">切版</span><span
-                                class="skill-tag">RWD</span></div>
-                    </div>
-                    <div class="skill-row" data-keywords="javascript js jquery 互動 動畫 前端 網頁 web">
-                        <div class="skill-card__head">
-                            <span class="skill-name">JavaScript / jQuery</span>
-                            <span class="skill-stars">★★<span class="empty">★★★</span></span>
-                        </div>
-                        <div class="skill-tags"><span class="skill-tag">前端</span><span
-                                class="skill-tag">互動功能</span><span class="skill-tag">jQuery</span></div>
-                    </div>
-                    <div class="skill-row" data-keywords="php mysql sql 後端 資料庫 backend server 學習中">
-                        <div class="skill-card__head">
-                            <span class="skill-name">PHP + MySQL <span class="badge badge--ing">學習中</span></span>
-                            <span class="skill-stars">★★<span class="empty">★★★</span></span>
-                        </div>
-                        <div class="skill-tags"><span class="skill-tag">後端</span><span class="skill-tag">資料庫</span>
-                        </div>
-                    </div>
-                    <div class="skill-row" data-keywords="git github 版本控制 協作 branch commit">
-                        <div class="skill-card__head">
-                            <span class="skill-name">Git</span>
-                            <span class="skill-stars">★★<span class="empty">★★★</span></span>
-                        </div>
-                        <div class="skill-tags"><span class="skill-tag">版本控制</span><span
-                                class="skill-tag">協作</span><span class="skill-tag">GitHub</span></div>
-                    </div>
-                    <div class="skill-row" data-keywords="vscode codepen dreamweaver 網頁 開發環境 編輯器 ide">
-                        <div class="skill-card__head">
-                            <span class="skill-name">VSCode / Codepen</span>
-                            <span class="skill-stars">★★★<span class="empty">★★</span></span>
-                        </div>
-                        <div class="skill-tags"><span class="skill-tag">開發環境</span><span
-                                class="skill-tag">網頁</span><span class="skill-tag">Dreamweaver</span></div>
-                    </div>
-                    <div class="skill-row" data-keywords="premiere after effects animate 影音 剪輯 後製 動態 動畫 影片 多媒體">
-                        <div class="skill-card__head">
-                            <span class="skill-name">Premiere / After Effects</span>
-                            <span class="skill-stars">★★★<span class="empty">★★</span></span>
-                        </div>
-                        <div class="skill-tags"><span class="skill-tag">影音</span><span class="skill-tag">剪輯</span><span
-                                class="skill-tag">後製</span><span class="skill-tag">Animate</span></div>
-                    </div>
                     <div class="skill-row" data-keywords="excel word 辦公 office 文書 試算表 報告">
-                        <div class="skill-card__head">
-                            <span class="skill-name">Excel / Word</span>
-                            <span class="skill-stars">★★★★<span class="empty">★</span></span>
+                        <span class="skill-name">辦公應用</span>
+                        <div class="skill-tags"><span class="skill-tag">試算表</span><span class="skill-tag">文書</span><span class="skill-tag">報告</span></div>
+                        <div class="skill-tools">
+                        <div class="skill-tool-item">
+                            <span class="skill-tool-name">Excel</span>
+                            <div class="skill-bar"><div class="skill-bar__fill" style="--level: 80%"></div></div>
                         </div>
-                        <div class="skill-tags"><span class="skill-tag">辦公應用</span><span
-                                class="skill-tag">試算表</span><span class="skill-tag">文書</span></div>
+                        <div class="skill-tool-item">
+                            <span class="skill-tool-name">Word</span>
+                            <div class="skill-bar"><div class="skill-bar__fill" style="--level: 90%"></div></div>
+                        </div>
+                        </div>
                     </div>
-                </div>
 
+                </div>
                 <p class="no-result" id="noResult">找不到「<span id="noResultKeyword"></span>」相關技能，換個關鍵字試試？</p>
             </section>
 
