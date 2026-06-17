@@ -509,12 +509,18 @@
         }
 
         .skill-tag {
-            background: var(--light-yellow);
-            color: var(--primary-dark-brown);
-            font-size: 0.72rem;
-            font-weight: 600;
-            padding: 2px 9px;
-            border-radius: var(--radius-pill);
+            background: transparent;
+            color: var(--dark-gray);
+            font-size: 0.75rem;
+            font-weight: 400;
+            padding: 0;
+            border-radius: 0;
+        }
+
+        .skill-tag::before {
+            content: '# ';
+            color: var(--primary-yellow);
+            font-weight: 700;
         }
 
         .badge--ing {
