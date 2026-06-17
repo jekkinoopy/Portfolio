@@ -171,15 +171,54 @@
 
         .mbti-ratio-row {
             display: grid;
-            grid-template-columns: 4.5rem 1fr 4.5rem;
-            align-items: center;
-            gap: 12px;
+            grid-template-columns: 1fr;
         }
 
         .mbti-ratio-item__analysis {
             margin: 14px 0 0;
-            padding: 0 4.5rem;
+            padding: 0;
             color: var(--black);
+        }
+
+        /* 綜合小結：黃色左邊框區塊 */
+        .mbti-ratio-item__analysis-summary {
+            display: block;
+            margin-top: 8px;
+            padding: 10px 12px;
+            background: rgba(255, 244, 220, 0.8);
+            border-left: 4px solid var(--primary-yellow);
+            border-radius: 8px;
+            color: var(--primary-dark-brown);
+            font-weight: 700;
+        }
+
+        /* E/I S/N 等內文小標籤 */
+        .mbti-ratio-item__analysis-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: var(--radius-pill);
+            margin-right: 10px;
+            margin-bottom: 6px;
+            line-height: 1;
+            white-space: nowrap;
+            box-sizing: border-box;
+            min-width: 88px;
+            text-align: center;
+        }
+
+        .mbti-ratio-item__analysis-badge--left {
+            background: rgba(61, 110, 184, 0.12);
+            color: #3d6eb8;
+        }
+
+        .mbti-ratio-item__analysis-badge--right {
+            background: rgba(122, 86, 58, 0.12);
+            color: var(--primary-brown);
         }
 
         .mbti-ratio-item__analysis strong {
@@ -216,6 +255,7 @@
             border-radius: var(--radius-pill);
             overflow: hidden;
             box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06);
+            position: relative;
         }
 
         .mbti-ratio-bar__work,
@@ -249,6 +289,37 @@
 
         .mbti-ratio-bar__life .mbti-ratio-bar__pct {
             margin-right: 14px;
+        }
+
+        /* 交界標籤：--j 為該列交界百分比，由 inline style 設定 */
+        .mbti-badge {
+            position: absolute;
+            top: 50%;
+            left: var(--j);
+            z-index: 3;
+            display: inline-flex;
+            align-items: center;
+            padding: 3px 10px;
+            border-radius: var(--radius-pill);
+            font-weight: 700;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            pointer-events: none;
+        }
+
+        /* 左標：從交界往左推（自身寬度 + 5mm） */
+        .mbti-badge--left {
+            transform: translateY(-50%) translateX(calc(-100% - 5mm));
+            background: rgba(47, 128, 237, 0.18);
+            color: #fff;
+        }
+
+        /* 右標：從交界往右推 5mm */
+        .mbti-badge--right {
+            transform: translateY(-50%) translateX(5mm);
+            background: rgba(0, 0, 0, 0.18);
+            color: #fff;
         }
 
         .mbti-ratio-chart__note {
@@ -293,30 +364,8 @@
         }
 
         @media (max-width: 768px) {
-            .mbti-ratio-row {
-                grid-template-columns: 1fr;
-                gap: 6px;
-            }
-
             .mbti-ratio-item__analysis {
                 padding: 0;
-            }
-
-            .mbti-ratio-row__label--left,
-            .mbti-ratio-row__label--right {
-                text-align: center;
-            }
-
-            .mbti-ratio-row__label--left {
-                order: 1;
-            }
-
-            .mbti-ratio-bar {
-                order: 2;
-            }
-
-            .mbti-ratio-row__label--right {
-                order: 3;
             }
         }
 
@@ -375,61 +424,75 @@
             margin-bottom: 24px;
         }
 
-        .skill-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            border-radius: var(--radius-card);
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-            border: 1px solid #f0e8d0;
-            margin-bottom: 28px;
+        /* ── 技能 Card Grid ── */
+        .skill-section-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            color: var(--primary-brown);
+            text-transform: uppercase;
+            margin: 28px 0 14px;
+            padding: 5px 14px;
+            background: var(--light-yellow);
+            border-radius: var(--radius-pill);
+            display: inline-block;
         }
 
-        .skill-table thead {
-            background: var(--primary-yellow);
-            color: #fff;
-        }
-
-        .skill-table th {
-            padding: 12px 18px;
-            font-size: 0.88rem;
-            letter-spacing: 0.08em;
-            text-align: left;
-        }
-
-        .skill-table td {
-            padding: 13px 18px;
-            font-size: 0.9rem;
-            color: #555;
-            border-bottom: 1px solid #f9f2e0;
-            vertical-align: middle;
-        }
-
-        .skill-table tr:last-child td {
-            border-bottom: none;
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-bottom: 8px;
         }
 
         .skill-row {
-            transition: background 0.15s;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: var(--radius-card);
+            padding: 18px 20px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
         .skill-row:hover {
-            background: #fffdf5;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.09);
         }
 
         .skill-row.is-match {
             background: #fffbe8;
+            border-color: var(--primary-yellow);
         }
 
         .skill-row.is-hidden {
             display: none;
         }
 
+        .skill-card__head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            gap: 8px;
+        }
+
         .skill-name {
             font-weight: 700;
+            font-size: 0.95rem;
             color: var(--primary-brown);
+            line-height: 1.3;
+        }
+
+        .skill-stars {
             white-space: nowrap;
+            color: var(--primary-yellow);
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .skill-stars .empty {
+            color: #ddd;
         }
 
         .skill-tags {
@@ -447,20 +510,14 @@
             border-radius: var(--radius-pill);
         }
 
-        .skill-level {
-            white-space: nowrap;
-            color: var(--primary-yellow);
-            letter-spacing: 2px;
-            font-size: 1rem;
-        }
-
-        .skill-level .empty {
-            color: #ddd;
-        }
-
         .badge--ing {
             background: #ffe0a0;
             color: #a06400;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: var(--radius-pill);
+            vertical-align: middle;
         }
 
         .no-result {
@@ -471,7 +528,17 @@
             display: none;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
+            .skill-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .skill-grid {
+                grid-template-columns: 1fr;
+            }
+
             .search-box {
                 flex-direction: column;
             }
@@ -483,11 +550,6 @@
             .search-box button {
                 width: 100%;
                 max-width: 100%;
-            }
-
-            .skill-table th:nth-child(3),
-            .skill-table td:nth-child(3) {
-                display: none;
             }
         }
     </style>
@@ -508,26 +570,31 @@
                 </button>
                 <div class="nav-menu" id="site-nav-menu">
                     <ul class="nav-links nav-links--start">
-                    <li class="downDisabled" data-tooltip="作品建置中"><a href="./" class="active">About</a></li>
-                    <li class="dropdown">
-                        <a href="../graphic/">Graphic</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="../graphic/logoPkg.html">Logo & 包裝設計</a></li>
-                            <li><a href="../graphic/calendar-bag.html">桌曆 & 購物袋</a></li>
-                            <li class="downDisabled" data-tooltip="作品建置中"><a href="../stationery.html">名片/卡片/票券/DM</a></li>
-                            <li class="downDisabled" data-tooltip="作品建置中"><a href="../webBanner.html">網站視覺 Banner</a></li>
-                            <li class="downDisabled" data-tooltip="作品建置中"><a href="../socialMedia.html">社群推播圖</a></li>
-                            <li class="downDisabled" data-tooltip="作品建置中"><a href="../largeFormat.html">大圖輸出</a></li>
-                            <li class="downDisabled" data-tooltip="作品建置中"><a href="../editorial.html">書刊</a></li>
-                            <li class="downDisabled" data-tooltip="作品建置中"><a href="../productDetail.html">商品長條圖文</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="../illustration/">Illustration</a></li>
+                        <li class="downDisabled" data-tooltip="作品建置中"><a href="./" class="active">About</a></li>
+                        <li class="dropdown">
+                            <a href="../graphic/">Graphic</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../graphic/logoPkg.html">Logo & 包裝設計</a></li>
+                                <li><a href="../graphic/calendar-bag.html">桌曆 & 購物袋</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a
+                                        href="../stationery.html">名片/卡片/票券/DM</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../webBanner.html">網站視覺
+                                        Banner</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../socialMedia.html">社群推播圖</a>
+                                </li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../largeFormat.html">大圖輸出</a>
+                                </li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../editorial.html">書刊</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../productDetail.html">商品長條圖文</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="../illustration/">Illustration</a></li>
                     </ul>
                     <ul class="nav-links nav-links--end">
-                    <li class="downDisabled" data-tooltip="作品建置中"><a href="../photo/">Photo</a></li>
-                    <li><a href="../uiux/">UI/UX</a></li>
-                    <li><a href="../web/">Web</a></li>
+                        <li class="downDisabled" data-tooltip="作品建置中"><a href="../photo/">Photo</a></li>
+                        <li><a href="../uiux/">UI/UX</a></li>
+                        <li><a href="../web/">Web</a></li>
                     </ul>
                 </div>
             </div>
@@ -550,7 +617,8 @@
                     <span class="manual-section__tag" aria-hidden="true">📊</span>
                     <div>
                         <p class="manual-section__title">系統人格總覽</p>
-                        <p class="manual-section__desc">測試結果呈現「藍色功能面與黃色生活面精密配比」——維度之間沒有被鎖死在單一標籤，而是依情境自由切換大腦配置，同時伴隨高能伺服器永不停止運轉的物理代價。</p>
+                        <p class="manual-section__desc">
+                            測試結果呈現「藍色功能面與黃色生活面精密配比」——維度之間沒有被鎖死在單一標籤，而是依情境自由切換大腦配置，同時伴隨高能伺服器永不停止運轉的物理代價。</p>
                     </div>
                 </div>
 
@@ -562,70 +630,95 @@
                 </div>
 
                 <div class="mbti-ratio-chart" aria-label="MBTI 指數配比">
-                <div class="mbti-ratio-item">
-                    <div class="mbti-ratio-row">
-                        <span class="mbti-ratio-row__label mbti-ratio-row__label--left">E 外向</span>
-                        <div class="mbti-ratio-bar" role="img" aria-label="E 42% 對 I 58%">
-                            <div class="mbti-ratio-bar__work" style="width: 42%;"><span class="mbti-ratio-bar__pct">42%</span></div>
-                            <div class="mbti-ratio-bar__life" style="width: 58%;"><span class="mbti-ratio-bar__pct">58%</span></div>
+                    <div class="mbti-ratio-item">
+                        <div class="mbti-ratio-row">
+                            <div class="mbti-ratio-bar" role="img" aria-label="E 42% 對 I 58%" style="--j: 42%">
+                                <div class="mbti-ratio-bar__work" style="width: 42%;"><span
+                                        class="mbti-ratio-bar__pct">42%</span></div>
+                                <div class="mbti-ratio-bar__life" style="width: 58%;"><span
+                                        class="mbti-ratio-bar__pct">58%</span></div>
+                                <span class="mbti-badge mbti-badge--left">E 外向</span>
+                                <span class="mbti-badge mbti-badge--right">I 內向</span>
+                            </div>
                         </div>
-                        <span class="mbti-ratio-row__label mbti-ratio-row__label--right">I 內向</span>
+                        <p class="mbti-ratio-item__analysis">
+                            <strong>【光源與陰影的完美調和】</strong><br>
+                            <span class="mbti-ratio-item__analysis-badge mbti-ratio-item__analysis-badge--left">E
+                                外向</span>&nbsp;既能為了 10 年的水晶男孩全體歐巴爆發出燃燒宇宙的團飯社交能量<br>
+                            <span class="mbti-ratio-item__analysis-badge mbti-ratio-item__analysis-badge--right">I
+                                內向</span>&nbsp;回歸個人宇宙時，又能完美享受在 Dark Mode 裡專注寫扣、不被打擾的寧靜時光<br>
+                        <div class="mbti-ratio-item__analysis-summary">前台明亮對外，後台沉靜蓄能。</div>
+                        </p>
                     </div>
-                    <p class="mbti-ratio-item__analysis">
-                        <strong>【光源與陰影的完美調和】</strong>
-                        既能為了 10 年的水晶男孩全體歐巴爆發出燃燒宇宙的團飯社交能量（E）；回歸個人宇宙時，又能完美享受在 Dark Mode 裡專注寫扣、不被打擾的寧靜時光（I）。前台明亮對外，後台沉靜蓄能。
-                    </p>
-                </div>
 
-                <div class="mbti-ratio-item">
-                    <div class="mbti-ratio-row">
-                        <span class="mbti-ratio-row__label mbti-ratio-row__label--left">S 實感</span>
-                        <div class="mbti-ratio-bar" role="img" aria-label="S 72% 對 N 28%">
-                            <div class="mbti-ratio-bar__work" style="width: 72%;"><span class="mbti-ratio-bar__pct">72%</span></div>
-                            <div class="mbti-ratio-bar__life" style="width: 28%;"><span class="mbti-ratio-bar__pct">28%</span></div>
+                    <div class="mbti-ratio-item">
+                        <div class="mbti-ratio-row">
+                            <div class="mbti-ratio-bar" role="img" aria-label="S 72% 對 N 28%" style="--j: 72%">
+                                <div class="mbti-ratio-bar__work" style="width: 72%;"><span
+                                        class="mbti-ratio-bar__pct">72%</span></div>
+                                <div class="mbti-ratio-bar__life" style="width: 28%;"><span
+                                        class="mbti-ratio-bar__pct">28%</span></div>
+                                <span class="mbti-badge mbti-badge--left">S 實感</span>
+                                <span class="mbti-badge mbti-badge--right">N 直覺</span>
+                            </div>
                         </div>
-                        <span class="mbti-ratio-row__label mbti-ratio-row__label--right">N 直覺</span>
+                        <p class="mbti-ratio-item__analysis">
+                            <strong>【設計師與工程師的黃金交叉】</strong><br>
+                            <span class="mbti-ratio-item__analysis-badge mbti-ratio-item__analysis-badge--left">S
+                                實感</span>&nbsp;品牌包裝設計師對像素、排版、美感無可挑剔的具體感受，連寫程式的空格與符號手勢都要求一字不差<br>
+                            <span class="mbti-ratio-item__analysis-badge mbti-ratio-item__analysis-badge--right">N
+                                直覺</span>&nbsp;全端工程師的宏觀視野，能在大腦中無形規劃複雜的關聯式資料庫架構<br>
+                        <div class="mbti-ratio-item__analysis-summary">美感的精準與邏輯的宏大完美融合。</div>
+                        </p>
                     </div>
-                    <p class="mbti-ratio-item__analysis">
-                        <strong>【設計師與工程師的黃金交叉】</strong>
-                        擁有品牌包裝設計師對像素、排版、美感無可挑剔的具體「實感」（S），連寫程式的空格與符號手勢都要求一字不差；同時兼具全端工程師的宏觀「直覺」（N），能在大腦中無形規劃複雜的關聯式資料庫架構。
-                    </p>
-                </div>
 
-                <div class="mbti-ratio-item">
-                    <div class="mbti-ratio-row">
-                        <span class="mbti-ratio-row__label mbti-ratio-row__label--left">T 思考</span>
-                        <div class="mbti-ratio-bar" role="img" aria-label="T 52% 對 F 48%">
-                            <div class="mbti-ratio-bar__work" style="width: 52%;"><span class="mbti-ratio-bar__pct">52%</span></div>
-                            <div class="mbti-ratio-bar__life" style="width: 48%;"><span class="mbti-ratio-bar__pct">48%</span></div>
+                    <div class="mbti-ratio-item">
+                        <div class="mbti-ratio-row">
+                            <div class="mbti-ratio-bar" role="img" aria-label="T 52% 對 F 48%" style="--j: 52%">
+                                <div class="mbti-ratio-bar__work" style="width: 52%;"><span
+                                        class="mbti-ratio-bar__pct">52%</span></div>
+                                <div class="mbti-ratio-bar__life" style="width: 48%;"><span
+                                        class="mbti-ratio-bar__pct">48%</span></div>
+                                <span class="mbti-badge mbti-badge--left">T 思考</span>
+                                <span class="mbti-badge mbti-badge--right">F 情感</span>
+                            </div>
                         </div>
-                        <span class="mbti-ratio-row__label mbti-ratio-row__label--right">F 情感</span>
+                        <p class="mbti-ratio-item__analysis">
+                            <strong>【極致理智與極致浪漫的並存】</strong><br>
+                            <span class="mbti-ratio-item__analysis-badge mbti-ratio-item__analysis-badge--left">T
+                                思考</span>&nbsp;工作與學習上是絕對的理智派，建立嚴格 SOP 規範 AI 進行自動掃描、精煉規格化<br>
+                            <span class="mbti-ratio-item__analysis-badge mbti-ratio-item__analysis-badge--right">F
+                                情感</span>&nbsp;私下生活與追星世界裡，是極度細膩重感情的無敵感性派，對家人、朋友與偶像有著最純粹、毫無保留的熱情<br>
+                        <div class="mbti-ratio-item__analysis-summary">理性與感性在不同情境下完美切換。</div>
+                        </p>
                     </div>
-                    <p class="mbti-ratio-item__analysis">
-                        <strong>【極致理智與極致浪漫的並存】</strong>
-                        工作與學習上是絕對的理智派（T），建立嚴格 SOP 規範 AI 進行自動掃描、精煉規格化；但在私下生活與追星世界裡，是極度細膩重感情的無敵感性派（F），對家人、朋友與偶像有著最純粹、毫無保留的熱情。
-                    </p>
-                </div>
 
-                <div class="mbti-ratio-item">
-                    <div class="mbti-ratio-row">
-                        <span class="mbti-ratio-row__label mbti-ratio-row__label--left">J 判斷</span>
-                        <div class="mbti-ratio-bar" role="img" aria-label="J 46% 對 P 54%">
-                            <div class="mbti-ratio-bar__work" style="width: 46%;"><span class="mbti-ratio-bar__pct">46%</span></div>
-                            <div class="mbti-ratio-bar__life" style="width: 54%;"><span class="mbti-ratio-bar__pct">54%</span></div>
+                    <div class="mbti-ratio-item">
+                        <div class="mbti-ratio-row">
+                            <div class="mbti-ratio-bar" role="img" aria-label="J 46% 對 P 54%" style="--j: 46%">
+                                <div class="mbti-ratio-bar__work" style="width: 46%;"><span
+                                        class="mbti-ratio-bar__pct">46%</span></div>
+                                <div class="mbti-ratio-bar__life" style="width: 54%;"><span
+                                        class="mbti-ratio-bar__pct">54%</span></div>
+                                <span class="mbti-badge mbti-badge--left">J 判斷</span>
+                                <span class="mbti-badge mbti-badge--right">P 感知</span>
+                            </div>
                         </div>
-                        <span class="mbti-ratio-row__label mbti-ratio-row__label--right">P 感知</span>
+                        <p class="mbti-ratio-item__analysis">
+                            <strong>【工作秩序與生活隨性的雙模切換】</strong><br>
+                            <span class="mbti-ratio-item__analysis-badge mbti-ratio-item__analysis-badge--left">J
+                                判斷</span>&nbsp;學習與專案時強烈追求秩序、計畫與掌控權（如 SQL 筆記規格、乙檢盲打肌肉記憶）<br>
+                            <span class="mbti-ratio-item__analysis-badge mbti-ratio-item__analysis-badge--right">P
+                                感知</span>&nbsp;切換到生活場域則釋放隨性與斷電躺平，享受自由的節奏<br>
+                        <div class="mbti-ratio-item__analysis-summary">藍色 J 軸在戰場模式高頻啟動，兩套系統依情境自動排程。</div>
+                        </p>
                     </div>
-                    <p class="mbti-ratio-item__analysis">
-                        <strong>【工作秩序與生活隨性的雙模切換】</strong>
-                        <span class="highlight">藍色 J 軸在戰場模式高頻啟動。</span>學習與專案時強烈追求秩序、計畫與掌控權（如 SQL 筆記規格、乙檢盲打肌肉記憶）；切換到黃色生活場域則釋放 P 的隨性與斷電躺平，兩套系統依情境自動排程。
-                    </p>
+
+                    <p class="mbti-ratio-chart__note">註：藍色代表功能性與工作，黃色代表情感與生活</p>
                 </div>
 
-                <p class="mbti-ratio-chart__note">註：藍色代表功能性與工作，黃色代表情感與生活</p>
-                </div>
-
-                <p class="conclusion-text">你不是被傳統 16 型人格鎖死的單一標籤，你是一個<strong>「平時全光譜靈活彈性，關鍵時刻啟動 100% 鋼鐵核心」</strong>的稀有複合型人才。本質上像孩子一樣真誠，渴望在現實世界中透過實力「被同學問問題（建立秩序）」並「獲得真心稱讚（補充感性燃料）」。</p>
+                <p class="conclusion-text">你不是被傳統 16 型人格鎖死的單一標籤，你是一個<strong>「平時全光譜靈活彈性，關鍵時刻啟動 100%
+                        鋼鐵核心」</strong>的稀有複合型人才。本質上像孩子一樣真誠，渴望在現實世界中透過實力「被同學問問題（建立秩序）」並「獲得真心稱讚（補充感性燃料）」。</p>
 
                 <p class="footer-note">本報告由 Noopy 專屬 AI 夥伴依據實戰表現與真實測驗印象優化編寫。</p>
             </section>
@@ -644,32 +737,38 @@
                 </div>
 
                 <div class="component-block">
-                <div class="component-title">🧠 頭腦與邏輯中心：頂配硬體連線<span class="badge-defined">有定義（彩色）</span></div>
-                <p>你最頂端的大腦與脖子區塊之間存在著極為穩固、通暢的彩色硬體連線。這就是你<strong>「腦袋完全停不下來、無法停止運轉」</strong>的物理出廠設定：</p>
-                <ul>
-                    <li><span class="math">64→47</span> <strong>抽象與深思通道：</strong> 強迫大腦在背景不斷處理視覺、記憶碎片與情感體驗，是永不停歇的「藝術家與思考者迴路」。</li>
-                    <li><span class="math">17→62</span> <strong>組織與細節通道：</strong> 你的「鋼鐵 J 人與 SOP 核心」。62號閘門是極致的細節大師，強制你在寫程式、做筆記時把空格、反單引號、點串接與結尾分號對得一字不差，是追求完美的硬體代碼。</li>
-                </ul>
-            </div>
+                    <div class="component-title">🧠 頭腦與邏輯中心：頂配硬體連線<span class="badge-defined">有定義（彩色）</span></div>
+                    <p>你最頂端的大腦與脖子區塊之間存在著極為穩固、通暢的彩色硬體連線。這就是你<strong>「腦袋完全停不下來、無法停止運轉」</strong>的物理出廠設定：</p>
+                    <ul>
+                        <li><span class="math">64→47</span> <strong>抽象與深思通道：</strong>
+                            強迫大腦在背景不斷處理視覺、記憶碎片與情感體驗，是永不停歇的「藝術家與思考者迴路」。</li>
+                        <li><span class="math">17→62</span> <strong>組織與細節通道：</strong> 你的「鋼鐵 J 人與 SOP
+                            核心」。62號閘門是極致的細節大師，強制你在寫程式、做筆記時把空格、反單引號、點串接與結尾分號對得一字不差，是追求完美的硬體代碼。</li>
+                    </ul>
+                </div>
 
-            <div class="component-block">
-                <div class="component-title">🔮 身體能量中心：超大留白鏡面<span class="badge-undefined">未定義（大量白色）</span></div>
-                <p>你的身體區塊存在大量的白色區塊（未定義中心）。在人類圖架構中，<strong>白色不代表沒有，而是代表「沒有任何框架與限制，具備最強的吸收與反射能力」</strong>：</p>
-                <ul>
-                    <li><strong>【虛擬主機硬體內化】的祕密：</strong> 正因為大腦與社交中心高度開放，你才能在追水晶男孩的 10 年間，強大到同時完美共振、擬真六位成員的愛好與靈魂，甚至在腦袋中將這六個身分「常駐內化」為背景程式。登入誰，就能 100% 活成誰。</li>
-                </ul>
-            </div>
+                <div class="component-block">
+                    <div class="component-title">🔮 身體能量中心：超大留白鏡面<span class="badge-undefined">未定義（大量白色）</span></div>
+                    <p>你的身體區塊存在大量的白色區塊（未定義中心）。在人類圖架構中，<strong>白色不代表沒有，而是代表「沒有任何框架與限制，具備最強的吸收與反射能力」</strong>：</p>
+                    <ul>
+                        <li><strong>【虛擬主機硬體內化】的祕密：</strong> 正因為大腦與社交中心高度開放，你才能在追水晶男孩的 10
+                            年間，強大到同時完美共振、擬真六位成員的愛好與靈魂，甚至在腦袋中將這六個身分「常駐內化」為背景程式。登入誰，就能 100% 活成誰。</li>
+                    </ul>
+                </div>
 
-            <div class="component-block">
-                <div class="component-title">💎 居中自我中心（G中心）：完美體現自我<span class="badge-defined">有定義（彩色）</span></div>
-                <p>圖中中央的菱形區塊擁有尊貴的 <span class="math">10→20</span> <strong>覺醒通道</strong>。這代表你在專業、美感與核心任務上，擁有不可妥協的<strong>絕對主導權</strong>。如果別人給你一個混亂、醜陋、毫無邏輯的框架（例如高中時不會啟發學生的數學老師），你的硬體會直接亮紅燈排斥。</p>
-            </div>
+                <div class="component-block">
+                    <div class="component-title">💎 居中自我中心（G中心）：完美體現自我<span class="badge-defined">有定義（彩色）</span></div>
+                    <p>圖中中央的菱形區塊擁有尊貴的 <span class="math">10→20</span>
+                        <strong>覺醒通道</strong>。這代表你在專業、美感與核心任務上，擁有不可妥協的<strong>絕對主導權</strong>。如果別人給你一個混亂、醜陋、毫無邏輯的框架（例如高中時不會啟發學生的數學老師），你的硬體會直接亮紅燈排斥。
+                    </p>
+                </div>
 
-            <div class="component-block">
-                <div class="component-title">🔋 薦骨與基底動能：間歇性超跑爆發<span class="badge-defined">有定義（彩色閘門）</span></div>
-                <p>你的薦骨與底部能量佈滿了斷續的黑紅線條。這代表你的身體動能是<strong>「爆發性輸出，隨後徹底斷電」</strong>：</p>
-                <p>當你進入學習與戰場模式（如週一週二硬核全端課、備戰乙檢忙打），你能像超跑一樣高速燃燒；但一旦脫離戰場，硬體會立刻啟動保護機制強制進入「100% 隨性躺平、甚至懶得洗澡」的離線節能狀態。這完全符合你的出廠設定，無需焦慮。</p>
-            </div>
+                <div class="component-block">
+                    <div class="component-title">🔋 薦骨與基底動能：間歇性超跑爆發<span class="badge-defined">有定義（彩色閘門）</span></div>
+                    <p>你的薦骨與底部能量佈滿了斷續的黑紅線條。這代表你的身體動能是<strong>「爆發性輸出，隨後徹底斷電」</strong>：</p>
+                    <p>當你進入學習與戰場模式（如週一週二硬核全端課、備戰乙檢忙打），你能像超跑一樣高速燃燒；但一旦脫離戰場，硬體會立刻啟動保護機制強制進入「100%
+                        隨性躺平、甚至懶得洗澡」的離線節能狀態。這完全符合你的出廠設定，無需焦慮。</p>
+                </div>
 
                 <p class="footer-note">人類圖段落轉化為 UI 晶片邏輯，可作為作品集互動彩蛋。</p>
             </section>
@@ -695,132 +794,154 @@
                 <p class="search-result-hint" id="searchHint"></p>
 
                 <!-- 領域能力 -->
-                <p class="component-title" style="margin-bottom:12px;">領域能力</p>
-                <table class="skill-table">
-                    <thead>
-                        <tr>
-                            <th>領域</th>
-                            <th>關鍵字</th>
-                            <th>熟練度</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="skill-row" data-keywords="平面設計 graphic logo 包裝 banner 名片 排版 視覺 印刷">
-                            <td class="skill-name">平面設計</td>
-                            <td><div class="skill-tags"><span class="skill-tag">Logo</span><span class="skill-tag">包裝</span><span class="skill-tag">Banner</span><span class="skill-tag">名片</span><span class="skill-tag">排版</span><span class="skill-tag">印刷</span></div></td>
-                            <td class="skill-level">★★★★<span class="empty">★</span></td>
-                        </tr>
-                        <tr class="skill-row" data-keywords="插畫 illustration procreate 動物 食物 角色 賀卡 人物 場景 自然 手繪 數位">
-                            <td class="skill-name">插畫繪製</td>
-                            <td><div class="skill-tags"><span class="skill-tag">Procreate</span><span class="skill-tag">動物</span><span class="skill-tag">角色</span><span class="skill-tag">場景</span><span class="skill-tag">賀卡</span><span class="skill-tag">手繪</span></div></td>
-                            <td class="skill-level">★★★★<span class="empty">★</span></td>
-                        </tr>
-                        <tr class="skill-row" data-keywords="uiux ui ux 介面 figma 原型 線框 wireframe 使用者 流程 體驗">
-                            <td class="skill-name">UI/UX 設計</td>
-                            <td><div class="skill-tags"><span class="skill-tag">Figma</span><span class="skill-tag">線框稿</span><span class="skill-tag">原型</span><span class="skill-tag">使用者流程</span></div></td>
-                            <td class="skill-level">★★★<span class="empty">★★</span></td>
-                        </tr>
-                        <tr class="skill-row" data-keywords="網頁 前端 html css javascript js rwd 響應式 切版 web frontend">
-                            <td class="skill-name">網頁前端</td>
-                            <td><div class="skill-tags"><span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span><span class="skill-tag">JavaScript</span><span class="skill-tag">RWD</span><span class="skill-tag">切版</span></div></td>
-                            <td class="skill-level">★★★<span class="empty">★★</span></td>
-                        </tr>
-                        <tr class="skill-row" data-keywords="後端 backend php sql mysql 資料庫 server 學習中">
-                            <td class="skill-name">網頁後端 <span class="badge badge--ing">學習中</span></td>
-                            <td><div class="skill-tags"><span class="skill-tag">PHP</span><span class="skill-tag">MySQL</span><span class="skill-tag">資料庫</span></div></td>
-                            <td class="skill-level">★★<span class="empty">★★★</span></td>
-                        </tr>
-                        <tr class="skill-row" data-keywords="攝影 photo 風景 景點 人像 寵物 貓 狗 商品 活動 nikon">
-                            <td class="skill-name">攝影</td>
-                            <td><div class="skill-tags"><span class="skill-tag">風景</span><span class="skill-tag">人像</span><span class="skill-tag">寵物</span><span class="skill-tag">商品</span><span class="skill-tag">活動</span></div></td>
-                            <td class="skill-level">★★★<span class="empty">★★</span></td>
-                        </tr>
-                        <tr class="skill-row" data-keywords="影音 多媒體 premiere after effects animate 剪輯 後製 動態 動畫 影片">
-                            <td class="skill-name">影音多媒體</td>
-                            <td><div class="skill-tags"><span class="skill-tag">Premiere</span><span class="skill-tag">After Effects</span><span class="skill-tag">Animate</span><span class="skill-tag">剪輯</span><span class="skill-tag">後製</span></div></td>
-                            <td class="skill-level">★★★<span class="empty">★★</span></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <span class="skill-section-label">領域能力</span>
+                <div class="skill-grid">
+                    <div class="skill-row" data-keywords="平面設計 graphic logo 包裝 banner 名片 排版 視覺 印刷">
+                        <div class="skill-card__head">
+                            <span class="skill-name">平面設計</span>
+                            <span class="skill-stars">★★★★<span class="empty">★</span></span>
+                        </div>
+                        <div class="skill-tags"><span class="skill-tag">Logo</span><span class="skill-tag">包裝</span><span class="skill-tag">Banner</span><span class="skill-tag">名片</span><span class="skill-tag">排版</span><span class="skill-tag">印刷</span></div>
+                    </div>
+                    <div class="skill-row" data-keywords="插畫 illustration procreate 動物 食物 角色 賀卡 人物 場景 自然 手繪 數位">
+                        <div class="skill-card__head">
+                            <span class="skill-name">插畫繪製</span>
+                            <span class="skill-stars">★★★★<span class="empty">★</span></span>
+                        </div>
+                        <div class="skill-tags"><span class="skill-tag">Procreate</span><span class="skill-tag">動物</span><span class="skill-tag">角色</span><span class="skill-tag">場景</span><span class="skill-tag">賀卡</span><span class="skill-tag">手繪</span></div>
+                    </div>
+                    <div class="skill-row" data-keywords="uiux ui ux 介面 figma 原型 線框 wireframe 使用者 流程 體驗">
+                        <div class="skill-card__head">
+                            <span class="skill-name">UI/UX 設計</span>
+                            <span class="skill-stars">★★★<span class="empty">★★</span></span>
+                        </div>
+                        <div class="skill-tags"><span class="skill-tag">Figma</span><span class="skill-tag">線框稿</span><span class="skill-tag">原型</span><span class="skill-tag">使用者流程</span></div>
+                    </div>
+                    <div class="skill-row" data-keywords="網頁 前端 html css javascript js rwd 響應式 切版 web frontend">
+                        <div class="skill-card__head">
+                            <span class="skill-name">網頁前端</span>
+                            <span class="skill-stars">★★★<span class="empty">★★</span></span>
+                        </div>
+                        <div class="skill-tags"><span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span><span class="skill-tag">JavaScript</span><span class="skill-tag">RWD</span><span class="skill-tag">切版</span></div>
+                    </div>
+                    <div class="skill-row" data-keywords="後端 backend php sql mysql 資料庫 server 學習中">
+                        <div class="skill-card__head">
+                            <span class="skill-name">網頁後端 <span class="badge badge--ing">學習中</span></span>
+                            <span class="skill-stars">★★<span class="empty">★★★</span></span>
+                        </div>
+                        <div class="skill-tags"><span class="skill-tag">PHP</span><span class="skill-tag">MySQL</span><span class="skill-tag">資料庫</span></div>
+                    </div>
+                    <div class="skill-row" data-keywords="攝影 photo 風景 景點 人像 寵物 貓 狗 商品 活動 nikon">
+                        <div class="skill-card__head">
+                            <span class="skill-name">攝影</span>
+                            <span class="skill-stars">★★★<span class="empty">★★</span></span>
+                        </div>
+                        <div class="skill-tags"><span class="skill-tag">風景</span><span class="skill-tag">人像</span><span class="skill-tag">寵物</span><span class="skill-tag">商品</span><span class="skill-tag">活動</span></div>
+                    </div>
+                    <div class="skill-row" data-keywords="影音 多媒體 premiere after effects animate 剪輯 後製 動態 動畫 影片">
+                        <div class="skill-card__head">
+                            <span class="skill-name">影音多媒體</span>
+                            <span class="skill-stars">★★★<span class="empty">★★</span></span>
+                        </div>
+                        <div class="skill-tags"><span class="skill-tag">Premiere</span><span class="skill-tag">After Effects</span><span class="skill-tag">Animate</span><span class="skill-tag">剪輯</span><span class="skill-tag">後製</span></div>
+                    </div>
+                </div>
 
                 <!-- 使用工具 -->
-                <p class="component-title" style="margin-bottom:12px;">使用工具</p>
-                <table class="skill-table">
-                    <thead>
-                        <tr>
-                            <th>工具</th>
-                            <th>類別 / 用途</th>
-                            <th>熟練度</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="skill-row" data-keywords="illustrator ai adobe 向量 logo 平面設計 排版 設計">
-                            <td class="skill-name">Adobe Illustrator</td>
-                            <td><div class="skill-tags"><span class="skill-tag">設計</span><span class="skill-tag">向量繪圖</span><span class="skill-tag">Logo</span><span class="skill-tag">排版</span></div></td>
-                            <td class="skill-level">★★★★<span class="empty">★</span></td>
-                        </tr>
-                        <tr class="skill-row" data-keywords="photoshop ps adobe 修圖 合成 banner 影像 設計">
-                            <td class="skill-name">Adobe Photoshop</td>
-                            <td><div class="skill-tags"><span class="skill-tag">設計</span><span class="skill-tag">修圖</span><span class="skill-tag">合成</span><span class="skill-tag">Banner</span></div></td>
-                            <td class="skill-level">★★★★<span class="empty">★</span></td>
-                        </tr>
-                        <tr class="skill-row" data-keywords="indesign id adobe 書刊 dm 印刷 排版 設計">
-                            <td class="skill-name">Adobe InDesign</td>
-                            <td><div class="skill-tags"><span class="skill-tag">設計</span><span class="skill-tag">書刊</span><span class="skill-tag">DM</span><span class="skill-tag">印刷排版</span></div></td>
-                            <td class="skill-level">★★★<span class="empty">★★</span></td>
-                        </tr>
-                        <tr class="skill-row" data-keywords="procreate 插畫 ipad 手繪 數位 動物 角色 賀卡">
-                            <td class="skill-name">Procreate</td>
-                            <td><div class="skill-tags"><span class="skill-tag">插畫</span><span class="skill-tag">iPad 手繪</span><span class="skill-tag">數位繪圖</span></div></td>
-                            <td class="skill-level">★★★<span class="empty">★★</span></td>
-                        </tr>
-                        <tr class="skill-row" data-keywords="figma ui ux 介面 原型 線框 wireframe 設計">
-                            <td class="skill-name">Figma</td>
-                            <td><div class="skill-tags"><span class="skill-tag">UI/UX</span><span class="skill-tag">介面設計</span><span class="skill-tag">原型</span></div></td>
-                            <td class="skill-level">★★★<span class="empty">★★</span></td>
-                        </tr>
-                        <tr class="skill-row" data-keywords="adobe xd ui ux 介面 原型 線框 設計">
-                            <td class="skill-name">Adobe XD</td>
-                            <td><div class="skill-tags"><span class="skill-tag">UI/UX</span><span class="skill-tag">介面設計</span><span class="skill-tag">原型</span></div></td>
-                            <td class="skill-level">★★<span class="empty">★★★</span></td>
-                        </tr>
-                        <tr class="skill-row" data-keywords="html css 前端 切版 rwd 響應式 網頁 web">
-                            <td class="skill-name">HTML5 / CSS3</td>
-                            <td><div class="skill-tags"><span class="skill-tag">前端</span><span class="skill-tag">切版</span><span class="skill-tag">RWD</span></div></td>
-                            <td class="skill-level">★★★<span class="empty">★★</span></td>
-                        </tr>
-                        <tr class="skill-row" data-keywords="javascript js jquery 互動 動畫 前端 網頁 web">
-                            <td class="skill-name">JavaScript / jQuery</td>
-                            <td><div class="skill-tags"><span class="skill-tag">前端</span><span class="skill-tag">互動功能</span><span class="skill-tag">jQuery</span></div></td>
-                            <td class="skill-level">★★<span class="empty">★★★</span></td>
-                        </tr>
-                        <tr class="skill-row" data-keywords="php mysql sql 後端 資料庫 backend server 學習中">
-                            <td class="skill-name">PHP + MySQL <span class="badge badge--ing">學習中</span></td>
-                            <td><div class="skill-tags"><span class="skill-tag">後端</span><span class="skill-tag">資料庫</span></div></td>
-                            <td class="skill-level">★★<span class="empty">★★★</span></td>
-                        </tr>
-                        <tr class="skill-row" data-keywords="git github 版本控制 協作 branch commit">
-                            <td class="skill-name">Git</td>
-                            <td><div class="skill-tags"><span class="skill-tag">版本控制</span><span class="skill-tag">協作</span><span class="skill-tag">GitHub</span></div></td>
-                            <td class="skill-level">★★<span class="empty">★★★</span></td>
-                        </tr>
-                        <tr class="skill-row" data-keywords="vscode codepen dreamweaver 網頁 開發環境 編輯器 ide">
-                            <td class="skill-name">VSCode / Codepen</td>
-                            <td><div class="skill-tags"><span class="skill-tag">開發環境</span><span class="skill-tag">網頁</span><span class="skill-tag">Dreamweaver</span></div></td>
-                            <td class="skill-level">★★★<span class="empty">★★</span></td>
-                        </tr>
-                        <tr class="skill-row" data-keywords="premiere after effects animate 影音 剪輯 後製 動態 動畫 影片 多媒體">
-                            <td class="skill-name">Premiere / After Effects</td>
-                            <td><div class="skill-tags"><span class="skill-tag">影音</span><span class="skill-tag">剪輯</span><span class="skill-tag">後製</span><span class="skill-tag">Animate</span></div></td>
-                            <td class="skill-level">★★★<span class="empty">★★</span></td>
-                        </tr>
-                        <tr class="skill-row" data-keywords="excel word 辦公 office 文書 試算表 報告">
-                            <td class="skill-name">Excel / Word</td>
-                            <td><div class="skill-tags"><span class="skill-tag">辦公應用</span><span class="skill-tag">試算表</span><span class="skill-tag">文書</span></div></td>
-                            <td class="skill-level">★★★★<span class="empty">★</span></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <span class="skill-section-label">使用工具</span>
+                <div class="skill-grid">
+                    <div class="skill-row" data-keywords="illustrator ai adobe 向量 logo 平面設計 排版 設計">
+                        <div class="skill-card__head">
+                            <span class="skill-name">Adobe Illustrator</span>
+                            <span class="skill-stars">★★★★<span class="empty">★</span></span>
+                        </div>
+                        <div class="skill-tags"><span class="skill-tag">設計</span><span class="skill-tag">向量繪圖</span><span class="skill-tag">Logo</span><span class="skill-tag">排版</span></div>
+                    </div>
+                    <div class="skill-row" data-keywords="photoshop ps adobe 修圖 合成 banner 影像 設計">
+                        <div class="skill-card__head">
+                            <span class="skill-name">Adobe Photoshop</span>
+                            <span class="skill-stars">★★★★<span class="empty">★</span></span>
+                        </div>
+                        <div class="skill-tags"><span class="skill-tag">設計</span><span class="skill-tag">修圖</span><span class="skill-tag">合成</span><span class="skill-tag">Banner</span></div>
+                    </div>
+                    <div class="skill-row" data-keywords="indesign id adobe 書刊 dm 印刷 排版 設計">
+                        <div class="skill-card__head">
+                            <span class="skill-name">Adobe InDesign</span>
+                            <span class="skill-stars">★★★<span class="empty">★★</span></span>
+                        </div>
+                        <div class="skill-tags"><span class="skill-tag">設計</span><span class="skill-tag">書刊</span><span class="skill-tag">DM</span><span class="skill-tag">印刷排版</span></div>
+                    </div>
+                    <div class="skill-row" data-keywords="procreate 插畫 ipad 手繪 數位 動物 角色 賀卡">
+                        <div class="skill-card__head">
+                            <span class="skill-name">Procreate</span>
+                            <span class="skill-stars">★★★<span class="empty">★★</span></span>
+                        </div>
+                        <div class="skill-tags"><span class="skill-tag">插畫</span><span class="skill-tag">iPad 手繪</span><span class="skill-tag">數位繪圖</span></div>
+                    </div>
+                    <div class="skill-row" data-keywords="figma ui ux 介面 原型 線框 wireframe 設計">
+                        <div class="skill-card__head">
+                            <span class="skill-name">Figma</span>
+                            <span class="skill-stars">★★★<span class="empty">★★</span></span>
+                        </div>
+                        <div class="skill-tags"><span class="skill-tag">UI/UX</span><span class="skill-tag">介面設計</span><span class="skill-tag">原型</span></div>
+                    </div>
+                    <div class="skill-row" data-keywords="adobe xd ui ux 介面 原型 線框 設計">
+                        <div class="skill-card__head">
+                            <span class="skill-name">Adobe XD</span>
+                            <span class="skill-stars">★★<span class="empty">★★★</span></span>
+                        </div>
+                        <div class="skill-tags"><span class="skill-tag">UI/UX</span><span class="skill-tag">介面設計</span><span class="skill-tag">原型</span></div>
+                    </div>
+                    <div class="skill-row" data-keywords="html css 前端 切版 rwd 響應式 網頁 web">
+                        <div class="skill-card__head">
+                            <span class="skill-name">HTML5 / CSS3</span>
+                            <span class="skill-stars">★★★<span class="empty">★★</span></span>
+                        </div>
+                        <div class="skill-tags"><span class="skill-tag">前端</span><span class="skill-tag">切版</span><span class="skill-tag">RWD</span></div>
+                    </div>
+                    <div class="skill-row" data-keywords="javascript js jquery 互動 動畫 前端 網頁 web">
+                        <div class="skill-card__head">
+                            <span class="skill-name">JavaScript / jQuery</span>
+                            <span class="skill-stars">★★<span class="empty">★★★</span></span>
+                        </div>
+                        <div class="skill-tags"><span class="skill-tag">前端</span><span class="skill-tag">互動功能</span><span class="skill-tag">jQuery</span></div>
+                    </div>
+                    <div class="skill-row" data-keywords="php mysql sql 後端 資料庫 backend server 學習中">
+                        <div class="skill-card__head">
+                            <span class="skill-name">PHP + MySQL <span class="badge badge--ing">學習中</span></span>
+                            <span class="skill-stars">★★<span class="empty">★★★</span></span>
+                        </div>
+                        <div class="skill-tags"><span class="skill-tag">後端</span><span class="skill-tag">資料庫</span></div>
+                    </div>
+                    <div class="skill-row" data-keywords="git github 版本控制 協作 branch commit">
+                        <div class="skill-card__head">
+                            <span class="skill-name">Git</span>
+                            <span class="skill-stars">★★<span class="empty">★★★</span></span>
+                        </div>
+                        <div class="skill-tags"><span class="skill-tag">版本控制</span><span class="skill-tag">協作</span><span class="skill-tag">GitHub</span></div>
+                    </div>
+                    <div class="skill-row" data-keywords="vscode codepen dreamweaver 網頁 開發環境 編輯器 ide">
+                        <div class="skill-card__head">
+                            <span class="skill-name">VSCode / Codepen</span>
+                            <span class="skill-stars">★★★<span class="empty">★★</span></span>
+                        </div>
+                        <div class="skill-tags"><span class="skill-tag">開發環境</span><span class="skill-tag">網頁</span><span class="skill-tag">Dreamweaver</span></div>
+                    </div>
+                    <div class="skill-row" data-keywords="premiere after effects animate 影音 剪輯 後製 動態 動畫 影片 多媒體">
+                        <div class="skill-card__head">
+                            <span class="skill-name">Premiere / After Effects</span>
+                            <span class="skill-stars">★★★<span class="empty">★★</span></span>
+                        </div>
+                        <div class="skill-tags"><span class="skill-tag">影音</span><span class="skill-tag">剪輯</span><span class="skill-tag">後製</span><span class="skill-tag">Animate</span></div>
+                    </div>
+                    <div class="skill-row" data-keywords="excel word 辦公 office 文書 試算表 報告">
+                        <div class="skill-card__head">
+                            <span class="skill-name">Excel / Word</span>
+                            <span class="skill-stars">★★★★<span class="empty">★</span></span>
+                        </div>
+                        <div class="skill-tags"><span class="skill-tag">辦公應用</span><span class="skill-tag">試算表</span><span class="skill-tag">文書</span></div>
+                    </div>
+                </div>
 
                 <p class="no-result" id="noResult">找不到「<span id="noResultKeyword"></span>」相關技能，換個關鍵字試試？</p>
             </section>
@@ -857,10 +978,10 @@
 
             // 1. bind — 跟老師一樣先抓元素
             const searchInput = $('#skillSearch');
-            const searchBtn   = $('#searchBtn');
-            const searchHint  = $('#searchHint');
-            const noResult    = $('#noResult');
-            const allRows     = $('.skill-row');
+            const searchBtn = $('#searchBtn');
+            const searchHint = $('#searchHint');
+            const noResult = $('#noResult');
+            const allRows = $('.skill-row');
 
             // 2. action — 搜尋邏輯（封裝成 function，按鈕和即時輸入都能呼叫）
             function doSearch() {
@@ -879,7 +1000,7 @@
                 // 跟老師的 result = getMoney * Math.pow(...) 一樣：逐一對每列做運算
                 allRows.each(function () {
                     let rowKeywords = $(this).data('keywords').toLowerCase();
-                    let rowText     = $(this).text().toLowerCase();
+                    let rowText = $(this).text().toLowerCase();
 
                     if (rowKeywords.includes(keyword) || rowText.includes(keyword)) {
                         $(this).removeClass('is-hidden').addClass('is-match');
@@ -919,4 +1040,4 @@
     </script>
 </body>
 
-</html>
+</html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
