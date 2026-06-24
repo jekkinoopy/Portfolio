@@ -95,6 +95,44 @@
             font-style: italic;
         }
 
+        /* ── 相關連結 ── */
+        .note-source-links {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .note-source-links h3 {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--dark-gray);
+            margin: 0 0 14px;
+            opacity: 0.65;
+        }
+
+        .note-source-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .note-source-links a {
+            font-size: 0.9rem;
+            color: var(--primary-brown);
+            text-decoration: none;
+            line-height: 1.5;
+            transition: color 0.2s;
+        }
+
+        .note-source-links a:hover {
+            color: var(--primary-dark-brown);
+        }
+
         /* ── 尾部：tags 純文字，不用 pill ── */
         .note-foot {
             margin-top: 56px;
@@ -202,6 +240,22 @@
                 <p>所以我開始想，我是真的在分享內容，還是在期待別人透過那些連結理解我？</p>
                 <p>如果連我自己都沒把想法整理出來，別人也很難從一個連結裡看見我。</p>
                 <p>或許這也是我想開始記錄 Notes 的原因。比起一直轉傳，我更想留下自己聽到的、讀到的、想到的東西。</p>
+            </div>
+
+            <div class="note-source-links">
+                <h3>相關內容</h3>
+                <ul>
+                    <li>
+                        <a href="https://podcasts.apple.com/tw/podcast/ep-618-%E9%AB%98%E5%8A%9F%E8%83%BD%E5%80%96%E5%AD%98%E8%80%85-%E8%AE%80%E5%BE%8C%E5%BF%83%E5%BE%97-%E6%B2%92%E7%94%A8%E7%9A%84%E4%BA%BA-%E9%82%84%E5%80%BC%E5%BE%97%E8%A2%AB%E6%84%9B%E5%97%8E/id1532820533?i=1000773799557" target="_blank">
+                        🎧 Podcast｜EP.618《高功能倖存者》讀後心得：沒用的人，還值得被愛嗎？
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://readingoutpost.com/high-functioning-survivor/" target="_blank">
+                        📖 閱讀前哨站文章｜高功能倖存者
+                        </a>
+                    </li>
+                </ul>
             </div>
 
             <footer class="note-foot">
