@@ -37,13 +37,12 @@ feat: 新增 Notes 閱讀札記草稿頁
 ## 執行指令
 
 ```bash
-git add z_misc/notes/index.html
-git add z_misc/site-guide/index.html
-git add z_notes/02_專案檔案結構.md
-git add z_notes/git-commit-required.md
+git add .
 git commit -m "feat: 新增 Notes 閱讀札記草稿頁"
-git push
 ```
+
+> Push 請自行執行 `git push origin main`（AI 不主動附上）。
+> 規範來源：`developer-rules/git-commit-required.md`
 
 ---
 
