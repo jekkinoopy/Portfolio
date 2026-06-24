@@ -19,6 +19,7 @@ alwaysApply: true
 ```bash
 git add .
 git commit -m "type: 重點"
+git push origin main
 ```
 
 | 項目 | 約定 |
@@ -28,13 +29,8 @@ git commit -m "type: 重點"
 | add | **一律 `git add .`**，禁止只 add 單檔 |
 | 串接 | **禁止 `&&`**（站主環境為 PowerShell，不支援） |
 
-## Push：禁止擅自執行
+## Push：每次必附
 
-- **禁止 `git push`**，除非站主原句說「幫我 push」等。只貼 push 錯誤 ≠ 同意 push。
-- 修 push 失敗：只動本機（壓圖、`.gitignore`、`amend`／filter-branch **先問**），末尾只給站主：
-
-```bash
-git push origin main
-```
-
+- **`git push origin main` 一律附上**，讓站主一次複製全部指令執行。
+- 修 push 失敗：只動本機（壓圖、`.gitignore`、`amend`／filter-branch **先問**）。
 - GitHub 單檔 **> 100 MB** 拒 push。`*.png.bak` 已在根 `.gitignore` 保護，`git add .` 不會送進備份檔。
