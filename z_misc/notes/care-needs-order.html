@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="page-inner notes-page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>關心沒有錯。只是我們需要不同的順序。| Notes | Jekkinoopy</title>
+    <meta name="description" content="同一通家庭電話裡，一個人想分享近況，一個人急著提供幫助。問題不一定在誰對誰錯，而是關心和分享需要一個彼此都接得到的順序。">
+    <link rel="stylesheet" href="../../z_assets/css/style.css">
+    <style>
+        html.notes-page { font-size: 16px; }
+
+        .notes-container {
+            max-width: 680px;
+            margin: 0 auto 120px;
+        }
+
+        /* ── 返回連結 ── */
+        .note-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--dark-gray);
+            opacity: 0.55;
+            text-decoration: none;
+            letter-spacing: 0.04em;
+            margin-bottom: 40px;
+            transition: opacity 0.2s;
+        }
+        .note-back:hover { opacity: 1; }
+
+        .note-entry { padding-top: 8px; }
+
+        /* ── 頂部 meta 列：流水號 + 日期 ── */
+        .note-meta {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+        .note-number {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            color: var(--dark-gray);
+            opacity: 0.3;
+        }
+        .note-dateline {
+            font-size: 0.82rem;
+            letter-spacing: 0.18em;
+            color: var(--dark-gray);
+            font-weight: 400;
+            opacity: 0.7;
+        }
+
+        .note-insight {
+            font-size: 2rem;
+            font-weight: 900;
+            line-height: 1.45;
+            color: var(--primary-dark-brown);
+            letter-spacing: -0.02em;
+            margin: 0 0 24px;
+        }
+
+        /* ── Embed Component ── */
+        .note-embed {
+            display: flex;
+            align-items: stretch;
+            border: 1px solid rgba(0, 0, 0, 0.09);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 0 0 44px;
+            max-width: 420px;
+            background: rgba(255, 255, 255, 0.55);
+            text-decoration: none;
+            cursor: pointer;
+            transition: box-shadow 0.2s ease, transform 0.15s ease, border-color 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .note-embed:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.09);
+            transform: translateY(-2px);
+            border-color: rgba(0, 0, 0, 0.14);
+        }
+        .note-embed:active {
+            transform: translateY(0);
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+        }
+        .note-embed:focus-visible {
+            outline: 2px solid var(--primary-brown);
+            outline-offset: 3px;
+        }
+        .note-embed__thumb {
+            width: 80px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: filter 0.2s ease;
+        }
+        .note-embed:hover .note-embed__thumb { filter: brightness(1.06); }
+        .note-embed--podcast .note-embed__thumb {
+            background: linear-gradient(150deg, #7A5C3F 0%, #C49A6C 100%);
+            color: rgba(255, 255, 255, 0.85);
+        }
+        .note-embed--youtube .note-embed__thumb {
+            background: linear-gradient(150deg, #b91c1c 0%, #ef4444 100%);
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .note-embed--movie .note-embed__thumb {
+            background: linear-gradient(150deg, #1c1917 0%, #44403c 100%);
+            color: rgba(255, 255, 255, 0.75);
+        }
+        .note-embed--book .note-embed__thumb {
+            background: linear-gradient(150deg, #3d6b4f 0%, #6aab83 100%);
+            color: rgba(255, 255, 255, 0.85);
+        }
+        .note-embed--experience .note-embed__thumb {
+            background: linear-gradient(150deg, #4c4963 0%, #9391a8 100%);
+            color: rgba(255, 255, 255, 0.82);
+        }
+
+        .note-embed--static {
+            cursor: default;
+        }
+        .note-embed--static:hover {
+            box-shadow: none;
+            transform: none;
+            border-color: rgba(0, 0, 0, 0.09);
+        }
+        .note-embed--static:hover .note-embed__thumb {
+            filter: none;
+        }
+
+        .note-embed__body {
+            flex: 1;
+            padding: 13px 15px 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-width: 0;
+        }
+        .note-embed__title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--black);
+            margin: 0 0 3px;
+            line-height: 1.4;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .note-embed__creator {
+            font-size: 0.78rem;
+            color: var(--dark-gray);
+            opacity: 0.6;
+            margin: 0 0 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .note-embed__platform {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding-top: 8px;
+            border-top: 1px solid rgba(0, 0, 0, 0.07);
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--dark-gray);
+            opacity: 0.42;
+        }
+
+        /* ── 分隔線 ── */
+        .note-divider {
+            width: 48px;
+            height: 4px;
+            background: var(--primary-yellow);
+            border: none;
+            border-radius: 2px;
+            margin: 0 0 44px;
+        }
+
+        /* ── 正文 ── */
+        .note-body {
+            font-size: 1.05rem;
+            line-height: 2;
+            color: var(--black);
+        }
+        .note-body p { margin: 0 0 1.6em; }
+        .note-body p:last-child { margin-bottom: 0; }
+        mark.note-highlight {
+            background: rgba(243, 193, 76, 0.45);
+            padding: 2px 5px;
+            border-radius: 3px;
+            color: inherit;
+            -webkit-box-decoration-break: clone;
+            box-decoration-break: clone;
+        }
+
+        /* ── 尾部 ── */
+        .note-foot {
+            margin-top: 56px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        .note-tags {
+            font-size: 0.8rem;
+            color: var(--dark-gray);
+            letter-spacing: 0.06em;
+            opacity: 0.6;
+        }
+
+        /* ── RWD ── */
+        @media (max-width: 768px) {
+            .note-insight { font-size: 1.55rem; }
+        }
+        @media (max-width: 480px) {
+            .note-insight { font-size: 1.3rem; }
+            .note-embed { max-width: 100%; }
+            .note-embed__thumb { width: 64px; }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="container">
+        <nav class="navbar">
+            <div class="container nav-shell">
+                <a class="nav-logo" href="../../index.html" aria-label="首頁">
+                    <img src="../../z_assets/images/noopylogov.png" alt="Jekkinoopy Studio">
+                </a>
+                <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav-menu"
+                    aria-label="開啟選單">
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                </button>
+                <div class="nav-menu" id="site-nav-menu">
+                    <ul class="nav-links nav-links--start">
+                        <li class="downDisabled" data-tooltip="作品建置中"><a href="../../about/">About</a></li>
+                        <li class="dropdown">
+                            <a href="../../graphic/">Graphic</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../../graphic/logoPkg.html">Logo & 包裝設計</a></li>
+                                <li><a href="../../graphic/calendar-bag.html">桌曆 & 購物袋</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../../stationery.html">名片/卡片/票券/DM</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../../webBanner.html">網站視覺 Banner</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../../socialMedia.html">社群推播圖</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../../largeFormat.html">大圖輸出</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../../editorial.html">書刊</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../../productDetail.html">商品長條圖文</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../../illustration/">Illustration</a></li>
+                    </ul>
+                    <ul class="nav-links nav-links--end">
+                        <li class="downDisabled" data-tooltip="作品建置中"><a href="../../photo/">Photo</a></li>
+                        <li><a href="../../uiux/">UI/UX</a></li>
+                        <li><a href="../../web/">Web</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-container notes-container">
+
+        <a class="note-back" href="index.html">← Notes</a>
+
+        <article class="note-entry" id="note-03">
+
+            <div class="note-meta">
+                <span class="note-number">#03</span>
+                <time class="note-dateline" datetime="2026-06-25">2026 · 06 · 25</time>
+            </div>
+
+            <h1 class="note-insight">關心沒有錯。<br>只是我們需要不同的順序。</h1>
+
+            <div class="note-embed note-embed--experience note-embed--static"
+                 role="group"
+                 aria-label="生活觀察：一次家庭對話">
+                <div class="note-embed__thumb" aria-hidden="true">
+                    <svg width="28" height="24" viewBox="0 0 28 24" fill="none">
+                        <path d="M3 3.5h14a2.5 2.5 0 0 1 2.5 2.5v6A2.5 2.5 0 0 1 17 14.5H9l-4.5 4v-4H3A2.5 2.5 0 0 1 .5 12V6A2.5 2.5 0 0 1 3 3.5Z" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M12.5 18h6.5l4.5 4v-4H25a2.5 2.5 0 0 0 2.5-2.5v-6A2.5 2.5 0 0 0 25 7h-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="note-embed__body">
+                    <p class="note-embed__title">一次家庭對話</p>
+                    <p class="note-embed__creator">生活觀察 · 關心如何被接住</p>
+                    <div class="note-embed__platform">
+                        <span>Experience</span>
+                    </div>
+                </div>
+            </div>
+
+<hr class="note-divider" aria-hidden="true">
+
+
+            <div class="note-body">
+                <p>最近因為傷口，我偶爾會打電話跟媽媽報告進度。</p>
+                <p>原本以為這只是很普通的近況分享，後來才發現，同一通電話裡，我們可能正在進行兩種不一樣的對話。</p>
+                <p>我想說的是：今天發生了什麼、我已經怎麼處理，以及接下來準備怎麼做。</p>
+                <p>媽媽聽見的，可能是：這件事還有沒有風險？有沒有什麼需要趕快處理？她還能提醒我什麼？</p>
+                <p><mark class="note-highlight">一個人想分享進度，一個人想降低風險。兩邊的出發點都沒有錯，只是進入對話的順序不同。</mark></p>
+                <p>我還在說事情的前半段時，如果建議已經先出現，我有時候會急著解釋自己其實想過了、也已經做了調整。越想證明，語氣越容易變得尖銳；對方原本想表達的關心，也可能在這個過程裡被推得更遠。</p>
+                <p>後來我才明白，我真正想分享的，不只是傷口今天變成什麼樣子。</p>
+                <p>我更想讓家人知道：我最近開始用和以前不一樣的方式照顧自己。</p>
+                <p>以前的我很容易只看著目標往前走，直到身體真的撐不住，才不得不停下來。現在的我還是不習慣休息，也不一定每次都能立刻做出最適合自己的選擇，但我已經開始把治療、身體和自己的承受程度放進安排裡。</p>
+                <p>這些改變可能很小，也還不穩定，但對我來說，它們是真實發生的進步。</p>
+                <p>我想打電話分享，也許不是因為需要別人替我決定，而是想把這個進步說出來。說給家人聽，也說給自己聽。</p>
+                <p>另一方面，我也開始理解，聽見家人正在受傷的人，很難立刻把擔心放到旁邊。建議不一定代表否定，有時只是關心比故事更早抵達。</p>
+                <p>所以問題也許不是誰應該少說一點，而是我們能不能先確認：這一刻，對方需要的是一起想辦法，還是先把事情完整說完？</p>
+                <p>下次我可以在一開始先說：「我想先把今天的進度說完，等一下如果有需要，我會再問妳的想法。」</p>
+                <p>聽的人也可以在回應以前先問一句：「妳現在只是想跟我分享，還是也想聽聽我的意見？」</p>
+                <p><mark class="note-highlight">先讓分享說完，再確認需不需要建議，也許關心才更容易被接住。</mark></p>
+                <p>這不是拒絕誰的關心，也不是要找出哪一個人做錯了。只是希望我們不用改變彼此的本意，也能替下一次對話換一個更容易走下去的順序。</p>
+                <p>理解過去，不一定是為了追究傷害。更重要的，是從裡面找出一個未來可以使用的新方法。</p>
+            </div>
+
+
+            <div class="note-foot">
+                <p class="note-tags">家庭溝通 · 關心 · 傾聽 · 對話順序 · 自我調整</p>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer id="contact">
+        <a href="mailto:jekkinoopy@gmail.com" class="contact-email">
+            <small>如有合作意願，歡迎隨時聯繫</small>
+            jekkinoopy@gmail.com
+        </a>
+        <small>&copy; 2026 JEKKINOOPY. All rights reserved.</small>
+    </footer>
+
+    <script src="../../z_assets/js/nav.js"></script>
+</body>
+
+</html>

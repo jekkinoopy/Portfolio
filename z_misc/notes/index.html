@@ -7,14 +7,18 @@
     <title>Notes | Jekkinoopy</title>
     <link rel="stylesheet" href="../../z_assets/css/style.css">
     <style>
-        html.notes-page { font-size: 16px; }
+        html.notes-page {
+            font-size: 16px;
+        }
 
         .notes-container {
             max-width: 680px;
             margin: 0 auto 120px;
         }
 
-        .note-entry { padding-top: 16px; }
+        .note-entry {
+            padding-top: 16px;
+        }
 
         /* ── 頂部 meta：流水號 + 日期 ── */
         .note-meta {
@@ -23,6 +27,7 @@
             gap: 16px;
             margin-bottom: 28px;
         }
+
         .note-number {
             font-size: 0.68rem;
             font-weight: 700;
@@ -30,6 +35,7 @@
             color: var(--dark-gray);
             opacity: 0.3;
         }
+
         .note-dateline {
             font-size: 0.82rem;
             letter-spacing: 0.18em;
@@ -45,6 +51,7 @@
             color: inherit;
             margin-bottom: 20px;
         }
+
         .note-insight {
             font-size: 2rem;
             font-weight: 900;
@@ -54,6 +61,7 @@
             margin: 0;
             transition: color 0.2s;
         }
+
         .note-insight-link:hover .note-insight {
             color: var(--primary-brown);
         }
@@ -73,19 +81,23 @@
             transition: box-shadow 0.2s ease, transform 0.15s ease, border-color 0.2s ease;
             -webkit-tap-highlight-color: transparent;
         }
+
         .note-embed:hover {
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.09);
             transform: translateY(-2px);
             border-color: rgba(0, 0, 0, 0.14);
         }
+
         .note-embed:active {
             transform: translateY(0);
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
         }
+
         .note-embed:focus-visible {
             outline: 2px solid var(--primary-brown);
             outline-offset: 3px;
         }
+
         .note-embed__thumb {
             width: 80px;
             flex-shrink: 0;
@@ -94,27 +106,36 @@
             justify-content: center;
             transition: filter 0.2s ease;
         }
-        .note-embed:hover .note-embed__thumb { filter: brightness(1.06); }
+
+        .note-embed:hover .note-embed__thumb {
+            filter: brightness(1.06);
+        }
+
         .note-embed--podcast .note-embed__thumb {
             background: linear-gradient(150deg, #7A5C3F 0%, #C49A6C 100%);
             color: rgba(255, 255, 255, 0.85);
         }
+
         .note-embed--youtube .note-embed__thumb {
             background: linear-gradient(150deg, #b91c1c 0%, #ef4444 100%);
             color: rgba(255, 255, 255, 0.9);
         }
+
         .note-embed--movie .note-embed__thumb {
             background: linear-gradient(150deg, #1c1917 0%, #44403c 100%);
             color: rgba(255, 255, 255, 0.75);
         }
+
         .note-embed--book .note-embed__thumb {
             background: linear-gradient(150deg, #3d6b4f 0%, #6aab83 100%);
             color: rgba(255, 255, 255, 0.85);
         }
+
         .note-embed--experience .note-embed__thumb {
             background: linear-gradient(150deg, #4c4963 0%, #9391a8 100%);
             color: rgba(255, 255, 255, 0.82);
         }
+
         .note-embed__body {
             flex: 1;
             padding: 13px 15px 12px;
@@ -123,6 +144,7 @@
             justify-content: center;
             min-width: 0;
         }
+
         .note-embed__title {
             font-size: 0.9rem;
             font-weight: 600;
@@ -133,6 +155,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+
         .note-embed__creator {
             font-size: 0.78rem;
             color: var(--dark-gray);
@@ -142,6 +165,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+
         .note-embed__platform {
             display: flex;
             align-items: center;
@@ -177,6 +201,7 @@
             letter-spacing: 0.02em;
             transition: gap 0.2s ease, color 0.2s ease;
         }
+
         .note-read-more:hover {
             gap: 10px;
             color: var(--primary-dark-brown);
@@ -188,6 +213,7 @@
             padding-top: 20px;
             border-top: 1px solid rgba(0, 0, 0, 0.08);
         }
+
         .note-tags {
             font-size: 0.8rem;
             color: var(--dark-gray);
@@ -196,8 +222,13 @@
         }
 
         /* ── 篇章分隔 ── */
-        .notes-separator { display: none; }
-        .note-entry + .note-entry { margin-top: 96px; }
+        .notes-separator {
+            display: none;
+        }
+
+        .note-entry+.note-entry {
+            margin-top: 96px;
+        }
 
         /* ── 重點句 highlight ── */
         mark.note-highlight {
@@ -211,12 +242,23 @@
 
         /* ── RWD ── */
         @media (max-width: 768px) {
-            .note-insight { font-size: 1.55rem; }
+            .note-insight {
+                font-size: 1.55rem;
+            }
         }
+
         @media (max-width: 480px) {
-            .note-insight { font-size: 1.3rem; }
-            .note-embed { max-width: 100%; }
-            .note-embed__thumb { width: 64px; }
+            .note-insight {
+                font-size: 1.3rem;
+            }
+
+            .note-embed {
+                max-width: 100%;
+            }
+
+            .note-embed__thumb {
+                width: 64px;
+            }
         }
     </style>
 </head>
@@ -242,12 +284,17 @@
                             <ul class="dropdown-menu">
                                 <li><a href="../../graphic/logoPkg.html">Logo & 包裝設計</a></li>
                                 <li><a href="../../graphic/calendar-bag.html">桌曆 & 購物袋</a></li>
-                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../../stationery.html">名片/卡片/票券/DM</a></li>
-                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../../webBanner.html">網站視覺 Banner</a></li>
-                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../../socialMedia.html">社群推播圖</a></li>
-                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../../largeFormat.html">大圖輸出</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a
+                                        href="../../stationery.html">名片/卡片/票券/DM</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../../webBanner.html">網站視覺
+                                        Banner</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../../socialMedia.html">社群推播圖</a>
+                                </li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../../largeFormat.html">大圖輸出</a>
+                                </li>
                                 <li class="downDisabled" data-tooltip="作品建置中"><a href="../../editorial.html">書刊</a></li>
-                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../../productDetail.html">商品長條圖文</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a
+                                        href="../../productDetail.html">商品長條圖文</a></li>
                             </ul>
                         </li>
                         <li><a href="../../illustration/">Illustration</a></li>
@@ -282,16 +329,15 @@
             </a>
 
             <a class="note-embed note-embed--podcast"
-               href="https://podcasts.apple.com/tw/podcast/%E5%91%A8%E6%85%95%E5%A7%BF%E6%94%BE%E5%BF%83%E8%AA%AA/id1758761679?i=1000773644651"
-               target="_blank"
-               rel="noopener noreferrer">
+                href="https://podcasts.apple.com/tw/podcast/%E5%91%A8%E6%85%95%E5%A7%BF%E6%94%BE%E5%BF%83%E8%AA%AA/id1758761679?i=1000773644651"
+                target="_blank" rel="noopener noreferrer">
                 <div class="note-embed__thumb" aria-hidden="true">
                     <svg width="24" height="20" viewBox="0 0 24 20" fill="none">
-                        <rect x="0"  y="8" width="3.5" height="4"  rx="1.75" fill="currentColor"/>
-                        <rect x="5"  y="3" width="3.5" height="14" rx="1.75" fill="currentColor"/>
-                        <rect x="10" y="6" width="3.5" height="8"  rx="1.75" fill="currentColor"/>
-                        <rect x="15" y="0" width="3.5" height="20" rx="1.75" fill="currentColor"/>
-                        <rect x="20" y="5" width="3.5" height="10" rx="1.75" fill="currentColor"/>
+                        <rect x="0" y="8" width="3.5" height="4" rx="1.75" fill="currentColor" />
+                        <rect x="5" y="3" width="3.5" height="14" rx="1.75" fill="currentColor" />
+                        <rect x="10" y="6" width="3.5" height="8" rx="1.75" fill="currentColor" />
+                        <rect x="15" y="0" width="3.5" height="20" rx="1.75" fill="currentColor" />
+                        <rect x="20" y="5" width="3.5" height="10" rx="1.75" fill="currentColor" />
                     </svg>
                 </div>
                 <div class="note-embed__body">
@@ -299,16 +345,18 @@
                     <p class="note-embed__creator">周慕姿</p>
                     <div class="note-embed__platform">
                         <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true">
-                            <circle cx="4.5" cy="4.5" r="4" stroke="currentColor" stroke-width="1"/>
-                            <rect x="3" y="3" width="1" height="3" rx="0.5" fill="currentColor"/>
-                            <rect x="5" y="2" width="1" height="5" rx="0.5" fill="currentColor"/>
+                            <circle cx="4.5" cy="4.5" r="4" stroke="currentColor" stroke-width="1" />
+                            <rect x="3" y="3" width="1" height="3" rx="0.5" fill="currentColor" />
+                            <rect x="5" y="2" width="1" height="5" rx="0.5" fill="currentColor" />
                         </svg>
                         <span>Podcast</span>
                     </div>
                 </div>
             </a>
 
-            <p class="note-preview">以前撐不住某件事，我第一個念頭幾乎都是：是不是我心理韌性太差？這種想法說起來很熟悉，但細想之下，它只解釋了你撐不住，沒有解釋為什麼這次撐不住。聽完這集之後我才意識到，<mark class="note-highlight">不是韌性不夠，是一直依靠的那套應對模式，剛好遇到了它無法處理的情境。</mark>這兩件事差別很大，但我花了很久才把它們分清楚。</p>
+            <p class="note-preview">
+                以前撐不住某件事，我第一個念頭幾乎都是：是不是我心理韌性太差？這種想法說起來很熟悉，但細想之下，它只解釋了你撐不住，沒有解釋為什麼這次撐不住。聽完這集之後我才意識到，<mark
+                    class="note-highlight">不是韌性不夠，是一直依靠的那套應對模式，剛好遇到了它無法處理的情境。</mark>這兩件事差別很大，但我花了很久才把它們分清楚。</p>
 
             <a class="note-read-more" href="making-your-choice-right.html">閱讀全文 →</a>
 
@@ -333,16 +381,15 @@
             </a>
 
             <a class="note-embed note-embed--podcast"
-               href="https://podcasts.apple.com/tw/podcast/ep-618-%E9%AB%98%E5%8A%9F%E8%83%BD%E5%80%96%E5%AD%98%E8%80%85-%E8%AE%80%E5%BE%8C%E5%BF%83%E5%BE%97-%E6%B2%92%E7%94%A8%E7%9A%84%E4%BA%BA-%E9%82%84%E5%80%BC%E5%BE%97%E8%A2%AB%E6%84%9B%E5%97%8E/id1532820533?i=1000773799557"
-               target="_blank"
-               rel="noopener noreferrer">
+                href="https://podcasts.apple.com/tw/podcast/ep-618-%E9%AB%98%E5%8A%9F%E8%83%BD%E5%80%96%E5%AD%98%E8%80%85-%E8%AE%80%E5%BE%8C%E5%BF%83%E5%BE%97-%E6%B2%92%E7%94%A8%E7%9A%84%E4%BA%BA-%E9%82%84%E5%80%BC%E5%BE%97%E8%A2%AB%E6%84%9B%E5%97%8E/id1532820533?i=1000773799557"
+                target="_blank" rel="noopener noreferrer">
                 <div class="note-embed__thumb" aria-hidden="true">
                     <svg width="24" height="20" viewBox="0 0 24 20" fill="none">
-                        <rect x="0"  y="8" width="3.5" height="4"  rx="1.75" fill="currentColor"/>
-                        <rect x="5"  y="3" width="3.5" height="14" rx="1.75" fill="currentColor"/>
-                        <rect x="10" y="6" width="3.5" height="8"  rx="1.75" fill="currentColor"/>
-                        <rect x="15" y="0" width="3.5" height="20" rx="1.75" fill="currentColor"/>
-                        <rect x="20" y="5" width="3.5" height="10" rx="1.75" fill="currentColor"/>
+                        <rect x="0" y="8" width="3.5" height="4" rx="1.75" fill="currentColor" />
+                        <rect x="5" y="3" width="3.5" height="14" rx="1.75" fill="currentColor" />
+                        <rect x="10" y="6" width="3.5" height="8" rx="1.75" fill="currentColor" />
+                        <rect x="15" y="0" width="3.5" height="20" rx="1.75" fill="currentColor" />
+                        <rect x="20" y="5" width="3.5" height="10" rx="1.75" fill="currentColor" />
                     </svg>
                 </div>
                 <div class="note-embed__body">
@@ -350,16 +397,18 @@
                     <p class="note-embed__creator">閱讀前哨站 · 瓦基（來賓 周慕姿）</p>
                     <div class="note-embed__platform">
                         <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true">
-                            <circle cx="4.5" cy="4.5" r="4" stroke="currentColor" stroke-width="1"/>
-                            <rect x="3" y="3" width="1" height="3" rx="0.5" fill="currentColor"/>
-                            <rect x="5" y="2" width="1" height="5" rx="0.5" fill="currentColor"/>
+                            <circle cx="4.5" cy="4.5" r="4" stroke="currentColor" stroke-width="1" />
+                            <rect x="3" y="3" width="1" height="3" rx="0.5" fill="currentColor" />
+                            <rect x="5" y="2" width="1" height="5" rx="0.5" fill="currentColor" />
                         </svg>
                         <span>Podcast</span>
                     </div>
                 </div>
             </a>
 
-            <p class="note-preview">聽完那集，我的第一個反應是把它分享到家人的群組。沒多久又收回來了。後來才意識到，我很常做這件事——看到有感觸的內容就想分享，但通常只是丟一個連結，什麼都不說。一直到問自己：<mark class="note-highlight">我是真的在分享，還是在期待別人透過那個連結理解我？</mark>才覺得，這個問題跟整集在說的東西，其實有點像。</p>
+            <p class="note-preview">
+                聽完那集，我的第一個反應是把它分享到家人的群組。沒多久又收回來了。後來才意識到，我很常做這件事——看到有感觸的內容就想分享，但通常只是丟一個連結，什麼都不說。一直到問自己：<mark
+                    class="note-highlight">我是真的在分享，還是在期待別人透過那個連結理解我？</mark>才覺得，這個問題跟整集在說的東西，其實有點像。</p>
 
             <a class="note-read-more" href="avoiding-mistakes.html">閱讀全文 →</a>
 
