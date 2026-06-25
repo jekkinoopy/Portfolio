@@ -29,6 +29,7 @@ alwaysApply: true
 ```bash
 git add .
 git commit -m "type: 重點"
+git push
 ```
 
 **type**：`fix:` 修正｜`feat:` 新功能｜`style:` 純排版樣式
@@ -36,3 +37,8 @@ git commit -m "type: 重點"
 **重點**：`type: ` 後不超過 15 字，只寫 repo 內實際改動。例：`fix: index 改連 html`
 
 **勿擅自 commit**：除非使用者明確要求，只提供指令文字，不代為執行。
+
+## 改檔後必附（每次都要，缺一不可）
+
+1. `mcp__cowork__present_files` 檔案卡片（需先透過 ToolSearch 載入 schema）
+2. git 三行指令（add / commit / push）
