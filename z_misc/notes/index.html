@@ -66,7 +66,7 @@
             border-radius: 10px;
             overflow: hidden;
             margin: 0 0 28px;
-            max-width: 420px;
+            max-width: 100%;
             background: rgba(255, 255, 255, 0.55);
             text-decoration: none;
             cursor: pointer;
@@ -196,12 +196,17 @@
         }
 
         /* ── 篇章分隔 ── */
-        .notes-separator {
-            width: 100%;
-            height: 1px;
-            background: rgba(0, 0, 0, 0.08);
-            border: none;
-            margin: 64px 0;
+        .notes-separator { display: none; }
+        .note-entry + .note-entry { margin-top: 96px; }
+
+        /* ── 重點句 highlight ── */
+        mark.note-highlight {
+            background: rgba(243, 193, 76, 0.45);
+            padding: 2px 5px;
+            border-radius: 3px;
+            color: inherit;
+            -webkit-box-decoration-break: clone;
+            box-decoration-break: clone;
         }
 
         /* ── RWD ── */
@@ -303,13 +308,13 @@
                 </div>
             </a>
 
-            <p class="note-preview">不是韌性不夠，是一直依靠的那套模式，剛好遇到了它無法處理的情境。這兩件事，差別很大。</p>
+            <p class="note-preview">以前撐不住某件事，我第一個念頭幾乎都是：是不是我心理韌性太差？這種想法說起來很熟悉，但細想之下，它只解釋了你撐不住，沒有解釋為什麼這次撐不住。聽完這集之後我才意識到，<mark class="note-highlight">不是韌性不夠，是一直依靠的那套應對模式，剛好遇到了它無法處理的情境。</mark>這兩件事差別很大，但我花了很久才把它們分清楚。</p>
 
             <a class="note-read-more" href="making-your-choice-right.html">閱讀全文 →</a>
 
-            <footer class="note-foot">
+            <div class="note-foot">
                 <p class="note-tags">心理學 · 選擇 · 掌控感 · 心理韌性 · 自我覺察</p>
-            </footer>
+            </div>
 
         </article>
 
@@ -354,13 +359,13 @@
                 </div>
             </a>
 
-            <p class="note-preview">我到底是在生活，還是在避免自己犯錯？</p>
+            <p class="note-preview">聽完那集，我的第一個反應是把它分享到家人的群組。沒多久又收回來了。後來才意識到，我很常做這件事——看到有感觸的內容就想分享，但通常只是丟一個連結，什麼都不說。一直到問自己：<mark class="note-highlight">我是真的在分享，還是在期待別人透過那個連結理解我？</mark>才覺得，這個問題跟整集在說的東西，其實有點像。</p>
 
             <a class="note-read-more" href="avoiding-mistakes.html">閱讀全文 →</a>
 
-            <footer class="note-foot">
+            <div class="note-foot">
                 <p class="note-tags">心理學 · 自我覺察 · 完美主義 · 防止犯錯</p>
-            </footer>
+            </div>
 
         </article>
 
