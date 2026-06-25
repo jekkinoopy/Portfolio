@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notes | Jekkinoopy</title>
+    <title>不是韌性太低。是模式，遇到了邊界。| Notes | Jekkinoopy</title>
+    <meta name="description" content="重點不是做出正確的選擇，而是把那個選擇變得正確。那些習慣掌控的人，遇到無法掌控的事，衝擊往往更大——不是因為脆弱，是模式第一次遇到了邊界。">
     <link rel="stylesheet" href="../../z_assets/css/style.css">
     <style>
         html.notes-page { font-size: 16px; }
@@ -14,9 +15,25 @@
             margin: 0 auto 120px;
         }
 
-        .note-entry { padding-top: 16px; }
+        /* ── 返回連結 ── */
+        .note-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--dark-gray);
+            opacity: 0.55;
+            text-decoration: none;
+            letter-spacing: 0.04em;
+            margin-bottom: 40px;
+            transition: opacity 0.2s;
+        }
+        .note-back:hover { opacity: 1; }
 
-        /* ── 頂部 meta：流水號 + 日期 ── */
+        .note-entry { padding-top: 8px; }
+
+        /* ── 頂部 meta 列：流水號 + 日期 ── */
         .note-meta {
             display: flex;
             align-items: baseline;
@@ -38,24 +55,13 @@
             opacity: 0.7;
         }
 
-        /* ── 標題連結 ── */
-        .note-insight-link {
-            display: block;
-            text-decoration: none;
-            color: inherit;
-            margin-bottom: 20px;
-        }
         .note-insight {
             font-size: 2rem;
             font-weight: 900;
             line-height: 1.45;
             color: var(--primary-dark-brown);
             letter-spacing: -0.02em;
-            margin: 0;
-            transition: color 0.2s;
-        }
-        .note-insight-link:hover .note-insight {
-            color: var(--primary-brown);
+            margin: 0 0 24px;
         }
 
         /* ── Embed Component ── */
@@ -65,7 +71,7 @@
             border: 1px solid rgba(0, 0, 0, 0.09);
             border-radius: 10px;
             overflow: hidden;
-            margin: 0 0 28px;
+            margin: 0 0 44px;
             max-width: 420px;
             background: rgba(255, 255, 255, 0.55);
             text-decoration: none;
@@ -156,35 +162,28 @@
             opacity: 0.42;
         }
 
-        /* ── 重點句預覽 ── */
-        .note-preview {
-            font-size: 1rem;
-            line-height: 1.85;
-            color: var(--black);
-            opacity: 0.65;
-            margin: 0 0 20px;
+        /* ── 分隔線 ── */
+        .note-divider {
+            width: 48px;
+            height: 4px;
+            background: var(--primary-yellow);
+            border: none;
+            border-radius: 2px;
+            margin: 0 0 44px;
         }
 
-        /* ── 閱讀全文連結 ── */
-        .note-read-more {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--primary-brown);
-            text-decoration: none;
-            letter-spacing: 0.02em;
-            transition: gap 0.2s ease, color 0.2s ease;
+        /* ── 正文 ── */
+        .note-body {
+            font-size: 1.05rem;
+            line-height: 2;
+            color: var(--black);
         }
-        .note-read-more:hover {
-            gap: 10px;
-            color: var(--primary-dark-brown);
-        }
+        .note-body p { margin: 0 0 1.6em; }
+        .note-body p:last-child { margin-bottom: 0; }
 
         /* ── 尾部 ── */
         .note-foot {
-            margin-top: 32px;
+            margin-top: 56px;
             padding-top: 20px;
             border-top: 1px solid rgba(0, 0, 0, 0.08);
         }
@@ -193,15 +192,6 @@
             color: var(--dark-gray);
             letter-spacing: 0.06em;
             opacity: 0.6;
-        }
-
-        /* ── 篇章分隔 ── */
-        .notes-separator {
-            width: 100%;
-            height: 1px;
-            background: rgba(0, 0, 0, 0.08);
-            border: none;
-            margin: 64px 0;
         }
 
         /* ── RWD ── */
@@ -259,12 +249,8 @@
 
     <main class="main-container notes-container">
 
-        <div class="page-title">
-            <h2>Notes</h2>
-            <p>聽到的 · 讀到的 · 想到的</p>
-        </div>
+        <a class="note-back" href="index.html">← Notes</a>
 
-        <!-- ── Note #02 ── -->
         <article class="note-entry" id="note-02">
 
             <div class="note-meta">
@@ -272,9 +258,7 @@
                 <time class="note-dateline" datetime="2026-06-25">2026 · 06 · 25</time>
             </div>
 
-            <a class="note-insight-link" href="making-your-choice-right.html">
-                <h2 class="note-insight">不是韌性太低。<br>是模式，遇到了邊界。</h2>
-            </a>
+            <h1 class="note-insight">不是韌性太低。<br>是模式，遇到了邊界。</h1>
 
             <a class="note-embed note-embed--podcast"
                href="https://podcasts.apple.com/tw/podcast/%E5%91%A8%E6%85%95%E5%A7%BF%E6%94%BE%E5%BF%83%E8%AA%AA/id1758761679?i=1000773644651"
@@ -303,63 +287,25 @@
                 </div>
             </a>
 
-            <p class="note-preview">不是韌性不夠，是一直依靠的那套模式，剛好遇到了它無法處理的情境。這兩件事，差別很大。</p>
+            <hr class="note-divider" aria-hidden="true">
 
-            <a class="note-read-more" href="making-your-choice-right.html">閱讀全文 →</a>
+            <div class="note-body">
+                <p>選擇這件事，大多數人習慣先問：「這是不是正確的？」</p>
+                <p>但更值得問的，可能是：「我有沒有在讓它變得正確？」</p>
+                <p>這兩個問題看起來很像，方向完全不同。前者在等待一個天生正確的答案；後者是把投入本身當成答案的一部分。重點不是做出正確的選擇，而是把那個選擇變得正確。</p>
+                <p>有一類人，做事很有條理，很會規劃，習慣把事情放進自己能掌握的框架裡。外界看到的，是穩定、能幹、抗壓性高。但這種穩定，有時候建立在「事情在軌道上」這個前提裡。一旦出現無法被規劃、無法被掌控的變數，衝擊反而可能比普通人更大。</p>
+                <p>不是因為脆弱，而是因為他們一直依靠的應對方式，剛好遇到了它處理不了的東西。那不叫失敗，那叫邊界。</p>
+                <p>以前，如果我在某件事情上撐不住，第一個冒出來的念頭幾乎都是：「是不是我心理韌性太差？」外界也很容易這樣說。久而久之，連自己都開始相信，問題都出在自己不夠強。</p>
+                <p>但這種理解有一個很大的漏洞：它只解釋了「你撐不住」，但沒有解釋「為什麼這次撐不住」。不是韌性不夠，是一直依靠的那套模式，剛好遇到了它無法處理的情境。這兩件事，差別很大。</p>
+                <p>「抗壓性太差」這種說法，問題不在它錯，而在它沒用。它讓人覺得羞愧，但不告訴你接下來能怎麼辦。真正有幫助的，是搞清楚：這個人習慣用什麼方式應對壓力？那個方式在哪裡有效，又在哪裡撐不住？能不能試試別的？這樣問，才有地方往下走。</p>
+                <p>理解這些模式從哪裡來，不是為了追責。不是要找某個人負責，也不是要停在「都是過去的問題」裡。而是因為：搞清楚形成的原因，才能想清楚——未來有沒有可能慢慢改。這是一個往前看的問法。</p>
+                <p>周慕姿說過一句話讓我印象很深：「一直把重點放在做不到的事情上，只會讓自己一直都做不到；一直把焦點放在自己做不到什麼，不如思考自己想做什麼。」</p>
+                <p>這句話的方向感很清楚。盯著「做不到」，你停在那裡。問「想做什麼」，才有辦法朝某個地方走。不是不承認困難，而是換一個問題，換一個出口。</p>
+                <p>不是所有的撐不住都是軟弱。有時候，那只是一個訊號——你一直依靠的模式，遇到了它本來就沒有處理過的事。知道這件事，不會讓事情消失，但它讓你不必再把所有問題都推給自己的不夠強。</p>
+            </div>
 
             <footer class="note-foot">
                 <p class="note-tags">心理學 · 選擇 · 掌控感 · 心理韌性 · 自我覺察</p>
-            </footer>
-
-        </article>
-
-        <hr class="notes-separator" aria-hidden="true">
-
-        <!-- ── Note #01 ── -->
-        <article class="note-entry" id="note-01">
-
-            <div class="note-meta">
-                <span class="note-number">#01</span>
-                <time class="note-dateline" datetime="2026-06-24">2026 · 06 · 24</time>
-            </div>
-
-            <a class="note-insight-link" href="avoiding-mistakes.html">
-                <h2 class="note-insight">我是在生活，<br>還是在避免犯錯？</h2>
-            </a>
-
-            <a class="note-embed note-embed--podcast"
-               href="https://podcasts.apple.com/tw/podcast/ep-618-%E9%AB%98%E5%8A%9F%E8%83%BD%E5%80%96%E5%AD%98%E8%80%85-%E8%AE%80%E5%BE%8C%E5%BF%83%E5%BE%97-%E6%B2%92%E7%94%A8%E7%9A%84%E4%BA%BA-%E9%82%84%E5%80%BC%E5%BE%97%E8%A2%AB%E6%84%9B%E5%97%8E/id1532820533?i=1000773799557"
-               target="_blank"
-               rel="noopener noreferrer">
-                <div class="note-embed__thumb" aria-hidden="true">
-                    <svg width="24" height="20" viewBox="0 0 24 20" fill="none">
-                        <rect x="0"  y="8" width="3.5" height="4"  rx="1.75" fill="currentColor"/>
-                        <rect x="5"  y="3" width="3.5" height="14" rx="1.75" fill="currentColor"/>
-                        <rect x="10" y="6" width="3.5" height="8"  rx="1.75" fill="currentColor"/>
-                        <rect x="15" y="0" width="3.5" height="20" rx="1.75" fill="currentColor"/>
-                        <rect x="20" y="5" width="3.5" height="10" rx="1.75" fill="currentColor"/>
-                    </svg>
-                </div>
-                <div class="note-embed__body">
-                    <p class="note-embed__title">下一本讀什麼 EP.618</p>
-                    <p class="note-embed__creator">閱讀前哨站 · 瓦基（來賓 周慕姿）</p>
-                    <div class="note-embed__platform">
-                        <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true">
-                            <circle cx="4.5" cy="4.5" r="4" stroke="currentColor" stroke-width="1"/>
-                            <rect x="3" y="3" width="1" height="3" rx="0.5" fill="currentColor"/>
-                            <rect x="5" y="2" width="1" height="5" rx="0.5" fill="currentColor"/>
-                        </svg>
-                        <span>Podcast</span>
-                    </div>
-                </div>
-            </a>
-
-            <p class="note-preview">我到底是在生活，還是在避免自己犯錯？</p>
-
-            <a class="note-read-more" href="avoiding-mistakes.html">閱讀全文 →</a>
-
-            <footer class="note-foot">
-                <p class="note-tags">心理學 · 自我覺察 · 完美主義 · 防止犯錯</p>
             </footer>
 
         </article>

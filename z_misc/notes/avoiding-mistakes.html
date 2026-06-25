@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notes | Jekkinoopy</title>
+    <title>我是在生活，還是在避免犯錯？| Notes | Jekkinoopy</title>
+    <meta name="description" content="很會撐、很難休息、總是先檢討自己、害怕犯錯。我不確定自己算不算高功能倖存者，但那個問題一直留在腦裡。">
     <link rel="stylesheet" href="../../z_assets/css/style.css">
     <style>
         html.notes-page { font-size: 16px; }
@@ -14,9 +15,23 @@
             margin: 0 auto 120px;
         }
 
-        .note-entry { padding-top: 16px; }
+        .note-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--dark-gray);
+            opacity: 0.55;
+            text-decoration: none;
+            letter-spacing: 0.04em;
+            margin-bottom: 40px;
+            transition: opacity 0.2s;
+        }
+        .note-back:hover { opacity: 1; }
 
-        /* ── 頂部 meta：流水號 + 日期 ── */
+        .note-entry { padding-top: 8px; }
+
         .note-meta {
             display: flex;
             align-items: baseline;
@@ -38,34 +53,22 @@
             opacity: 0.7;
         }
 
-        /* ── 標題連結 ── */
-        .note-insight-link {
-            display: block;
-            text-decoration: none;
-            color: inherit;
-            margin-bottom: 20px;
-        }
         .note-insight {
             font-size: 2rem;
             font-weight: 900;
             line-height: 1.45;
             color: var(--primary-dark-brown);
             letter-spacing: -0.02em;
-            margin: 0;
-            transition: color 0.2s;
-        }
-        .note-insight-link:hover .note-insight {
-            color: var(--primary-brown);
+            margin: 0 0 24px;
         }
 
-        /* ── Embed Component ── */
         .note-embed {
             display: flex;
             align-items: stretch;
             border: 1px solid rgba(0, 0, 0, 0.09);
             border-radius: 10px;
             overflow: hidden;
-            margin: 0 0 28px;
+            margin: 0 0 44px;
             max-width: 420px;
             background: rgba(255, 255, 255, 0.55);
             text-decoration: none;
@@ -156,35 +159,56 @@
             opacity: 0.42;
         }
 
-        /* ── 重點句預覽 ── */
-        .note-preview {
-            font-size: 1rem;
-            line-height: 1.85;
-            color: var(--black);
-            opacity: 0.65;
-            margin: 0 0 20px;
+        .note-divider {
+            width: 48px;
+            height: 4px;
+            background: var(--primary-yellow);
+            border: none;
+            border-radius: 2px;
+            margin: 0 0 44px;
         }
 
-        /* ── 閱讀全文連結 ── */
-        .note-read-more {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.85rem;
-            font-weight: 600;
+        .note-body {
+            font-size: 1.05rem;
+            line-height: 2;
+            color: var(--black);
+        }
+        .note-body p { margin: 0 0 1.6em; }
+        .note-body p:last-child { margin-bottom: 0; }
+
+        .note-source-links {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        .note-source-links h3 {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--dark-gray);
+            margin: 0 0 14px;
+            opacity: 0.65;
+        }
+        .note-source-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .note-source-links a {
+            font-size: 0.9rem;
             color: var(--primary-brown);
             text-decoration: none;
-            letter-spacing: 0.02em;
-            transition: gap 0.2s ease, color 0.2s ease;
+            line-height: 1.5;
+            transition: color 0.2s;
         }
-        .note-read-more:hover {
-            gap: 10px;
-            color: var(--primary-dark-brown);
-        }
+        .note-source-links a:hover { color: var(--primary-dark-brown); }
 
-        /* ── 尾部 ── */
         .note-foot {
-            margin-top: 32px;
+            margin-top: 56px;
             padding-top: 20px;
             border-top: 1px solid rgba(0, 0, 0, 0.08);
         }
@@ -195,16 +219,6 @@
             opacity: 0.6;
         }
 
-        /* ── 篇章分隔 ── */
-        .notes-separator {
-            width: 100%;
-            height: 1px;
-            background: rgba(0, 0, 0, 0.08);
-            border: none;
-            margin: 64px 0;
-        }
-
-        /* ── RWD ── */
         @media (max-width: 768px) {
             .note-insight { font-size: 1.55rem; }
         }
@@ -259,63 +273,8 @@
 
     <main class="main-container notes-container">
 
-        <div class="page-title">
-            <h2>Notes</h2>
-            <p>聽到的 · 讀到的 · 想到的</p>
-        </div>
+        <a class="note-back" href="index.html">← Notes</a>
 
-        <!-- ── Note #02 ── -->
-        <article class="note-entry" id="note-02">
-
-            <div class="note-meta">
-                <span class="note-number">#02</span>
-                <time class="note-dateline" datetime="2026-06-25">2026 · 06 · 25</time>
-            </div>
-
-            <a class="note-insight-link" href="making-your-choice-right.html">
-                <h2 class="note-insight">不是韌性太低。<br>是模式，遇到了邊界。</h2>
-            </a>
-
-            <a class="note-embed note-embed--podcast"
-               href="https://podcasts.apple.com/tw/podcast/%E5%91%A8%E6%85%95%E5%A7%BF%E6%94%BE%E5%BF%83%E8%AA%AA/id1758761679?i=1000773644651"
-               target="_blank"
-               rel="noopener noreferrer">
-                <div class="note-embed__thumb" aria-hidden="true">
-                    <svg width="24" height="20" viewBox="0 0 24 20" fill="none">
-                        <rect x="0"  y="8" width="3.5" height="4"  rx="1.75" fill="currentColor"/>
-                        <rect x="5"  y="3" width="3.5" height="14" rx="1.75" fill="currentColor"/>
-                        <rect x="10" y="6" width="3.5" height="8"  rx="1.75" fill="currentColor"/>
-                        <rect x="15" y="0" width="3.5" height="20" rx="1.75" fill="currentColor"/>
-                        <rect x="20" y="5" width="3.5" height="10" rx="1.75" fill="currentColor"/>
-                    </svg>
-                </div>
-                <div class="note-embed__body">
-                    <p class="note-embed__title">周慕姿放心說</p>
-                    <p class="note-embed__creator">周慕姿</p>
-                    <div class="note-embed__platform">
-                        <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true">
-                            <circle cx="4.5" cy="4.5" r="4" stroke="currentColor" stroke-width="1"/>
-                            <rect x="3" y="3" width="1" height="3" rx="0.5" fill="currentColor"/>
-                            <rect x="5" y="2" width="1" height="5" rx="0.5" fill="currentColor"/>
-                        </svg>
-                        <span>Podcast</span>
-                    </div>
-                </div>
-            </a>
-
-            <p class="note-preview">不是韌性不夠，是一直依靠的那套模式，剛好遇到了它無法處理的情境。這兩件事，差別很大。</p>
-
-            <a class="note-read-more" href="making-your-choice-right.html">閱讀全文 →</a>
-
-            <footer class="note-foot">
-                <p class="note-tags">心理學 · 選擇 · 掌控感 · 心理韌性 · 自我覺察</p>
-            </footer>
-
-        </article>
-
-        <hr class="notes-separator" aria-hidden="true">
-
-        <!-- ── Note #01 ── -->
         <article class="note-entry" id="note-01">
 
             <div class="note-meta">
@@ -323,9 +282,7 @@
                 <time class="note-dateline" datetime="2026-06-24">2026 · 06 · 24</time>
             </div>
 
-            <a class="note-insight-link" href="avoiding-mistakes.html">
-                <h2 class="note-insight">我是在生活，<br>還是在避免犯錯？</h2>
-            </a>
+            <h1 class="note-insight">我是在生活，<br>還是在避免犯錯？</h1>
 
             <a class="note-embed note-embed--podcast"
                href="https://podcasts.apple.com/tw/podcast/ep-618-%E9%AB%98%E5%8A%9F%E8%83%BD%E5%80%96%E5%AD%98%E8%80%85-%E8%AE%80%E5%BE%8C%E5%BF%83%E5%BE%97-%E6%B2%92%E7%94%A8%E7%9A%84%E4%BA%BA-%E9%82%84%E5%80%BC%E5%BE%97%E8%A2%AB%E6%84%9B%E5%97%8E/id1532820533?i=1000773799557"
@@ -354,9 +311,32 @@
                 </div>
             </a>
 
-            <p class="note-preview">我到底是在生活，還是在避免自己犯錯？</p>
+            <hr class="note-divider" aria-hidden="true">
 
-            <a class="note-read-more" href="avoiding-mistakes.html">閱讀全文 →</a>
+            <div class="note-body">
+                <p>一開始吸引我的，其實不是「高功能倖存者」這個名詞。</p>
+                <p>而是節目裡提到的某些狀態：很會撐、很難休息、總是先檢討自己、害怕犯錯。</p>
+                <p>我不確定自己算不算高功能倖存者。但聽完之後，有一個問題一直留在腦裡：</p>
+                <p>我到底是在生活，還是在避免自己犯錯？</p>
+                <p>聽完當下，我把這集分享到了家人的群組。</p>
+                <p>但沒多久又收回了。</p>
+                <p>後來才意識到，我好像很常做這件事。看到一篇文章、一集 Podcast，或一個有感觸的內容，就會想分享給某個人。可是我通常只是丟連結。</p>
+                <p>我很少說：為什麼想分享？哪一句打動我？我希望對方看到什麼？</p>
+                <p>所以我開始想，我是真的在分享內容，還是在期待別人透過那些連結理解我？</p>
+                <p>如果連我自己都沒把想法整理出來，別人也很難從一個連結裡看見我。</p>
+                <p>或許這也是我想開始記錄 Notes 的原因。比起一直轉傳，我更想留下自己聽到的、讀到的、想到的東西。</p>
+            </div>
+
+            <div class="note-source-links">
+                <h3>延伸閱讀</h3>
+                <ul>
+                    <li>
+                        <a href="https://readingoutpost.com/high-functioning-survivor/" target="_blank">
+                            閱讀前哨站｜高功能倖存者
+                        </a>
+                    </li>
+                </ul>
+            </div>
 
             <footer class="note-foot">
                 <p class="note-tags">心理學 · 自我覺察 · 完美主義 · 防止犯錯</p>
