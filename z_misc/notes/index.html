@@ -16,16 +16,14 @@
             margin: 0 auto 120px;
         }
 
-        .note-entry {
-            padding-top: 16px;
-        }
+        .note-entry { padding-top: 0; }
 
-        /* ── 頂部 meta：流水號 + 日期 ── */
+        /* ── 頂部 meta：流水號 + 日期（與標題緊貼成群組）── */
         .note-meta {
             display: flex;
             align-items: baseline;
             gap: 16px;
-            margin-bottom: 14px;
+            margin-bottom: 8px;
         }
 
         .note-number {
@@ -49,7 +47,7 @@
             display: block;
             text-decoration: none;
             color: inherit;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .note-insight {
@@ -207,28 +205,23 @@
             color: var(--primary-dark-brown);
         }
 
-        /* ── 尾部 ── */
+        /* ── 尾部（低調，不跟下一篇的 meta 競爭視覺）── */
         .note-foot {
-            margin-top: 32px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(0, 0, 0, 0.08);
+            margin-top: 20px;
+            padding-top: 0;
+            border-top: none;
         }
 
         .note-tags {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--dark-gray);
             letter-spacing: 0.06em;
-            opacity: 0.6;
+            opacity: 0.4;
         }
 
-        /* ── 篇章分隔 ── */
-        .notes-separator {
-            display: none;
-        }
-
-        .note-entry+.note-entry {
-            margin-top: 128px;
-        }
+        /* ── 篇章分隔：文章間距大於文章內距，強制視覺切斷 ── */
+        .notes-separator { display: none; }
+        .note-entry + .note-entry { margin-top: 160px; }
 
         /* ── 重點句 highlight ── */
         mark.note-highlight {

@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="page-inner">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>野原家系統管理局 | AJAX + jQuery</title>
+    <link rel="stylesheet" href="../../z_assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        /* ── 野原家色系 ─────────────────────────────────────────
+           黃 #F7C948  紅 #E8392A  白 #FFFDF5  深棕 #3C2415
+           淡黃 #FFF5CC  淡紅 #FFF0EE  outline 黑 #222
+        ──────────────────────────────────────────────────────── */
+        :root {
+            --shin-yellow:   #F7C948;
+            --shin-red:      #E8392A;
+            --shin-cream:    #FFFDF5;
+            --shin-dk:       #3C2415;
+            --shin-gray:     #888;
+            --shin-ltyellow: #FFF5CC;
+            --shin-ltred:    #FFF0EE;
+            --shin-border:   #222;
+            --shin-radius:   16px;
+        }
+
+        header { padding: 0; background: var(--light-yellow); }
+
+        body { background: var(--shin-cream); }
+
+        /* ── Hero ─────────────────────────────────────────────── */
+        .shin-hero {
+            position: relative;
+            background: var(--shin-yellow);
+            border-bottom: 4px solid var(--shin-border);
+            padding: 40px 10% 0;
+            overflow: hidden;
+            min-height: 220px;
+            display: flex;
+            align-items: flex-end;
+            gap: 32px;
+        }
+
+        /* 漫畫網點底紋 */
+        .shin-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(0,0,0,.09) 1.5px, transparent 1.5px);
+            background-size: 14px 14px;
+            pointer-events: none;
+        }
+
+        .shin-hero-text {
+            position: relative;
+            padding-bottom: 32px;
+            flex: 1;
+        }
+
+        .shin-hero-text .label {
+            display: inline-block;
+            background: var(--shin-red);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 900;
+            letter-spacing: .1em;
+            padding: 3px 10px;
+            border-radius: 4px;
+            border: 2px solid var(--shin-border);
+            margin-bottom: 10px;
+        }
+
+        .shin-hero-text h1 {
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            color: var(--shin-dk);
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+
+        .shin-hero-text h1 em {
+            font-style: normal;
+            color: var(--shin-red);
+        }
+
+        .shin-hero-text p {
+            font-size: 0.85rem;
+            color: #555;
+            max-width: 480px;
+        }
+
+        .shin-hero-art {
+            position: relative;
+            flex-shrink: 0;
+            font-size: 6rem;
+            line-height: 1;
+            padding-bottom: 0;
+            align-self: flex-end;
+            filter: drop-shadow(4px 0 0 #222) drop-shadow(-4px 0 0 #222)
+                    drop-shadow(0 4px 0 #222) drop-shadow(0 -4px 0 #222);
+        }
+
+        .tech-pill {
+            display: inline-block;
+            background: var(--shin-dk);
+            color: #fff;
+            font-size: 0.7rem;
+            padding: 2px 9px;
+            border-radius: 50px;
+            margin: 6px 3px 0 0;
+            letter-spacing: .04em;
+        }
+
+        /* ── Main layout ──────────────────────────────────────── */
+        .main-container {
+            max-width: 1020px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+
+        /* ── Flow banner ──────────────────────────────────────── */
+        .flow-banner {
+            background: var(--shin-ltyellow);
+            border: 2.5px solid var(--shin-border);
+            border-radius: var(--shin-radius);
+            padding: 16px 24px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--shin-dk);
+            white-space: nowrap;
+        }
+
+        .flow-step .num {
+            width: 22px;
+            height: 22px;
+            background: var(--shin-red);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.68rem;
+            flex-shrink: 0;
+            border: 2px solid var(--shin-border);
+        }
+
+        .flow-arr {
+            color: var(--shin-gray);
+            padding: 0 10px;
+            font-size: 1rem;
+        }
+
+        /* ── Section title ────────────────────────────────────── */
+        .sec-title {
+            font-size: 0.72rem;
+            font-weight: 900;
+            letter-spacing: .12em;
+            color: var(--shin-red);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sec-title::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: repeating-linear-gradient(90deg, var(--shin-border) 0, var(--shin-border) 6px, transparent 6px, transparent 12px);
+        }
+
+        /* ── Cards ────────────────────────────────────────────── */
+        .demo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 48px;
+        }
+
+        @media (max-width: 680px) {
+            .demo-grid { grid-template-columns: 1fr; }
+            .shin-hero { flex-direction: column; align-items: flex-start; }
+            .shin-hero-art { align-self: auto; font-size: 4rem; }
+        }
+
+        .demo-card {
+            background: #fff;
+            border: 2.5px solid var(--shin-border);
+            border-radius: var(--shin-radius);
+            overflow: hidden;
+            box-shadow: 4px 4px 0 var(--shin-border);
+            transition: transform .2s, box-shadow .2s;
+        }
+
+        .demo-card:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 var(--shin-border);
+        }
+
+        .card-header {
+            padding: 13px 18px;
+            border-bottom: 2px solid var(--shin-border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-header .emoji { font-size: 1.3rem; line-height: 1; }
+
+        .card-header h3 {
+            font-size: 0.92rem;
+            color: var(--shin-dk);
+            margin: 0;
+        }
+
+        .card-header .badge {
+            margin-left: auto;
+            font-size: 0.65rem;
+            background: var(--shin-ltyellow);
+            color: var(--shin-dk);
+            border: 1.5px solid var(--shin-border);
+            padding: 2px 8px;
+            border-radius: 50px;
+            white-space: nowrap;
+        }
+
+        .card-body { padding: 18px; }
+
+        /* ── Forms ────────────────────────────────────────────── */
+        .form-group { margin-bottom: 12px; }
+
+        .form-group label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--shin-gray);
+            margin-bottom: 4px;
+            font-weight: 700;
+            letter-spacing: .03em;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-family: "Noto Serif TC", serif;
+            color: var(--shin-dk);
+            outline: none;
+            transition: border-color .2s;
+            background: #fff;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus { border-color: var(--shin-red); }
+
+        .form-group textarea { resize: vertical; min-height: 64px; }
+
+        /* ── Buttons ──────────────────────────────────────────── */
+        .btn-send {
+            width: 100%;
+            padding: 9px;
+            background: var(--shin-red);
+            color: #fff;
+            border: 2px solid var(--shin-border);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-family: "Noto Serif TC", serif;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            box-shadow: 2px 2px 0 var(--shin-border);
+            transition: transform .15s, box-shadow .15s, background .15s;
+        }
+
+        .btn-send:hover {
+            background: #c42a1d;
+            transform: translate(-1px,-1px);
+            box-shadow: 3px 3px 0 var(--shin-border);
+        }
+
+        .btn-send:disabled { opacity: .55; cursor: not-allowed; transform: none; }
+
+        /* ── Result ───────────────────────────────────────────── */
+        .result-panel {
+            margin-top: 12px;
+            border-radius: 8px;
+            padding: 10px 13px;
+            font-size: 0.82rem;
+            line-height: 1.6;
+            display: none;
+            animation: pop .25s ease;
+        }
+
+        @keyframes pop {
+            from { opacity: 0; transform: scale(.96); }
+            to   { opacity: 1; transform: scale(1); }
+        }
+
+        .result-panel.loading {
+            background: #f5f5f5;
+            color: var(--shin-gray);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1.5px dashed #ccc;
+        }
+
+        .result-panel.success {
+            background: #edf7ee;
+            color: #2a6336;
+            border: 1.5px solid #9fd0a5;
+        }
+
+        .result-panel.error {
+            background: var(--shin-ltred);
+            color: var(--shin-red);
+            border: 1.5px solid #f5b8b3;
+        }
+
+        .result-panel.info {
+            background: var(--shin-ltyellow);
+            color: var(--shin-dk);
+            border: 1.5px solid #e8d078;
+        }
+
+        .spinner {
+            width: 14px; height: 14px;
+            border: 2.5px solid #ddd;
+            border-top-color: var(--shin-red);
+            border-radius: 50%;
+            animation: spin .6s linear infinite;
+            flex-shrink: 0;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ── Code block ───────────────────────────────────────── */
+        .code-block {
+            margin-top: 14px;
+            background: #1a1a2e;
+            border: 2px solid var(--shin-border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .code-bar {
+            background: #16213e;
+            padding: 5px 12px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .code-bar span { font-size: 0.68rem; color: #666; margin-left: 4px; letter-spacing: .04em; }
+
+        .dot { width: 8px; height: 8px; border-radius: 50%; }
+
+        .code-block pre {
+            padding: 12px 14px;
+            margin: 0;
+            font-size: 0.7rem;
+            line-height: 1.75;
+            color: #cdd6f4;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            white-space: pre;
+        }
+
+        .kw  { color: #cba6f7; }
+        .fn  { color: #89b4fa; }
+        .str { color: #a6e3a1; }
+        .cm  { color: #585b70; font-style: italic; }
+        .num { color: #fab387; }
+
+        /* ── Wide card ────────────────────────────────────────── */
+        .card-wide { grid-column: 1 / -1; }
+
+        .wide-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media (max-width: 680px) { .wide-body { grid-template-columns: 1fr; } }
+
+        .wide-left  { padding: 18px; border-right: 2px solid #eee; }
+        .wide-right { padding: 18px; }
+
+        /* ── Comment list ─────────────────────────────────────── */
+        .cmt-list {
+            list-style: none;
+            padding: 0; margin: 0 0 14px;
+            max-height: 160px;
+            overflow-y: auto;
+        }
+
+        .cmt-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 7px 0;
+            border-bottom: 1px dashed #eee;
+            font-size: 0.82rem;
+            animation: pop .2s ease;
+        }
+
+        .cmt-list li .av {
+            width: 22px; height: 22px;
+            border-radius: 50%;
+            background: var(--shin-yellow);
+            border: 2px solid var(--shin-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .75rem;
+            flex-shrink: 0;
+        }
+
+        .cmt-list li .del {
+            margin-left: auto;
+            font-size: .7rem;
+            color: #ccc;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: color .15s;
+        }
+
+        .cmt-list li .del:hover { color: var(--shin-red); }
+
+        /* ── Counter ──────────────────────────────────────────── */
+        .counter-big {
+            text-align: center;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--shin-dk);
+            line-height: 1;
+        }
+
+        .counter-unit {
+            text-align: center;
+            font-size: 0.72rem;
+            color: var(--shin-gray);
+            margin-bottom: 14px;
+        }
+
+        .btn-row { display: flex; gap: 8px; }
+
+        .btn-outline {
+            flex: 1;
+            padding: 7px;
+            background: #fff;
+            border: 2px solid var(--shin-border);
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-family: "Noto Serif TC", serif;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 2px 2px 0 var(--shin-border);
+            transition: transform .15s, box-shadow .15s;
+        }
+
+        .btn-outline:hover {
+            transform: translate(-1px,-1px);
+            box-shadow: 3px 3px 0 var(--shin-border);
+            background: var(--shin-ltyellow);
+        }
+
+        /* ── Flavor text ──────────────────────────────────────── */
+        .flavor {
+            font-size: 0.75rem;
+            color: var(--shin-gray);
+            font-style: italic;
+            margin-bottom: 12px;
+            padding: 6px 10px;
+            background: var(--shin-ltyellow);
+            border-left: 3px solid var(--shin-yellow);
+            border-radius: 0 6px 6px 0;
+        }
+
+        footer { background: var(--light-yellow); }
+    </style>
+</head>
+
+<body>
+    <header class="container">
+        <nav class="navbar">
+            <div class="container nav-shell">
+                <a class="nav-logo" href="../../index.html" aria-label="首頁">
+                    <img src="../../z_assets/images/noopylogov.png" alt="Jekkinoopy Studio">
+                </a>
+                <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav-menu" aria-label="開啟選單">
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                </button>
+                <div class="nav-menu" id="site-nav-menu">
+                    <ul class="nav-links nav-links--start">
+                        <li class="downDisabled" data-tooltip="作品建置中"><a href="../../about/">About</a></li>
+                        <li class="dropdown">
+                            <a href="../../graphic/">Graphic</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../../graphic/logoPkg.html">Logo & 包裝設計</a></li>
+                                <li><a href="../../graphic/calendar-bag.html">桌曆 & 購物袋</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../../illustration/">Illustration</a></li>
+                    </ul>
+                    <ul class="nav-links nav-links--end">
+                        <li class="downDisabled" data-tooltip="作品建置中"><a href="../../photo/">Photo</a></li>
+                        <li><a href="../../uiux/">UI/UX</a></li>
+                        <li><a href="../" class="active">Web</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ── Hero ──────────────────────────────────────────────── -->
+    <div class="shin-hero">
+        <div class="shin-hero-text">
+            <span class="label">AJAX + jQuery 課程作業</span>
+            <h1>野原家<em>系統管理局</em></h1>
+            <p>由小新統籌、廣志負責加班、美冴掌管預算的神秘組織。<br>核心技術：表單送出 → 非同步呼叫 PHP → 動態顯示結果。</p>
+            <div>
+                <span class="tech-pill">jQuery 3.7</span>
+                <span class="tech-pill">$.ajax()</span>
+                <span class="tech-pill">PHP Backend</span>
+                <span class="tech-pill">JSON Response</span>
+            </div>
+        </div>
+        <div class="shin-hero-art">🌻</div>
+    </div>
+
+    <main class="main-container">
+
+        <!-- Flow -->
+        <div class="flow-banner">
+            <div class="flow-step"><span class="num">①</span>小新亂填表單</div>
+            <div class="flow-arr">→</div>
+            <div class="flow-step"><span class="num">②</span>jQuery 攔截 submit</div>
+            <div class="flow-arr">→</div>
+            <div class="flow-step"><span class="num">③</span>$.ajax() 非同步送出</div>
+            <div class="flow-arr">→</div>
+            <div class="flow-step"><span class="num">④</span>PHP 處理回傳 JSON</div>
+            <div class="flow-arr">→</div>
+            <div class="flow-step"><span class="num">⑤</span>頁面動態更新（不重整）</div>
+        </div>
+
+        <div class="sec-title">互動示範 Demo</div>
+
+        <div class="demo-grid">
+
+            <!-- ① 廣志打卡系統 -->
+            <div class="demo-card">
+                <div class="card-header">
+                    <span class="emoji">👔</span>
+                    <h3>廣志打卡系統</h3>
+                    <span class="badge">登入驗證</span>
+                </div>
+                <div class="card-body">
+                    <p class="flavor">「廣志老師每天都要準時打卡，否則美冴會在家等著⋯」</p>
+                    <form id="form-login">
+                        <div class="form-group">
+                            <label>員工帳號（試試 hiroshi）</label>
+                            <input type="text" id="login-user" placeholder="輸入帳號">
+                        </div>
+                        <div class="form-group">
+                            <label>密碼（試試 misae520）</label>
+                            <input type="password" id="login-pass" placeholder="輸入密碼">
+                        </div>
+                        <button type="submit" class="btn-send">
+                            <i class="fa-solid fa-stamp"></i> 打卡上班
+                        </button>
+                    </form>
+                    <div id="result-login" class="result-panel"></div>
+                    <div class="code-block">
+                        <div class="code-bar">
+                            <div class="dot" style="background:#ff5f57"></div>
+                            <div class="dot" style="background:#febc2e"></div>
+                            <div class="dot" style="background:#28c840"></div>
+                            <span>login.js</span>
+                        </div>
+                        <pre>$(<span class="str">'#form-login'</span>).<span class="fn">on</span>(<span class="str">'submit'</span>, <span class="kw">function</span>(e) {
+  e.<span class="fn">preventDefault</span>();
+  $.<span class="fn">ajax</span>({
+    url: <span class="str">'login.php'</span>,
+    type: <span class="str">'POST'</span>,
+    data: { user, pass },
+    dataType: <span class="str">'json'</span>,
+    success: <span class="kw">function</span>(res) {
+      <span class="cm">// res.status === 'ok' → 打卡成功</span>
+    }
+  });
+});</pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ② 野原家戶籍查詢 -->
+            <div class="demo-card">
+                <div class="card-header">
+                    <span class="emoji">🔍</span>
+                    <h3>野原家戶籍查詢</h3>
+                    <span class="badge">資料查詢</span>
+                </div>
+                <div class="card-body">
+                    <p class="flavor">「美冴：你查什麼？　小新：查看看我有沒有弟弟。」</p>
+                    <form id="form-search">
+                        <div class="form-group">
+                            <label>成員編號（1＝小新、2＝廣志、3＝美冴、4＝小白）</label>
+                            <input type="number" id="search-id" placeholder="輸入 1–4" min="1" max="4">
+                        </div>
+                        <div class="form-group">
+                            <label>查詢項目</label>
+                            <select id="search-type">
+                                <option value="profile">個人資料</option>
+                                <option value="hobby">興趣愛好</option>
+                                <option value="wanted">通緝事項</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-send">
+                            <i class="fa-solid fa-magnifying-glass"></i> 查詢戶籍資料
+                        </button>
+                    </form>
+                    <div id="result-search" class="result-panel"></div>
+                    <div class="code-block">
+                        <div class="code-bar">
+                            <div class="dot" style="background:#ff5f57"></div>
+                            <div class="dot" style="background:#febc2e"></div>
+                            <div class="dot" style="background:#28c840"></div>
+                            <span>search.js</span>
+                        </div>
+                        <pre>$.<span class="fn">ajax</span>({
+  url: <span class="str">'query.php'</span>,
+  type: <span class="str">'GET'</span>,
+  data: { id, type },
+  dataType: <span class="str">'json'</span>,
+  beforeSend: <span class="kw">function</span>() {
+    $(<span class="str">'#result'</span>).<span class="fn">html</span>(<span class="str">'查詢中…'</span>);
+  },
+  success: <span class="kw">function</span>(res) {
+    $(<span class="str">'#result'</span>).<span class="fn">html</span>(res.data);
+  }
+});</pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ③ 春日部防衛隊留言板 Wide -->
+            <div class="demo-card card-wide">
+                <div class="card-header">
+                    <span class="emoji">📋</span>
+                    <h3>春日部防衛隊留言板</h3>
+                    <span class="badge">動態新增 DOM</span>
+                </div>
+                <div class="wide-body">
+                    <div class="wide-left">
+                        <p class="flavor">「隊員集合！有事留言，小新負責不讀。」</p>
+                        <form id="form-comment">
+                            <div class="form-group">
+                                <label>隊員代號</label>
+                                <input type="text" id="cmt-name" placeholder="例：正男、阿呆、風間">
+                            </div>
+                            <div class="form-group">
+                                <label>緊急通報內容</label>
+                                <textarea id="cmt-text" placeholder="例：美冴媽媽出動了！快逃！"></textarea>
+                            </div>
+                            <button type="submit" class="btn-send">
+                                <i class="fa-solid fa-walkie-talkie"></i> 發送通報
+                            </button>
+                        </form>
+                        <div id="result-comment" class="result-panel"></div>
+                    </div>
+                    <div class="wide-right">
+                        <p style="font-size:.75rem;color:var(--shin-gray);font-weight:700;margin-bottom:8px;">最新通報 ↓</p>
+                        <ul class="cmt-list" id="comment-list">
+                            <li>
+                                <span class="av">🌻</span>
+                                <span><strong>小新：</strong>大家好～我是野原新之助！</span>
+                                <span class="del" data-del>✕</span>
+                            </li>
+                        </ul>
+                        <div class="code-block">
+                            <div class="code-bar">
+                                <div class="dot" style="background:#ff5f57"></div>
+                                <div class="dot" style="background:#febc2e"></div>
+                                <div class="dot" style="background:#28c840"></div>
+                                <span>comment.js ← AJAX success → prepend DOM</span>
+                            </div>
+                            <pre>success: <span class="kw">function</span>(res) {
+  <span class="kw">var</span> $li = $(<span class="str">`&lt;li&gt;
+    &lt;span class="av"&gt;🌻&lt;/span&gt;
+    &lt;strong&gt;${res.name}：&lt;/strong&gt;
+    ${res.msg}
+  &lt;/li&gt;`</span>);
+  $(<span class="str">'#comment-list'</span>).<span class="fn">prepend</span>($li);
+}</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ④ 小白零食統計 -->
+            <div class="demo-card">
+                <div class="card-header">
+                    <span class="emoji">🐾</span>
+                    <h3>小白零食統計局</h3>
+                    <span class="badge">非同步計數</span>
+                </div>
+                <div class="card-body">
+                    <p class="flavor">「每次偷吃一顆都要向後端回報，美冴說的。」</p>
+                    <div class="counter-big" id="counter-val">0</div>
+                    <div class="counter-unit">顆 ／ 今日零食配給</div>
+                    <div class="btn-row">
+                        <button class="btn-outline" id="btn-inc">＋ 偷吃一顆</button>
+                        <button class="btn-outline" id="btn-dec">－ 吐出來</button>
+                        <button class="btn-outline" id="btn-reset">美冴清零</button>
+                    </div>
+                    <div id="result-counter" class="result-panel"></div>
+                    <div class="code-block">
+                        <div class="code-bar">
+                            <div class="dot" style="background:#ff5f57"></div>
+                            <div class="dot" style="background:#febc2e"></div>
+                            <div class="dot" style="background:#28c840"></div>
+                            <span>counter.js</span>
+                        </div>
+                        <pre>$(<span class="str">'#btn-inc'</span>).<span class="fn">click</span>(<span class="kw">function</span>() {
+  $.<span class="fn">post</span>(<span class="str">'counter.php'</span>,
+    { action: <span class="str">'inc'</span> },
+    <span class="kw">function</span>(res) {
+      $(<span class="str">'#counter-val'</span>).<span class="fn">text</span>(res.value);
+    }, <span class="str">'json'</span>
+  );
+});</pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ⑤ 加入防衛隊申請 -->
+            <div class="demo-card">
+                <div class="card-header">
+                    <span class="emoji">📝</span>
+                    <h3>加入防衛隊申請</h3>
+                    <span class="badge">表單驗證</span>
+                </div>
+                <div class="card-body">
+                    <p class="flavor">「申請前先確認：你敢跟小新玩嗎？」</p>
+                    <form id="form-register">
+                        <div class="form-group">
+                            <label>隊員 Email（要是真的信箱喔）</label>
+                            <input type="email" id="reg-email" placeholder="your@kasukabe.jp">
+                        </div>
+                        <div class="form-group">
+                            <label>秘密通關密語（至少 6 字）</label>
+                            <input type="password" id="reg-pwd" placeholder="不能是 123456 喔！">
+                        </div>
+                        <button type="submit" class="btn-send">
+                            <i class="fa-solid fa-shield-halved"></i> 申請入隊
+                        </button>
+                    </form>
+                    <div id="result-register" class="result-panel"></div>
+                    <div class="code-block">
+                        <div class="code-bar">
+                            <div class="dot" style="background:#ff5f57"></div>
+                            <div class="dot" style="background:#febc2e"></div>
+                            <div class="dot" style="background:#28c840"></div>
+                            <span>register.js ← 前端驗 → 再 AJAX</span>
+                        </div>
+                        <pre><span class="cm">// ① 先驗前端</span>
+<span class="kw">if</span> (pwd.length &lt; <span class="num">6</span>) {
+  <span class="fn">showError</span>(<span class="str">'密語太短啦！'</span>);
+  <span class="kw">return</span>; <span class="cm">// 根本不送 AJAX</span>
+}
+<span class="cm">// ② 驗過才送</span>
+$.<span class="fn">ajax</span>({ url: <span class="str">'register.php'</span>,
+  type: <span class="str">'POST'</span>, data: formData,
+  success: <span class="kw">function</span>(r) {
+    <span class="cm">// r.uid → 入隊成功</span>
+  }
+});</pre>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer id="contact">
+        <a href="mailto:jekkinoopy@gmail.com" class="contact-email">
+            <small>如有合作意願，歡迎隨時聯繫 jekkinoopy@gmail.com</small>
+        </a>
+        <small>&copy; 2026 JEKKINOOPY. All rights reserved.</small>
+    </footer>
+
+    <script src="../../z_assets/js/nav.js"></script>
+    <script>
+    // ─── Mock 野原家資料庫 ─────────────────────────────────────
+    const nohara = {
+        1: {
+            name: '野原新之助（小新）',
+            profile: '5 歲，春日部幼稚園。身高 105cm，體重 18kg。特技：大人話、屁屁舞。',
+            hobby:   '看動感超人、吃巧克力餅乾、搭訕漂亮姐姐。',
+            wanted:  '① 把美冴的口紅畫在臉上 ② 把廣志的啤酒喝掉 ③ 讓小白進幼稚園'
+        },
+        2: {
+            name: '野原廣志',
+            profile: '35 歲，雙葉商事上班族。身高 178cm。興趣：喝啤酒、看棒球、假裝在工作。',
+            hobby:   '下班後喝啤酒、週末打高爾夫（打得很爛）、夢想存夠錢環遊世界。',
+            wanted:  '① 遲到 ② 被美冴罰站 ③ 零用錢花在喝酒上被美冴發現'
+        },
+        3: {
+            name: '野原美冴',
+            profile: '29 歲，家庭主婦兼家計管理局局長。特技：鐵拳、算帳、消費完全零延遲。',
+            hobby:   '搶特賣品、看八卦雜誌、打麻將、嫌棄廣志。',
+            wanted:  '① 超出預算買包包 ② 颱風天出門搶特賣 ③ 把銀行卡鎖住不給廣志用'
+        },
+        4: {
+            name: '小白（シロ）',
+            profile: '3 歲，野原家的狗。品種：西部高地白梗。特技：逃跑、搶食物、對美冴裝可愛。',
+            hobby:   '追貓、吃東西、在廣志的高爾夫球袋裡睡覺。',
+            wanted:  '① 偷吃小新的餅乾 ② 在客廳打架 ③ 趁美冴不注意偷溜出門'
+        }
+    };
+
+    const avatars = { 1: '🌻', 2: '🍺', 3: '👜', 4: '🐾' };
+
+    // ─── 工具 ─────────────────────────────────────────────────
+    function showLoading($el, msg) {
+        msg = msg || '呼叫 PHP 中⋯';
+        $el.removeClass('success error info')
+           .addClass('loading')
+           .html('<div class="spinner"></div><span>' + msg + '</span>')
+           .show();
+    }
+
+    // ─── ① 廣志打卡 ──────────────────────────────────────────
+    $('#form-login').on('submit', function(e) {
+        e.preventDefault();
+        var user = $('#login-user').val().trim();
+        var pass = $('#login-pass').val().trim();
+        var $r   = $('#result-login');
+
+        if (!user || !pass) {
+            $r.removeClass('loading info success').addClass('error')
+              .html('❌ 帳號密碼都要填！美冴說的。').show(); return;
+        }
+
+        showLoading($r, '驗證身份中，呼叫 login.php⋯');
+
+        setTimeout(function() {
+            $r.removeClass('loading');
+            if (user === 'hiroshi' && pass === 'misae520') {
+                $r.addClass('success').html(
+                    '✅ <strong>打卡成功！</strong>廣志，你今天沒遲到，老婆應該不會罵你。<br>' +
+                    '<small style="opacity:.65">PHP 回傳：{ "status": "ok", "msg": "打卡成功" }</small>'
+                );
+            } else {
+                $r.addClass('error').html(
+                    '❌ 帳密不對！你是不是把美冴的帳號搞混了？<br>' +
+                    '<small style="opacity:.65">PHP 回傳：{ "status": "fail", "msg": "帳密錯誤" }</small>'
+                );
+            }
+        }, 800);
+    });
+
+    // ─── ② 野原家查詢 ────────────────────────────────────────
+    $('#form-search').on('submit', function(e) {
+        e.preventDefault();
+        var id   = parseInt($('#search-id').val());
+        var type = $('#search-type').val();
+        var $r   = $('#result-search');
+
+        showLoading($r, '查詢春日部戶籍，呼叫 query.php⋯');
+
+        setTimeout(function() {
+            $r.removeClass('loading');
+            var m = nohara[id];
+            if (!m) {
+                $r.addClass('error').html('❌ 查無此人，春日部人口只有四個半（小白算半個）。');
+                return;
+            }
+            $r.addClass('info').html(
+                avatars[id] + ' <strong>' + m.name + '</strong><br>' + m[type] +
+                '<br><small style="opacity:.65">PHP 回傳 JSON → jQuery 解析插入 DOM</small>'
+            );
+        }, 650);
+    });
+
+    // ─── ③ 防衛隊留言板 ──────────────────────────────────────
+    var memberAvatars = ['🌻','🍺','👜','🐾','⭐','🎈','🚂'];
+    var avatarIndex = 1;
+
+    $('#form-comment').on('submit', function(e) {
+        e.preventDefault();
+        var name = $('#cmt-name').val().trim();
+        var text = $('#cmt-text').val().trim();
+        var $r   = $('#result-comment');
+
+        if (!name || !text) {
+            $r.removeClass('loading info success').addClass('error')
+              .html('❌ 代號和通報內容都要填！').show(); return;
+        }
+
+        showLoading($r, '送出通報，呼叫 comment.php⋯');
+
+        setTimeout(function() {
+            $r.removeClass('loading').addClass('success')
+              .html('✅ 通報已傳送！防衛隊收到了。');
+
+            var av = memberAvatars[avatarIndex % memberAvatars.length];
+            avatarIndex++;
+
+            var $li = $('<li></li>').html(
+                '<span class="av">' + av + '</span>' +
+                '<span><strong>' + $('<span>').text(name).html() + '：</strong>' +
+                $('<span>').text(text).html() + '</span>' +
+                '<span class="del" data-del>✕</span>'
+            );
+            $('#comment-list').prepend($li);
+            $('#cmt-name').val(''); $('#cmt-text').val('');
+        }, 550);
+    });
+
+    $(document).on('click', '[data-del]', function() {
+        $(this).closest('li').fadeOut(200, function() { $(this).remove(); });
+    });
+
+    // ─── ④ 小白零食計數 ──────────────────────────────────────
+    var count = 0;
+    var labels = { inc: '又偷吃了一顆⋯', dec: '美冴強制叫吐', reset: '美冴清零完畢！' };
+
+    function updateCounter(val, label) {
+        count = val;
+        $('#counter-val').text(count);
+        $('#result-counter').removeClass('loading error info').addClass('success')
+            .html('✅ PHP 回傳：{ "value": ' + count + ' }　<small style="opacity:.65">（' + label + '）</small>')
+            .show();
+    }
+
+    ['inc','dec','reset'].forEach(function(action) {
+        $('#btn-' + action).on('click', function() {
+            $('#result-counter').removeClass('success error info').addClass('loading')
+                .html('<div class="spinner"></div><span>POST → counter.php⋯</span>').show();
+            setTimeout(function() {
+                var next = action === 'inc' ? count + 1 : action === 'dec' ? count - 1 : 0;
+                updateCounter(next, labels[action]);
+            }, 380);
+        });
+    });
+
+    // ─── ⑤ 申請入隊 ──────────────────────────────────────────
+    $('#form-register').on('submit', function(e) {
+        e.preventDefault();
+        var email = $('#reg-email').val().trim();
+        var pwd   = $('#reg-pwd').val().trim();
+        var $r    = $('#result-register');
+
+        if (!email || !email.includes('@')) {
+            $r.removeClass('loading info success').addClass('error')
+              .html('❌ Email 格式不對啦！小新都看得出來。').show(); return;
+        }
+        if (pwd.length < 6) {
+            $r.removeClass('loading info success').addClass('error')
+              .html('❌ 密語太短！至少要 6 個字，連小白都知道。').show(); return;
+        }
+        if (pwd === '123456' || pwd === 'password') {
+            $r.removeClass('loading info success').addClass('error')
+              .html('❌ 這種密碼連廣志都猜得到⋯').show(); return;
+        }
+
+        showLoading($r, '前端驗證通過，送出至 register.php⋯');
+
+        setTimeout(function() {
+            $r.removeClass('loading').addClass('success')
+              .html('🌻 <strong>入隊成功！</strong>歡迎加入春日部防衛隊。' +
+                    '<br><small style="opacity:.65">PHP 回傳：{ "status": "ok", "uid": 5, "email": "' +
+                    $('<span>').text(email).html() + '" }</small>');
+        }, 900);
+    });
+    </script>
+</body>
+</html>
