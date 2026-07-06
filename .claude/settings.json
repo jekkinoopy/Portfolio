@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -n \"站內其他 HTML\\\\|<td><a href=\\\\\"\\\\.\\\\./\\\\|</section>\" z_misc/site-guide/index.html)"
+    ]
+  }
+}
