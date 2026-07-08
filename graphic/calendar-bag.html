@@ -172,14 +172,22 @@
         .lightbox.open { display: flex; }
         .lightbox-content { width: min(1000px, 94vw); max-height: 90vh; position: relative; }
         .lightbox img { width: 100%; max-height: 90vh; object-fit: contain; display: block; border-radius: var(--radius-card); }
-        .lightbox-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; border: 0; background: rgba(255, 255, 255, .2); color: #fff; cursor: pointer; font-size: 1.1rem; }
-        .lightbox-btn:hover { background: rgba(255, 255, 255, .35); }
-        .lightbox-btn.prev { left: -56px; }
-        .lightbox-btn.next { right: -56px; }
-        .lightbox-close { position: absolute; top: -48px; right: 0; border: 0; background: transparent; color: #fff; font-size: 2rem; cursor: pointer; }
-        .lightbox-pause { position: absolute; top: -48px; left: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: 0; border-radius: 50%; background: rgba(255, 255, 255, .15); color: #fff; font-size: 1.1rem; cursor: pointer; }
-        .lightbox-pause:hover { background: rgba(255, 255, 255, .3); }
-        .lightbox-index { margin-top: 12px; text-align: center; color: #fff; font-size: .95rem; letter-spacing: 1px; }
+
+        /* 左右箭頭：貼在圖片卡片內側，是「這張圖」的操作 */
+        .lightbox-btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; width: 44px; height: 44px; border-radius: 50%; border: 0; background: rgba(0, 0, 0, .45); color: #fff; cursor: pointer; font-size: 1.1rem; }
+        .lightbox-btn:hover { background: rgba(0, 0, 0, .65); }
+        .lightbox-btn.prev { left: 16px; }
+        .lightbox-btn.next { right: 16px; }
+
+        /* 關閉鍵：卡片右上角 */
+        .lightbox-close { position: absolute; top: 12px; right: 12px; z-index: 10; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border: 0; border-radius: 50%; background: rgba(0, 0, 0, .45); color: #fff; font-size: 1.4rem; line-height: 1; cursor: pointer; }
+        .lightbox-close:hover { background: rgba(0, 0, 0, .65); }
+
+        /* 暫停鍵 + 頁碼：合成底部置中的輪播控制列 */
+        .lightbox-toolbar { position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%); z-index: 10; display: flex; align-items: center; gap: 12px; padding: 6px 14px; border-radius: 999px; background: rgba(0, 0, 0, .45); color: #fff; font-size: .85rem; }
+        .lightbox-pause { border: 0; background: transparent; color: #fff; font-size: .95rem; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; padding: 0; cursor: pointer; }
+        .lightbox-pause:hover { opacity: .75; }
+        .lightbox-index { letter-spacing: 1px; }
 
         @media (max-width: 1024px) {
             .project-switcher { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px; }
@@ -255,13 +263,15 @@
     <div class="lightbox" id="lightbox" aria-hidden="true">
         <div class="lightbox-content">
             <button class="lightbox-close" id="closeLightbox" aria-label="Close lightbox">&times;</button>
-            <button class="lightbox-pause" id="lightboxPause" aria-label="暫停自動輪播"><i class="fa-solid fa-pause"></i></button>
             <div id="lightboxCarousel" class="carousel slide">
                 <div class="carousel-inner" id="lightboxCarouselInner"></div>
             </div>
             <button class="lightbox-btn prev" data-bs-target="#lightboxCarousel" data-bs-slide="prev" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
             <button class="lightbox-btn next" data-bs-target="#lightboxCarousel" data-bs-slide="next" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
-            <p class="lightbox-index" id="lightboxIndex"></p>
+            <div class="lightbox-toolbar">
+                <button class="lightbox-pause" id="lightboxPause" aria-label="暫停自動輪播"><i class="fa-solid fa-pause"></i></button>
+                <span class="lightbox-index" id="lightboxIndex"></span>
+            </div>
         </div>
     </div>
 
