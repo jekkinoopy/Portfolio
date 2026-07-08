@@ -33,6 +33,42 @@
             display: block;
         }
 
+        /* Bootstrap 的 .navbar>.container{display:flex} 選擇器（兩個 class）
+           優先權比站內 .nav-shell（一個 class）高，會蓋掉 logo 置中格線，
+           用同樣複合選擇器搶回優先權，三個斷點值照抄 style.css */
+        header .navbar .nav-shell {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            column-gap: 16px;
+            width: 100%;
+        }
+
+        @media (max-width: 1399px) {
+            header .navbar .nav-shell {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) auto;
+                grid-template-areas: "nav-logo nav-toggle";
+                align-items: center;
+                column-gap: 12px;
+                row-gap: 0;
+            }
+        }
+
+        @media (min-width: 1400px) {
+            header .navbar .nav-shell {
+                display: grid;
+                grid-template-columns: 1fr auto 1fr;
+                grid-template-areas: "nav-start nav-logo nav-end";
+                align-items: center;
+                column-gap: 28px;
+                row-gap: 0;
+                flex-wrap: nowrap;
+                justify-content: stretch;
+            }
+        }
+
         /* ── 頁內導覽（自己的 navbar，不用 .navbar 這個名字避免撞名）── */
         .bhw-navbar {
             background: var(--primary-dark-brown);

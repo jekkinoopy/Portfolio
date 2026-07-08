@@ -30,6 +30,42 @@
             display: block;
         }
 
+        /* Bootstrap 的 .navbar>.container{display:flex} 選擇器（兩個 class）
+           優先權比站內 .nav-shell（一個 class）高，會蓋掉 logo 置中格線，
+           用同樣複合選擇器搶回優先權，三個斷點值照抄 style.css */
+        header .navbar .nav-shell {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            column-gap: 16px;
+            width: 100%;
+        }
+
+        @media (max-width: 1399px) {
+            header .navbar .nav-shell {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) auto;
+                grid-template-areas: "nav-logo nav-toggle";
+                align-items: center;
+                column-gap: 12px;
+                row-gap: 0;
+            }
+        }
+
+        @media (min-width: 1400px) {
+            header .navbar .nav-shell {
+                display: grid;
+                grid-template-columns: 1fr auto 1fr;
+                grid-template-areas: "nav-start nav-logo nav-end";
+                align-items: center;
+                column-gap: 28px;
+                row-gap: 0;
+                flex-wrap: nowrap;
+                justify-content: stretch;
+            }
+        }
+
         .work-header { display: flex; justify-content: space-between; align-items: baseline; margin: 24px 0 16px; border-left: 10px solid var(--primary-dark-brown); padding-left: 20px; }
         .work-header h3 { font-size: 2rem; font-weight: 800; letter-spacing: 0.02em; margin-bottom: 0.35rem; }
         .work-header p { color: var(--dark-gray); display: inline-flex; align-items: center; gap: 8px; }
@@ -173,26 +209,20 @@
         .lightbox-content { width: min(1000px, 94vw); max-height: 90vh; position: relative; }
         .lightbox img { width: 100%; max-height: 90vh; object-fit: contain; display: block; border-radius: var(--radius-card); }
 
-        /* 左右箭頭：貼在圖片卡片內側，是「這張圖」的操作 */
-        .lightbox-btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; width: 44px; height: 44px; border-radius: 50%; border: 0; background: rgba(0, 0, 0, .45); color: #fff; cursor: pointer; font-size: 1.1rem; }
-        .lightbox-btn:hover { background: rgba(0, 0, 0, .65); }
-        .lightbox-btn.prev { left: 16px; }
-        .lightbox-btn.next { right: 16px; }
-
         /* 關閉鍵：卡片右上角 */
         .lightbox-close { position: absolute; top: 12px; right: 12px; z-index: 10; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border: 0; border-radius: 50%; background: rgba(0, 0, 0, .45); color: #fff; font-size: 1.4rem; line-height: 1; cursor: pointer; }
         .lightbox-close:hover { background: rgba(0, 0, 0, .65); }
 
-        /* 暫停鍵 + 頁碼：合成底部置中的輪播控制列 */
-        .lightbox-toolbar { position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%); z-index: 10; display: flex; align-items: center; gap: 12px; padding: 6px 14px; border-radius: 999px; background: rgba(0, 0, 0, .45); color: #fff; font-size: .85rem; }
-        .lightbox-pause { border: 0; background: transparent; color: #fff; font-size: .95rem; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; padding: 0; cursor: pointer; }
-        .lightbox-pause:hover { opacity: .75; }
-        .lightbox-index { letter-spacing: 1px; }
+        /* 左右切換、暫停、頁碼集中成底部置中的輪播控制區 */
+        .lightbox-toolbar { position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 20; display: flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 999px; background: rgba(0, 0, 0, .45); color: #fff; }
+        .lightbox-btn,
+        .lightbox-pause { width: 28px; height: 28px; border: 0; border-radius: 50%; background: transparent; color: #fff; font-size: 20px; line-height: 1; display: flex; align-items: center; justify-content: center; padding: 0; cursor: pointer; }
+        .lightbox-btn:hover,
+        .lightbox-pause:hover { background: rgba(255, 255, 255, .18); }
+        .lightbox-index { min-width: 48px; text-align: center; font-size: 14px; letter-spacing: 1px; }
 
         @media (max-width: 1024px) {
             .project-switcher { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px; }
-            .lightbox-btn.prev { left: 8px; }
-            .lightbox-btn.next { right: 8px; }
         }
         @media (max-width: 700px) {
             .work-header { display: block; }
@@ -266,11 +296,11 @@
             <div id="lightboxCarousel" class="carousel slide">
                 <div class="carousel-inner" id="lightboxCarouselInner"></div>
             </div>
-            <button class="lightbox-btn prev" data-bs-target="#lightboxCarousel" data-bs-slide="prev" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
-            <button class="lightbox-btn next" data-bs-target="#lightboxCarousel" data-bs-slide="next" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
             <div class="lightbox-toolbar">
+                <button class="lightbox-btn prev" data-bs-target="#lightboxCarousel" data-bs-slide="prev" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
                 <button class="lightbox-pause" id="lightboxPause" aria-label="暫停自動輪播"><i class="fa-solid fa-pause"></i></button>
                 <span class="lightbox-index" id="lightboxIndex"></span>
+                <button class="lightbox-btn next" data-bs-target="#lightboxCarousel" data-bs-slide="next" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
         </div>
     </div>
