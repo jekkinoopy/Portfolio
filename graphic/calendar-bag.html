@@ -4,9 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desk Calendar & Shopping Bag | Jekkinoopy's portfolio</title>
+    <!-- Bootstrap 先載，站內 style.css 後載——同名 class（.container／.navbar／.dropdown-menu）
+         的規則以 style.css 為準，共用 header 才不會跑版，見下方「header 防護」註解 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../z_assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        /* ── header 防護：Bootstrap 的 .container／.navbar／.dropdown-menu
+           會蓋到共用 header 同名 class，鎖回站內原本的樣子 ── */
+        header.container,
+        header .container {
+            max-width: none;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        header .navbar {
+            display: block;
+            position: static;
+            padding: 10px 50px;
+        }
+
+        header .dropdown-menu {
+            display: block;
+        }
+
         .work-header { display: flex; justify-content: space-between; align-items: baseline; margin: 24px 0 16px; border-left: 10px solid var(--primary-dark-brown); padding-left: 20px; }
         .work-header h3 { font-size: 2rem; font-weight: 800; letter-spacing: 0.02em; margin-bottom: 0.35rem; }
         .work-header p { color: var(--dark-gray); display: inline-flex; align-items: center; gap: 8px; }
@@ -154,6 +177,8 @@
         .lightbox-btn.prev { left: -56px; }
         .lightbox-btn.next { right: -56px; }
         .lightbox-close { position: absolute; top: -48px; right: 0; border: 0; background: transparent; color: #fff; font-size: 2rem; cursor: pointer; }
+        .lightbox-pause { position: absolute; top: -48px; left: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: 0; border-radius: 50%; background: rgba(255, 255, 255, .15); color: #fff; font-size: 1.1rem; cursor: pointer; }
+        .lightbox-pause:hover { background: rgba(255, 255, 255, .3); }
         .lightbox-index { margin-top: 12px; text-align: center; color: #fff; font-size: .95rem; letter-spacing: 1px; }
 
         @media (max-width: 1024px) {
@@ -217,7 +242,7 @@
         <section>
             <div class="work-header">
                 <h3>桌曆 & 購物袋設計</h3>
-                <p><i class="fa-solid fa-lightbulb"></i>先選系列，再點縮圖開燈箱，支援 <span class="switch-hint"><i class="fa-solid fa-chevron-left"></i>左右<i class="fa-solid fa-chevron-right"></i></span> 切換</p>
+                <p><i class="fa-solid fa-lightbulb"></i>先選系列，再點縮圖開燈箱，每 3 秒自動輪播、可按暫停鍵停住，支援 <span class="switch-hint"><i class="fa-solid fa-chevron-left"></i>左右<i class="fa-solid fa-chevron-right"></i></span> 切換</p>
             </div>
             <div class="calendar-project-head">
                 <div class="project-switcher" id="projectSwitcher"></div>
@@ -230,9 +255,12 @@
     <div class="lightbox" id="lightbox" aria-hidden="true">
         <div class="lightbox-content">
             <button class="lightbox-close" id="closeLightbox" aria-label="Close lightbox">&times;</button>
-            <button class="lightbox-btn prev" id="prevImage" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
-            <img id="lightboxImage" src="" alt="Project image">
-            <button class="lightbox-btn next" id="nextImage" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+            <button class="lightbox-pause" id="lightboxPause" aria-label="暫停自動輪播"><i class="fa-solid fa-pause"></i></button>
+            <div id="lightboxCarousel" class="carousel slide">
+                <div class="carousel-inner" id="lightboxCarouselInner"></div>
+            </div>
+            <button class="lightbox-btn prev" data-bs-target="#lightboxCarousel" data-bs-slide="prev" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="lightbox-btn next" data-bs-target="#lightboxCarousel" data-bs-slide="next" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
             <p class="lightbox-index" id="lightboxIndex"></p>
         </div>
     </div>
@@ -244,6 +272,7 @@
         <small>&copy; 2026 JEKKINOOPY. All rights reserved.</small>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         const projects = [
             { id: "calendar-2020", label: "2020 桌曆", icon: "fa-calendar-days", title: "2020 桌曆內頁", basePath: "../z_assets/images/graphic/calendarBag/2020c/", images: ["2020桌曆_00A-1.jpeg","2020桌曆_01A-1.jpeg","2020桌曆_02A-1.jpeg","2020桌曆_01B-1.jpeg","2020桌曆_02B-1.jpeg","2020桌曆_03A-1.jpeg","2020桌曆_04A-1.jpeg","2020桌曆_03B-1.jpeg","2020桌曆_04B-1.jpeg","2020桌曆_05A-1.jpeg","2020桌曆_06A-1.jpeg","2020桌曆_05B-1.jpeg","2020桌曆_06B-1.jpeg","2020桌曆_07A-1.jpeg","2020桌曆_08A-1.jpeg","2020桌曆_07B-1.jpeg","2020桌曆_08B-1.jpeg","2020桌曆_09A-1.jpeg","2020桌曆_10A-1.jpeg","2020桌曆_09B-1.jpeg","2020桌曆_10B-1.jpeg","2020桌曆_11A-1.jpeg","2020桌曆_11B-1.jpeg","2020桌曆_12A-1.jpeg","2020桌曆_12B-1.jpeg","2020桌曆_13A-1.jpeg"] },
@@ -257,10 +286,16 @@
         const thumbGrid = document.getElementById("thumbGrid");
         const panelTitle = document.getElementById("panelTitle");
         const lightbox = document.getElementById("lightbox");
-        const lightboxImage = document.getElementById("lightboxImage");
+        const lightboxCarouselEl = document.getElementById("lightboxCarousel");
+        const lightboxCarouselInner = document.getElementById("lightboxCarouselInner");
+        const lightboxPause = document.getElementById("lightboxPause");
         const lightboxIndex = document.getElementById("lightboxIndex");
+        const AUTOPLAY_INTERVAL = 3000;
         let activeProject = projects[0];
         let currentIndex = 0;
+        let bsCarousel = null;
+        let autoplayTimer = null;
+        let isPaused = false;
 
         const PROJECT_QS_KEY = "project";
         const PROJECT_STORAGE_KEY = "portfolio_calendar_bag_project_id";
@@ -415,10 +450,6 @@
             return getLightboxDisplayFilenames(activeProject);
         }
 
-        function getActiveImagePaths() {
-            return getActiveOrderedNames().map((name) => `${activeProject.basePath}${name}`);
-        }
-
         function renderSwitcher() {
             switcher.innerHTML = "";
             projects.forEach((project) => {
@@ -466,47 +497,89 @@
             });
         }
 
-        function updateLightbox() {
+        function updatePauseIcon() {
+            lightboxPause.innerHTML = isPaused
+                ? '<i class="fa-solid fa-play"></i>'
+                : '<i class="fa-solid fa-pause"></i>';
+            lightboxPause.setAttribute("aria-label", isPaused ? "繼續自動輪播" : "暫停自動輪播");
+        }
+
+        function stopAutoplay() {
+            clearTimeout(autoplayTimer);
+            autoplayTimer = null;
+        }
+
+        function scheduleAutoplay() {
+            stopAutoplay();
+            if (isPaused) return;
+            autoplayTimer = setTimeout(() => {
+                if (bsCarousel) bsCarousel.next();
+            }, AUTOPLAY_INTERVAL);
+        }
+
+        function buildLightboxCarousel(openIndex) {
             const names = getActiveLightboxNames();
             const imagePaths = names.map((name) => `${activeProject.basePath}${name}`);
-            lightboxImage.src = imagePaths[currentIndex];
-            lightboxImage.alt = names[currentIndex];
-            lightboxIndex.textContent = `${currentIndex + 1} / ${imagePaths.length}`;
+            lightboxCarouselInner.innerHTML = imagePaths.map((src, i) => `
+                <div class="carousel-item${i === openIndex ? " active" : ""}">
+                    <img src="${src}" alt="${names[i]}">
+                </div>
+            `).join("");
+            currentIndex = openIndex;
+            lightboxIndex.textContent = `${openIndex + 1} / ${imagePaths.length}`;
+
+            if (bsCarousel) bsCarousel.dispose();
+            bsCarousel = new bootstrap.Carousel(lightboxCarouselEl, {
+                interval: false,
+                ride: false,
+                keyboard: false,
+                wrap: true
+            });
         }
+
         function openLightboxByName(name) {
             const names = getActiveLightboxNames();
             const idx = names.indexOf(name);
             openLightbox(idx >= 0 ? idx : 0);
         }
         function openLightbox(index) {
-            currentIndex = index;
-            updateLightbox();
+            isPaused = false;
+            updatePauseIcon();
             lightbox.classList.add("open");
             lightbox.setAttribute("aria-hidden", "false");
+            buildLightboxCarousel(index);
+            scheduleAutoplay();
         }
         function closeLightbox() {
             lightbox.classList.remove("open");
             lightbox.setAttribute("aria-hidden", "true");
-        }
-        function showPrev() {
-            const len = getActiveImagePaths().length;
-            currentIndex = (currentIndex - 1 + len) % len;
-            updateLightbox();
-        }
-        function showNext() {
-            const len = getActiveImagePaths().length;
-            currentIndex = (currentIndex + 1) % len;
-            updateLightbox();
+            stopAutoplay();
+            if (bsCarousel) {
+                bsCarousel.dispose();
+                bsCarousel = null;
+            }
         }
 
-        document.getElementById("prevImage").addEventListener("click", showPrev);
-        document.getElementById("nextImage").addEventListener("click", showNext);
+        lightboxCarouselEl.addEventListener("slid.bs.carousel", (event) => {
+            currentIndex = event.to;
+            const names = getActiveLightboxNames();
+            lightboxIndex.textContent = `${currentIndex + 1} / ${names.length}`;
+            scheduleAutoplay();
+        });
+
+        lightboxPause.addEventListener("click", () => {
+            isPaused = !isPaused;
+            updatePauseIcon();
+            if (isPaused) stopAutoplay();
+            else scheduleAutoplay();
+        });
+
         document.getElementById("closeLightbox").addEventListener("click", closeLightbox);
         lightbox.addEventListener("click", (event) => { if (event.target === lightbox) closeLightbox(); });
         document.addEventListener("keydown", (event) => {
-            if (!lightbox.classList.contains("open")) return;
-            if (event.key === "ArrowLeft") showPrev();
-            if (event.key === "ArrowRight") showNext();
+            if (!lightbox.classList.contains("open") || !bsCarousel) return;
+            if (event.key === "ArrowLeft") bsCarousel.prev();
+            if (event.key === "ArrowRight") bsCarousel.next();
             if (event.key === "Escape") closeLightbox();
         });
 
