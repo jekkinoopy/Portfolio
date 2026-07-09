@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jekkinoopy | Fan Club Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --portfolio-pink: #ff8fb1;
+            --portfolio-peach: #ffd6a5;
+            --portfolio-yellow: #ffe66d;
+            --portfolio-brown: #a65d33;
+            --portfolio-dark: #593825;
+            --portfolio-cream: #fff8ef;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            font-family: "Noto Serif TC", serif;
+            background:
+                radial-gradient(circle at top left, rgba(255, 143, 177, 0.22), transparent 30%),
+                radial-gradient(circle at bottom right, rgba(255, 214, 165, 0.3), transparent 28%),
+                linear-gradient(135deg, #fffdf9 0%, var(--portfolio-cream) 100%);
+            color: var(--portfolio-dark);
+        }
+
+        .login-shell {
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .login-card {
+            overflow: hidden;
+            border: 0;
+            border-radius: 1.7rem;
+            box-shadow: 0 20px 60px rgba(89, 56, 37, 0.16);
+        }
+
+        .brand-panel {
+            background: linear-gradient(145deg, var(--portfolio-pink) 0%, var(--portfolio-brown) 100%);
+            color: #fffdf8;
+        }
+
+        .brand-panel .badge {
+            background: rgba(255, 255, 255, 0.22);
+            color: #fffdf8;
+            border: 1px solid rgba(255, 255, 255, 0.28);
+        }
+
+        .brand-panel .brand-mark {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: rgba(255, 255, 255, 0.22);
+            font-size: 1.35rem;
+            font-weight: 700;
+        }
+
+        .form-panel .form-control {
+            border-radius: 0.95rem;
+            border-color: #f0d8b7;
+            padding: 0.8rem 0.95rem;
+        }
+
+        .form-panel .form-control:focus {
+            border-color: var(--portfolio-pink);
+            box-shadow: 0 0 0 0.2rem rgba(255, 143, 177, 0.16);
+        }
+
+        .btn-login {
+            background: linear-gradient(135deg, var(--portfolio-yellow) 0%, var(--portfolio-peach) 100%);
+            border: 0;
+            color: var(--portfolio-dark);
+            font-weight: 700;
+            border-radius: 999px;
+            padding: 0.8rem 1.1rem;
+        }
+
+        .btn-login:hover {
+            color: var(--portfolio-dark);
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body>
+    <div class="login-shell d-flex align-items-center justify-content-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-10">
+                    <div class="card login-card">
+                        <div class="row g-0">
+                            <div class="brand-panel col-lg-5 p-4 p-lg-5 d-flex flex-column justify-content-between">
+                                <div>
+                                    <span class="badge rounded-pill px-3 py-2 mb-3">Cute Admin</span>
+                                    <div class="brand-mark mb-3">J</div>
+                                    <h1 class="h3 fw-bold mb-3">Jekkinoopy Fan Club</h1>
+                                    <p class="mb-0 text-white-50">歡迎來到我的可愛小宇宙，這裡有作品、心情與一點點偶像感。</p>
+                                </div>
+                                <div class="small text-white-50 mt-4">
+                                    Your favorite little star is waiting for you ✨
+                                </div>
+                            </div>
+                            <div class="form-panel col-lg-7 p-4 p-lg-5">
+                                <h2 class="h4 fw-bold mb-2">登入看更多</h2>
+                                <p class="text-muted mb-4">輸入你的粉絲帳號與密碼，準備一起進入可愛世界。</p>
+                                <form action="#">
+                                    <div class="mb-3">
+                                        <label for="loginEmail" class="form-label">Email / 粉絲帳號</label>
+                                        <input type="email" class="form-control" id="loginEmail" placeholder="cuteone@example.com">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="loginPassword" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="loginPassword" placeholder="••••••••">
+                                    </div>
+                                    <div class="form-check mb-4">
+                                        <input class="form-check-input" type="checkbox" value="" id="rememberMe">
+                                        <label class="form-check-label" for="rememberMe">記得我</label>
+                                    </div>
+                                    <button type="submit" class="btn btn-login w-100">Enter the cute world</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

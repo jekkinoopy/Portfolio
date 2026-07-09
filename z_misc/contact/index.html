@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="page-inner">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>接案需求諮詢 | Jekkinoopy's portfolio</title>
+    <link rel="stylesheet" href="../../z_assets/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* 接案表單頁面專屬樣式（沿用全站主色與字體，不覆蓋 style.css 全域規則） */
+        body {
+            background: radial-gradient(circle at top right, rgba(243, 193, 76, 0.16), transparent 45%),
+                var(--white);
+        }
+
+        .inquiry-main {
+            width: 90%;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 60px 0 100px;
+        }
+
+        .inquiry-card {
+            border: 0;
+            border-radius: var(--radius-card);
+            box-shadow: 0 20px 50px rgba(89, 56, 37, 0.14);
+            overflow: hidden;
+        }
+
+        .inquiry-card .card-header {
+            background: linear-gradient(120deg, var(--light-yellow) 0%, var(--primary-yellow) 100%);
+            border-bottom: 0;
+            padding: 2rem 2rem 1.6rem;
+            text-align: center;
+        }
+
+        .inquiry-card .card-header h1 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary-dark-brown);
+            margin-bottom: 0.4rem;
+        }
+
+        .inquiry-card .card-header p {
+            color: var(--primary-dark-brown);
+            opacity: 0.75;
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+
+        .inquiry-card .card-body {
+            background: #fff;
+        }
+
+        .form-label {
+            font-weight: 700;
+            color: var(--primary-dark-brown);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control,
+        .form-select {
+            border-radius: 10px;
+            border-color: #ece1cc;
+            padding: 0.7rem 0.9rem;
+            font-family: "Noto Serif TC", serif;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: var(--primary-yellow);
+            box-shadow: 0 0 0 0.2rem rgba(243, 193, 76, 0.25);
+        }
+
+        .form-check-input {
+            border-color: var(--primary-brown);
+        }
+
+        .form-check-input:checked {
+            background-color: var(--primary-brown);
+            border-color: var(--primary-brown);
+        }
+
+        .form-check-input:focus {
+            box-shadow: 0 0 0 0.2rem rgba(166, 93, 51, 0.2);
+        }
+
+        .btn-inquiry-submit {
+            background: var(--primary-dark-brown);
+            border: 0;
+            color: #fff;
+            font-weight: 700;
+            border-radius: var(--radius-pill);
+            padding: 0.75rem 2.2rem;
+            transition: background 0.2s ease;
+        }
+
+        .btn-inquiry-submit:hover {
+            background: var(--primary-brown);
+            color: #fff;
+        }
+
+        .btn-inquiry-reset {
+            border: 1px solid var(--primary-brown);
+            color: var(--primary-brown);
+            border-radius: var(--radius-pill);
+            padding: 0.75rem 1.6rem;
+            background: transparent;
+        }
+
+        .btn-inquiry-reset:hover {
+            background: #fbf3e3;
+            color: var(--primary-brown);
+        }
+
+        .inquiry-note {
+            background: #fbf3e3;
+            border-radius: 14px;
+            padding: 1.1rem 1.3rem;
+            margin-top: 1.6rem;
+            font-size: 0.85rem;
+            color: var(--dark-gray);
+        }
+
+        .inquiry-note strong {
+            color: var(--primary-dark-brown);
+        }
+
+        .inquiry-success {
+            display: none;
+            border-radius: 14px;
+            background: #fbf3e3;
+            border: 1px solid var(--primary-yellow);
+            color: var(--primary-dark-brown);
+            padding: 1rem 1.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container nav-shell">
+                <a class="nav-logo" href="../../index.html" aria-label="首頁">
+                    <img src="../../z_assets/images/noopylogov.png" alt="Jekkinoopy Studio">
+                </a>
+                <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav-menu"
+                    aria-label="開啟選單">
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                </button>
+                <div class="nav-menu" id="site-nav-menu">
+                    <ul class="nav-links nav-links--start">
+                        <li class="downDisabled" data-tooltip="作品建置中"><a href="../../about/">About</a></li>
+                        <li class="dropdown">
+                            <a href="../../graphic/">Graphic</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../../graphic/logoPkg.html">Logo & 包裝設計</a></li>
+                                <li><a href="../../graphic/calendar-bag.html">桌曆 & 購物袋</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../../stationery.html">名片/卡片/票券/DM</a>
+                                </li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../../webBanner.html">網站視覺 Banner</a>
+                                </li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../../socialMedia.html">社群推播圖</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../../largeFormat.html">大圖輸出</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../../editorial.html">書刊</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../../productDetail.html">商品長條圖文</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="../../illustration/">Illustration</a></li>
+                    </ul>
+                    <ul class="nav-links nav-links--end">
+                        <li class="downDisabled" data-tooltip="作品建置中"><a href="../../photo/">Photo</a></li>
+                        <li><a href="../../uiux/">UI/UX</a></li>
+                        <li><a href="../../web/">Web</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="inquiry-main">
+        <div class="page-title">
+            <h2>Project Inquiry</h2>
+            <p>接案需求諮詢 · 告訴我你的專案，我會盡快回覆</p>
+        </div>
+
+        <div class="card inquiry-card">
+            <div class="card-header">
+                <h1>專案需求諮詢</h1>
+                <p>填寫下方表單，我會在 1-3 個工作天內以 Email 回覆討論細節。</p>
+            </div>
+            <div class="card-body p-4 p-lg-5">
+
+                <div class="inquiry-success" id="inquirySuccess">
+                    已收到您的諮詢資料，感謝您的耐心等候，我會盡快與您聯繫！
+                </div>
+
+                <form id="inquiryForm" class="needs-validation" novalidate>
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label for="realName" class="form-label">真實姓名</label>
+                            <input type="text" class="form-control" id="realName" placeholder="請輸入姓名" required>
+                            <div class="invalid-feedback">請填寫姓名</div>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">稱呼</label>
+                            <div class="d-flex flex-wrap gap-4 mt-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="honorific" id="honorificMr" value="先生">
+                                    <label class="form-check-label" for="honorificMr">先生</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="honorific" id="honorificMs" value="女士">
+                                    <label class="form-check-label" for="honorificMs">女士</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="honorific" id="honorificOther" value="不指定">
+                                    <label class="form-check-label" for="honorificOther">不指定</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+                            <div class="invalid-feedback">請填寫正確的 Email</div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <label for="phone" class="form-label">電話</label>
+                            <input type="tel" class="form-control" id="phone" placeholder="0912-345-678"
+                                pattern="[0-9\-+ ]{8,}">
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <label for="serviceType" class="form-label">需求服務類型</label>
+                            <select class="form-select" id="serviceType" required>
+                                <option value="" selected disabled>請選擇</option>
+                                <option value="logo-packaging">Logo & 包裝設計</option>
+                                <option value="graphic">平面設計（名片／DM／社群圖／大圖輸出）</option>
+                                <option value="illustration">商業插畫</option>
+                                <option value="uiux">UI/UX 介面設計</option>
+                                <option value="web">網站前端開發</option>
+                                <option value="other">其他 / 尚未決定</option>
+                            </select>
+                            <div class="invalid-feedback">請選擇需求類型</div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <label for="budget" class="form-label">預算範圍（新台幣）</label>
+                            <select class="form-select" id="budget">
+                                <option value="" selected>尚未確定</option>
+                                <option value="under-5k">5,000 以下</option>
+                                <option value="5k-15k">5,000 - 15,000</option>
+                                <option value="15k-30k">15,000 - 30,000</option>
+                                <option value="over-30k">30,000 以上</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="details" class="form-label">需求詳述</label>
+                            <textarea class="form-control" id="details" rows="5"
+                                placeholder="請簡單描述您的專案需求，例如目標、風格參考、預計時程..." required></textarea>
+                            <div class="invalid-feedback">請簡單描述您的專案需求</div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-column flex-md-row justify-content-end gap-2 mt-4">
+                        <button type="reset" class="btn btn-inquiry-reset">清空重填</button>
+                        <button type="submit" class="btn btn-inquiry-submit">送出諮詢資料</button>
+                    </div>
+                </form>
+
+                <div class="inquiry-note">
+                    <strong>合作須知</strong>
+                    <ul class="mb-0 mt-2 ps-3">
+                        <li>送出後我會在 1-3 個工作天內以 Email 回覆，請留意信箱（含垃圾信匣）。</li>
+                        <li>若能提供風格參考或既有素材，將有助於更精準的報價與提案。</li>
+                        <li>確認合作後需支付 30% - 50% 訂金始排入製作排程。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="contact">
+        <a href="mailto:jekkinoopy@gmail.com" class="contact-email">
+            <small>如有合作意願，歡迎隨時聯繫 jekkinoopy@gmail.com</small>
+        </a>
+        <small>&copy; 2026 JEKKINOOPY. All rights reserved.</small>
+    </footer>
+
+    <script src="../../z_assets/js/nav.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 前端表單驗證 + 送出提示。尚未串接後端，如需真正收信請改接 Formspree / Google 表單 / 自架 API。
+        (function () {
+            const form = document.getElementById('inquiryForm');
+            const successBox = document.getElementById('inquirySuccess');
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+
+                if (!form.checkValidity()) {
+                    form.classList.add('was-validated');
+                    return;
+                }
+
+                successBox.style.display = 'block';
+                successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                form.reset();
+                form.classList.remove('was-validated');
+            });
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jekkinoopy | Cute HR Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --portfolio-pink: #ff8fb1;
+            --portfolio-peach: #ffd6a5;
+            --portfolio-yellow: #ffe66d;
+            --portfolio-brown: #a65d33;
+            --portfolio-dark: #593825;
+            --portfolio-cream: #fff8ef;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Noto Serif TC", serif;
+            background:
+                radial-gradient(circle at top left, rgba(255, 143, 177, 0.18), transparent 28%),
+                linear-gradient(135deg, #fffdf9 0%, var(--portfolio-cream) 100%);
+            color: var(--portfolio-dark);
+        }
+
+        .form-page {
+            padding: 3rem 1rem;
+        }
+
+        .form-card {
+            border: 0;
+            border-radius: 1.7rem;
+            box-shadow: 0 20px 60px rgba(89, 56, 37, 0.14);
+            overflow: hidden;
+        }
+
+        .form-card .card-header {
+            background: linear-gradient(90deg, var(--portfolio-pink) 0%, var(--portfolio-brown) 100%);
+            color: #fffdf8;
+            border-bottom: 0;
+        }
+
+        .section-block {
+            background: #fffdf8;
+            border: 1px solid #f0d8b7;
+            border-radius: 1.1rem;
+        }
+
+        .form-control,
+        .form-select {
+            border-radius: 0.9rem;
+            border-color: #f0d8b7;
+            padding: 0.72rem 0.9rem;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: var(--portfolio-pink);
+            box-shadow: 0 0 0 0.2rem rgba(255, 143, 177, 0.16);
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--portfolio-yellow) 0%, var(--portfolio-peach) 100%);
+            border: 0;
+            color: var(--portfolio-dark);
+            font-weight: 700;
+            border-radius: 999px;
+            padding: 0.75rem 1.2rem;
+        }
+
+        .btn-reset {
+            border-radius: 999px;
+            padding: 0.75rem 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-page">
+        <div class="container">
+            <div class="card form-card">
+                <div class="card-header p-4">
+                    <h1 class="h3 mb-1">Jekkinoopy Studio 夢想合作申請表</h1>
+                    <p class="mb-0 text-white-50">把你的小心意、熱情與可愛氣場一起送來，我會很開心收到你！</p>
+                </div>
+                <div class="card-body p-4 p-lg-5">
+                    <form action="#">
+                        <div class="section-block p-4 mb-4">
+                            <h2 class="h5 fw-bold mb-3">小小基本資料</h2>
+                            <div class="row g-3">
+                                <div class="col-12 col-md-6">
+                                    <label for="name" class="form-label">姓名</label>
+                                    <input type="text" class="form-control" id="name" placeholder="請輸入你的名字">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label for="employeeId" class="form-label">粉絲編號</label>
+                                    <input type="number" class="form-control" id="employeeId" placeholder="例如 0709">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label for="birthday" class="form-label">生日</label>
+                                    <input type="date" class="form-control" id="birthday">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label class="form-label">想被怎麼稱呼</label>
+                                    <div class="d-flex flex-wrap gap-4 mt-2">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="gender" id="male">
+                                            <label class="form-check-label" for="male">小粉絲</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="gender" id="female">
+                                            <label class="form-check-label" for="female">好朋友</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="gender" id="other">
+                                            <label class="form-check-label" for="other">偶像同盟</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="section-block p-4 mb-4">
+                            <h2 class="h5 fw-bold mb-3">合作喜歡的樣子</h2>
+                            <div class="row g-3">
+                                <div class="col-12 col-md-6">
+                                    <label for="department" class="form-label">想一起合作的方向</label>
+                                    <select class="form-select" id="department">
+                                        <option selected>請選擇</option>
+                                        <option value="design">插畫</option>
+                                        <option value="illustration">設計</option>
+                                        <option value="web">網站企劃</option>
+                                        <option value="operations">社群活動</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label for="joinDate" class="form-label">想開始的日子</label>
+                                    <input type="date" class="form-control" id="joinDate">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label for="experience" class="form-label">想投入的時間</label>
+                                    <input type="number" class="form-control" id="experience" placeholder="例如 3">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label for="salary" class="form-label">期待的心動值</label>
+                                    <input type="number" class="form-control" id="salary" placeholder="例如 999">
+                                </div>
+                                <div class="col-12 col-lg-4">
+                                    <label class="form-label">任務狀態</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="status" id="fulltime">
+                                        <label class="form-check-label" for="fulltime">全力衝</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="status" id="parttime">
+                                        <label class="form-check-label" for="parttime">偶爾陪你</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="status" id="contract">
+                                        <label class="form-check-label" for="contract">想先試試</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-8">
+                                    <label class="form-label">想要的合作感覺</label>
+                                    <div class="d-flex flex-wrap gap-3 mt-2">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="worktype" id="remote">
+                                            <label class="form-check-label" for="remote">溫柔陪伴</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="worktype" id="hybrid">
+                                            <label class="form-check-label" for="hybrid">一起創作</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="worktype" id="onsite">
+                                            <label class="form-check-label" for="onsite">現場打卡</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="section-block p-4 mb-4">
+                            <h2 class="h5 fw-bold mb-3">你的可愛技能</h2>
+                            <div class="row g-3">
+                                <div class="col-12 col-md-6">
+                                    <label class="form-label">特長</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="uiux">
+                                        <label class="form-check-label" for="uiux">UI/UX</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="frontEnd">
+                                        <label class="form-check-label" for="frontEnd">前端開發</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="illustrationSkill">
+                                        <label class="form-check-label" for="illustrationSkill">插畫</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label class="form-label">想一起做的事</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="overtime">
+                                        <label class="form-check-label" for="overtime">陪我熬夜創作</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="travel">
+                                        <label class="form-check-label" for="travel">一起出門散步</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="remoteWork">
+                                        <label class="form-check-label" for="remoteWork">線上一起玩</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="resume" class="form-label">上傳履歷或作品集</label>
+                                    <input class="form-control" type="file" id="resume">
+                                </div>
+                                <div class="col-12">
+                                    <label for="notes" class="form-label">想對我說的話</label>
+                                    <textarea class="form-control" id="notes" rows="4" placeholder="寫下你想分享的心情或想法"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-column flex-md-row justify-content-end gap-2">
+                            <button type="reset" class="btn btn-outline-secondary btn-reset">再想想</button>
+                            <button type="submit" class="btn btn-submit">送出心意</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

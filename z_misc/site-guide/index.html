@@ -58,356 +58,117 @@
         </div>
 
         <p class="site-guide-lead">
-            本頁列出作品集站內所有 HTML（含子資料夾與錨點）。頂欄在此頁<strong>未套用</strong>
-            <code>downDisabled</code>，方便你直接點進各區；訪客看到的其他頁面仍顯示「作品建置中」且部分選項不可點。路徑均相對站根目錄。
+            每個分類一張卡，頁面都收在對應卡片裡，不重複列——點上排分類直接跳到那張卡。
         </p>
 
-        <section class="site-guide-group" aria-labelledby="sg-nav-tree">
-            <h2 class="section-title" id="sg-nav-tree">主選單樹</h2>
-            <p class="site-guide-legend">
-                <span><span class="site-guide-legend__on">●</span> 有連結</span>
-                <span><span class="site-guide-legend__off">●</span> 無檔案／籌備中</span>
-            </p>
-            <div class="site-guide-nav-table-wrap">
-                <table class="site-guide-nav-table">
-                    <caption class="site-guide-nav-caption">對應頂欄結構；深度 1＝主選單，2＝下拉或同層子項，3＝子頁，4＝錨點或舊檔。</caption>
-                    <thead>
-                        <tr>
-                            <th scope="col">選單名稱</th>
-                            <th scope="col">頁面簡介</th>
-                            <th scope="col">連結</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr data-site-guide-depth="1">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../index.html">首頁</a></span></td>
-                            <td class="site-guide-nav-desc">Hero、品牌介紹與作品集入口；全站唯一不加 <code>page-inner</code> 縮放字級。</td>
-                            <td class="site-guide-nav-link-cell"><a href="../../index.html"><code>index.html</code></a></td>
-                        </tr>
+        <section class="site-guide-group" aria-labelledby="sg-jump">
+            <h2 class="section-title" id="sg-jump">快速跳頁</h2>
+            <ul class="site-guide-inline-links">
+                <li><a href="#nav-home">首頁</a></li>
+                <li><a href="#nav-about">About</a></li>
+                <li><a href="#nav-graphic">Graphic</a></li>
+                <li><a href="#nav-illustration">Illustration</a></li>
+                <li><a href="#nav-photo">Photo</a></li>
+                <li><a href="#nav-uiux">UI/UX</a></li>
+                <li><a href="#nav-web">Web</a></li>
+                <li><a href="#nav-zmisc">z_misc（練習／報價／履歷／札記…）</a></li>
+            </ul>
+        </section>
 
-                        <tr data-site-guide-depth="1">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../about/">About</a><span class="site-guide-tag site-guide-tag--draft">Nav 籌備中</span></span></td>
-                            <td class="site-guide-nav-desc">努比使用手冊：服務說明、合作流程與品牌敘事長頁。</td>
-                            <td class="site-guide-nav-link-cell"><a href="../../about/"><code>about/</code></a></td>
-                        </tr>
+        <section class="site-guide-group" aria-labelledby="sg-full-map">
+            <h2 class="section-title" id="sg-full-map">全站頁面卡</h2>
+            <p class="site-guide-lead">🚧 = Nav 灰字尚未開放給訪客、❌ = Nav 有字但 HTML 還沒建立；本頁 Nav 已全部可點。</p>
+            <div class="site-guide-grid site-guide-grid--wide">
 
-                        <tr data-site-guide-depth="1">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../graphic/">Graphic</a></span></td>
-                            <td class="site-guide-nav-desc">平面作品集總覽：Logo 馬賽克預覽、桌曆與購物袋縮圖導向內頁。</td>
-                            <td class="site-guide-nav-link-cell"><a href="../../graphic/"><code>graphic/</code></a></td>
-                        </tr>
-                        <tr data-site-guide-depth="2">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../graphic/logoPkg.html">Logo & 包裝設計</a></span></td>
-                            <td class="site-guide-nav-desc">Logo 與包裝案例；Graphic 馬賽克全圖庫內頁。</td>
-                            <td class="site-guide-nav-link-cell"><a
-                                    href="../../graphic/logoPkg.html"><code>graphic/logoPkg.html</code></a></td>
-                        </tr>
-                        <tr data-site-guide-depth="2">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../graphic/calendar-bag.html">桌曆 & 購物袋</a></span></td>
-                            <td class="site-guide-nav-desc">四專案切換（2020／2021 桌曆、2020／2021 購物袋）、縮圖網格與燈箱。</td>
-                            <td class="site-guide-nav-link-cell"><a
-                                    href="../../graphic/calendar-bag.html"><code>graphic/calendar-bag.html</code></a></td>
-                        </tr>
-                        <tr data-site-guide-depth="3">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../graphic/calendar-bag.html#calendar-2020">2020 桌曆內頁</a></span></td>
-                            <td class="site-guide-nav-desc">calendar-bag 分頁 hash；與 graphic 首頁縮圖連結一致。</td>
-                            <td class="site-guide-nav-link-cell"><a
-                                    href="../../graphic/calendar-bag.html#calendar-2020"><code>graphic/calendar-bag.html#calendar-2020</code></a>
-                            </td>
-                        </tr>
-                        <tr data-site-guide-depth="3">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../graphic/calendar-bag.html#calendar-2021">2021 桌曆內頁</a></span></td>
-                            <td class="site-guide-nav-desc">含 13 月封面等完整月別圖庫。</td>
-                            <td class="site-guide-nav-link-cell"><a
-                                    href="../../graphic/calendar-bag.html#calendar-2021"><code>graphic/calendar-bag.html#calendar-2021</code></a>
-                            </td>
-                        </tr>
-                        <tr data-site-guide-depth="3">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../graphic/calendar-bag.html#bag-2020">2020 購物袋</a></span></td>
-                            <td class="site-guide-nav-desc">四季購物袋 A–D；已併入 calendar-bag 第四分頁。</td>
-                            <td class="site-guide-nav-link-cell"><a
-                                    href="../../graphic/calendar-bag.html#bag-2020"><code>graphic/calendar-bag.html#bag-2020</code></a>
-                            </td>
-                        </tr>
-                        <tr data-site-guide-depth="3">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../graphic/calendar-bag.html#bag-2021">2021 購物袋</a></span></td>
-                            <td class="site-guide-nav-desc">2021 四季購物袋圖庫。</td>
-                            <td class="site-guide-nav-link-cell"><a
-                                    href="../../graphic/calendar-bag.html#bag-2021"><code>graphic/calendar-bag.html#bag-2021</code></a>
-                            </td>
-                        </tr>
-                        <tr data-site-guide-depth="2">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><span
-                                        class="site-guide-nav-nolink">名片/卡片/票券/DM</span><span
-                                        class="site-guide-tag site-guide-tag--draft">Nav 籌備中</span></span></td>
-                            <td class="site-guide-nav-desc">頂欄有連結文字，檔案尚未建立。</td>
-                            <td class="site-guide-nav-link-cell"><span class="site-guide-nav-nolink">—</span></td>
-                        </tr>
-                        <tr data-site-guide-depth="2">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><span
-                                        class="site-guide-nav-nolink">網站視覺 Banner</span><span
-                                        class="site-guide-tag site-guide-tag--draft">Nav 籌備中</span></span></td>
-                            <td class="site-guide-nav-desc"><code>webBanner.html</code> 未建立。</td>
-                            <td class="site-guide-nav-link-cell"><span class="site-guide-nav-nolink">—</span></td>
-                        </tr>
-                        <tr data-site-guide-depth="2">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><span
-                                        class="site-guide-nav-nolink">社群推播圖</span><span
-                                        class="site-guide-tag site-guide-tag--draft">Nav 籌備中</span></span></td>
-                            <td class="site-guide-nav-desc"><code>socialMedia.html</code> 未建立。</td>
-                            <td class="site-guide-nav-link-cell"><span class="site-guide-nav-nolink">—</span></td>
-                        </tr>
-                        <tr data-site-guide-depth="2">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><span
-                                        class="site-guide-nav-nolink">大圖輸出</span><span
-                                        class="site-guide-tag site-guide-tag--draft">Nav 籌備中</span></span></td>
-                            <td class="site-guide-nav-desc"><code>largeFormat.html</code> 未建立。</td>
-                            <td class="site-guide-nav-link-cell"><span class="site-guide-nav-nolink">—</span></td>
-                        </tr>
-                        <tr data-site-guide-depth="2">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><span
-                                        class="site-guide-nav-nolink">書刊</span><span
-                                        class="site-guide-tag site-guide-tag--draft">Nav 籌備中</span></span></td>
-                            <td class="site-guide-nav-desc"><code>editorial.html</code> 未建立。</td>
-                            <td class="site-guide-nav-link-cell"><span class="site-guide-nav-nolink">—</span></td>
-                        </tr>
-                        <tr data-site-guide-depth="2">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><span
-                                        class="site-guide-nav-nolink">商品長條圖文</span><span
-                                        class="site-guide-tag site-guide-tag--draft">Nav 籌備中</span></span></td>
-                            <td class="site-guide-nav-desc"><code>productDetail.html</code> 未建立。</td>
-                            <td class="site-guide-nav-link-cell"><span class="site-guide-nav-nolink">—</span></td>
-                        </tr>
+                <a class="site-guide-card" href="../../index.html" id="nav-home">
+                    <div class="site-guide-card__eyebrow">Home</div>
+                    <h3>首頁</h3>
+                    <p>品牌主視覺 Hero，作品集總入口。</p>
+                </a>
 
-                        <tr data-site-guide-depth="1">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../illustration/">Illustration</a></span></td>
-                            <td class="site-guide-nav-desc">方格網＋頂部主題篩選（動物／食物／賀卡／人物／自然）；<code>data-theme</code>、<code>illustration.js</code>；可分享 <code>#animal</code> 等 hash。</td>
-                            <td class="site-guide-nav-link-cell"><a
-                                    href="../../illustration/"><code>illustration/</code></a></td>
-                        </tr>
+                <a class="site-guide-card" href="../../about/" id="nav-about">
+                    <div class="site-guide-card__eyebrow">About 🚧</div>
+                    <h3>About</h3>
+                    <p>努比使用手冊：MBTI 人格分析、技能搜尋與領域能力卡片牆。</p>
+                </a>
 
-                        <tr data-site-guide-depth="1">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../photo/">Photo</a><span
-                                        class="site-guide-tag site-guide-tag--draft">Nav 籌備中</span></span></td>
-                            <td class="site-guide-nav-desc">總覽三類：景點 → 貓狗 → 人物（順序同拍攝重心）。</td>
-                            <td class="site-guide-nav-link-cell"><a href="../../photo/"><code>photo/</code></a></td>
-                        </tr>
-                        <tr data-site-guide-depth="2">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../photo/landscape.html">景點與風景</a></span></td>
-                            <td class="site-guide-nav-desc">瀑布流、完整比例不強裁。</td>
-                            <td class="site-guide-nav-link-cell"><a
-                                    href="../../photo/landscape.html"><code>photo/landscape.html</code></a></td>
-                        </tr>
-                        <tr data-site-guide-depth="2">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../photo/pets.html">貓狗／寵物</a></span></td>
-                            <td class="site-guide-nav-desc">直幅 4:5 交錯排版。</td>
-                            <td class="site-guide-nav-link-cell"><a
-                                    href="../../photo/pets.html"><code>photo/pets.html</code></a></td>
-                        </tr>
-                        <tr data-site-guide-depth="2">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../photo/portrait.html">人物</a></span></td>
-                            <td class="site-guide-nav-desc">直幅交錯；精選少張。</td>
-                            <td class="site-guide-nav-link-cell"><a
-                                    href="../../photo/portrait.html"><code>photo/portrait.html</code></a></td>
-                        </tr>
-                        <tr data-site-guide-depth="3">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><span
-                                        class="site-guide-nav-nolink">商品／活動（舊）</span></span></td>
-                            <td class="site-guide-nav-desc"><code>product.html</code> → 轉 <code>pets.html</code>；<code>event.html</code> → 轉總覽。</td>
-                            <td class="site-guide-nav-link-cell"><span class="site-guide-nav-nolink">—</span></td>
-                        </tr>
+                <div class="site-guide-card site-guide-card--list" id="nav-graphic">
+                    <div class="site-guide-card__eyebrow">Graphic</div>
+                    <h3>平面設計</h3>
+                    <ul class="site-guide-card__list">
+                        <li><a href="../../graphic/">總覽</a></li>
+                        <li><a href="../../graphic/logoPkg.html">Logo & 包裝設計</a></li>
+                        <li><a href="../../graphic/calendar-bag.html">桌曆 & 購物袋（2020/2021）</a></li>
+                        <li><span class="site-guide-nav-nolink">名片/Banner/社群圖/大圖輸出/書刊/商品長條圖文（❌
+                                未建立）</span></li>
+                    </ul>
+                </div>
 
-                        <tr data-site-guide-depth="1">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../uiux/">UI/UX</a></span></td>
-                            <td class="site-guide-nav-desc">總覽 <code>uiux/index.html</code>：鴻閣＋維亞兩欄，其餘單流日期新→舊；專案內頁或總覽燈箱。</td>
-                            <td class="site-guide-nav-link-cell"><a href="../../uiux/"><code>uiux/</code></a></td>
-                        </tr>
+                <a class="site-guide-card" href="../../illustration/" id="nav-illustration">
+                    <div class="site-guide-card__eyebrow">Illustration</div>
+                    <h3>插畫</h3>
+                    <p>主題篩選：動物／食物／節日賀卡／人物／角色／IP／人文……</p>
+                </a>
 
-                        <tr data-site-guide-depth="2">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../uiux/hongge.html">鴻閣 · 遊戲平台 UI</a><span class="site-guide-tag">2025/07</span></span></td>
-                            <td class="site-guide-nav-desc">App 專案頁；與維亞同 IA，視覺依鴻閣規格；總覽兩欄並列。</td>
-                            <td class="site-guide-nav-link-cell"><a
-                                    href="../../uiux/hongge.html"><code>uiux/hongge.html</code></a></td>
-                        </tr>
-                        <tr data-site-guide-depth="2">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../uiux/via.html">維亞 · 遊戲平台 UI</a><span class="site-guide-tag">2025/06</span></span></td>
-                            <td class="site-guide-nav-desc">App 專案頁：IA 架構＋模組精選（同版型擇一）、空狀態與流程。</td>
-                            <td class="site-guide-nav-link-cell"><a
-                                    href="../../uiux/via.html"><code>uiux/via.html</code></a></td>
-                        </tr>
-                        <tr data-site-guide-depth="2">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../uiux/luba.html">陸八 · 遊戲點數電商 UI</a><span class="site-guide-tag">2025/10</span></span></td>
-                            <td class="site-guide-nav-desc">桌機 1920 電商：商品、購物車、訂單退貨、活動與會員；模組分區＋燈箱。</td>
-                            <td class="site-guide-nav-link-cell"><a
-                                    href="../../uiux/luba.html"><code>uiux/luba.html</code></a></td>
-                        </tr>
-                        <tr data-site-guide-depth="2">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../uiux/xingchen.html">星塵領域 · 品牌官網 UI</a><span class="site-guide-tag">2025/06</span></span></td>
-                            <td class="site-guide-nav-desc">遊戲官網：世界觀、功能、消息、下載導流；圖檔 <code>z_assets/images/uiux/星塵領域/</code>。</td>
-                            <td class="site-guide-nav-link-cell"><a
-                                    href="../../uiux/xingchen.html"><code>uiux/xingchen.html</code></a></td>
-                        </tr>
-                        <tr data-site-guide-depth="2">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../uiux/taiwei.html">泰韋企業 · 電商官網 UI</a><span class="site-guide-tag">2025/05</span></span></td>
-                            <td class="site-guide-nav-desc">會員電商 RWD：商品、購物車結帳、帳戶與服務頁模組展示。</td>
-                            <td class="site-guide-nav-link-cell"><a
-                                    href="../../uiux/taiwei.html"><code>uiux/taiwei.html</code></a></td>
-                        </tr>
+                <div class="site-guide-card site-guide-card--list" id="nav-photo">
+                    <div class="site-guide-card__eyebrow">Photo 🚧</div>
+                    <h3>攝影</h3>
+                    <ul class="site-guide-card__list">
+                        <li><a href="../../photo/">總覽</a></li>
+                        <li><a href="../../photo/landscape.html">景點與風景</a></li>
+                        <li><a href="../../photo/pets.html">貓狗／寵物</a></li>
+                        <li><a href="../../photo/portrait.html">人物</a></li>
+                    </ul>
+                </div>
 
-                        <tr data-site-guide-depth="3">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../uiux/">Rio · 水泵品牌官網</a><span class="site-guide-tag">2025/04</span></span></td>
-                            <td class="site-guide-nav-desc">泰韋案場首頁；總覽卡燈箱全圖（<code>rio-首頁.jpg</code>），無獨立 HTML。</td>
-                            <td class="site-guide-nav-link-cell"><a href="../../uiux/"><code>uiux/index.html</code></a></td>
-                        </tr>
-                        <tr data-site-guide-depth="3">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../uiux/">Gecko Nutrition · 果泥品牌官網</a><span class="site-guide-tag">2025/03</span></span></td>
-                            <td class="site-guide-nav-desc">泰韋案場；總覽燈箱 <code>gecko-首頁.jpg</code>。</td>
-                            <td class="site-guide-nav-link-cell"><a href="../../uiux/"><code>uiux/index.html</code></a></td>
-                        </tr>
-                        <tr data-site-guide-depth="3">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../uiux/">EM · 寵物營養官網</a><span class="site-guide-tag">2025/02</span></span></td>
-                            <td class="site-guide-nav-desc">泰韋案場；總覽燈箱 <code>em-首頁.jpg</code>。</td>
-                            <td class="site-guide-nav-link-cell"><a href="../../uiux/"><code>uiux/index.html</code></a></td>
-                        </tr>
-                        <tr data-site-guide-depth="3">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../uiux/">ÉQUO · 水族用品官網</a><span class="site-guide-tag">2025/01</span></span></td>
-                            <td class="site-guide-nav-desc">泰韋案場；總覽燈箱 <code>EQUO-首頁.jpg</code>。</td>
-                            <td class="site-guide-nav-link-cell"><a href="../../uiux/"><code>uiux/index.html</code></a></td>
-                        </tr>
-                        <tr data-site-guide-depth="3">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../uiux/">Hikari · 水族品牌官網</a><span class="site-guide-tag">2025/01</span></span></td>
-                            <td class="site-guide-nav-desc">泰韋案場；總覽燈箱 <code>hikari-首頁.jpg</code>。</td>
-                            <td class="site-guide-nav-link-cell"><a href="../../uiux/"><code>uiux/index.html</code></a></td>
-                        </tr>
+                <div class="site-guide-card site-guide-card--list" id="nav-uiux">
+                    <div class="site-guide-card__eyebrow">UI/UX</div>
+                    <h3>介面與流程</h3>
+                    <ul class="site-guide-card__list">
+                        <li><a href="../../uiux/">總覽</a></li>
+                        <li><a href="../../uiux/hongge.html">鴻閣 · 遊戲平台 UI（2025/07）</a></li>
+                        <li><a href="../../uiux/via.html">維亞 · 遊戲平台 UI（2025/06）</a></li>
+                        <li><a href="../../uiux/luba.html">陸八 · 遊戲點數電商 UI（2025/10）</a></li>
+                        <li><a href="../../uiux/xingchen.html">星塵領域 · 品牌官網 UI（2025/06）</a></li>
+                        <li><a href="../../uiux/taiwei.html">泰韋企業 · 電商官網 UI（2025/05）</a></li>
+                        <li><a href="../../uiux/zhan-ying.html">展盈企業 · 官網視覺（2023/08）</a></li>
+                        <li><a href="../../uiux/wedding.html">婚禮籌備 · Pink flowers 官網（2023/05）</a></li>
+                        <li><span class="site-guide-nav-nolink">泰韋案場燈箱（Rio／Gecko／EM／ÉQUO／Hikari）與飲食紀錄燈箱，都收在
+                                uiux/ 總覽內，無獨立頁</span></li>
+                    </ul>
+                </div>
 
-                        <tr data-site-guide-depth="2">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../uiux/zhan-ying.html">展盈企業 · 官網視覺</a><span class="site-guide-tag">2023/08</span></span></td>
-                            <td class="site-guide-nav-desc">企業官網 mockup；內頁模組＋總覽燈箱長捲軸 index。</td>
-                            <td class="site-guide-nav-link-cell"><a
-                                    href="../../uiux/zhan-ying.html"><code>uiux/zhan-ying.html</code></a></td>
-                        </tr>
-                        <tr data-site-guide-depth="3">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../uiux/">飲食紀錄 · 健康網站 UI</a><span class="site-guide-tag">2023/06</span></span></td>
-                            <td class="site-guide-nav-desc">總覽 iMac mockup；燈箱為手機版長捲軸，無獨立 HTML。</td>
-                            <td class="site-guide-nav-link-cell"><a href="../../uiux/"><code>uiux/index.html</code></a></td>
-                        </tr>
-                        <tr data-site-guide-depth="2">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../uiux/wedding.html">婚禮籌備 · Pink flowers 官網</a><span class="site-guide-tag">2023/05</span></span></td>
-                            <td class="site-guide-nav-desc">婚禮官網視覺；實機 mockup、內頁區塊與總覽燈箱 1920 版面。</td>
-                            <td class="site-guide-nav-link-cell"><a
-                                    href="../../uiux/wedding.html"><code>uiux/wedding.html</code></a></td>
-                        </tr>
+                <div class="site-guide-card site-guide-card--list" id="nav-web">
+                    <div class="site-guide-card__eyebrow">Web</div>
+                    <h3>網頁作品</h3>
+                    <ul class="site-guide-card__list">
+                        <li><a href="../../web/">總覽（連 GitHub Pages 卡片）</a></li>
+                        <li><a href="../../web/ajax-hw/">AJAX + jQuery 互動練習</a></li>
+                        <li><a href="../../web/bootstrap-hw/">全站導覽（Bootstrap 版）</a></li>
+                        <li><span class="site-guide-nav-nolink">外連 demo：雄興五金、WebDev
+                                Notes、水晶男孩推廣部、視野成珍、柯南學園、蠟筆小新練習頁</span></li>
+                    </ul>
+                </div>
 
-                        <tr data-site-guide-depth="1">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../web/">Web</a></span></td>
-                            <td class="site-guide-nav-desc">網頁開發作品集表格卡片；外連 GitHub Pages 專案。</td>
-                            <td class="site-guide-nav-link-cell"><a href="../../web/"><code>web/</code></a></td>
-                        </tr>
-                        <tr data-site-guide-depth="2">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../web/">本站作品集（卡片）</a></span></td>
-                            <td class="site-guide-nav-desc">連至 <code>jekkinoopy.github.io/Portfolio/</code>。</td>
-                            <td class="site-guide-nav-link-cell"><a href="https://jekkinoopy.github.io/Portfolio/"
-                                    target="_blank" rel="noopener noreferrer"><code>GitHub Pages · Portfolio</code></a>
-                            </td>
-                        </tr>
-                        <tr data-site-guide-depth="2">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../web/ajax-hw/">AJAX + jQuery 互動練習</a></span></td>
-                            <td class="site-guide-nav-desc">課程作業：jQuery $.ajax() 攔截表單送出，PHP 後端回傳 JSON 動態更新頁面。</td>
-                            <td class="site-guide-nav-link-cell"><a
-                                    href="../../web/ajax-hw/"><code>web/ajax-hw/index.html</code></a></td>
-                        </tr>
-                        <tr data-site-guide-depth="2">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="../../web/bootstrap-hw/">全站導覽（Bootstrap 版）</a></span></td>
-                            <td class="site-guide-nav-desc">用 Bootstrap 5 格線／輪播打造的站內導覽頁：六大分類卡片＋分兩組展示的技能輪播，直接嵌在頁面中（無 iframe）。</td>
-                            <td class="site-guide-nav-link-cell"><a
-                                    href="../../web/bootstrap-hw/"><code>web/bootstrap-hw/index.html</code></a></td>
-                        </tr>
-                        <tr data-site-guide-depth="2">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="https://jekkinoopy.github.io/SiongHing/" target="_blank"
-                                        rel="noopener noreferrer">雄興五金</a></span></td>
-                            <td class="site-guide-nav-desc">企業官網實作案例。</td>
-                            <td class="site-guide-nav-link-cell"><a href="https://jekkinoopy.github.io/SiongHing/"
-                                    target="_blank" rel="noopener noreferrer"><code>…/SiongHing/</code></a></td>
-                        </tr>
-                        <tr data-site-guide-depth="2">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="https://jekkinoopy.github.io/WebDev-Notes" target="_blank"
-                                        rel="noopener noreferrer">WebDev Notes</a></span></td>
-                            <td class="site-guide-nav-desc">學習筆記站。</td>
-                            <td class="site-guide-nav-link-cell"><a href="https://jekkinoopy.github.io/WebDev-Notes"
-                                    target="_blank" rel="noopener noreferrer"><code>…/WebDev-Notes</code></a></td>
-                        </tr>
-                        <tr data-site-guide-depth="2">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="https://jekkinoopy.github.io/sechskies/" target="_blank"
-                                        rel="noopener noreferrer">水晶男孩推廣部</a></span></td>
-                            <td class="site-guide-nav-desc">粉絲向內容站（另 repo）。</td>
-                            <td class="site-guide-nav-link-cell"><a href="https://jekkinoopy.github.io/sechskies/"
-                                    target="_blank" rel="noopener noreferrer"><code>…/sechskies/</code></a></td>
-                        </tr>
-                        <tr data-site-guide-depth="2">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="https://jekkinoopy.github.io/ZHENCHENGVISION/" target="_blank"
-                                        rel="noopener noreferrer">視野成珍</a></span></td>
-                            <td class="site-guide-nav-desc">攝影師藝廊站。</td>
-                            <td class="site-guide-nav-link-cell"><a
-                                    href="https://jekkinoopy.github.io/ZHENCHENGVISION/" target="_blank"
-                                    rel="noopener noreferrer"><code>…/ZHENCHENGVISION/</code></a></td>
-                        </tr>
-                        <tr data-site-guide-depth="2">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="https://jekkinoopy.github.io/conan-school/" target="_blank"
-                                        rel="noopener noreferrer">柯南學園</a></span></td>
-                            <td class="site-guide-nav-desc">主題展示站。</td>
-                            <td class="site-guide-nav-link-cell"><a
-                                    href="https://jekkinoopy.github.io/conan-school/" target="_blank"
-                                    rel="noopener noreferrer"><code>…/conan-school/</code></a></td>
-                        </tr>
-                        <tr data-site-guide-depth="2">
-                            <td class="site-guide-nav-menu-cell"><span class="site-guide-nav-name"><a
-                                        href="https://jekkinoopy.github.io/WebDev-Notes/courses/07-projects/practice/crayon/index.html"
-                                        target="_blank" rel="noopener noreferrer">蠟筆小新練習頁</a></span></td>
-                            <td class="site-guide-nav-desc">課程專案 demo 外連。</td>
-                            <td class="site-guide-nav-link-cell"><a
-                                    href="https://jekkinoopy.github.io/WebDev-Notes/courses/07-projects/practice/crayon/index.html"
-                                    target="_blank" rel="noopener noreferrer"><code>…/crayon/index.html</code></a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="site-guide-card site-guide-card--list" id="nav-zmisc">
+                    <div class="site-guide-card__eyebrow">z_misc 未列頂欄</div>
+                    <h3>站主工具／練習／札記</h3>
+                    <ul class="site-guide-card__list">
+                        <li><a href="../site-guide/">全站導覽（本頁）</a></li>
+                        <li><a href="../contact/">接案需求諮詢表單（Bootstrap）</a></li>
+                        <li><a href="../price/">服務報價</a>（另有 <a href="../price/price2.html">price2</a> 版）</li>
+                        <li><a href="../resume/">履歷</a>（另有 <a href="../resume/r.html">精簡版 r.html</a>）</li>
+                        <li><a href="../yumi/">柔美的細胞小將 概念站</a></li>
+                        <li><a href="../notes/">閱讀札記</a>（4 篇：<a
+                                    href="../notes/avoiding-mistakes.html">避免犯錯？</a>／<a
+                                    href="../notes/making-your-choice-right.html">邊界</a>／<a
+                                    href="../notes/brain-press-conference.html">記者會</a>／<a
+                                    href="../notes/care-needs-order.html">順序</a>）</li>
+                        <li><a href="hw0709_01_login/index.html">Bootstrap 0709 練習：登入卡片</a></li>
+                        <li><a href="hw0709_02_hr_form/index.html">Bootstrap 0709 練習：人事資料表</a></li>
+                    </ul>
+                </div>
+
             </div>
 
             <h3 class="site-guide-subh" id="sg-rules-quick">訪客頁 Nav 籌備中（掃一眼）</h3>
@@ -431,66 +192,6 @@
             </div>
             <p class="site-guide-fine-print site-guide-fine-print--center">Graphic 桌曆錨點亦見 <a
                     href="../../graphic/">graphic/</a> 縮圖列。</p>
-        </section>
-
-        <section class="site-guide-group" aria-labelledby="sg-extra">
-            <h2 class="section-title" id="sg-extra">站內其他 HTML <span class="site-guide-nav-sub">未列頂欄</span></h2>
-            <div class="site-guide-nav-table-wrap">
-                <table class="site-guide-mini-table">
-                    <thead>
-                        <tr>
-                            <th scope="col">檔案</th>
-                            <th scope="col">用途</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><a href="../site-guide/">z_misc/site-guide/</a></td>
-                            <td>全站導覽（本頁）</td>
-                        </tr>
-                        <tr>
-                            <td><a href="../price/">z_misc/price/</a></td>
-                            <td>服務報價表（Service Pricing）</td>
-                        </tr>
-                        <tr>
-                            <td><a href="../price/price2.html">z_misc/price/price2.html</a></td>
-                            <td>報價頁另一版排版／內容</td>
-                        </tr>
-                        <tr>
-                            <td><a href="../resume/">z_misc/resume/</a></td>
-                            <td>履歷（<code>resume.css</code>）</td>
-                        </tr>
-                        <tr>
-                            <td><a href="../resume/r.html">z_misc/resume/r.html</a></td>
-                            <td>履歷精簡版（<code>r.css</code>）</td>
-                        </tr>
-                        <tr>
-                            <td><a href="../yumi/">z_misc/yumi/</a></td>
-                            <td>獨立專題「柔美的細胞小將」概念站（自有樣式，非主站 Nav）</td>
-                        </tr>
-                        <tr>
-                            <td><a href="../notes/">z_misc/notes/</a></td>
-                            <td>閱讀札記（非主站 Nav，隱藏草稿頁）；聽到的・讀到的・想到的</td>
-                        </tr>
-                        <tr>
-                            <td><a href="../notes/avoiding-mistakes.html">z_misc/notes/avoiding-mistakes.html</a></td>
-                            <td>札記：我是在生活，還是在避免犯錯？</td>
-                        </tr>
-                        <tr>
-                            <td><a href="../notes/making-your-choice-right.html">z_misc/notes/making-your-choice-right.html</a></td>
-                            <td>札記：不是韌性太低，是模式遇到了邊界</td>
-                        </tr>
-                        <tr>
-                            <td><a href="../notes/brain-press-conference.html">z_misc/notes/brain-press-conference.html</a></td>
-                            <td>札記：我的腦袋又開記者會了，但這次先不要相信頭條</td>
-                        </tr>
-                        <tr>
-                            <td><a href="../notes/care-needs-order.html">z_misc/notes/care-needs-order.html</a></td>
-                            <td>札記：關心沒有錯，只是我們需要不同的順序</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
         </section>
 
         <section class="site-guide-group" aria-labelledby="sg-assets">

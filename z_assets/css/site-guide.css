@@ -72,6 +72,11 @@ body.site-guide-page .site-guide-legend__off {
     color: #bbb;
 }
 
+body.site-guide-page .site-guide-nav-table tr[id],
+body.site-guide-page .site-guide-card[id] {
+    scroll-margin-top: 96px;
+}
+
 body.site-guide-page .site-guide-nav-table-wrap {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -252,6 +257,79 @@ body.site-guide-page .site-guide-inline-links a {
     color: var(--primary-brown);
     font-size: 0.88rem;
     font-weight: 600;
+}
+
+body.site-guide-page .site-guide-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+body.site-guide-page .site-guide-grid--wide {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+body.site-guide-page .site-guide-card {
+    display: block;
+    padding: 18px 20px;
+    border-radius: var(--radius-card);
+    background: #fff;
+    border: 1px solid rgba(166, 93, 51, 0.16);
+    box-shadow: 0 8px 22px rgba(89, 56, 37, 0.06);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+body.site-guide-page .site-guide-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(89, 56, 37, 0.12);
+}
+
+body.site-guide-page .site-guide-card--list {
+    padding-bottom: 14px;
+}
+
+body.site-guide-page .site-guide-card__eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--primary-brown);
+    margin-bottom: 8px;
+}
+
+body.site-guide-page .site-guide-card h3 {
+    font-size: 1.05rem;
+    color: var(--primary-dark-brown);
+    margin-bottom: 8px;
+}
+
+body.site-guide-page .site-guide-card p {
+    color: var(--dark-gray);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+body.site-guide-page .site-guide-card__list {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0;
+    display: grid;
+    gap: 8px;
+}
+
+body.site-guide-page .site-guide-card__list a {
+    color: var(--primary-dark-brown);
+    font-weight: 600;
+}
+
+body.site-guide-page .site-guide-card__list a:hover {
+    color: var(--primary-brown);
+}
+
+body.site-guide-page .site-guide-card__list li {
+    color: var(--dark-gray);
 }
 
 @media (max-width: 768px) {
