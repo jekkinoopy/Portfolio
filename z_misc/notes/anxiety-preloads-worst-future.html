@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="page-inner notes-page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>焦慮總是在替我預支最壞的未來 | Notes | Jekkinoopy</title>
+    <meta name="description" content="容貌、健康、金錢——三種焦慮在腦中連成同一條線，問的其實都是同一個問題：我現在安不安全？我正在練習，把自己帶回今天。">
+    <link rel="stylesheet" href="../../z_assets/css/style.css">
+    <style>
+        html.notes-page { font-size: 16px; }
+
+        .notes-container {
+            max-width: 680px;
+            margin: 0 auto 120px;
+        }
+
+        .note-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--dark-gray);
+            opacity: 0.55;
+            text-decoration: none;
+            letter-spacing: 0.04em;
+            margin-bottom: 40px;
+            transition: opacity 0.2s;
+        }
+        .note-back:hover { opacity: 1; }
+
+        .note-entry { padding-top: 8px; }
+
+        .note-meta {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+        .note-number {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            color: var(--dark-gray);
+            opacity: 0.3;
+        }
+        .note-dateline {
+            font-size: 0.82rem;
+            letter-spacing: 0.18em;
+            color: var(--dark-gray);
+            font-weight: 400;
+            opacity: 0.7;
+        }
+
+        .note-insight {
+            font-size: 2rem;
+            font-weight: 900;
+            line-height: 1.45;
+            color: var(--primary-dark-brown);
+            letter-spacing: -0.02em;
+            margin: 0 0 24px;
+        }
+
+        /* ── Embed Component ── */
+        .note-embed {
+            display: flex;
+            align-items: stretch;
+            border: 1px solid rgba(0, 0, 0, 0.09);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 0 0 44px;
+            max-width: 420px;
+            background: rgba(255, 255, 255, 0.55);
+            text-decoration: none;
+            cursor: pointer;
+            transition: box-shadow 0.2s ease, transform 0.15s ease, border-color 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .note-embed:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.09);
+            transform: translateY(-2px);
+            border-color: rgba(0, 0, 0, 0.14);
+        }
+        .note-embed:active {
+            transform: translateY(0);
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+        }
+        .note-embed:focus-visible {
+            outline: 2px solid var(--primary-brown);
+            outline-offset: 3px;
+        }
+        .note-embed__thumb {
+            width: 80px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: filter 0.2s ease;
+        }
+        .note-embed:hover .note-embed__thumb { filter: brightness(1.06); }
+        .note-embed--experience .note-embed__thumb {
+            background: linear-gradient(150deg, #4c4963 0%, #9391a8 100%);
+            color: rgba(255, 255, 255, 0.82);
+        }
+        .note-embed--static {
+            cursor: default;
+        }
+        .note-embed--static:hover {
+            box-shadow: none;
+            transform: none;
+            border-color: rgba(0, 0, 0, 0.09);
+        }
+        .note-embed--static:hover .note-embed__thumb { filter: none; }
+        .note-embed__body {
+            flex: 1;
+            padding: 13px 15px 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-width: 0;
+        }
+        .note-embed__title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--black);
+            margin: 0 0 3px;
+            line-height: 1.4;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .note-embed__creator {
+            font-size: 0.78rem;
+            color: var(--dark-gray);
+            opacity: 0.6;
+            margin: 0 0 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .note-embed__platform {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding-top: 8px;
+            border-top: 1px solid rgba(0, 0, 0, 0.07);
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--dark-gray);
+            opacity: 0.42;
+        }
+
+        .note-divider {
+            width: 48px;
+            height: 4px;
+            background: var(--primary-yellow);
+            border: none;
+            border-radius: 2px;
+            margin: 0 0 44px;
+        }
+
+        /* ── 段落標題 ── */
+        .note-section-title {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--dark-gray);
+            opacity: 0.38;
+            margin: 2.8em 0 1em;
+            padding-bottom: 0.65em;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+        .note-body .note-section-title:first-child { margin-top: 0; }
+
+        /* ── 正文 ── */
+        .note-body {
+            font-size: 1.05rem;
+            line-height: 2;
+            color: var(--black);
+        }
+        .note-body p { margin: 0 0 1.6em; }
+        .note-body p:last-child { margin-bottom: 0; }
+        mark.note-highlight {
+            background: rgba(243, 193, 76, 0.45);
+            padding: 2px 5px;
+            border-radius: 3px;
+            color: inherit;
+            -webkit-box-decoration-break: clone;
+            box-decoration-break: clone;
+        }
+
+        .note-foot {
+            margin-top: 56px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        .note-tags {
+            font-size: 0.8rem;
+            color: var(--dark-gray);
+            letter-spacing: 0.06em;
+            opacity: 0.6;
+        }
+
+        @media (max-width: 768px) {
+            .note-insight { font-size: 1.55rem; }
+        }
+        @media (max-width: 480px) {
+            .note-insight { font-size: 1.3rem; }
+            .note-embed { max-width: 100%; }
+            .note-embed__thumb { width: 64px; }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="container">
+        <nav class="navbar">
+            <div class="container nav-shell">
+                <a class="nav-logo" href="../../index.html" aria-label="首頁">
+                    <img src="../../z_assets/images/noopylogov.png" alt="Jekkinoopy Studio">
+                </a>
+                <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav-menu"
+                    aria-label="開啟選單">
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                    <span class="nav-toggle__bar" aria-hidden="true"></span>
+                </button>
+                <div class="nav-menu" id="site-nav-menu">
+                    <ul class="nav-links nav-links--start">
+                        <li class="downDisabled" data-tooltip="作品建置中"><a href="../../about/">About</a></li>
+                        <li class="dropdown">
+                            <a href="../../graphic/">Graphic</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../../graphic/logoPkg.html">Logo & 包裝設計</a></li>
+                                <li><a href="../../graphic/calendar-bag.html">桌曆 & 購物袋</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../../stationery.html">名片/卡片/票券/DM</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../../webBanner.html">網站視覺 Banner</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../../socialMedia.html">社群推播圖</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../../largeFormat.html">大圖輸出</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../../editorial.html">書刊</a></li>
+                                <li class="downDisabled" data-tooltip="作品建置中"><a href="../../productDetail.html">商品長條圖文</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../../illustration/">Illustration</a></li>
+                    </ul>
+                    <ul class="nav-links nav-links--end">
+                        <li class="downDisabled" data-tooltip="作品建置中"><a href="../../photo/">Photo</a></li>
+                        <li><a href="../../uiux/">UI/UX</a></li>
+                        <li><a href="../../web/">Web</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-container notes-container">
+
+        <a class="note-back" href="index.html">← Notes</a>
+
+        <article class="note-entry" id="note-05">
+
+            <div class="note-meta">
+                <span class="note-number">#05</span>
+                <time class="note-dateline" datetime="2026-06-30">2026 · 06 · 30</time>
+            </div>
+
+            <h1 class="note-insight">焦慮總是在替我<br>預支最壞的未來</h1>
+
+            <div class="note-embed note-embed--experience note-embed--static"
+                 role="group"
+                 aria-label="生活觀察：當容貌、健康與金錢同時失去安全感">
+                <div class="note-embed__thumb" aria-hidden="true">
+                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+                        <circle cx="13" cy="13" r="2.5" fill="currentColor" opacity="0.7"/>
+                        <circle cx="13" cy="13" r="6" stroke="currentColor" stroke-width="1.4" opacity="0.45"/>
+                        <circle cx="13" cy="13" r="10.5" stroke="currentColor" stroke-width="1.4" opacity="0.2"/>
+                    </svg>
+                </div>
+                <div class="note-embed__body">
+                    <p class="note-embed__title">當容貌、健康與金錢同時失去安全感</p>
+                    <p class="note-embed__creator">生活觀察 · 焦慮的三個面向</p>
+                    <div class="note-embed__platform">
+                        <span>Experience</span>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="note-divider" aria-hidden="true">
+
+            <div class="note-body">
+
+                <h2 class="note-section-title">Experience</h2>
+
+                <p>最近，我發現自己同時背著很多種焦慮。</p>
+                <p>有對容貌變化的焦慮，有面對健康不確定性的焦慮，也有一直存在的金錢焦慮。</p>
+                <p>它們看起來像是三種不同的問題，卻常常在腦中連成同一條線。</p>
+                <p>當我注意到外表或狀態出現變化時，會擔心自己是不是正在失去原本熟悉的樣子；當身體出現不舒服時，又會開始推演之後是否會變得更嚴重；生活中只要出現一筆新的支出，也很容易立刻聯想到更遠的未來。</p>
+                <p>原本只是眼前的一個變化，進入腦袋以後，卻很快擴張成一整套危機預演。</p>
+                <p>事情還沒有真正發生，我已經先在心裡承受了一遍最壞的結果。</p>
+                <p>後來我才發現，這些焦慮底下反覆出現的，其實是同一個問題：</p>
+                <p><mark class="note-highlight">我現在到底安不安全？</mark></p>
+
+                <h2 class="note-section-title">Survival Mode</h2>
+
+                <p>看完一支談金錢焦慮的影片後，我對「生存模式」這個說法很有感。</p>
+                <p>當一個人長期處在生存模式裡，腦袋會不斷掃描風險。</p>
+                <p>還有多少資源？<br>
+                下一個問題會在什麼時候出現？<br>
+                現在是不是不應該休息？<br>
+                是不是每一個選擇都必須非常正確？</p>
+                <p>即使眼前沒有立即的危險，身體和思緒仍然像在值班。</p>
+                <p>別人可能只看見一個普通的決定，我卻會在背後計算它會不會影響健康、金錢、外表狀態，甚至更遠的未來。</p>
+                <p>久了以後，連休息都會帶著罪惡感。</p>
+                <p>我會覺得，事情還沒有完全處理好，自己就沒有資格放鬆；未來還沒有足夠保障，就不應該享受生活。</p>
+                <p>但一直維持警戒，並沒有真的讓人變得更安全。</p>
+                <p>它只是讓生活逐漸只剩下防守。</p>
+
+                <h2 class="note-section-title">Appearance</h2>
+
+                <p>容貌焦慮不只是單純地想變漂亮。</p>
+                <p>它有時是對改變的敏感，也是對失去掌控感的恐懼。</p>
+                <p>當外表、膚況、輪廓或整體狀態不如預期，我很容易把一個局部的變化，理解成自己正在快速走向不喜歡的樣子。</p>
+                <p>焦慮會讓我不斷檢查：</p>
+                <p>是不是看起來更差了？<br>
+                是不是已經來不及改善？<br>
+                別人會不會也注意到了？<br>
+                我是不是沒有好好照顧自己？</p>
+                <p>真正讓人疲憊的，往往不只是外表上的變化。</p>
+                <p>而是我很容易把一個細微的改變，延伸成對整體自我的否定。</p>
+                <p>彷彿只要某個地方不符合期待，就代表自己正在失去吸引力、價值，或原本熟悉的樣子。</p>
+                <p>我正在練習區分：</p>
+                <p>我確實有想改善的地方，<br>但這不代表我現在的樣子就完全失敗。</p>
+                <p>我可以在意容貌，也可以採取行動，但不需要讓每一次照鏡子，都變成一場自我審判。</p>
+
+                <h2 class="note-section-title">Health</h2>
+
+                <p>健康焦慮則是另一種不安。</p>
+                <p>它關心的不是外表，而是身體是否安全、狀況是否會惡化，以及未來能不能恢復穩定。</p>
+                <p>身體的不舒服是真實的，需要關注與處理。</p>
+                <p>但焦慮常常會在現有的不舒服之外，再加上大量還沒有發生的想像。</p>
+                <p>它會把「現在有一個狀況」，翻譯成「之後可能會越來越嚴重」；把一次不穩定，延伸成對整個未來的懷疑。</p>
+                <p>我正在練習把兩件事情分開：</p>
+                <p>一件是現在確實需要處理的健康訊號。</p>
+                <p>另一件是腦袋為了保護我，提前製作出來的災難預告。</p>
+                <p>這並不是叫自己不要擔心，也不是假裝一切都沒事。</p>
+                <p>而是先回到當下：</p>
+                <p>目前已經知道的是什麼？<br>
+                現在可以做的是什麼？<br>
+                還有哪些事情，只是焦慮正在猜測？</p>
+                <p>有時候，真正消耗我的不只是身體的不舒服，而是我已經在心裡反覆預演了太多次惡化、失控與來不及。</p>
+
+                <h2 class="note-section-title">Money</h2>
+
+                <p>我一直都有金錢焦慮。</p>
+                <p>它不一定只和當下實際擁有多少錢有關，也可能來自很久以前就形成的觀念。</p>
+                <p>也許我們很早就學會，花錢代表風險，存下來才代表安全；享受容易被視為浪費，休息也可能被理解成不夠努力。</p>
+                <p>於是，每一筆支出都不再只是支出，而像是一場道德審判。</p>
+                <p>這個東西真的需要嗎？<br>
+                我是不是太浪費？<br>
+                現在花了，以後會不會後悔？<br>
+                我是不是應該再忍耐一點？</p>
+                <p>理性上，我知道金錢需要規劃。</p>
+                <p>但焦慮並不只是在幫我規劃。</p>
+                <p>它經常把所有消費都標記成危險，卻沒有區分必要支出、改善生活，以及單純衝動之間的差別。</p>
+                <p>真正的財務安全感，或許不是完全不花錢，也不是每天盯著自己還剩下多少。</p>
+                <p>而是逐漸知道：</p>
+                <p>基本生活需要多少？<br>
+                目前有哪些資源？<br>
+                什麼是必要支出？<br>
+                什麼可以延後？<br>
+                哪些選擇確實能讓生活變得更穩定？</p>
+                <p>當模糊的恐懼被換成具體的數字與分類，問題通常不會立刻消失，但至少不再是一團沒有邊界的黑霧。</p>
+
+                <h2 class="note-section-title">Inventory</h2>
+
+                <p>影片裡提到，可以透過盤點資源來降低焦慮。</p>
+                <p>我以前可能會把這種方法理解成：「你已經擁有很多，所以不要再焦慮。」</p>
+                <p>但現在我覺得，盤點資源不是否定困難，而是把畫面重新調回完整。</p>
+                <p>焦慮很擅長計算失去的、缺少的，以及還沒有準備好的。</p>
+                <p>它不太擅長提醒我：</p>
+                <p>我已經處理了哪些事情。<br>
+                我曾經度過哪些困難。<br>
+                我現在還有哪些能力、選擇與支持系統。<br>
+                眼前的一個問題，是否真的等於整體人生都要失控。</p>
+                <p>盤點不是自我安慰。</p>
+                <p>它只是避免讓焦慮成為唯一的會計，永遠只記支出，不記資產。</p>
+
+                <h2 class="note-section-title">Gratitude</h2>
+
+                <p>影片也談到感恩練習。</p>
+                <p>過去我對「感恩」有時會感到抗拒，因為它很容易被說成一種要求：既然已經擁有一些東西，就不應該再痛苦。</p>
+                <p>但真正有幫助的感恩，並不是強迫自己正面思考。</p>
+                <p>它只是練習讓注意力不要永遠停留在缺少的地方。</p>
+                <p>我可以承認今天很累，也同時看見自己仍然完成了一件事。</p>
+                <p>我可以擔心未來，也同時承認現在並不是完全沒有資源。</p>
+                <p>我可以對自己的外表或狀態感到不滿，也不必因此否認整個自己。</p>
+                <p>兩種感受可以同時成立。</p>
+                <p>感恩不是刪除痛苦，而是把被焦慮裁掉的另一半畫面重新放回來。</p>
+
+                <h2 class="note-section-title">Living Mode</h2>
+
+                <p>影片裡還提到，要試著從生存模式切換回生活模式。</p>
+                <p>這並不是叫人忽略現實，也不是假裝問題不存在。</p>
+                <p>而是提醒自己，生活不應該只剩下預防風險。</p>
+                <p>如果每天都只想著怎麼避免失去、避免惡化、避免花錯錢，久了以後，即使真的保住了一些東西，也可能失去感受生活的能力。</p>
+                <p>維持生活狀態，不一定需要昂貴的安排。</p>
+                <p>有時只是暫時離開讓自己反覆焦慮的環境，換一個地方走走，讓注意力從問題上稍微鬆開。</p>
+                <p>有時只是好好吃一頓飯、睡一覺、看一段喜歡的內容，或完成一件讓自己感覺仍然有掌控感的小事。</p>
+                <p>這些行動不會直接消除焦慮。</p>
+                <p>但它們會提醒我：</p>
+                <p>我現在不只是正在處理問題。</p>
+                <p>我也仍然在生活。</p>
+
+                <h2 class="note-section-title">Reflection</h2>
+
+                <p>焦慮可能不會因為看完一支影片，就從此消失。</p>
+                <p>長期形成的金錢觀、對健康的警覺，以及對容貌變化的敏感，都不會在一天之內被解除。</p>
+                <p>但我開始明白，我不需要等到完全不焦慮，才有資格繼續生活。</p>
+                <p>我可以一邊擔心，一邊整理眼前真正的問題。</p>
+                <p>一邊規劃未來，一邊保留正常生活。</p>
+                <p>一邊承認自己害怕，一邊提醒自己，不是每一個念頭都等於事實。</p>
+                <p>我現在需要做的，也許不是立刻保證未來永遠安全。</p>
+                <p>而是慢慢分清楚：</p>
+                <p>哪些事情現在真的需要處理，<br>
+                哪些是焦慮提前寄來的帳單，<br>
+                哪些風險可以透過行動降低，<br>
+                哪些生活不需要因為害怕而全部取消。</p>
+                <p><mark class="note-highlight">焦慮總是在替我預支最壞的未來。</mark></p>
+                <p><mark class="note-highlight">而我正在練習，把自己帶回今天。</mark></p>
+
+            </div>
+
+            <div class="note-foot">
+                <p class="note-tags">焦慮 · 容貌 · 健康 · 金錢 · 生存模式 · 盤點資源 · 感恩 · 生活模式 · 自我覺察</p>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer id="contact">
+        <a href="mailto:jekkinoopy@gmail.com" class="contact-email">
+            <small>如有合作意願，歡迎隨時聯繫</small>
+            jekkinoopy@gmail.com
+        </a>
+        <small>&copy; 2026 JEKKINOOPY. All rights reserved.</small>
+    </footer>
+
+    <script src="../../z_assets/js/nav.js"></script>
+</body>
+
+</html>
