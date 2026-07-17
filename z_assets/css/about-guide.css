@@ -1,0 +1,378 @@
+/* 努比使用說明書 — 排版對齊 Notion 欄位結構 */
+
+html.about-guide-page {
+    font-size: 16px;
+}
+
+.about-guide {
+    max-width: 960px;
+    margin: 0 auto 80px;
+}
+
+.about-guide p,
+.about-guide li,
+.about-guide blockquote,
+.about-guide .about-callout p {
+    font-size: 1rem;
+    line-height: 1.75;
+    text-align: left;
+}
+
+.about-subnav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 auto 40px;
+    max-width: 960px;
+}
+
+.about-subnav a {
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: var(--radius-pill);
+    border: 2px solid #eee;
+    color: var(--primary-dark-brown);
+    font-weight: 600;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.about-subnav a:hover {
+    border-color: var(--primary-yellow);
+}
+
+.about-subnav a.is-active {
+    background: var(--light-yellow);
+    border-color: var(--primary-yellow);
+}
+
+.guide-section {
+    margin-bottom: 56px;
+}
+
+.guide-section:last-child {
+    margin-bottom: 0;
+}
+
+/* Notion 黃底區塊標 */
+.guide-pill-label {
+    display: table;
+    margin: 0 auto 28px;
+    padding: 6px 18px;
+    background: #fbc827;
+    color: #fff;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    border-radius: 4px;
+}
+
+/* Notion columns */
+.guide-columns {
+    display: grid;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.guide-columns--2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.guide-columns--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.guide-col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+}
+
+/* 開場：左 Spotify、右圖＋提示 */
+.guide-hero__media iframe {
+    width: 100%;
+    min-height: 152px;
+    border: none;
+    border-radius: 4px;
+}
+
+.guide-hero__note {
+    text-align: center;
+    color: var(--primary-brown);
+    font-weight: 700;
+    margin: 0;
+}
+
+.guide-media {
+    margin: 0;
+}
+
+.guide-media img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+
+.guide-media--full {
+    margin-bottom: 48px;
+}
+
+/* Notion callout（黃底） */
+.about-callout {
+    background: #fffbe8;
+    border-radius: 4px;
+    padding: 18px 20px;
+    box-shadow: inset 0 0 0 1px rgba(243, 193, 76, 0.35);
+}
+
+.about-callout__icon {
+    display: block;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-bottom: 10px;
+    opacity: 0.85;
+}
+
+.about-callout__tag {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--primary-dark-brown);
+    text-align: left;
+}
+
+.about-callout__tag--highlight {
+    color: var(--primary-brown);
+    text-decoration: underline;
+    text-decoration-color: var(--primary-yellow);
+    text-underline-offset: 3px;
+}
+
+.about-callout p {
+    margin: 0 0 10px;
+}
+
+.about-callout p:last-child {
+    margin-bottom: 0;
+}
+
+.about-callout a {
+    color: var(--primary-brown);
+    font-weight: 700;
+}
+
+.about-callout .guide-media {
+    margin-top: 12px;
+}
+
+/* 圖下方說明（Notion quote） */
+.guide-quote {
+    margin: 0;
+    padding: 0 0 0 14px;
+    border-left: 3px solid #ddd;
+    color: var(--dark-gray);
+    font-size: 0.95rem;
+}
+
+.guide-quote--caption {
+    border-left-color: var(--primary-yellow);
+    color: var(--black);
+}
+
+/* 近期目標：全寬警告 callout */
+.guide-warning {
+    background: #fffbe8;
+    border-radius: 4px;
+    padding: 18px 20px;
+    margin-bottom: 24px;
+    box-shadow: inset 0 0 0 1px rgba(243, 193, 76, 0.35);
+    text-align: left;
+}
+
+.guide-warning strong {
+    color: var(--primary-dark-brown);
+    text-decoration: underline;
+    text-decoration-color: var(--primary-yellow);
+}
+
+.guide-fruit-lead {
+    margin: 0 0 20px;
+    padding: 0 0 0 14px;
+    border-left: 3px solid #ddd;
+    color: var(--black);
+}
+
+.guide-fruit-placeholder {
+    background: var(--bg-light);
+    border: 2px dashed #ddd;
+    border-radius: var(--radius-card);
+    padding: 40px 24px;
+    text-align: center;
+    color: var(--dark-gray);
+}
+
+.guide-fruit-placeholder strong {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--primary-dark-brown);
+    font-size: 1.1rem;
+}
+
+/* 果實：能力值分組（每組 3 張） */
+.guide-fruit-group {
+    margin-bottom: 40px;
+}
+
+.guide-fruit-group:last-of-type {
+    margin-bottom: 0;
+}
+
+.guide-fruit-group__title {
+    margin: 0 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--primary-yellow);
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--primary-dark-brown);
+    text-align: left;
+}
+
+.guide-fruit-group__count {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--dark-gray);
+}
+
+/* 果實：能力值卡片（Notion gallery 風） */
+.guide-fruit-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.guide-fruit-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.guide-fruit-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.09);
+}
+
+.guide-fruit-card__cover {
+    display: block;
+    margin: 0;
+    background: var(--bg-light);
+}
+
+.guide-fruit-card__cover img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.guide-fruit-card__body {
+    padding: 16px 18px 18px;
+}
+
+.guide-fruit-card__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.guide-fruit-card__name {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--primary-brown);
+}
+
+.guide-fruit-card__meta {
+    font-size: 0.85rem;
+    color: var(--dark-gray);
+}
+
+.guide-fruit-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+.guide-fruit-tag {
+    font-size: 0.8rem;
+    padding: 2px 8px;
+    border-radius: var(--radius-pill);
+    background: var(--bg-light);
+    color: var(--dark-gray);
+}
+
+.guide-fruit-tag--ing {
+    background: #ffe0a0;
+    color: #a06400;
+    font-weight: 700;
+}
+
+.guide-fruit-tag--nav {
+    background: rgba(243, 193, 76, 0.25);
+    color: var(--primary-dark-brown);
+}
+
+.guide-fruit-tag--field {
+    background: rgba(166, 93, 51, 0.12);
+    color: var(--primary-brown);
+}
+
+.guide-fruit-card__body p {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.guide-fruit-card__body a {
+    color: var(--primary-brown);
+    font-weight: 600;
+}
+
+.guide-fruit-more {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.guide-intro-lead {
+    max-width: 72ch;
+    margin: 0 auto 40px;
+    padding: 18px 22px;
+    background: var(--bg-light);
+    border-radius: var(--radius-card);
+    border-left: 4px solid var(--primary-yellow);
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    .guide-columns--2,
+    .guide-columns--3 {
+        grid-template-columns: 1fr;
+    }
+
+    .guide-fruit-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 520px) {
+    .guide-fruit-grid {
+        grid-template-columns: 1fr;
+    }
+}
